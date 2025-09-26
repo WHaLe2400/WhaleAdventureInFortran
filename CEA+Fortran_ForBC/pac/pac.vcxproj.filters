@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6c302f45-b86a-40c5-8d10-a53195a6baa9}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;f90;for;f;fpp</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{aad9113d-ead0-487f-a895-8bcea80f6a92}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{b841f3cd-8fb8-435d-a38a-67dc68e6bd41}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="pac99.f">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="EFdata.i97" />
+    <CustomBuild Include="exp.i97" />
+    <CustomBuild Include="exp.o97" />
+    <CustomBuild Include="new.groups" />
+    <CustomBuild Include="readme_pac99.txt" />
+  </ItemGroup>
+</Project>

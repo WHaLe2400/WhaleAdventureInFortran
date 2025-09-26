@@ -1,0 +1,15 @@
+------ Project Conversion started on 2014/6/26 at 22:01 - Project: cea2 ------
+
+Creating configuration context: cea2 - Win32 Release...
+
+Warn:nofileopt option not supported - option ignored
+
+Creating configuration context: cea2 - Win32 Debug...
+
+Warn:argument_checking option not supported - option ignored
+
+Warn:nofileopt option not supported - option ignored
+
+cea2 project conversion succeeded
+
+Project Conversion log was saved at "file://D:\Modify\2DMCC\CEA+Fortran\cea2_log.txt"

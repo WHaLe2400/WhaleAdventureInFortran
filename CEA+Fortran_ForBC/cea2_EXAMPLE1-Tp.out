@@ -1,0 +1,121 @@
+
+ *******************************************************************************
+
+         NASA-GLENN CHEMICAL EQUILIBRIUM PROGRAM CEA2, MAY 21, 2004
+                   BY  BONNIE MCBRIDE AND SANFORD GORDON
+      REFS: NASA RP-1311, PART I, 1994 AND NASA RP-1311, PART II, 1996
+
+ *******************************************************************************
+
+
+
+  
+  
+  
+ #                               SAMPLE PROBLEMS
+  
+  
+ #  EXAMPLE 1:
+ #     (a)  Assigned-temperature-and-pressure problem (tp).
+ #     (b)  Reactants are H2 and Air.  Since "exploded" formulas are not given,
+ #          these formulas will be taken from the thermodynamic data library,
+ #          thermo.lib.
+ #     (c)  Calculations are for two equivalence ratios (r,eq.ratio =1,1.5).
+ #     (d)  Assigned pressures are 1, 0.1, and 0.01 atm (p(atm)=1,.1,.01).
+ #     (e)  Assigned temperatures are 3000 and 2000 K (t(k)=3000,2000).
+ #     (f)  'only' dataset is used to restrict possible products.
+ #     (g)  Energy units in the final tables are in calories (calories).
+  
+ # 'problem' dataset:
+    problem case=Example-1 tp  p(atm)=1,.1,.01,t(k)=3000,2000,
+              r,eq.ratio=1,1.5
+ # 'reactants' dataset:
+    reac
+      fuel= H2  moles = 1.
+      oxid= Air moles = 1.
+ # 'only' dataset:
+    only  Ar    C   CO  CO2  H   H2   H2O  HNO   HO2   HNO2  HNO3  N   NH
+       NO   N2   N2O3  O  O2  OH  O3
+ # 'output' dataset:
+    output calories
+ # 'end' dataset
+    end
+
+ OPTIONS: TP=T  HP=F  SP=F  TV=F  UV=F  SV=F  DETN=F  SHOCK=F  REFL=F  INCD=F
+ RKT=F  FROZ=F  EQL=F  IONS=F  SIUNIT=F  DEBUGF=F  SHKDBG=F  DETDBG=F  TRNSPT=F
+
+ T,K =  3000.0000  2000.0000
+
+ TRACE= 0.00E+00  S/R= 0.000000E+00  H/R= 0.000000E+00  U/R= 0.000000E+00
+
+ P,BAR =     1.013250     0.101325     0.010133
+
+    REACTANT           MOLES    (ENERGY/R),K   TEMP,K  DENSITY
+        EXPLODED FORMULA
+ F: H2               1.000000   0.000000E+00     0.00  0.0000
+          H  2.00000
+ O: Air              1.000000   0.000000E+00     0.00  0.0000
+          N  1.56168  O  0.41959  AR 0.00937  C  0.00032
+
+  SPECIES BEING CONSIDERED IN THIS SYSTEM
+ (CONDENSED PHASE MAY HAVE NAME LISTED SEVERAL TIMES)
+  LAST thermo.inp UPDATE:    9/09/04
+
+  g 3/98  *Ar              g 7/97  *C               tpis79  *CO            
+  g 9/99  *CO2             g 6/97  *H               g10/01  HNO            
+  tpis89  HNO2             g 5/99  HNO3             g 4/02  HO2            
+  tpis78  *H2              g 8/89  H2O              g 5/97  *N             
+  g 4/99  *NH              tpis89  *NO              tpis78  *N2            
+  g 4/99  N2O3             g 5/97  *O               g 4/02  *OH            
+  tpis89  *O2              g 8/01  O3             
+
+ O/F =  34.296226
+
+                       EFFECTIVE FUEL     EFFECTIVE OXIDANT        MIXTURE
+ ENTHALPY                  h(2)/R              h(1)/R               h0/R
+ (KG-MOL)(K)/KG        0.00000000E+00      0.00000000E+00      0.00000000E+00
+
+ KG-FORM.WT./KG             bi(2)               bi(1)               b0i
+  *H                   0.99212255E+00      0.00000000E+00      0.28108460E-01
+  *N                   0.00000000E+00      0.53915890E-01      0.52388364E-01
+  *O                   0.00000000E+00      0.14486046E-01      0.14075632E-01
+  *Ar                  0.00000000E+00      0.32331996E-03      0.31415977E-03
+  *C                   0.00000000E+00      0.11013248E-04      0.10701224E-04
+
+ POINT ITN      T            H           N           O           AR
+                    C 
+   1   13    3000.000     -11.765     -14.452     -17.125     -27.079
+                 -25.128
+   2    6    2000.000     -12.627     -13.684     -17.819     -26.104
+                 -27.997
+   3    5    3000.000     -12.813     -15.668     -18.103     -29.508
+                 -26.376
+   4    7    2000.000     -13.410     -14.837     -18.568     -28.409
+                 -28.845
+   5    6    3000.000     -14.313     -16.919     -19.504     -32.012
+                 -27.372
+   6    8    2000.000     -14.199     -15.991     -19.326     -30.717
+                 -29.723
+
+
+
+
+               THERMODYNAMIC EQUILIBRIUM PROPERTIES AT ASSIGNED
+
+                           TEMPERATURE AND PRESSURE
+
+ CASE = Example-1      
+
+             REACTANT                       MOLES         ENERGY      TEMP
+                                                          CAL/MOL       K
+ FUEL        H2                           1.0000000         0.000      0.000
+ OXIDANT     Air                          1.0000000         0.000      0.000
+
+ O/F=   34.29623  %FUEL=  2.833164  R,EQ.RATIO= 1.000000  PHI,EQ.RATIO= 1.000000
+
+ THERMODYNAMIC PROPERTIES
+
+ P, ATM            1.0000   1.0000  0.10000  0.10000  0.01000  0.01000
+ T, K             3000.00  2000.00  3000.00  2000.00  3000.00  2000.00
+ RHO, G/CC       9.1781-5 1.4989-4 8.0851-6 1.4955-5 6.6136-7 1.4875-6
+ H, CAL/G          663.71  -203.57  1369.55  -191.83  2647.10  -164.35

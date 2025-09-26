@@ -1,0 +1,1968 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+10	.\cap\cap.f	/^10    ALK(I)=0.D0$/;"	l	subroutine:LOGK	file:
+10	.\cap\cap.f	/^10    T(I)=0.    $/;"	l	program:CAP	file:
+10	.\cea2.f	/^ 10         Npt = Npt + 1$/;"	l	subroutine:THERMP	file:
+10	.\misc\makelib.f	/^ 10   READ (5,15,err=400) record$/;"	l	program:MAKELIB	file:
+10	.\misc\oldnew.f	/^10     format( A18)$/;"	l	program:OLDNEW	file:
+10	.\pac\pac99.f	/^ 10   FORMAT (a)$/;"	l	program:PAC99	file:
+10	.\pac\pac99.f	/^10    ALK(I)=0.D0$/;"	l	subroutine:LOGK	file:
+10	.\pac\pac99.f	/^10    CALL INPUT$/;"	l	subroutine:IROTOR	file:
+10	.\pac\pac99.f	/^10    CONTINUE$/;"	l	subroutine:EIGEN	file:
+10	.\pac\pac99.f	/^10    CONTINUE$/;"	l	subroutine:WILHOI	file:
+10	.\pac\pac99.f	/^10    DO 160 J=1,4$/;"	l	subroutine:TEMPER	file:
+10	.\pac\pac99.f	/^10    FORMAT (4X,A4,E21.4,3F18.8)$/;"	l	subroutine:QSUM	file:
+10	.\pac\pac99.f	/^10    FORMAT (5X,I3,' +')$/;"	l	subroutine:PRINT	file:
+10	.\pac\pac99.f	/^10    GHRT(I)=0.0$/;"	l	subroutine:GROUP	file:
+10	.\pac\pac99.f	/^10    GHRT(I)=0.0$/;"	l	subroutine:POLY	file:
+10	.\pac\pac99.f	/^10    NUM(I)=0$/;"	l	subroutine:IDENT	file:
+10	.\pac\pac99.f	/^10    WRITE (6,20) I,V(I),NND$/;"	l	subroutine:LINK1	file:
+10	.\pac\pac99.f	/^10    hint(i,j) = 0.$/;"	l	subroutine:HMAT	file:
+10	.\syntax.f	/^ 10   FORMAT ( A120 )$/;"	l	subroutine:RECOUT	file:
+100	.\b1b2b3.f	/^100   IF (Nrid .EQ. 0)  goto 210$/;"	l	program:b1b2b3	file:
+100	.\cap\cap.f	/^100         FORMAT (\/,7X,'T',11X,'Cp',10X,'H-H0',9X,'S',9X$/;"	l	subroutine:TABLES	file:
+100	.\cap\cap.f	/^100   FORMAT(4a4,a64)$/;"	l	program:CAP	file:
+100	.\cap\cap.f	/^100   continue$/;"	l	subroutine:LOGK	file:
+100	.\cea2.f	/^ 100    CONTINUE$/;"	l	subroutine:REACT	file:
+100	.\cea2.f	/^ 100    Prod(Ngc) = sub$/;"	l	subroutine:SEARCH	file:
+100	.\cea2.f	/^ 100  CALL INFREE(Readok,cin,ncin,lcin,dpin)$/;"	l	subroutine:INPUT	file:
+100	.\cea2.f	/^ 100  CONTINUE$/;"	l	subroutine:OUT1	file:
+100	.\cea2.f	/^ 100  CONTINUE$/;"	l	subroutine:RKTOUT	file:
+100	.\cea2.f	/^ 100  CONTINUE$/;"	l	subroutine:THERMP	file:
+100	.\cea2.f	/^ 100  DO i = 1,3$/;"	l	subroutine:UTHERM	file:
+100	.\cea2.f	/^ 100  DO i = 1,36$/;"	l	subroutine:UTRAN	file:
+100	.\cea2.f	/^ 100  IF ( Nsk.GT.NCOL ) THEN$/;"	l	subroutine:SHCK	file:
+100	.\cea2.f	/^ 100  IF ( total.LE.testot.AND.loop.LE.Ng ) THEN$/;"	l	subroutine:TRANIN	file:
+100	.\cea2.f	/^ 100  Iplt = 0$/;"	l	file:
+100	.\cea2.f	/^ 100  It = 1$/;"	l	subroutine:ROCKET	file:
+100	.\cea2.f	/^ 100  RETURN$/;"	l	subroutine:HCALC	file:
+100	.\cea2.f	/^ 100  Tt = 0.$/;"	l	subroutine:FROZEN	file:
+100	.\cea2.f	/^ 100  Tt = T(1)$/;"	l	subroutine:DETON	file:
+100	.\cea2.f	/^ 100  j = Jcond(k)$/;"	l	subroutine:EQLBRM	file:
+100	.\cea2.f	/^ 100  j = k + 1$/;"	l	subroutine:GAUSS	file:
+100	.\cea2.f	/^ 100  nb = 1$/;"	l	subroutine:INFREE	file:
+100	.\misc\makelib.f	/^ 100  DO i = 1,3$/;"	l	program:MAKELIB	file:
+100	.\misc\oldnew.f	/^100    stop$/;"	l	program:OLDNEW	file:
+100	.\pac\pac99.f	/^100       FORMAT (\/,8X,'T',10X,'CP',11X,'H-H0',10X,'H-H298',8X,'S',11X$/;"	l	subroutine:TABLES	file:
+100	.\pac\pac99.f	/^100   CONTINUE$/;"	l	subroutine:EFTAPE	file:
+100	.\pac\pac99.f	/^100   CONTINUE$/;"	l	subroutine:LEAST	file:
+100	.\pac\pac99.f	/^100   CONTINUE$/;"	l	subroutine:LINK1	file:
+100	.\pac\pac99.f	/^100   CONTINUE$/;"	l	subroutine:WILHOI	file:
+100	.\pac\pac99.f	/^100   DO 320 ID=1,4$/;"	l	subroutine:POLY	file:
+100	.\pac\pac99.f	/^100   FORMAT (\/' ERROR IN ABOVE RECORD, IGNORE CONTENTS, (IDENT)')$/;"	l	subroutine:IDENT	file:
+100	.\pac\pac99.f	/^100   FORMAT (\/,' PROGRAM CAN ACCOMMODATE ONLY 900 LEVELS')$/;"	l	subroutine:ATOM	file:
+100	.\pac\pac99.f	/^100   GHRT(I)=GHRT(I)+ASINDH\/(T(I))$/;"	l	subroutine:DELH	file:
+100	.\pac\pac99.f	/^100   IF (.NOT.BAR.AND.TEST(4)) SRCOR=-.013163D0 +SRCOR$/;"	l	subroutine:RECO	file:
+100	.\pac\pac99.f	/^100   IND=1$/;"	l	subroutine:EIGEN	file:
+100	.\pac\pac99.f	/^100   NEL=WORD(ID)$/;"	l	subroutine:IROTOR	file:
+100	.\pac\pac99.f	/^100   TINTVL=0.0$/;"	l	subroutine:TEMPER	file:
+100	.\pac\pac99.f	/^100   continue$/;"	l	subroutine:LOGK	file:
+100	.\syntax.f	/^ 100  CALL INFREE(Readok,Cin,Ncin,Lcin,Mcin)$/;"	l	file:
+100	.\syntax.f	/^ 100  nb = 1$/;"	l	subroutine:INFREE	file:
+1000	.\cap\cap.f	/^1000  CLOSE (18)$/;"	l	program:CAP	file:
+1000	.\cap\cap.f	/^1000  RETURN                          $/;"	l	subroutine:LOGK	file:
+1000	.\cea2.f	/^ 1000   itnum = 0$/;"	l	subroutine:ROCKET	file:
+1000	.\cea2.f	/^ 1000 En(j,Npt) = 0.D0$/;"	l	subroutine:EQLBRM	file:
+1000	.\cea2.f	/^ 1000 RETURN$/;"	l	subroutine:SHCK	file:
+1000	.\misc\makelib.f	/^ 1000 STOP$/;"	l	program:MAKELIB	file:
+1000	.\pac\pac99.f	/^1000  CONTINUE$/;"	l	subroutine:LEAST	file:
+101	.\cap\cap.f	/^101         FORMAT (\/,7X,'T',11X,'Cp',9X,'H-H298',8X,'S',8X$/;"	l	subroutine:TABLES	file:
+1010	.\pac\pac99.f	/^1010  FORMAT (F12.2,2F13.7,2X,2F13.7,2X,2F14.7,2X,2F14.7)$/;"	l	subroutine:LEAST	file:
+102	.\cap\cap.f	/^102         FORMAT (\/,7X,'T',11X,'Cp',9X,'H-H537',8X,'S',8X$/;"	l	subroutine:TABLES	file:
+1020	.\pac\pac99.f	/^1020  FORMAT (12X,2F13.7,2X,2F13.7,2X,2F14.7,2X,2F14.7)$/;"	l	subroutine:LEAST	file:
+1030	.\pac\pac99.f	/^1030  CONTINUE$/;"	l	subroutine:LEAST	file:
+104	.\pac\pac99.f	/^104   k1=itn(jx)+1$/;"	l	subroutine:LOGK	file:
+1040	.\pac\pac99.f	/^1040  AVSQR(I)=DSQRT(TOTSQR(I)\/POINTS)$/;"	l	subroutine:LEAST	file:
+105	.\cap\cap.f	/^105   FORMAT (i2,a8,5(2a1,f6.2),i2,f13.5,f15.3)$/;"	l	program:CAP	file:
+105	.\pac\pac99.f	/^105   IF (BAR.AND.TEST(4)) SRCOR= .013163+SRCOR$/;"	l	subroutine:RECO	file:
+105	.\pac\pac99.f	/^105   WRITE (6,110) ABEL(1,ID),WORD(ID)$/;"	l	subroutine:POLY	file:
+105	.\syntax.f	/^ 105    format ( 5a16 )$/;"	l	file:
+1050	.\cea2.f	/^ 1050   Isup = Isup + 1$/;"	l	subroutine:ROCKET	file:
+1050	.\pac\pac99.f	/^1050  FORMAT (3X,19HMAX REL ERR CP\/R  =,F10.6,4X,6HTEMP =,F7.0,6X,20HAVE$/;"	l	subroutine:LEAST	file:
+1055	.\pac\pac99.f	/^1055  IF (NOH(IV).AND..NOT.CPONLY(IV)) GO TO 1065$/;"	l	subroutine:LEAST	file:
+1060	.\pac\pac99.f	/^1060  FORMAT (3X,19HMAX REL ERR HH\/RT =,F10.6,4X,6HTEMP =,F7.0,6X,20HAVE$/;"	l	subroutine:LEAST	file:
+1065	.\pac\pac99.f	/^1065  IF (NOS(IV).AND..NOT.CPONLY(IV)) GO TO 1075$/;"	l	subroutine:LEAST	file:
+1070	.\pac\pac99.f	/^1070  FORMAT (3X,19HMAX REL ERR S\/R   =,F10.6,4X,6HTEMP =,F7.0,6X,20HAVE$/;"	l	subroutine:LEAST	file:
+1075	.\pac\pac99.f	/^1075  IF (NOH(IV).AND.NOS(IV).AND..NOT.CPONLY(IV)) GO TO 1085$/;"	l	subroutine:LEAST	file:
+1080	.\pac\pac99.f	/^1080  FORMAT (3X,19HMAX REL ERR GH\/RT =,F10.6,4X,6HTEMP =,F7.0,6X,20HAVE$/;"	l	subroutine:LEAST	file:
+1085	.\pac\pac99.f	/^1085  IF (NOCP(IV)) GO TO 1095$/;"	l	subroutine:LEAST	file:
+1090	.\pac\pac99.f	/^1090  FORMAT (7X,15HMAX ERR CP\/R  =,F10.6,4X,6HTEMP =,F7.0,10X,16HAVER E$/;"	l	subroutine:LEAST	file:
+1095	.\pac\pac99.f	/^1095  IF (NOH(IV).AND..NOT.CPONLY(IV)) GO TO 1105$/;"	l	subroutine:LEAST	file:
+110	.\b1b2b3.f	/^110   REWIND IOTHM$/;"	l	program:b1b2b3	file:
+110	.\cap\cap.f	/^110   DO 120 J=1,numexp(L)$/;"	l	subroutine:LOGK	file:
+110	.\cap\cap.f	/^110   continue$/;"	l	program:CAP	file:
+110	.\cea2.f	/^ 110        itr = itr + 1$/;"	l	subroutine:DETON	file:
+110	.\pac\pac99.f	/^110   CONTINUE$/;"	l	subroutine:ATOM	file:
+110	.\pac\pac99.f	/^110   CONTINUE$/;"	l	subroutine:EIGEN	file:
+110	.\pac\pac99.f	/^110   FORMAT ('1***ERROR IN WILHOIT EXTRAPOLATION***')$/;"	l	subroutine:WILHOI	file:
+110	.\pac\pac99.f	/^110   FORMAT (\/' CONTRIBUTION',13X,1HQ,15X,4HLN Q,11X,8H H-H0\/RT,13X,$/;"	l	subroutine:LINK1	file:
+110	.\pac\pac99.f	/^110   FORMAT (\/,A6,' IS AN INCORRECT LABEL FOR THE NUMBER--',E16.8,'.$/;"	l	subroutine:POLY	file:
+110	.\pac\pac99.f	/^110   FORMAT(\/,1x,2A4,'IS BEYOND GROUP NUMBER LIMIT OF 60')$/;"	l	subroutine:GROUP	file:
+110	.\pac\pac99.f	/^110   IF (HEAT.EQ.ASH) GO TO 140$/;"	l	subroutine:DELH	file:
+110	.\pac\pac99.f	/^110   IF (IONNUM.EQ.0) GO TO 120$/;"	l	subroutine:IDENT	file:
+110	.\pac\pac99.f	/^110   IF(FWORD(I).EQ.-1.) LIT=LIT+1$/;"	l	subroutine:INPUT	file:
+110	.\pac\pac99.f	/^110   INIT=INIT+1$/;"	l	subroutine:LOGK	file:
+110	.\pac\pac99.f	/^110   NOUT=WORD(ID)$/;"	l	subroutine:IROTOR	file:
+110	.\pac\pac99.f	/^110   NT=NT+1$/;"	l	subroutine:TEMPER	file:
+110	.\pac\pac99.f	/^110   PTMELT=WORD(I)$/;"	l	subroutine:RECO	file:
+110	.\pac\pac99.f	/^110   continue$/;"	l	subroutine:EFTAPE	file:
+110	.\syntax.f	/^ 110  FORMAT ( '     ',a15)$/;"	l	file:
+1100	.\cea2.f	/^ 1100   Isv = Npt$/;"	l	subroutine:ROCKET	file:
+1100	.\cea2.f	/^ 1100 newcom = .FALSE.$/;"	l	subroutine:EQLBRM	file:
+1100	.\pac\pac99.f	/^1100  FORMAT (7X,15HMAX ERR HH\/RT =,F10.6,4X,6HTEMP =,F7.0,10X,16HAVER E$/;"	l	subroutine:LEAST	file:
+1105	.\pac\pac99.f	/^1105  IF (NOS(IV).AND..NOT.CPONLY(IV)) GO TO 1115$/;"	l	subroutine:LEAST	file:
+1110	.\pac\pac99.f	/^1110  FORMAT (7X,15HMAX ERR S\/R   =,F10.6,4X,6HTEMP =,F7.0,10X,16HAVER E$/;"	l	subroutine:LEAST	file:
+1115	.\pac\pac99.f	/^1115  IF (NOH(IV).AND.NOS(IV).AND..NOT.CPONLY(IV)) GO TO 1125$/;"	l	subroutine:LEAST	file:
+1120	.\pac\pac99.f	/^1120  FORMAT (7X,15HMAX ERR GH\/RT =,F10.6,4X,6HTEMP =,F7.0,10X,16HAVER E$/;"	l	subroutine:LEAST	file:
+1125	.\pac\pac99.f	/^1125  WRITE (6,1130) (ANSTPY(I),EX(I,IV),I=1,NFP)$/;"	l	subroutine:LEAST	file:
+1130	.\pac\pac99.f	/^1130  FORMAT(' CP\/R =',5(1Pd17.9,3HT**,0PF4.1)\/8X,5(1Pd17.9,3HT**,0PF4.1$/;"	l	subroutine:LEAST	file:
+114	.\b1b2b3.f	/^114   CONTINUE$/;"	l	program:b1b2b3	file:
+114	.\pac\pac99.f	/^114   continue$/;"	l	subroutine:HMAT	file:
+1140	.\pac\pac99.f	/^1140  FORMAT (' (H-H0)\/R CONSTANT = ',1pd19.11,', H\/R CONSTANT =',d19.11$/;"	l	subroutine:LEAST	file:
+1144	.\pac\pac99.f	/^1144  if (its.eq.0) go to 1160$/;"	l	subroutine:LEAST	file:
+1147	.\pac\pac99.f	/^1147  CONTINUE$/;"	l	subroutine:LEAST	file:
+1148	.\pac\pac99.f	/^1148  IT=ITS$/;"	l	subroutine:LEAST	file:
+115	.\cap\cap.f	/^115       FORMAT(6X,'deg K',5X,'J\/mol-K',7X,'J\/mol',6X,$/;"	l	subroutine:TABLES	file:
+115	.\pac\pac99.f	/^115       FORMAT(7X,'DEG-K',5X,'J\/MOL-K',8X,'J\/MOL',10X,'J\/MOL',6X,$/;"	l	subroutine:TABLES	file:
+115	.\pac\pac99.f	/^115   REWIND IOUSCH$/;"	l	subroutine:EFTAPE	file:
+115	.\pac\pac99.f	/^115   T00=WORD(ID)$/;"	l	subroutine:POLY	file:
+1150	.\cea2.f	/^ 1150   IF ( .NOT.Eql ) THEN$/;"	l	subroutine:ROCKET	file:
+116	.\b1b2b3.f	/^116   Iid = Iid + 1$/;"	l	program:b1b2b3	file:
+116	.\cap\cap.f	/^116       FORMAT(4X,'Rankine',3X,'BTU\/lb-deg',6X,'BTU\/lb',4X,$/;"	l	subroutine:TABLES	file:
+1160	.\pac\pac99.f	/^1160  IF (TC(intvls).GE.TRANGE(NTRANG)) TEST(15)=.FALSE.$/;"	l	subroutine:LEAST	file:
+118	.\pac\pac99.f	/^118   DO 120 I=1,N2$/;"	l	subroutine:HMAT	file:
+1180	.\pac\pac99.f	/^1180  WRITE(6,1190) iv$/;"	l	subroutine:LEAST	file:
+1190	.\pac\pac99.f	/^1190  FORMAT(\/' NUMBER OF TEMPERATURE INTERVALS =',I3,$/;"	l	subroutine:LEAST	file:
+12	.\b1b2b3.f	/^12    continue$/;"	l	program:b1b2b3	file:
+120	.\b1b2b3.f	/^120           CONTINUE$/;"	l	program:b1b2b3	file:
+120	.\cap\cap.f	/^120       FORMAT(\/\/\/'    Assigned H(T) at',f8.2,' K =',F12.3,' cal\/mol')$/;"	l	subroutine:TABLES	file:
+120	.\cap\cap.f	/^120   CONTINUE$/;"	l	subroutine:LOGK	file:
+120	.\cap\cap.f	/^120   rec3=.true.$/;"	l	program:CAP	file:
+120	.\cea2.f	/^ 120        Npt = Npt + 1$/;"	l	subroutine:DETON	file:
+120	.\cea2.f	/^ 120      CONTINUE$/;"	l	file:
+120	.\cea2.f	/^ 120      CONTINUE$/;"	l	subroutine:INPUT	file:
+120	.\cea2.f	/^ 120      kin = 0$/;"	l	subroutine:OUT1	file:
+120	.\pac\pac99.f	/^120       FORMAT(\/,' ASSIGNED H AT',I4,' K =',F12.3,' CAL\/MOLE')$/;"	l	subroutine:TABLES	file:
+120	.\pac\pac99.f	/^120   CONTINUE$/;"	l	program:PAC99	file:
+120	.\pac\pac99.f	/^120   CONTINUE$/;"	l	subroutine:EFTAPE	file:
+120	.\pac\pac99.f	/^120   DQ=CT*T00$/;"	l	subroutine:LINK1	file:
+120	.\pac\pac99.f	/^120   HINT(J,I)=HINT(I,J)$/;"	l	subroutine:HMAT	file:
+120	.\pac\pac99.f	/^120   IF (ABEL(2,I).EQ.AS) WORD(I)=WORD(I)*TT$/;"	l	subroutine:RECO	file:
+120	.\pac\pac99.f	/^120   IF (IK.LT.20) IK=IK+1$/;"	l	subroutine:LOGK	file:
+120	.\pac\pac99.f	/^120   IROT=.TRUE.$/;"	l	subroutine:POLY	file:
+120	.\pac\pac99.f	/^120   IT=L(J)$/;"	l	subroutine:WILHOI	file:
+120	.\pac\pac99.f	/^120   J=J+1$/;"	l	subroutine:LEAST	file:
+120	.\pac\pac99.f	/^120   KLAST=K$/;"	l	subroutine:ATOM	file:
+120	.\pac\pac99.f	/^120   LIR=WORD(ID)$/;"	l	subroutine:IROTOR	file:
+120	.\pac\pac99.f	/^120   NEXT=NUM(INO)+1$/;"	l	subroutine:IDENT	file:
+120	.\pac\pac99.f	/^120   NG=NG+1$/;"	l	subroutine:GROUP	file:
+120	.\pac\pac99.f	/^120   NM1=N-1$/;"	l	subroutine:EIGEN	file:
+120	.\pac\pac99.f	/^120   NT=1$/;"	l	subroutine:TEMPER	file:
+120	.\pac\pac99.f	/^120   WRITE (6,130)$/;"	l	subroutine:DELH	file:
+120	.\syntax.f	/^ 120    ENDDO$/;"	l	file:
+1200	.\cea2.f	/^ 1200   Npt = Npt + 1$/;"	l	subroutine:ROCKET	file:
+1200	.\cea2.f	/^ 1200 bigen = -1.D-35$/;"	l	subroutine:EQLBRM	file:
+1205	.\cea2.f	/^ 1205         CONTINUE$/;"	l	subroutine:EQLBRM	file:
+1210	.\cea2.f	/^ 1210       DO i = 1,nn$/;"	l	subroutine:EQLBRM	file:
+125	.\pac\pac99.f	/^125   STWT=WORD(ID)$/;"	l	subroutine:POLY	file:
+1250	.\cea2.f	/^ 1250   CONTINUE$/;"	l	subroutine:EQLBRM	file:
+1250	.\cea2.f	/^ 1250   ipp = ipp + 1$/;"	l	subroutine:ROCKET	file:
+13	.\cap\cap.f	/^13    continue$/;"	l	program:CAP	file:
+130	.\cap\cap.f	/^130    FORMAT(6X,'deg-K',4X,'cal\/mol-K',5X,'cal\/mol',4X,$/;"	l	subroutine:TABLES	file:
+130	.\cap\cap.f	/^130   do 140 i=1,5$/;"	l	program:CAP	file:
+130	.\pac\pac99.f	/^130    FORMAT(7X,'DEG-K',4X,'CAL\/MOL-K',7X,'CAL\/MOL',7X,'CAL\/MOL',4X,$/;"	l	subroutine:TABLES	file:
+130	.\pac\pac99.f	/^130   COEF(10,1)=COEF(10,1)-DLOG(WORD(ID))$/;"	l	subroutine:GROUP	file:
+130	.\pac\pac99.f	/^130   CONTINUE$/;"	l	subroutine:EIGEN	file:
+130	.\pac\pac99.f	/^130   CONTINUE$/;"	l	subroutine:LINK1	file:
+130	.\pac\pac99.f	/^130   CONTINUE$/;"	l	subroutine:WILHOI	file:
+130	.\pac\pac99.f	/^130   DO 140 I=1,502$/;"	l	subroutine:EFTAPE	file:
+130	.\pac\pac99.f	/^130   DO 160 K=K1,M$/;"	l	subroutine:LOGK	file:
+130	.\pac\pac99.f	/^130   EL(I)=HINT(I,I)$/;"	l	subroutine:HMAT	file:
+130	.\pac\pac99.f	/^130   FORMAT (' ERROR IN NAME, GO TO NEXT SPECIES, (IDENT)')$/;"	l	subroutine:IDENT	file:
+130	.\pac\pac99.f	/^130   FORMAT (\/' EITHER ASINDH,DELTAH,OR HF298, WAS NOT FOUND ON THE',$/;"	l	subroutine:DELH	file:
+130	.\pac\pac99.f	/^130   FORMAT (\/' T FOR TRANSITION UNKNOWN. GO TO NEXT SPECIES. (RECO)')$/;"	l	subroutine:RECO	file:
+130	.\pac\pac99.f	/^130   IF (CONV.NE.1.D0) GO TO 150$/;"	l	program:PAC99	file:
+130	.\pac\pac99.f	/^130   IF (T(NT).GE.(298.15D0-.0001)) GO TO 140$/;"	l	subroutine:TEMPER	file:
+130	.\pac\pac99.f	/^130   IF(N.EQ.11) GO TO 140$/;"	l	subroutine:INPUT	file:
+130	.\pac\pac99.f	/^130   M=J$/;"	l	subroutine:ATOM	file:
+130	.\pac\pac99.f	/^130   SYM=WORD(ID)$/;"	l	subroutine:POLY	file:
+130	.\pac\pac99.f	/^130   TRANGE(1)=200.D0$/;"	l	subroutine:LEAST	file:
+130	.\pac\pac99.f	/^130   if(i.eq.0) v0=word(id)$/;"	l	subroutine:IROTOR	file:
+1300	.\cea2.f	/^ 1300   En(jbx,Npt) = -En(jbx,Npt)$/;"	l	subroutine:EQLBRM	file:
+1300	.\cea2.f	/^ 1300   Npt = 1$/;"	l	subroutine:ROCKET	file:
+135	.\pac\pac99.f	/^135   B=WORD(ID)$/;"	l	subroutine:POLY	file:
+135	.\pac\pac99.f	/^135   COEF(10,1)=COEF(10,1)+DLOG(WORD(ID))$/;"	l	subroutine:GROUP	file:
+140	.\b1b2b3.f	/^140       CONTINUE$/;"	l	program:b1b2b3	file:
+140	.\cap\cap.f	/^140   AR=RUSE(NTABLE)$/;"	l	subroutine:TABLES	file:
+140	.\cap\cap.f	/^140   continue$/;"	l	program:CAP	file:
+140	.\cea2.f	/^ 140      i = i + 1$/;"	l	subroutine:INPUT	file:
+140	.\pac\pac99.f	/^140   AR=RUSE(NTABLE)$/;"	l	subroutine:TABLES	file:
+140	.\pac\pac99.f	/^140   ASINDH=ASINDH-SPECH$/;"	l	subroutine:DELH	file:
+140	.\pac\pac99.f	/^140   B=BCONV\/WORD(ID)$/;"	l	subroutine:POLY	file:
+140	.\pac\pac99.f	/^140   COEF(10,1)=COEF(10,1)+WORD(ID)$/;"	l	subroutine:GROUP	file:
+140	.\pac\pac99.f	/^140   CONTINUE$/;"	l	program:PAC99	file:
+140	.\pac\pac99.f	/^140   CONTINUE$/;"	l	subroutine:LOGK	file:
+140	.\pac\pac99.f	/^140   DOR=WORD(I)$/;"	l	subroutine:RECO	file:
+140	.\pac\pac99.f	/^140   IF (A(NEXT+1).EQ.'L') TEST(5)=.TRUE.$/;"	l	subroutine:IDENT	file:
+140	.\pac\pac99.f	/^140   M=I$/;"	l	subroutine:ATOM	file:
+140	.\pac\pac99.f	/^140   NDEC=-1$/;"	l	subroutine:INPUT	file:
+140	.\pac\pac99.f	/^140   NT=NT+1$/;"	l	subroutine:TEMPER	file:
+140	.\pac\pac99.f	/^140   Q= dsqrt(3.1415927d0\/(A*B*C*CT**3))$/;"	l	subroutine:LINK1	file:
+140	.\pac\pac99.f	/^140   TAPE(I)=T(I)$/;"	l	subroutine:EFTAPE	file:
+140	.\pac\pac99.f	/^140   TEST(1)=.false.$/;"	l	subroutine:LEAST	file:
+140	.\pac\pac99.f	/^140   TS(KL,KMA)=TS(KL,KMA)\/TS(KL,KM)$/;"	l	subroutine:WILHOI	file:
+140	.\syntax.f	/^ 140    i = i + 1$/;"	l	file:
+1400	.\cea2.f	/^ 1400 Iplt = MAX(Iplt,iplte)$/;"	l	subroutine:ROCKET	file:
+1400	.\cea2.f	/^ 1400 Ttt(Npt) = Tt$/;"	l	subroutine:EQLBRM	file:
+141	.\pac\pac99.f	/^141   continue$/;"	l	subroutine:LEAST	file:
+142	.\pac\pac99.f	/^142   TEST(1)=.true.$/;"	l	subroutine:LEAST	file:
+143	.\pac\pac99.f	/^143   FORMAT (\/,' LEAST SQUARES' \/)$/;"	l	subroutine:LEAST	file:
+145	.\cap\cap.f	/^145   continue$/;"	l	program:CAP	file:
+145	.\pac\pac99.f	/^145   COEF(9,1)=COEF(9,1)+WORD(ID)$/;"	l	subroutine:GROUP	file:
+145	.\pac\pac99.f	/^145   IF (I.GE.1)RH(I)=WORD(ID)$/;"	l	subroutine:POLY	file:
+1450	.\cea2.f	/^ 1450   CONTINUE$/;"	l	subroutine:EQLBRM	file:
+15	.\b1b2b3.f	/^15    FORMAT (1X, a )$/;"	l	program:b1b2b3	file:
+15	.\misc\makelib.f	/^ 15   FORMAT (a80)$/;"	l	program:MAKELIB	file:
+15	.\pac\pac99.f	/^15    IF (HEAT.EQ.BLANK) GO TO 120$/;"	l	subroutine:DELH	file:
+15	.\pac\pac99.f	/^15    NEL2=2*NEL$/;"	l	subroutine:INTROT	file:
+15	.\pac\pac99.f	/^15    TESTW(I)=.FALSE.$/;"	l	subroutine:POLY	file:
+150	.\cap\cap.f	/^150   FORMAT(\/\/,6x,4a4,a64)$/;"	l	program:CAP	file:
+150	.\cap\cap.f	/^150   HH=H-term*AR $/;"	l	subroutine:TABLES	file:
+150	.\cea2.f	/^ 150    CONTINUE$/;"	l	subroutine:UTHERM	file:
+150	.\cea2.f	/^ 150    Ngc = Ngc + 1$/;"	l	subroutine:SEARCH	file:
+150	.\misc\makelib.f	/^ 150    ENDDO$/;"	l	program:MAKELIB	file:
+150	.\pac\pac99.f	/^150   ASINDH=ASINDH*CONV\/R$/;"	l	program:PAC99	file:
+150	.\pac\pac99.f	/^150   CONTINUE$/;"	l	subroutine:ATOM	file:
+150	.\pac\pac99.f	/^150   CONTINUE$/;"	l	subroutine:EFTAPE	file:
+150	.\pac\pac99.f	/^150   CONTINUE$/;"	l	subroutine:RECO	file:
+150	.\pac\pac99.f	/^150   DD=WORD(ID)$/;"	l	subroutine:POLY	file:
+150	.\pac\pac99.f	/^150   FWORD(I)=FWORD(I)+FLOAT(N-1)*10.**NDEC$/;"	l	subroutine:INPUT	file:
+150	.\pac\pac99.f	/^150   IF (.NOT.HASIND.AND..NOT.HABS) GO TO 160$/;"	l	subroutine:TABLES	file:
+150	.\pac\pac99.f	/^150   IF (HEAT.EQ.DELTAH) ASINDH=ASINDH-SPECH$/;"	l	subroutine:DELH	file:
+150	.\pac\pac99.f	/^150   NT=NT+1$/;"	l	subroutine:TEMPER	file:
+150	.\pac\pac99.f	/^150   QLN=DLOG(Q)$/;"	l	subroutine:LINK1	file:
+150	.\pac\pac99.f	/^150   RSYM(L)=WORD(ID)$/;"	l	subroutine:IROTOR	file:
+150	.\pac\pac99.f	/^150   TEST(4)=.TRUE.$/;"	l	subroutine:IDENT	file:
+150	.\pac\pac99.f	/^150   TK(L)=TK(L)+TK(1)*TP(L,JJ)$/;"	l	subroutine:LOGK	file:
+150	.\pac\pac99.f	/^150   TS(KLA,KMA)=TS(KLA,KMA)-TS(KL,KMA)*TS(KLA,KM)$/;"	l	subroutine:WILHOI	file:
+1500	.\cea2.f	/^ 1500 Tt = 0.$/;"	l	subroutine:EQLBRM	file:
+153	.\pac\pac99.f	/^153   IF (DOR .LT. 0.D0) GO TO 155$/;"	l	subroutine:RECO	file:
+153	.\pac\pac99.f	/^153   TLST=0.D0$/;"	l	subroutine:LEAST	file:
+155	.\cap\cap.f	/^155   FORMAT (6x,i2,a8,5(2a1,f6.2),i2,f13.5,f15.3)$/;"	l	program:CAP	file:
+155	.\pac\pac99.f	/^155   DJN=WORD(ID)$/;"	l	subroutine:POLY	file:
+155	.\pac\pac99.f	/^155   H=H+ASINDH*AR$/;"	l	subroutine:TABLES	file:
+155	.\pac\pac99.f	/^155   IF (.NOT.TEST(4)) GO TO 80$/;"	l	program:PAC99	file:
+155	.\pac\pac99.f	/^155   IF (H298HR.EQ.0.) H298HR=H298H0\/R$/;"	l	subroutine:RECO	file:
+155	.\pac\pac99.f	/^155   TFIX=TCONST$/;"	l	subroutine:LEAST	file:
+16	.\cap\cap.f	/^16      TOUT(I)=.FALSE.$/;"	l	program:CAP	file:
+160	.\cap\cap.f	/^160   FORMAT(2f11.3,i1,8f5.1,f17.3)$/;"	l	program:CAP	file:
+160	.\cea2.f	/^ 160      CONTINUE$/;"	l	subroutine:INPUT	file:
+160	.\pac\pac99.f	/^160   CONTINUE$/;"	l	subroutine:LOGK	file:
+160	.\pac\pac99.f	/^160   CONTINUE$/;"	l	subroutine:TEMPER	file:
+160	.\pac\pac99.f	/^160   CONTINUE$/;"	l	subroutine:WILHOI	file:
+160	.\pac\pac99.f	/^160   DJKN=WORD(ID)$/;"	l	subroutine:POLY	file:
+160	.\pac\pac99.f	/^160   DO 180 J=ivl1+1,8$/;"	l	subroutine:RECO	file:
+160	.\pac\pac99.f	/^160   I2PI=WORD(ID)$/;"	l	subroutine:IROTOR	file:
+160	.\pac\pac99.f	/^160   I=1$/;"	l	subroutine:IDENT	file:
+160	.\pac\pac99.f	/^160   IF (D(I).NE.0.) D(I)=10.*D(I)+FLOAT(N-1)$/;"	l	subroutine:INPUT	file:
+160	.\pac\pac99.f	/^160   IF (FORMLA(1,1).EQ.BLANK) GO TO 260$/;"	l	subroutine:EFTAPE	file:
+160	.\pac\pac99.f	/^160   IF (H298.NE.0.) GO TO 165$/;"	l	subroutine:TABLES	file:
+160	.\pac\pac99.f	/^160   NM1=NTRANG-1$/;"	l	subroutine:LEAST	file:
+160	.\pac\pac99.f	/^160   QL(1)=AI(I)*AIJ(I,J)*DN(I)*DN(J)$/;"	l	subroutine:LINK1	file:
+160	.\pac\pac99.f	/^160   READ (IOEFT,END=250) ELMT,NELM,PHAZ,CODE,HZERO,AMP,TNO,((TP(J,K),$/;"	l	subroutine:DELH	file:
+160	.\pac\pac99.f	/^160   TEMPY=ANU(M)$/;"	l	subroutine:ATOM	file:
+160	.\pac\pac99.f	/^160   TEST(15)=.FALSE.$/;"	l	program:PAC99	file:
+160	.\syntax.f	/^ 160    i = i + 1$/;"	l	file:
+1600	.\cea2.f	/^ 1600 Lsave = Nlm$/;"	l	subroutine:EQLBRM	file:
+165	.\cap\cap.f	/^165   FORMAT(7x,2f10.3,i2,8f5.1,f17.3)$/;"	l	program:CAP	file:
+165	.\pac\pac99.f	/^165   DKN=WORD(ID)$/;"	l	subroutine:POLY	file:
+165	.\pac\pac99.f	/^165   HH29=(HHRT(I)-H298\/TI)*ART$/;"	l	subroutine:TABLES	file:
+165	.\pac\pac99.f	/^165   INTV(IT)=.TRUE.$/;"	l	subroutine:LEAST	file:
+167	.\pac\pac99.f	/^167   QLN=RH(1)*T(IT)$/;"	l	subroutine:LINK1	file:
+168	.\pac\pac99.f	/^168   CALL QSUM (TEST(14))$/;"	l	subroutine:LINK1	file:
+170	.\cap\cap.f	/^170   FORMAT(5d16.9)$/;"	l	program:CAP	file:
+170	.\pac\pac99.f	/^170   CALL DERIV (I,J,0,0,0,I,I,J,0,0,0)$/;"	l	subroutine:LINK1	file:
+170	.\pac\pac99.f	/^170   CALL EFLIST$/;"	l	program:PAC99	file:
+170	.\pac\pac99.f	/^170   CONTINUE$/;"	l	subroutine:EFTAPE	file:
+170	.\pac\pac99.f	/^170   CONTINUE$/;"	l	subroutine:IROTOR	file:
+170	.\pac\pac99.f	/^170   CONTINUE$/;"	l	subroutine:LEAST	file:
+170	.\pac\pac99.f	/^170   DH(I)=DH(I)-TK(2)*DMLA\/DNMLA$/;"	l	subroutine:LOGK	file:
+170	.\pac\pac99.f	/^170   DO 180 I=1,4$/;"	l	subroutine:WILHOI	file:
+170	.\pac\pac99.f	/^170   DO 200 I=1,NKIND$/;"	l	subroutine:DELH	file:
+170	.\pac\pac99.f	/^170   IF (H298.NE.0.D0.AND.HHZERO) GO TO 175$/;"	l	subroutine:TABLES	file:
+170	.\pac\pac99.f	/^170   J=J+1$/;"	l	subroutine:ATOM	file:
+170	.\pac\pac99.f	/^170   MLA(LMN)=0$/;"	l	subroutine:IDENT	file:
+170	.\pac\pac99.f	/^170   NT=502$/;"	l	subroutine:TEMPER	file:
+170	.\pac\pac99.f	/^170   TAU(1)=WORD(ID)$/;"	l	subroutine:POLY	file:
+175	.\cap\cap.f	/^175   FORMAT(6x,1p,5d16.9)$/;"	l	program:CAP	file:
+175	.\pac\pac99.f	/^175   TAU(2)=WORD(ID)$/;"	l	subroutine:POLY	file:
+175	.\pac\pac99.f	/^175   WRITE (6,VFM) T(I),CP,(HSG(J),J=1,NHSG)$/;"	l	subroutine:TABLES	file:
+178	.\pac\pac99.f	/^178   CONTINUE$/;"	l	subroutine:TABLES	file:
+180	.\cap\cap.f	/^180   CONTINUE                                 $/;"	l	subroutine:LOGK	file:
+180	.\cap\cap.f	/^180   CONTINUE                         $/;"	l	subroutine:TABLES	file:
+180	.\cap\cap.f	/^180   continue$/;"	l	program:CAP	file:
+180	.\pac\pac99.f	/^180   A(KMA)=SHPT(KLA)$/;"	l	subroutine:WILHOI	file:
+180	.\pac\pac99.f	/^180   COEF(I,J)=0.0$/;"	l	subroutine:RECO	file:
+180	.\pac\pac99.f	/^180   CONTINUE$/;"	l	subroutine:ATOM	file:
+180	.\pac\pac99.f	/^180   CONTINUE$/;"	l	subroutine:INPUT	file:
+180	.\pac\pac99.f	/^180   CONTINUE$/;"	l	subroutine:LINK1	file:
+180	.\pac\pac99.f	/^180   CONTINUE$/;"	l	subroutine:LOGK	file:
+180	.\pac\pac99.f	/^180   CONTINUE$/;"	l	subroutine:TABLES	file:
+180	.\pac\pac99.f	/^180   DO 190 I=1,9$/;"	l	subroutine:IROTOR	file:
+180	.\pac\pac99.f	/^180   FORMAT (\/,' NUMBER OF TEMPERATURES EXCEEDS 502, (TEMPER)')$/;"	l	subroutine:TEMPER	file:
+180	.\pac\pac99.f	/^180   FORMAT (\/,1x,2A1,' NOT IN SYMBOL LIST (EFTAPE)')$/;"	l	subroutine:EFTAPE	file:
+180	.\pac\pac99.f	/^180   FORMLA(1,J)=A(K+1)$/;"	l	subroutine:IDENT	file:
+180	.\pac\pac99.f	/^180   IF (NELM.NE.NMLA(J)) GO TO 200$/;"	l	subroutine:DELH	file:
+180	.\pac\pac99.f	/^180   TAU(3)=WORD(ID)$/;"	l	subroutine:POLY	file:
+185	.\cap\cap.f	/^185   FORMAT (\/\/\/\/\/)$/;"	l	subroutine:TABLES	file:
+185	.\pac\pac99.f	/^185   TAU(4)=WORD(ID)$/;"	l	subroutine:POLY	file:
+190	.\cap\cap.f	/^190   CONTINUE$/;"	l	subroutine:TABLES	file:
+190	.\pac\pac99.f	/^190   ABEL(1,1)=AT$/;"	l	subroutine:TEMPER	file:
+190	.\pac\pac99.f	/^190   CALL INPUT$/;"	l	subroutine:RECO	file:
+190	.\pac\pac99.f	/^190   CONTINUE$/;"	l	subroutine:IROTOR	file:
+190	.\pac\pac99.f	/^190   CONTINUE$/;"	l	subroutine:TABLES	file:
+190	.\pac\pac99.f	/^190   DO 200 I=1,NKIND$/;"	l	subroutine:LOGK	file:
+190	.\pac\pac99.f	/^190   DO 200 I=IT,NM1$/;"	l	subroutine:LEAST	file:
+190	.\pac\pac99.f	/^190   FORMAT (\/,' FIRST ORDER CORRECTIONS' )$/;"	l	subroutine:LINK1	file:
+190	.\pac\pac99.f	/^190   FORMAT (\/,4X,1HN,6X,1HJ,7X,1HG,5X,13HENERGY LEVEL ,12X,1HN,6X,$/;"	l	subroutine:ATOM	file:
+190	.\pac\pac99.f	/^190   IVFM=4*I-2$/;"	l	subroutine:INPUT	file:
+190	.\pac\pac99.f	/^190   MLA(J)=10*NO(I)+NO(I+1)$/;"	l	subroutine:IDENT	file:
+190	.\pac\pac99.f	/^190   N=WORD(4)*3.D0+.1$/;"	l	subroutine:EFTAPE	file:
+190	.\pac\pac99.f	/^190   SUM=SUM+A(J)$/;"	l	subroutine:WILHOI	file:
+190	.\pac\pac99.f	/^190   TAU(5)=WORD(ID)$/;"	l	subroutine:POLY	file:
+192	.\pac\pac99.f	/^192   IF (LIT.LT.4) GO TO 193$/;"	l	subroutine:INPUT	file:
+193	.\pac\pac99.f	/^193   I1=LIT$/;"	l	subroutine:INPUT	file:
+195	.\pac\pac99.f	/^195   IT=I$/;"	l	subroutine:WILHOI	file:
+195	.\pac\pac99.f	/^195   TAU(6)=WORD(ID)$/;"	l	subroutine:POLY	file:
+195	.\pac\pac99.f	/^195   VFM(IVFM)=A(I1)$/;"	l	subroutine:INPUT	file:
+2	.\cap\cap.f	/^2     FORMAT(\/,' ****************************************************',$/;"	l	program:CAP	file:
+2	.\cea2.f	/^ 2              Jray(n) = Nspr$/;"	l	subroutine:HCALC	file:
+20	.\b1b2b3.f	/^20        FORMAT (1X, a72 )$/;"	l	program:b1b2b3	file:
+20	.\cap\cap.f	/^20    FORMAT (\/\/,'  KEYWORDS:  ',8(a4,3x))$/;"	l	program:CAP	file:
+20	.\cap\cap.f	/^20    continue     $/;"	l	subroutine:LOGK	file:
+20	.\cea2.f	/^ 20       CONTINUE$/;"	l	subroutine:REACT	file:
+20	.\cea2.f	/^ 20       IF ( Prod(i).NE.sub.AND.'*'\/\/Prod(i).NE.sub ) THEN$/;"	l	subroutine:SEARCH	file:
+20	.\cea2.f	/^ 20       Tt = 0.$/;"	l	subroutine:HCALC	file:
+20	.\misc\oldnew.f	/^20     format( 1X, I1,1X,A4,A2,1X,5(A2,F6.2 ),1X,A1,F13.5,f15.3 )$/;"	l	program:OLDNEW	file:
+20	.\pac\pac99.f	/^20    CONTINUE$/;"	l	subroutine:ATOM	file:
+20	.\pac\pac99.f	/^20    CONTINUE$/;"	l	subroutine:INTROT	file:
+20	.\pac\pac99.f	/^20    FORMAT (10X,'LEVEL(+)',10F11.3)$/;"	l	subroutine:PRINT	file:
+20	.\pac\pac99.f	/^20    FORMAT (20A4)$/;"	l	subroutine:INPUT	file:
+20	.\pac\pac99.f	/^20    FORMAT (24A1)$/;"	l	subroutine:IDENT	file:
+20	.\pac\pac99.f	/^20    FORMAT (A4,2X,2A1,I1,A1,3X,2A4,3X,3(A4,2X,F12.4),I2)$/;"	l	subroutine:EFTAPE	file:
+20	.\pac\pac99.f	/^20    FORMAT (\/,' ERROR IN CODE--',A4,6X,' (RECO)')$/;"	l	subroutine:RECO	file:
+20	.\pac\pac99.f	/^20    FORMAT (\/,' INSUFFICIENT DATA FOR AN H0 VALUE, (DELH)')$/;"	l	subroutine:DELH	file:
+20	.\pac\pac99.f	/^20    FORMAT (\/,' V(',I3,') =',F9.4,'(',I1,')')$/;"	l	subroutine:LINK1	file:
+20	.\pac\pac99.f	/^20    FORMAT (\/,15X,4A4,2X,A3,2X,6(2X,4A4)\/\/\/)$/;"	l	subroutine:PAGEID	file:
+20	.\pac\pac99.f	/^20    GMLA(I)=0$/;"	l	subroutine:GROUP	file:
+20	.\pac\pac99.f	/^20    IF (ABEL(2,I).EQ.O1) GO TO 55$/;"	l	subroutine:POLY	file:
+20	.\pac\pac99.f	/^20    INTV(I)=.FALSE.$/;"	l	subroutine:LEAST	file:
+20	.\pac\pac99.f	/^20    LINES=6$/;"	l	program:PAC99	file:
+20	.\pac\pac99.f	/^20    NL=NL-1$/;"	l	subroutine:PUNCH	file:
+20	.\pac\pac99.f	/^20    NQ(I)=0$/;"	l	subroutine:LOGK	file:
+20	.\pac\pac99.f	/^20    NUI=NUI\/FN$/;"	l	subroutine:EIGEN	file:
+20	.\pac\pac99.f	/^20    PREFIX=BLANK$/;"	l	subroutine:WILHOI	file:
+20	.\pac\pac99.f	/^20    QL(3)=QL(3)+R(K,3)$/;"	l	subroutine:DERIV	file:
+20	.\pac\pac99.f	/^20    QLNTOT=QLNTOT+QLN$/;"	l	subroutine:QSUM	file:
+20	.\pac\pac99.f	/^20    V0=0.$/;"	l	subroutine:IROTOR	file:
+20	.\pac\pac99.f	/^20    WRITE (6,30)$/;"	l	subroutine:TEMPER	file:
+200	.\b1b2b3.f	/^200   CONTINUE$/;"	l	program:b1b2b3	file:
+200	.\cap\cap.f	/^200   RETURN$/;"	l	subroutine:TABLES	file:
+200	.\cap\cap.f	/^200   continue$/;"	l	program:CAP	file:
+200	.\cea2.f	/^ 200  CALL OUT3$/;"	l	subroutine:RKTOUT	file:
+200	.\cea2.f	/^ 200  CONTINUE$/;"	l	subroutine:SEARCH	file:
+200	.\cea2.f	/^ 200  CONTINUE$/;"	l	subroutine:UTHERM	file:
+200	.\cea2.f	/^ 200  DO Ip = 1,Np$/;"	l	subroutine:ROCKET	file:
+200	.\cea2.f	/^ 200  DO i = 1,nch1$/;"	l	subroutine:INFREE	file:
+200	.\cea2.f	/^ 200  DO j = 1,Ng$/;"	l	subroutine:TRANIN	file:
+200	.\cea2.f	/^ 200  IF ( .NOT.Tp ) THEN$/;"	l	subroutine:EQLBRM	file:
+200	.\cea2.f	/^ 200  IF ( readok ) GOTO 100$/;"	l	file:
+200	.\cea2.f	/^ 200  RETURN$/;"	l	subroutine:FROZEN	file:
+200	.\cea2.f	/^ 200  RETURN$/;"	l	subroutine:OUT1	file:
+200	.\cea2.f	/^ 200  RETURN$/;"	l	subroutine:REACT	file:
+200	.\cea2.f	/^ 200  RETURN$/;"	l	subroutine:THERMP	file:
+200	.\cea2.f	/^ 200  Tp = .FALSE.$/;"	l	subroutine:DETON	file:
+200	.\cea2.f	/^ 200  WRITE (IOOUT,99003) tname$/;"	l	subroutine:UTRAN	file:
+200	.\cea2.f	/^ 200  in = 0$/;"	l	subroutine:INPUT	file:
+200	.\cea2.f	/^ 200  iof = iof + 1$/;"	l	subroutine:SHCK	file:
+200	.\misc\makelib.f	/^ 200  ENDDO$/;"	l	program:MAKELIB	file:
+200	.\pac\pac99.f	/^ 200  OPEN (IOELM,FILE=efile,FORM='formatted')$/;"	l	program:PAC99	file:
+200	.\pac\pac99.f	/^200   CALL DERIV (I,J,0,0,0,I,J,0,0,0,0)$/;"	l	subroutine:LINK1	file:
+200	.\pac\pac99.f	/^200   CONTINUE$/;"	l	subroutine:DELH	file:
+200	.\pac\pac99.f	/^200   CONTINUE$/;"	l	subroutine:INPUT	file:
+200	.\pac\pac99.f	/^200   CONTINUE$/;"	l	subroutine:LEAST	file:
+200	.\pac\pac99.f	/^200   CONTINUE$/;"	l	subroutine:LOGK	file:
+200	.\pac\pac99.f	/^200   FORMAT (2(I6,F8.1,F8.1,F14.3,10X))$/;"	l	subroutine:ATOM	file:
+200	.\pac\pac99.f	/^200   IF (CODE(1).NE.SUB) GO TO 690$/;"	l	subroutine:RECO	file:
+200	.\pac\pac99.f	/^200   NOATMS=NOATMS+MLA(J)$/;"	l	subroutine:IDENT	file:
+200	.\pac\pac99.f	/^200   RETURN$/;"	l	subroutine:TEMPER	file:
+200	.\pac\pac99.f	/^200   SIGF(J)=SIGF(J)+A(N)$/;"	l	subroutine:WCALC	file:
+200	.\pac\pac99.f	/^200   SX=DABS(SDIF(I)-SDIF1)$/;"	l	subroutine:WILHOI	file:
+200	.\pac\pac99.f	/^200   TAU(7)=WORD(ID)$/;"	l	subroutine:POLY	file:
+200	.\syntax.f	/^ 200  CALL RECOUT(nrec,rec)$/;"	l	file:
+200	.\syntax.f	/^ 200  DO i = 1,nch1$/;"	l	subroutine:INFREE	file:
+2000	.\pac\pac99.f	/^2000  RETURN$/;"	l	subroutine:LEAST	file:
+205	.\pac\pac99.f	/^205   DO 210 I=1,4$/;"	l	subroutine:RECO	file:
+205	.\pac\pac99.f	/^205   TAU(8)=WORD(ID)$/;"	l	subroutine:POLY	file:
+210	.\b1b2b3.f	/^210   REWIND IOTHM$/;"	l	program:b1b2b3	file:
+210	.\cap\cap.f	/^210   DH0=DH0*hconv$/;"	l	subroutine:LOGK	file:
+210	.\cea2.f	/^ 210        CONTINUE$/;"	l	subroutine:TRANIN	file:
+210	.\cea2.f	/^ 210        Jx(i) = Nspx$/;"	l	subroutine:SEARCH	file:
+210	.\cea2.f	/^ 210        aa = 2.5D0$/;"	l	subroutine:UTHERM	file:
+210	.\misc\makelib.f	/^ 210        aa = 2.5D0$/;"	l	program:MAKELIB	file:
+210	.\pac\pac99.f	/^210   CALL DERIV (I,J,K,0,0,I,J,K,0,0,0)$/;"	l	subroutine:LINK1	file:
+210	.\pac\pac99.f	/^210   CONTINUE$/;"	l	subroutine:IDENT	file:
+210	.\pac\pac99.f	/^210   CONTINUE$/;"	l	subroutine:RECO	file:
+210	.\pac\pac99.f	/^210   CONTINUE$/;"	l	subroutine:WILHOI	file:
+210	.\pac\pac99.f	/^210   DH0=DH0\/1000.$/;"	l	subroutine:LOGK	file:
+210	.\pac\pac99.f	/^210   DO 220 I=1,4$/;"	l	program:PAC99	file:
+210	.\pac\pac99.f	/^210   IF (ASINDT.EQ.0.) GO TO 240$/;"	l	subroutine:DELH	file:
+210	.\pac\pac99.f	/^210   TAU(9)=WORD(ID)$/;"	l	subroutine:POLY	file:
+210	.\pac\pac99.f	/^210   continue$/;"	l	subroutine:ATOM	file:
+215	.\pac\pac99.f	/^215   CALRHO=.TRUE.$/;"	l	subroutine:POLY	file:
+215	.\pac\pac99.f	/^215   DO 220 I=1,NKIND$/;"	l	subroutine:LOGK	file:
+218	.\pac\pac99.f	/^218   A=BCONV$/;"	l	subroutine:POLY	file:
+22	.\cap\cap.f	/^22      FORMAT (\/,'  DATA FOR PLOTTING IN FILE plotout')$/;"	l	program:CAP	file:
+220	.\cap\cap.f	/^220   CONTINUE                                 $/;"	l	subroutine:LOGK	file:
+220	.\pac\pac99.f	/^220   AS(J)=A(J)$/;"	l	subroutine:WILHOI	file:
+220	.\pac\pac99.f	/^220   C=BCONV\/WORD(ID)$/;"	l	subroutine:POLY	file:
+220	.\pac\pac99.f	/^220   CALL DERIV (I,J,0,0,0,I,I,J,0,0,0)$/;"	l	subroutine:LINK1	file:
+220	.\pac\pac99.f	/^220   CONTINUE$/;"	l	program:PAC99	file:
+220	.\pac\pac99.f	/^220   CONTINUE$/;"	l	subroutine:DELH	file:
+220	.\pac\pac99.f	/^220   CONTINUE$/;"	l	subroutine:IDENT	file:
+220	.\pac\pac99.f	/^220   CONTINUE$/;"	l	subroutine:INPUT	file:
+220	.\pac\pac99.f	/^220   CONTINUE$/;"	l	subroutine:IROTOR	file:
+220	.\pac\pac99.f	/^220   CONTINUE$/;"	l	subroutine:LOGK	file:
+220	.\pac\pac99.f	/^220   CONTINUE$/;"	l	subroutine:RECO	file:
+220	.\pac\pac99.f	/^220   IF (CUTOFF.NE.'FIXE') GO TO 240$/;"	l	subroutine:ATOM	file:
+220	.\pac\pac99.f	/^220   IT1=IT$/;"	l	subroutine:LEAST	file:
+225	.\pac\pac99.f	/^225   C=WORD(ID)$/;"	l	subroutine:POLY	file:
+23	.\cap\cap.f	/^23      format (\/\/,' *** ',a4,' NOT RECOGNIZED. KEYWORD SHOULD',$/;"	l	program:CAP	file:
+230	.\cap\cap.f	/^230   FORMAT (\/\/\/\/ 3x,'THERMODYNAMIC FUNCTIONS CALCULATED FROM COEFFICIE$/;"	l	subroutine:LOGK	file:
+230	.\pac\pac99.f	/^230   CONTINUE$/;"	l	subroutine:IROTOR	file:
+230	.\pac\pac99.f	/^230   CONTINUE$/;"	l	subroutine:LEAST	file:
+230	.\pac\pac99.f	/^230   CONTINUE$/;"	l	subroutine:LINK1	file:
+230	.\pac\pac99.f	/^230   FORMAT (1H ,4A4,6(3X,4A4)\/\/\/)$/;"	l	subroutine:LOGK	file:
+230	.\pac\pac99.f	/^230   FORMAT (\/' DATA RECORD WAS SKIPPED BECAUSE ',A4,$/;"	l	subroutine:RECO	file:
+230	.\pac\pac99.f	/^230   FORMAT (\/' HHRT FOR ASINDT WAS NOT FOUND ON EF TAPE, (DELH)')$/;"	l	subroutine:DELH	file:
+230	.\pac\pac99.f	/^230   FORMAT (\/' SINCE FIXEDN IS LESS THAN FIRST N, FIXEDN IS SET EQUAL'$/;"	l	subroutine:ATOM	file:
+230	.\pac\pac99.f	/^230   IF (.NOT.TEST(14)) GO TO 310$/;"	l	subroutine:WILHOI	file:
+230	.\pac\pac99.f	/^230   TEST(4)=.FALSE.$/;"	l	program:PAC99	file:
+230	.\pac\pac99.f	/^230   WF=WORD(ID)$/;"	l	subroutine:POLY	file:
+230	.\pac\pac99.f	/^230   WRITE (6,240)$/;"	l	subroutine:IDENT	file:
+232	.\pac\pac99.f	/^232   DARD=WORD(ID)$/;"	l	subroutine:POLY	file:
+233	.\pac\pac99.f	/^233   WRITE (6,235)$/;"	l	subroutine:LOGK	file:
+235	.\pac\pac99.f	/^235   A=BCONV\/WORD(ID)$/;"	l	subroutine:POLY	file:
+235	.\pac\pac99.f	/^235   FORMAT (\/'     T         CP         H-H0         S       -(G-H0)\/$/;"	l	subroutine:LOGK	file:
+238	.\pac\pac99.f	/^238   WRITE (6,240)$/;"	l	subroutine:LOGK	file:
+240	.\cap\cap.f	/^240   FORMAT (\/\/'      T         Cp        H-H298        S      -(G-H298$/;"	l	subroutine:LOGK	file:
+240	.\pac\pac99.f	/^240   CONTINUE$/;"	l	program:PAC99	file:
+240	.\pac\pac99.f	/^240   CTT=CT**2\/2.$/;"	l	subroutine:LINK1	file:
+240	.\pac\pac99.f	/^240   DO 270 I=NNN,NLAST$/;"	l	subroutine:LEAST	file:
+240	.\pac\pac99.f	/^240   FORMAT (\/'     T         CP        H-H298        S      -(G-H298)\/$/;"	l	subroutine:LOGK	file:
+240	.\pac\pac99.f	/^240   FORMAT (\/' ATOM RECORD MISSING OR FORMULA INCORRECT, (IDENT)' )$/;"	l	subroutine:IDENT	file:
+240	.\pac\pac99.f	/^240   FORMAT (\/,3X,'WILHOIT COEFFICIENTS')$/;"	l	subroutine:WILHOI	file:
+240	.\pac\pac99.f	/^240   HA=HZERO$/;"	l	subroutine:DELH	file:
+240	.\pac\pac99.f	/^240   IEL1(I)=I$/;"	l	subroutine:IROTOR	file:
+240	.\pac\pac99.f	/^240   IF (.NOT.TSTFIL) GO TO 390$/;"	l	subroutine:ATOM	file:
+240	.\pac\pac99.f	/^240   IF (ABEL(1,I+1).EQ.TI) GO TO 490$/;"	l	subroutine:RECO	file:
+240	.\pac\pac99.f	/^240   TESTW(1)=.TRUE.$/;"	l	subroutine:POLY	file:
+242	.\cap\cap.f	/^242   FORMAT (\/\/'      T         Cp        H-H537        S      -(G-H537$/;"	l	subroutine:LOGK	file:
+245	.\pac\pac99.f	/^245   IF (I.EQ.0) GO TO 250$/;"	l	subroutine:POLY	file:
+245	.\pac\pac99.f	/^245   IF (NTABLE.EQ.1)WRITE(6,250)$/;"	l	subroutine:LOGK	file:
+248	.\cap\cap.f	/^248   WRITE (6,249)$/;"	l	program:CAP	file:
+249	.\cap\cap.f	/^249   FORMAT (\/' ****ERROR IN KEYWORDS OR TEMPERATURE SCHEDULE RECORDS.'$/;"	l	program:CAP	file:
+25	.\b1b2b3.f	/^25    CONTINUE$/;"	l	program:b1b2b3	file:
+25	.\cap\cap.f	/^25    CONTINUE$/;"	l	program:CAP	file:
+25	.\pac\pac99.f	/^25    CONTINUE$/;"	l	subroutine:POLY	file:
+25	.\pac\pac99.f	/^25    DO 30 I=1,4$/;"	l	program:PAC99	file:
+250	.\cap\cap.f	/^250   FORMAT ('    deg-K    J\/mol-K      kJ\/mol     J\/mol-K     J\/mol-K$/;"	l	subroutine:LOGK	file:
+250	.\cap\cap.f	/^250   WRITE (6,255)   $/;"	l	program:CAP	file:
+250	.\cea2.f	/^ 250    nar = Npt$/;"	l	subroutine:ROCKET	file:
+250	.\pac\pac99.f	/^250   A=WORD(ID)$/;"	l	subroutine:POLY	file:
+250	.\pac\pac99.f	/^250   BACKSPACE IOSCH$/;"	l	subroutine:INPUT	file:
+250	.\pac\pac99.f	/^250   CONTINUE$/;"	l	subroutine:RECO	file:
+250	.\pac\pac99.f	/^250   FORMAT ('    DEG-K    J\/MOL-K      KJ\/MOL     J\/MOL-K     J\/MOL-K$/;"	l	subroutine:LOGK	file:
+250	.\pac\pac99.f	/^250   FORMAT (\/,3X,'A(0) = ',E16.9,5X,'A(1) = ',E16.9,5X,'A(2)$/;"	l	subroutine:WILHOI	file:
+250	.\pac\pac99.f	/^250   IF (.NOT.TESTW(3)) GO TO 340$/;"	l	subroutine:LINK1	file:
+250	.\pac\pac99.f	/^250   JF(J)=L$/;"	l	subroutine:IDENT	file:
+250	.\pac\pac99.f	/^250   TAPE(J)=0$/;"	l	subroutine:EFTAPE	file:
+250	.\pac\pac99.f	/^250   WRITE (6,260) FORMLA(1,I),FORMLA(2,I)$/;"	l	subroutine:DELH	file:
+250	.\pac\pac99.f	/^250   WRITE (6,340) (POT(I),I=J,K)$/;"	l	subroutine:IROTOR	file:
+252	.\cap\cap.f	/^252   FORMAT('   Rankine  BTU\/lb-deg    BTU\/lb    BTU\/lb-deg  BTU\/lb-deg$/;"	l	subroutine:LOGK	file:
+255	.\cap\cap.f	/^255   FORMAT ('    deg-K   cal\/mol-K    kcal\/mol   cal\/mol-K   cal\/mol-K$/;"	l	subroutine:LOGK	file:
+255	.\cap\cap.f	/^255   FORMAT (\/\/' ****ERROR IN INPUT, GO TO NEXT SPECIES, (MAIN PGM)')$/;"	l	program:CAP	file:
+255	.\pac\pac99.f	/^255   FORMAT ('    DEG-K   CAL\/MOL-K    KCAL\/MOL   CAL\/MOL-K   CAL\/MOL-K$/;"	l	subroutine:LOGK	file:
+255	.\pac\pac99.f	/^255   IF (I.GT.10) I=I\/10$/;"	l	subroutine:POLY	file:
+255	.\pac\pac99.f	/^255   WRITE (IOEFT) FORMLA(1,1),FORMLA(2,1),MLA(1),FAZ,DATE,FILL,TAPE$/;"	l	subroutine:EFTAPE	file:
+26	.\cap\cap.f	/^26      FORMAT(\/'  NOTE TO USER:',\/'  KEYWORDS ''JOULES'' AND ',$/;"	l	program:CAP	file:
+260	.\b1b2b3.f	/^260         CONTINUE$/;"	l	program:b1b2b3	file:
+260	.\cap\cap.f	/^260   tcoef(1,1)=.8d0*tcoef(1,1)$/;"	l	program:CAP	file:
+260	.\cea2.f	/^ 260      Pp = ppa\/pa$/;"	l	subroutine:ROCKET	file:
+260	.\pac\pac99.f	/^260   CODE(1)='STOP'$/;"	l	subroutine:INPUT	file:
+260	.\pac\pac99.f	/^260   CONTINUE$/;"	l	subroutine:IROTOR	file:
+260	.\pac\pac99.f	/^260   CPR(NTT)=WORD(I)\/R$/;"	l	subroutine:RECO	file:
+260	.\pac\pac99.f	/^260   DO 270 IJ=1,4$/;"	l	program:PAC99	file:
+260	.\pac\pac99.f	/^260   FORMAT (\/,' B =',F7.1,5X,'CPO\/R =',F9.4,5X,'CPI\/R =',F9.4,5X,A4,'$/;"	l	subroutine:WILHOI	file:
+260	.\pac\pac99.f	/^260   FORMAT (\/,1x,2A1,'DATA WERE NOT FOUND ON EF TAPE, (DELH)')$/;"	l	subroutine:DELH	file:
+260	.\pac\pac99.f	/^260   FORMAT (\/,25H SECOND ORDER CORRECTIONS)$/;"	l	subroutine:LINK1	file:
+260	.\pac\pac99.f	/^260   IF (B.EQ.0.) B=AG(INDX)$/;"	l	subroutine:ATOM	file:
+260	.\pac\pac99.f	/^260   IF (I.EQ.0) I=1$/;"	l	subroutine:POLY	file:
+260	.\pac\pac99.f	/^260   IF (INO.LE.I) GO TO 270$/;"	l	subroutine:IDENT	file:
+260	.\pac\pac99.f	/^260   WRITE (IOEFT) BLANK,BLANK,NLM,FAZ,DATE,FILL,TAPE$/;"	l	subroutine:EFTAPE	file:
+262	.\pac\pac99.f	/^262   IF (ABEL(2,ID).NE.A1) GO TO 264$/;"	l	subroutine:POLY	file:
+264	.\pac\pac99.f	/^264   IF (ABEL(2,ID).NE.C1) GO TO 105$/;"	l	subroutine:POLY	file:
+265	.\pac\pac99.f	/^265   V(I)=WORD(ID)$/;"	l	subroutine:POLY	file:
+265	.\pac\pac99.f	/^265   continue$/;"	l	subroutine:IROTOR	file:
+268	.\pac\pac99.f	/^268   BN(I-1)=BROT(I)\/BROT(1)$/;"	l	subroutine:IROTOR	file:
+27	.\cap\cap.f	/^27      format(\/'  KEYWORD ''ENGR'' IMPLIES TEMPERATURES IN SCHEDULE',$/;"	l	program:CAP	file:
+270	.\cap\cap.f	/^270   CONTINUE$/;"	l	program:CAP	file:
+270	.\pac\pac99.f	/^270     CALL DERIV (I,J,0,0,0,I,I,J,J,0,0)$/;"	l	subroutine:LINK1	file:
+270	.\pac\pac99.f	/^270   CONTINUE$/;"	l	program:PAC99	file:
+270	.\pac\pac99.f	/^270   CONTINUE$/;"	l	subroutine:LEAST	file:
+270	.\pac\pac99.f	/^270   CPR(NTT)=WORD(I)$/;"	l	subroutine:RECO	file:
+270	.\pac\pac99.f	/^270   FORMAT (1H ,'STD DEV =',F9.4,5X,'MAXERR H\/R =',F9.4,2X,'T =',F9.2,$/;"	l	subroutine:WILHOI	file:
+270	.\pac\pac99.f	/^270   HA=TP(2,K)*(TP(1,K)+HZERO)$/;"	l	subroutine:DELH	file:
+270	.\pac\pac99.f	/^270   IF ((B.EQ.0.).OR.FORM.EQ.0.) GO TO 370$/;"	l	subroutine:ATOM	file:
+270	.\pac\pac99.f	/^270   IF (.NOT.TEST(3)) GO TO 280$/;"	l	subroutine:IDENT	file:
+270	.\pac\pac99.f	/^270   IX=I\/10$/;"	l	subroutine:POLY	file:
+270	.\pac\pac99.f	/^270   RETURN$/;"	l	subroutine:INPUT	file:
+270	.\pac\pac99.f	/^270   ST=ST+SN(I)$/;"	l	subroutine:IROTOR	file:
+275	.\cap\cap.f	/^275   FORMAT (6X,'0',8X,'0.',F15.3,7X,'0.',8X,'INFINITE',F11.3,F12.3$/;"	l	subroutine:LOGK	file:
+275	.\pac\pac99.f	/^275   ELC(I,L)=BROT(1)*ELC(I,L)$/;"	l	subroutine:IROTOR	file:
+275	.\pac\pac99.f	/^275   FORMAT (6X,'0',6X,'-------',F12.4,5X,'-------',5X,'-------',2F12.4$/;"	l	subroutine:LOGK	file:
+275	.\pac\pac99.f	/^275   FORMAT (\/,' NUMBER OF ADDITIONAL LEVELS =',i4)$/;"	l	subroutine:ATOM	file:
+275	.\pac\pac99.f	/^275   IY=I\/100$/;"	l	subroutine:POLY	file:
+277	.\pac\pac99.f	/^277   ELOW=ELC(1,L)$/;"	l	subroutine:IROTOR	file:
+280	.\cap\cap.f	/^280   WRITE (6,285) HH0,H0,CHDH$/;"	l	subroutine:LOGK	file:
+280	.\cap\cap.f	/^280   it=ii$/;"	l	program:CAP	file:
+280	.\pac\pac99.f	/^280     CALL DERIV (I,J,K,0,0,I,I,J,K,0,0)$/;"	l	subroutine:LINK1	file:
+280	.\pac\pac99.f	/^280   CPRFIX=CPR(ICON)$/;"	l	subroutine:LEAST	file:
+280	.\pac\pac99.f	/^280   ELC(I,L)=ELC(I,L)-ELOW$/;"	l	subroutine:IROTOR	file:
+280	.\pac\pac99.f	/^280   FORMAT ('  B\/-C*',8X,1HN,2X,'PRED.SUM(2J+1)',2X,'ACT.SUM(2J+1)'$/;"	l	subroutine:ATOM	file:
+280	.\pac\pac99.f	/^280   FORMAT (\/\/8X,1HT,6X,'CP\/R CALC',2X,'CP\/R INPUT',6X,'H\/RT CALC',10X$/;"	l	subroutine:WILHOI	file:
+280	.\pac\pac99.f	/^280   IF ((HHRT(NTT).NE.0.).AND.NFIRST.EQ.1) GO TO 440$/;"	l	subroutine:RECO	file:
+280	.\pac\pac99.f	/^280   IF (ABEL(1,ID).EQ.WE) GO TO 285$/;"	l	subroutine:POLY	file:
+280	.\pac\pac99.f	/^280   IF (HEAT.EQ.DELTAH) ASINDH=ASINDH+FLOAT(MLA(I))*HA\/FLOAT(NMLA(J))$/;"	l	subroutine:DELH	file:
+280	.\pac\pac99.f	/^280   NKIND=J$/;"	l	subroutine:IDENT	file:
+280	.\pac\pac99.f	/^280   TEST(14)=.TRUE.$/;"	l	program:PAC99	file:
+280	.\pac\pac99.f	/^280   WRITE (6,285) HH0,H0,CHDH$/;"	l	subroutine:LOGK	file:
+285	.\cap\cap.f	/^285   FORMAT (6X,'0',8X,'0.',F15.3,7X,'0.',8X,'INFINITE',F11.3,$/;"	l	subroutine:LOGK	file:
+285	.\pac\pac99.f	/^285   FORMAT (6X,'0',6X,'-------',F12.4,5X,'-------',5X,'-------',F12.4,$/;"	l	subroutine:LOGK	file:
+285	.\pac\pac99.f	/^285   LL(L)=0$/;"	l	subroutine:IROTOR	file:
+285	.\pac\pac99.f	/^285   TLST=0.D0$/;"	l	subroutine:LEAST	file:
+285	.\pac\pac99.f	/^285   W=WORD(ID)$/;"	l	subroutine:POLY	file:
+290	.\cap\cap.f	/^290   H=0.$/;"	l	subroutine:LOGK	file:
+290	.\pac\pac99.f	/^290     CALL DERIV (I,J,K,0,0,I,I,J,J,K,0)$/;"	l	subroutine:LINK1	file:
+290	.\pac\pac99.f	/^290   CONTINUE$/;"	l	subroutine:WILHOI	file:
+290	.\pac\pac99.f	/^290   FORMAT (\/,'  V=0 FOR ROTOR',I3,'. USE CLASSICAL PARTITION FUNCTION$/;"	l	subroutine:IROTOR	file:
+290	.\pac\pac99.f	/^290   FORMAT (\/\/,1x,' EFDATA - DIMENSIONLESS ENTHALPY AND GIBBS '$/;"	l	subroutine:EFTAPE	file:
+290	.\pac\pac99.f	/^290   KUREN=NN(KX)$/;"	l	subroutine:ATOM	file:
+290	.\pac\pac99.f	/^290   LINES=10$/;"	l	subroutine:LOGK	file:
+290	.\pac\pac99.f	/^290   TEST(10)=.TRUE.$/;"	l	program:PAC99	file:
+290	.\pac\pac99.f	/^290   TEST(18)=.TRUE.$/;"	l	subroutine:RECO	file:
+290	.\pac\pac99.f	/^290   TEST(8)=.TRUE.$/;"	l	subroutine:DELH	file:
+290	.\pac\pac99.f	/^290   WX(1)=WORD(ID)$/;"	l	subroutine:POLY	file:
+290	.\pac\pac99.f	/^290   continue$/;"	l	subroutine:LEAST	file:
+292	.\pac\pac99.f	/^292   iv=ivl1$/;"	l	subroutine:LEAST	file:
+295	.\pac\pac99.f	/^295   IF (KIR.GT.0) GO TO 298$/;"	l	subroutine:IROTOR	file:
+295	.\pac\pac99.f	/^295   WX(2)=WORD(ID)$/;"	l	subroutine:POLY	file:
+295	.\pac\pac99.f	/^295   continue$/;"	l	subroutine:LEAST	file:
+295	.\pac\pac99.f	/^295   if (KUREN.NE.NN1) go to 310$/;"	l	subroutine:ATOM	file:
+296	.\pac\pac99.f	/^296   FORMAT(\/,' NROT ASSUMED TO BE 1 (IROTOR)')$/;"	l	subroutine:IROTOR	file:
+296	.\pac\pac99.f	/^296   ivl1=ivl1+1$/;"	l	subroutine:LEAST	file:
+298	.\cap\cap.f	/^298   DO 420 I=1,NT$/;"	l	subroutine:LOGK	file:
+298	.\pac\pac99.f	/^298   DO 420 I=1,NT$/;"	l	subroutine:LOGK	file:
+298	.\pac\pac99.f	/^298   IF (SUB.NE.CODE(1)) GO TO 390$/;"	l	subroutine:IROTOR	file:
+3	.\cap\cap.f	/^3     FORMAT(\/,20x,'CAP (COEFFICIENTS AND PROPERTIES) PROGRAM',\/ 28x,$/;"	l	program:CAP	file:
+30	.\b1b2b3.f	/^30	CONTINUE$/;"	l	program:b1b2b3	file:
+30	.\cap\cap.f	/^30    READ (13,40,END=210) nint,fm,fel$/;"	l	subroutine:LOGK	file:
+30	.\cap\cap.f	/^30    tt=temps(nts) + tin(i1)$/;"	l	program:CAP	file:
+30	.\misc\oldnew.f	/^30     format( 1X,2F10.3,' 5',8f5.1,1p\/5d16.8\/48x,2d16.8)$/;"	l	program:OLDNEW	file:
+30	.\pac\pac99.f	/^30    B=0.0$/;"	l	subroutine:WILHOI	file:
+30	.\pac\pac99.f	/^30    CONTINUE$/;"	l	subroutine:INTROT	file:
+30	.\pac\pac99.f	/^30    CONTINUE$/;"	l	subroutine:IROTOR	file:
+30	.\pac\pac99.f	/^30    CONTINUE$/;"	l	subroutine:PUNCH	file:
+30	.\pac\pac99.f	/^30    CONTINUE$/;"	l	subroutine:TABLES	file:
+30	.\pac\pac99.f	/^30    DO 40 I=1,NT$/;"	l	subroutine:DELH	file:
+30	.\pac\pac99.f	/^30    DO 40 IS=1,6$/;"	l	subroutine:DERIV	file:
+30	.\pac\pac99.f	/^30    FORMAT (\/,' ATOMIC WEIGHT =',F12.7)$/;"	l	subroutine:ATOM	file:
+30	.\pac\pac99.f	/^30    FORMAT (\/,' ERROR IN LABELS ON TEMP RECORD, (TEMPER)')$/;"	l	subroutine:TEMPER	file:
+30	.\pac\pac99.f	/^30    FORMAT (\/,' METHOD CODE WAS NOT RECOGNIZED, USED NRRAO1, (POLY)')$/;"	l	subroutine:POLY	file:
+30	.\pac\pac99.f	/^30    FORMAT (\/,1x,20A4)$/;"	l	subroutine:INPUT	file:
+30	.\pac\pac99.f	/^30    FORMAT (\/,1x,A4,2X,2A1,I1,A1,3X,2A4,3X,3(A4,2X,F12.4),I2)$/;"	l	subroutine:EFTAPE	file:
+30	.\pac\pac99.f	/^30    H298H0=WORD(I)$/;"	l	subroutine:RECO	file:
+30	.\pac\pac99.f	/^30    IF (ASINDT.NE.0.0) GO TO 40$/;"	l	subroutine:LINK1	file:
+30	.\pac\pac99.f	/^30    IQ=2$/;"	l	subroutine:EIGEN	file:
+30	.\pac\pac99.f	/^30    READ (IOEFT,END=210) CODE,NA,SUB,DATE,HZERO,AMP,TNO,((TP(J,K),$/;"	l	subroutine:LOGK	file:
+30	.\pac\pac99.f	/^30    SNM(I)=' '$/;"	l	program:PAC99	file:
+30	.\pac\pac99.f	/^30    WRITE (6,40) (ESIN(I,L),I=J,K)$/;"	l	subroutine:PRINT	file:
+300	.\b1b2b3.f	/^300       CONTINUE$/;"	l	program:b1b2b3	file:
+300	.\cap\cap.f	/^300   RT=RUSE(NTABLE)*T(I)$/;"	l	subroutine:LOGK	file:
+300	.\cap\cap.f	/^300   t(i)=t(i-ix)$/;"	l	program:CAP	file:
+300	.\cea2.f	/^ 300    Hp = .TRUE.$/;"	l	subroutine:ROCKET	file:
+300	.\cea2.f	/^ 300  CLOSE (IOINP)$/;"	l	file:
+300	.\cea2.f	/^ 300  CONTINUE$/;"	l	subroutine:SEARCH	file:
+300	.\cea2.f	/^ 300  DO i = 1,Nm$/;"	l	subroutine:TRANIN	file:
+300	.\cea2.f	/^ 300  IF ( nch1.EQ.1.OR.ch1(ich1).EQ.'#'.OR.ch1(ich1).EQ.'!' ) THEN$/;"	l	subroutine:INFREE	file:
+300	.\cea2.f	/^ 300  IF ( nmix.LE.0 ) THEN$/;"	l	subroutine:INPUT	file:
+300	.\cea2.f	/^ 300  RETURN$/;"	l	subroutine:UTRAN	file:
+300	.\cea2.f	/^ 300  REWIND IOSCH$/;"	l	subroutine:UTHERM	file:
+300	.\cea2.f	/^ 300  k = k + 1$/;"	l	subroutine:EQLBRM	file:
+300	.\cea2.f	/^ 300  refl = .FALSE.$/;"	l	subroutine:SHCK	file:
+300	.\misc\makelib.f	/^ 300  REWIND 13$/;"	l	program:MAKELIB	file:
+300	.\pac\pac99.f	/^300     CALL DERIV (I,J,K,L,0,I,I,J,K,L,0)$/;"	l	subroutine:LINK1	file:
+300	.\pac\pac99.f	/^300   CALL TEMPER$/;"	l	program:PAC99	file:
+300	.\pac\pac99.f	/^300   CONTINUE$/;"	l	subroutine:IDENT	file:
+300	.\pac\pac99.f	/^300   CONTINUE$/;"	l	subroutine:RECO	file:
+300	.\pac\pac99.f	/^300   FORMAT (1X,3F11.3,3E19.7,3F13.5)$/;"	l	subroutine:WILHOI	file:
+300	.\pac\pac99.f	/^300   IF (NF(IV).NE.0) GO TO 320$/;"	l	subroutine:LEAST	file:
+300	.\pac\pac99.f	/^300   READ (IOEFT,END=500) ELMT,NLM,PHAZ,DD,FILL,TAPE$/;"	l	subroutine:EFTAPE	file:
+300	.\pac\pac99.f	/^300   REWIND IOEFT$/;"	l	subroutine:DELH	file:
+300	.\pac\pac99.f	/^300   RT=RUSE(NTABLE)*T(I)$/;"	l	subroutine:LOGK	file:
+300	.\pac\pac99.f	/^300   SUM=SUM+G(J)$/;"	l	subroutine:ATOM	file:
+300	.\pac\pac99.f	/^300   WRITE (6,380)$/;"	l	subroutine:IROTOR	file:
+300	.\pac\pac99.f	/^300   WX(3)=WORD(ID)$/;"	l	subroutine:POLY	file:
+300	.\syntax.f	/^ 300  IF ( nch1.EQ.1.OR.ch1(ich1).EQ.'#'.OR.ch1(ich1).EQ.'!' ) GOTO 100$/;"	l	subroutine:INFREE	file:
+302	.\cea2.f	/^ 302            kt = 1$/;"	l	subroutine:TRANIN	file:
+305	.\pac\pac99.f	/^305   WX(I)=WORD(ID)$/;"	l	subroutine:POLY	file:
+310	.\cap\cap.f	/^310   CONTINUE                                       $/;"	l	subroutine:LOGK	file:
+310	.\cap\cap.f	/^310   continue$/;"	l	program:CAP	file:
+310	.\cea2.f	/^ 310        nb = 1$/;"	l	subroutine:INFREE	file:
+310	.\pac\pac99.f	/^310      EX(I,IV)=I-izz$/;"	l	subroutine:LEAST	file:
+310	.\pac\pac99.f	/^310     CALL DERIV (I,I,J,0,0,I,I,I,J,0,0)$/;"	l	subroutine:LINK1	file:
+310	.\pac\pac99.f	/^310   BETA(I)=WORD(ID)$/;"	l	subroutine:POLY	file:
+310	.\pac\pac99.f	/^310   CONTINUE$/;"	l	subroutine:IDENT	file:
+310	.\pac\pac99.f	/^310   CONTINUE$/;"	l	subroutine:LOGK	file:
+310	.\pac\pac99.f	/^310   CONTINUE$/;"	l	subroutine:WILHOI	file:
+310	.\pac\pac99.f	/^310   FORMAT (\/' EFDATA',5X,2A1,I1,'(',A1,')',5X,2A4,5X,'H0\/R',F11.4,$/;"	l	subroutine:EFTAPE	file:
+310	.\pac\pac99.f	/^310   FORMAT (\/,'  MINIMUM OF POTENTIAL FUNCTION IS',F9.3,' CM**(-1)')$/;"	l	subroutine:IROTOR	file:
+310	.\pac\pac99.f	/^310   FORMAT (\/,1x,18A4,A2)$/;"	l	subroutine:PUNCH	file:
+310	.\pac\pac99.f	/^310   IF (L.NE.1) GO TO 320$/;"	l	subroutine:ATOM	file:
+310	.\pac\pac99.f	/^310   IF (TSTK) WORD(I)=WORD(I)*1000.D0$/;"	l	subroutine:RECO	file:
+310	.\pac\pac99.f	/^310   RETURN$/;"	l	subroutine:DELH	file:
+310	.\pac\pac99.f	/^310   TEST(12)=.TRUE.$/;"	l	program:PAC99	file:
+310	.\syntax.f	/^ 310        nb = 1$/;"	l	subroutine:INFREE	file:
+315	.\cap\cap.f	/^315   IT=0 $/;"	l	program:CAP	file:
+315	.\pac\pac99.f	/^315      ex(i,iv) = ex(i,9)$/;"	l	subroutine:LEAST	file:
+315	.\pac\pac99.f	/^315   DD=WORD(ID)$/;"	l	subroutine:POLY	file:
+315	.\pac\pac99.f	/^315   FORMAT (18A4,A2)$/;"	l	subroutine:PUNCH	file:
+32	.\pac\pac99.f	/^32    FORMAT (\/,' THERMODYNAMIC DATA COEFFICIENTS, RECORD IMAGES -')$/;"	l	subroutine:PUNCH	file:
+320	.\cap\cap.f	/^320   BZ=ZERO                                         $/;"	l	subroutine:LOGK	file:
+320	.\cap\cap.f	/^320   IT=IT+1$/;"	l	program:CAP	file:
+320	.\cea2.f	/^ 320      IF ( Cin(Ncin-1)(:4).NE.'case' ) WRITE (IOOUT,99004) Cin(i)$/;"	l	subroutine:INFREE	file:
+320	.\pac\pac99.f	/^320     CONTINUE$/;"	l	subroutine:LINK1	file:
+320	.\pac\pac99.f	/^320   BZ=ZERO$/;"	l	subroutine:LOGK	file:
+320	.\pac\pac99.f	/^320   CONTINUE$/;"	l	subroutine:GROUP	file:
+320	.\pac\pac99.f	/^320   CONTINUE$/;"	l	subroutine:POLY	file:
+320	.\pac\pac99.f	/^320   CONTINUE$/;"	l	subroutine:WILHOI	file:
+320	.\pac\pac99.f	/^320   FORMAT ('-',2X,'VALUES OF POTENTIAL FUNCTION IN CM**(-1) AT VARIOU$/;"	l	subroutine:IROTOR	file:
+320	.\pac\pac99.f	/^320   IF (H298H0.EQ.0.0) TEST(13)=.TRUE.$/;"	l	subroutine:RECO	file:
+320	.\pac\pac99.f	/^320   IF (J.NE.KLAST) GO TO 360$/;"	l	subroutine:ATOM	file:
+320	.\pac\pac99.f	/^320   IF(NF(IV).EQ.1) GO TO 326$/;"	l	subroutine:LEAST	file:
+320	.\pac\pac99.f	/^320   MLA(JJ)=MLA(JJ)+MLA(J)$/;"	l	subroutine:IDENT	file:
+322	.\cap\cap.f	/^322   TT=T(IT)$/;"	l	program:CAP	file:
+323	.\cap\cap.f	/^323     IF ( tt.LT.tcoef(1,L)) THEN$/;"	l	program:CAP	file:
+323	.\pac\pac99.f	/^323   COEF(10,2)=COEF(10,1)$/;"	l	subroutine:GROUP	file:
+324	.\cap\cap.f	/^324       t(j)=t(j+1)$/;"	l	program:CAP	file:
+324	.\pac\pac99.f	/^324   CONTINUE$/;"	l	subroutine:LEAST	file:
+325	.\pac\pac99.f	/^325   FORMAT(\/' INTEGRATION CONSTANTS:    H\/R =',E16.9,5X,'S\/R =',E16.9)$/;"	l	subroutine:WILHOI	file:
+325	.\pac\pac99.f	/^325   NNU=0$/;"	l	subroutine:POLY	file:
+325	.\pac\pac99.f	/^325   READ(IOGRP,330,END=388) TITLE,numint,(EL(1,I),EL(2,I),$/;"	l	subroutine:GROUP	file:
+326	.\pac\pac99.f	/^326   do 327 i=1,nf(IV)$/;"	l	subroutine:LEAST	file:
+327	.\pac\pac99.f	/^327   continue$/;"	l	subroutine:LEAST	file:
+328	.\pac\pac99.f	/^328   iz=i$/;"	l	subroutine:LEAST	file:
+33	.\pac\pac99.f	/^33    FORMAT (5X,2A1,F15.5,2I6,2F8.0)$/;"	l	subroutine:ATOM	file:
+330	.\cap\cap.f	/^330   CONTINUE$/;"	l	program:CAP	file:
+330	.\pac\pac99.f	/^330     CONTINUE$/;"	l	subroutine:LINK1	file:
+330	.\pac\pac99.f	/^330   CONTINUE$/;"	l	subroutine:IDENT	file:
+330	.\pac\pac99.f	/^330   FORMAT (11X,'PHI',7X,10F11.5)$/;"	l	subroutine:IROTOR	file:
+330	.\pac\pac99.f	/^330   FORMAT (2A4,\/i2,8x,5(2a1,f6.2),2x,f13.5,f15.3)$/;"	l	subroutine:GROUP	file:
+330	.\pac\pac99.f	/^330   IF (DABS(TT-ASINDT).GT.0.005) GO TO 350$/;"	l	subroutine:RECO	file:
+330	.\pac\pac99.f	/^330   IF (KUREN.EQ.NN1) GO TO 340$/;"	l	subroutine:ATOM	file:
+330	.\pac\pac99.f	/^330   RETURN$/;"	l	subroutine:WILHOI	file:
+330	.\pac\pac99.f	/^330   mtab=1$/;"	l	program:PAC99	file:
+330	.\pac\pac99.f	/^330   nfp=nf(IV)$/;"	l	subroutine:LEAST	file:
+332	.\pac\pac99.f	/^332   FMLA(I)=MLA(I)$/;"	l	subroutine:PUNCH	file:
+333	.\pac\pac99.f	/^333   format(1x,2f10.3,i2)$/;"	l	subroutine:GROUP	file:
+334	.\pac\pac99.f	/^334   format(5d16.8)$/;"	l	subroutine:GROUP	file:
+335	.\pac\pac99.f	/^335   CONTINUE$/;"	l	program:PAC99	file:
+335	.\pac\pac99.f	/^335   NNU=NNU+1$/;"	l	subroutine:POLY	file:
+335	.\pac\pac99.f	/^335   TEMPY=KUREN*KUREN$/;"	l	subroutine:ATOM	file:
+335	.\pac\pac99.f	/^335   continue$/;"	l	subroutine:GROUP	file:
+336	.\pac\pac99.f	/^336   COEF(I,IV)=0.D0$/;"	l	subroutine:LEAST	file:
+338	.\pac\pac99.f	/^338   CONTINUE$/;"	l	subroutine:LEAST	file:
+338	.\pac\pac99.f	/^338   FORMAT (2X,I1,1X,A4,A2,1X,5(2A1,F6.2),I2,F13.7,F15.3)$/;"	l	subroutine:PUNCH	file:
+338	.\pac\pac99.f	/^338   I=I+ND(NNU)$/;"	l	subroutine:POLY	file:
+339	.\pac\pac99.f	/^339    FORMAT (\/' ANHARMONICITIES NOT INCLUDED WHEN NUMBER OF NuS > 9')$/;"	l	subroutine:POLY	file:
+34	.\pac\pac99.f	/^34    FORMAT(\/' >>> WILHOIT NOT USED TO EXTRAPOLATE TO LOWER T VALUES')$/;"	l	subroutine:WILHOI	file:
+340	.\cap\cap.f	/^340   CPR(IT)=0.$/;"	l	program:CAP	file:
+340	.\cea2.f	/^ 340      Ncin = Ncin + 1$/;"	l	subroutine:INFREE	file:
+340	.\pac\pac99.f	/^340   CONTINUE$/;"	l	subroutine:GROUP	file:
+340	.\pac\pac99.f	/^340   CONTINUE$/;"	l	subroutine:IDENT	file:
+340	.\pac\pac99.f	/^340   DD=((BETA(3)*0.5+BETA(2))*0.5-BETA(1))*0.5+DD$/;"	l	subroutine:POLY	file:
+340	.\pac\pac99.f	/^340   DIFF=FORM-SUM$/;"	l	subroutine:ATOM	file:
+340	.\pac\pac99.f	/^340   FORMAT (11X,'POT',5X,10F11.3)$/;"	l	subroutine:IROTOR	file:
+340	.\pac\pac99.f	/^340   FORMAT (1X,I1,1X,A4,A2,1X,5(2A1,F6.2),I2,F13.7,F15.3)$/;"	l	subroutine:PUNCH	file:
+340	.\pac\pac99.f	/^340   FORMAT (\/' H ALREADY SET, ASSUME H(T)-H298 = 0')$/;"	l	subroutine:RECO	file:
+340	.\pac\pac99.f	/^340   FORMAT (\/' LEAST SQUARES NOT COMPLETED. INTERVAL TEMPERATURES NOT$/;"	l	subroutine:LEAST	file:
+340	.\pac\pac99.f	/^340   IF (.NOT.IROT) GO TO 370$/;"	l	subroutine:LINK1	file:
+340	.\pac\pac99.f	/^340   IF(BAR.AND.TEST(4)) STD='BAR'$/;"	l	program:PAC99	file:
+340	.\syntax.f	/^ 340      Ncin = Ncin + 1$/;"	l	subroutine:INFREE	file:
+345	.\pac\pac99.f	/^345   IF (TESTW(2)) GO TO 510$/;"	l	subroutine:POLY	file:
+35	.\cap\cap.f	/^35    continue$/;"	l	program:CAP	file:
+35	.\pac\pac99.f	/^35    TESTW(2)=.TRUE.$/;"	l	subroutine:POLY	file:
+35	.\pac\pac99.f	/^35    continue$/;"	l	subroutine:WILHOI	file:
+350	.\b1b2b3.f	/^350   WRITE (io,355) sub$/;"	l	program:b1b2b3	file:
+350	.\cap\cap.f	/^350   CONTINUE                                  $/;"	l	program:CAP	file:
+350	.\cap\cap.f	/^350   VFM2(11)=F8X$/;"	l	subroutine:LOGK	file:
+350	.\cea2.f	/^ 350    CONTINUE$/;"	l	subroutine:INPUT	file:
+350	.\cea2.f	/^ 350    CONTINUE$/;"	l	subroutine:TRANIN	file:
+350	.\cea2.f	/^ 350    IF ( Cpmix.NE.0. ) Gamma1 = Cpmix\/(Cpmix-1.\/Wmix)$/;"	l	subroutine:SHCK	file:
+350	.\cea2.f	/^ 350    done = .TRUE.$/;"	l	subroutine:ROCKET	file:
+350	.\pac\pac99.f	/^350   CALL INTROT (T(IT),HCK,DQS,DDQS,QLNS,L,LT)$/;"	l	subroutine:LINK1	file:
+350	.\pac\pac99.f	/^350   CONTINUE$/;"	l	program:PAC99	file:
+350	.\pac\pac99.f	/^350   FORMAT (2X,'BARRIER POTENTIAL CONSTANTS IN CAL\/MOL:'\/5x,9F11.3)$/;"	l	subroutine:IROTOR	file:
+350	.\pac\pac99.f	/^350   FORMAT (\/,F9.1,I7,F12.1,F15.1,F11.1,F14.3,F9.1,F10.1)$/;"	l	subroutine:ATOM	file:
+350	.\pac\pac99.f	/^350   GHRTT=-1.D0$/;"	l	subroutine:RECO	file:
+350	.\pac\pac99.f	/^350   IF (NNU.LE.9 ) THEN$/;"	l	subroutine:POLY	file:
+350	.\pac\pac99.f	/^350   NBEGIN=I$/;"	l	subroutine:LEAST	file:
+350	.\pac\pac99.f	/^350   RETURN$/;"	l	subroutine:IDENT	file:
+350	.\pac\pac99.f	/^350   TFWT=TFWT+FWT*GRPN(IG)$/;"	l	subroutine:GROUP	file:
+350	.\pac\pac99.f	/^350   VFM2(11)=F8X$/;"	l	subroutine:LOGK	file:
+351	.\pac\pac99.f	/^351   FORMAT (2X,'BARRIER POTENTIAL CONSTANTS IN CM**(-1):'\/5x,9F11.3\/)$/;"	l	subroutine:IROTOR	file:
+352	.\pac\pac99.f	/^352   FORMAT (2X,'ROTATION CONSTANTS IN CM**(-1):',6X,(6F11.5))$/;"	l	subroutine:IROTOR	file:
+355	.\b1b2b3.f	/^355   FORMAT ( a15 )$/;"	l	program:b1b2b3	file:
+355	.\cap\cap.f	/^355     FORMAT (1p,7e12.4)$/;"	l	program:CAP	file:
+355	.\pac\pac99.f	/^355     AI(I)=AI(I)+CON*AIJ(I,J)$/;"	l	subroutine:POLY	file:
+355	.\pac\pac99.f	/^355   IF (TEST(15).OR.TEST(17)) IX=IX+1$/;"	l	program:PAC99	file:
+36	.\pac\pac99.f	/^36    CONTINUE$/;"	l	subroutine:ATOM	file:
+36	.\pac\pac99.f	/^36    DO 310 IS=1,80$/;"	l	subroutine:WILHOI	file:
+360	.\cap\cap.f	/^360   refel=.false.$/;"	l	program:CAP	file:
+360	.\pac\pac99.f	/^360     CONTINUE$/;"	l	subroutine:POLY	file:
+360	.\pac\pac99.f	/^360   CONTINUE$/;"	l	subroutine:ATOM	file:
+360	.\pac\pac99.f	/^360   CONTINUE$/;"	l	subroutine:GROUP	file:
+360	.\pac\pac99.f	/^360   CONTINUE$/;"	l	subroutine:LEAST	file:
+360	.\pac\pac99.f	/^360   CONTINUE$/;"	l	subroutine:LINK1	file:
+360	.\pac\pac99.f	/^360   FORMAT ('-',2X,'ENERGY LEVELS',10X,'EVEN----COS----ELC(+) IN CM**($/;"	l	subroutine:IROTOR	file:
+360	.\pac\pac99.f	/^360   IF (ABEL(1,I).NE.GH) GO TO 380$/;"	l	subroutine:RECO	file:
+360	.\pac\pac99.f	/^360   IF(VFM2(3).EQ.F9)WRITE (6,VFM2)TI,CP,HH,S,GH$/;"	l	subroutine:LOGK	file:
+360	.\pac\pac99.f	/^360   T(NT)=T(NT-1)+100.0$/;"	l	program:PAC99	file:
+362	.\pac\pac99.f	/^362   T(1)=298.15D0$/;"	l	program:PAC99	file:
+364	.\pac\pac99.f	/^364   T(I)=T(I-1)+100.D0$/;"	l	program:PAC99	file:
+365	.\pac\pac99.f	/^365   IF (RH(1).NE.0.0) GO TO 368$/;"	l	subroutine:POLY	file:
+368	.\pac\pac99.f	/^368   FORMAT (2X,2F10.3,I2,8F5.1,2X,F15.3,1P\/1X,5D16.9\/1X,5D16.9)$/;"	l	subroutine:PUNCH	file:
+368	.\pac\pac99.f	/^368   THETA(1)=(HCK*B)\/3.0$/;"	l	subroutine:POLY	file:
+370	.\cap\cap.f	/^370   continue$/;"	l	program:CAP	file:
+370	.\pac\pac99.f	/^370   CONTINUE$/;"	l	subroutine:GROUP	file:
+370	.\pac\pac99.f	/^370   FORMAT ('-',2X,'ENERGY DIFFERENCE BETWEEN THE SPECIFIC LEVEL AND$/;"	l	subroutine:IROTOR	file:
+370	.\pac\pac99.f	/^370   FORMAT (1X,2F10.3,I2,8F5.1,2X,F15.3,1P\/5D16.9\/5D16.9)$/;"	l	subroutine:PUNCH	file:
+370	.\pac\pac99.f	/^370   FORMAT (\/,' B0 =',F10.6,5X,'D0 =',E13.6)$/;"	l	subroutine:POLY	file:
+370	.\pac\pac99.f	/^370   IF (CODE(1).NE.'ADD') GO TO 380$/;"	l	program:PAC99	file:
+370	.\pac\pac99.f	/^370   IF (FWORD(I).NE.2.) GO TO 400$/;"	l	subroutine:RECO	file:
+370	.\pac\pac99.f	/^370   IF (TESTW(6)) GO TO 380$/;"	l	subroutine:LINK1	file:
+370	.\pac\pac99.f	/^370   TC(IV+1)=T(NEND)$/;"	l	subroutine:LEAST	file:
+370	.\pac\pac99.f	/^370   WRITE (6,380)$/;"	l	subroutine:ATOM	file:
+374	.\pac\pac99.f	/^374   if (npts .ge. 2*iz-1) go to 378$/;"	l	subroutine:LEAST	file:
+375	.\pac\pac99.f	/^375     FORMAT (\/,' AI(',I1,') =',F10.7)$/;"	l	subroutine:POLY	file:
+376	.\pac\pac99.f	/^376   ex(i,iv)=ex(i+1,iv)$/;"	l	subroutine:LEAST	file:
+378	.\pac\pac99.f	/^378   NFP=NPTS$/;"	l	subroutine:LEAST	file:
+379	.\pac\pac99.f	/^379   ex(i,IV)=0$/;"	l	subroutine:LEAST	file:
+380	.\cap\cap.f	/^380   continue$/;"	l	program:CAP	file:
+380	.\pac\pac99.f	/^380     WRITE (6,385) (I,J,AIJ(I,J),J=1,NNU)$/;"	l	subroutine:POLY	file:
+380	.\pac\pac99.f	/^380   FORMAT ('-',2X,'THE NUMBER OF ENERGY LEVELS IS TOO LARGE.')$/;"	l	subroutine:IROTOR	file:
+380	.\pac\pac99.f	/^380   FORMAT (\/,' NO FILL--B OR SUMG MISSING ON METHOD RECORD, (ATOM)')$/;"	l	subroutine:ATOM	file:
+380	.\pac\pac99.f	/^380   ICP=1$/;"	l	subroutine:LEAST	file:
+380	.\pac\pac99.f	/^380   IF (ABEL(1,I).EQ.S) SS=WORD(I)\/R$/;"	l	subroutine:RECO	file:
+380	.\pac\pac99.f	/^380   IF (CODE(1).NE.'READ'.AND.CODE(1).NE.'COEF') GO TO 390$/;"	l	program:PAC99	file:
+380	.\pac\pac99.f	/^380   SQ(1,IT)=QLNTOT-EQLN$/;"	l	subroutine:LINK1	file:
+380	.\pac\pac99.f	/^380   WRITE (6,381) TITLE$/;"	l	subroutine:GROUP	file:
+381	.\pac\pac99.f	/^381   FORMAT(\/,2x,2A4,' HAS ILLEGAL FORMAT FOR GROUPS')$/;"	l	subroutine:GROUP	file:
+382	.\pac\pac99.f	/^382   ivl1=1$/;"	l	subroutine:GROUP	file:
+383	.\pac\pac99.f	/^383   ex(kk,k)=kk-1$/;"	l	subroutine:GROUP	file:
+385	.\pac\pac99.f	/^385     FORMAT (\/,6(' A(',I1,',',I1,') =',F10.7,5X))$/;"	l	subroutine:POLY	file:
+385	.\pac\pac99.f	/^385   COEF(J,K)=COEF(J,K)+GRPN(IG)*AN(j,k)$/;"	l	subroutine:GROUP	file:
+385	.\pac\pac99.f	/^385   NF6=NF5+1$/;"	l	subroutine:LEAST	file:
+386	.\pac\pac99.f	/^386   CONTINUE$/;"	l	subroutine:GROUP	file:
+387	.\pac\pac99.f	/^387   CONTINUE$/;"	l	subroutine:GROUP	file:
+388	.\pac\pac99.f	/^388   DO 390 I=1,5$/;"	l	subroutine:GROUP	file:
+390	.\cap\cap.f	/^390   FORMAT('0*** Element ',2A1,' not found in BLOCK DATA')$/;"	l	program:CAP	file:
+390	.\pac\pac99.f	/^390   CONTINUE$/;"	l	subroutine:GROUP	file:
+390	.\pac\pac99.f	/^390   CONTINUE$/;"	l	subroutine:RECO	file:
+390	.\pac\pac99.f	/^390   IF ((HCK.EQ.0.).OR.WEIGHT.EQ.0.) GO TO 400$/;"	l	program:PAC99	file:
+390	.\pac\pac99.f	/^390   IF (ASINDT.NE.0.0) GO TO 400$/;"	l	subroutine:ATOM	file:
+390	.\pac\pac99.f	/^390   IF (C.EQ.0.0) GO TO 560$/;"	l	subroutine:POLY	file:
+390	.\pac\pac99.f	/^390   IF (QLNTOT.LE.700.d0) GO TO 420$/;"	l	subroutine:LINK1	file:
+390	.\pac\pac99.f	/^390   IROT=.TRUE.$/;"	l	subroutine:IROTOR	file:
+393	.\pac\pac99.f	/^393   IF ( NNU.LE.9 ) THEN$/;"	l	subroutine:POLY	file:
+395	.\pac\pac99.f	/^395     FORMAT (\/,' AI =',F10.7,4X,'ALPHA A =',F10.7,4X,'ALPHA B =',$/;"	l	subroutine:POLY	file:
+40	.\b1b2b3.f	/^40	CONTINUE  $/;"	l	program:b1b2b3	file:
+40	.\cap\cap.f	/^40    FORMAT(\/,i2,8x,2a1,f6.2)$/;"	l	subroutine:LOGK	file:
+40	.\cap\cap.f	/^40    do 45 i=1,nts$/;"	l	program:CAP	file:
+40	.\pac\pac99.f	/^40    BROT(I)=0.D0$/;"	l	subroutine:IROTOR	file:
+40	.\pac\pac99.f	/^40    CALL INPUT$/;"	l	subroutine:ATOM	file:
+40	.\pac\pac99.f	/^40    COEF(J,K)=0.D0$/;"	l	subroutine:GROUP	file:
+40	.\pac\pac99.f	/^40    CONTINUE$/;"	l	subroutine:DELH	file:
+40	.\pac\pac99.f	/^40    CONTINUE$/;"	l	subroutine:IDENT	file:
+40	.\pac\pac99.f	/^40    CONTINUE$/;"	l	subroutine:LOGK	file:
+40	.\pac\pac99.f	/^40    CONTINUE$/;"	l	subroutine:WILHOI	file:
+40	.\pac\pac99.f	/^40    FORMAT (10X,'LEVEL(-)',10F11.3)$/;"	l	subroutine:PRINT	file:
+40	.\pac\pac99.f	/^40    FORMAT (6X,2A1,I1,A1,3X,2A4,3X,3(A4,2X,D12.0),I2)$/;"	l	subroutine:INPUT	file:
+40	.\pac\pac99.f	/^40    IF (H298HR.NE.0. .OR. HH298) GO TO 50$/;"	l	subroutine:TABLES	file:
+40	.\pac\pac99.f	/^40    IF (NT.GT.0) GO TO 50$/;"	l	subroutine:TEMPER	file:
+40	.\pac\pac99.f	/^40    IF (Q .GT. 1.D-25) QLN=DLOG(Q\/RSYM(L))$/;"	l	subroutine:INTROT	file:
+40	.\pac\pac99.f	/^40    IP=1$/;"	l	subroutine:EIGEN	file:
+40	.\pac\pac99.f	/^40    NT1=NT+1$/;"	l	subroutine:LINK1	file:
+40	.\pac\pac99.f	/^40    QL(3)=QL(3)+S(K,3)$/;"	l	subroutine:DERIV	file:
+40	.\pac\pac99.f	/^40    T(I)=0.$/;"	l	program:PAC99	file:
+40	.\pac\pac99.f	/^40    TESTW(3)=.TRUE.$/;"	l	subroutine:POLY	file:
+40	.\pac\pac99.f	/^40    TSTCO=.TRUE.$/;"	l	subroutine:RECO	file:
+400	.\b1b2b3.f	/^400   CONTINUE$/;"	l	program:b1b2b3	file:
+400	.\cap\cap.f	/^400   IF (DMOD(T(I),500.D0).NE.0.0) GO TO 420$/;"	l	subroutine:LOGK	file:
+400	.\cap\cap.f	/^400   continue$/;"	l	program:CAP	file:
+400	.\cea2.f	/^ 400    IF ( ipp.GT.nipp ) THEN$/;"	l	subroutine:ROCKET	file:
+400	.\cea2.f	/^ 400  CONTINUE$/;"	l	subroutine:INFREE	file:
+400	.\cea2.f	/^ 400  CONTINUE$/;"	l	subroutine:TRANIN	file:
+400	.\cea2.f	/^ 400  Gamma1 = Gammas(Npt)$/;"	l	subroutine:SHCK	file:
+400	.\cea2.f	/^ 400  RETURN$/;"	l	subroutine:INPUT	file:
+400	.\cea2.f	/^ 400  STOP$/;"	l	file:
+400	.\cea2.f	/^ 400  Tln = DLOG(Tt)$/;"	l	subroutine:EQLBRM	file:
+400	.\cea2.f	/^ 400  WRITE (IOOUT,99005)$/;"	l	subroutine:SEARCH	file:
+400	.\cea2.f	/^ 400  WRITE (IOOUT,99007) name$/;"	l	subroutine:UTHERM	file:
+400	.\misc\makelib.f	/^ 400  WRITE (8,99007) name$/;"	l	program:MAKELIB	file:
+400	.\pac\pac99.f	/^400     CONTINUE$/;"	l	subroutine:POLY	file:
+400	.\pac\pac99.f	/^400   A(I,J)=0.0$/;"	l	subroutine:LEAST	file:
+400	.\pac\pac99.f	/^400   FORMAT (\/,' Q TOO LARGE TO INCLUDE EXCITED STATES, (LINK1)')$/;"	l	subroutine:LINK1	file:
+400	.\pac\pac99.f	/^400   IF (SS.NE.-1.D0) SR(NTT)=SS$/;"	l	subroutine:RECO	file:
+400	.\pac\pac99.f	/^400   LINES=LINES+1$/;"	l	subroutine:LOGK	file:
+400	.\pac\pac99.f	/^400   NT1=NT+1$/;"	l	subroutine:ATOM	file:
+400	.\pac\pac99.f	/^400   RETURN$/;"	l	subroutine:IROTOR	file:
+400	.\pac\pac99.f	/^400   WRITE (6,410) FORMLA,FMLA,WEIGHT,GFORM,GMLA,TFWT$/;"	l	subroutine:GROUP	file:
+400	.\pac\pac99.f	/^400   WRITE (6,410)$/;"	l	program:PAC99	file:
+400	.\syntax.f	/^ 400  ENDDO$/;"	l	subroutine:INFREE	file:
+400	.\syntax.f	/^ 400  STOP$/;"	l	file:
+405	.\cap\cap.f	/^405   if(refel.or.htform.ne.0.d0) go to 430$/;"	l	program:CAP	file:
+405	.\pac\pac99.f	/^405   IF (TEST(14)) WRITE (6,410) (I,THETA(I),I=1,3)$/;"	l	subroutine:POLY	file:
+410	.\cap\cap.f	/^410   FORMAT ( )$/;"	l	subroutine:LOGK	file:
+410	.\cap\cap.f	/^410   continue$/;"	l	program:CAP	file:
+410	.\pac\pac99.f	/^410   DO 650 M=NIT,NT1$/;"	l	subroutine:ATOM	file:
+410	.\pac\pac99.f	/^410   FORMAT (1H )$/;"	l	subroutine:LOGK	file:
+410	.\pac\pac99.f	/^410   FORMAT (\/' MISMATCH OF FORMULA WITH GROUPS (GROUP)'\/,(6X,5(2A1,2X)$/;"	l	subroutine:GROUP	file:
+410	.\pac\pac99.f	/^410   FORMAT (\/,' ERROR IN INPUT, GO TO NEXT SPECIES, (MAIN PGM)')$/;"	l	program:PAC99	file:
+410	.\pac\pac99.f	/^410   FORMAT (\/,3(' THETA(',I1,') =',F12.6,4X)\/)$/;"	l	subroutine:POLY	file:
+410	.\pac\pac99.f	/^410   IF (CODE(1).NE.SUB) RETURN$/;"	l	subroutine:LINK1	file:
+410	.\pac\pac99.f	/^410   IF (GHRTT.EQ.-1.D0) GO TO 420$/;"	l	subroutine:RECO	file:
+415	.\pac\pac99.f	/^415   TAB=TAU(5)+2.D0*TAU(7)$/;"	l	subroutine:POLY	file:
+420	.\cap\cap.f	/^420   CONTINUE$/;"	l	subroutine:LOGK	file:
+420	.\pac\pac99.f	/^420   IF (.NOT.TEST(14)) GO TO 580$/;"	l	subroutine:ATOM	file:
+420	.\pac\pac99.f	/^420   IF (.NOT.TESTW(1)) GO TO 428$/;"	l	subroutine:POLY	file:
+420	.\pac\pac99.f	/^420   IF (CODE(1).EQ.'FINI') GO TO 440$/;"	l	program:PAC99	file:
+420	.\pac\pac99.f	/^420   IF (EX(I,IV).NE.0.0) GO TO 440$/;"	l	subroutine:LEAST	file:
+420	.\pac\pac99.f	/^420   IF (SS.NE.-1.D0) GHRT(NTT)=SS-HHRT(NTT)$/;"	l	subroutine:RECO	file:
+420	.\pac\pac99.f	/^420   IF (TMIN.GE.298. .AND. TMIN.LE.300.) TMIN=298.15$/;"	l	subroutine:GROUP	file:
+420	.\pac\pac99.f	/^420   QTOT=0.$/;"	l	subroutine:LINK1	file:
+420	.\pac\pac99.f	/^420   continue     $/;"	l	subroutine:LOGK	file:
+422	.\pac\pac99.f	/^422   do 470 i=nit,nt$/;"	l	subroutine:GROUP	file:
+425	.\pac\pac99.f	/^425   FORMAT (\/,' A0=',F10.6,5X,'B0=',F10.6,5X,'C0=',F10.6,\/'0IAIBIC=',$/;"	l	subroutine:POLY	file:
+425	.\pac\pac99.f	/^425   FORMAT(\/' >>> T =',F10.2,' OUT OF RANGE OF GROUP DATA. PROPERTIES$/;"	l	subroutine:GROUP	file:
+428	.\pac\pac99.f	/^428   IF(.NOT.CALRHO) GO TO 432$/;"	l	subroutine:POLY	file:
+430	.\cap\cap.f	/^430   term=(htform-enth29)\/rr$/;"	l	program:CAP	file:
+430	.\pac\pac99.f	/^430   CONTINUE$/;"	l	subroutine:LINK1	file:
+430	.\pac\pac99.f	/^430   FORMAT (A4)$/;"	l	program:PAC99	file:
+430	.\pac\pac99.f	/^430   FORMAT (\/,' NOT ALL LEVELS WERE USED.  X IS GREATER THAN 85.')$/;"	l	subroutine:ATOM	file:
+430	.\pac\pac99.f	/^430   FORMAT (\/,' RHO 1=',E15.8,5X,'RHO 2=',E15.8)$/;"	l	subroutine:POLY	file:
+430	.\pac\pac99.f	/^430   SR(NTT)=SR(NTT)+SRCOR$/;"	l	subroutine:RECO	file:
+430	.\pac\pac99.f	/^430   TLN=DLOG(TT)$/;"	l	subroutine:GROUP	file:
+432	.\pac\pac99.f	/^432   IF ( NNU.LE.9 ) THEN$/;"	l	subroutine:POLY	file:
+435	.\pac\pac99.f	/^435   CONTINUE$/;"	l	subroutine:POLY	file:
+44	.\pac\pac99.f	/^44    IF(TEST(8))GO TO 47$/;"	l	subroutine:DELH	file:
+440	.\cap\cap.f	/^440   FORMAT (\/\/'   *Assigned reference phase change at ',               $/;"	l	subroutine:LOGK	file:
+440	.\pac\pac99.f	/^440   FORMAT (\/,' *A CHANGE IN PHASE OF AN ASSIGNED REFERENCE ELEMENT'$/;"	l	subroutine:LOGK	file:
+440	.\pac\pac99.f	/^440   IF (CUTOFF.NE.'TEMP') GO TO 490$/;"	l	subroutine:ATOM	file:
+440	.\pac\pac99.f	/^440   IF (J-L) 450,445,450$/;"	l	subroutine:POLY	file:
+440	.\pac\pac99.f	/^440   IF (TT.GE.TMAX) GO TO 480$/;"	l	subroutine:GROUP	file:
+440	.\pac\pac99.f	/^440   IF(.NOT.NOH(IV))A(I,NF1)=A(I,NF1)+T(L)**(EXI-1.D0)\/(EXI+1.D0)$/;"	l	subroutine:LEAST	file:
+440	.\pac\pac99.f	/^440   TEST(16)=.FALSE.$/;"	l	program:PAC99	file:
+440	.\pac\pac99.f	/^440   TEST(9)=.TRUE.$/;"	l	subroutine:RECO	file:
+445	.\pac\pac99.f	/^445   Y(J,L,I)=Y(I,J,L)$/;"	l	subroutine:POLY	file:
+45	.\cap\cap.f	/^45    FORMAT(2f11.3,i1,8f5.1,f17.3,\/(5d16.9))$/;"	l	subroutine:LOGK	file:
+45	.\cap\cap.f	/^45    continue$/;"	l	program:CAP	file:
+45	.\pac\pac99.f	/^45    ASINDT=298.15D0$/;"	l	subroutine:DELH	file:
+45	.\pac\pac99.f	/^45    TESTW(4)=.TRUE.$/;"	l	subroutine:POLY	file:
+450	.\cap\cap.f	/^450   FORMAT (\/\/'   *Assigned reference phase change at ',               $/;"	l	subroutine:LOGK	file:
+450	.\cea2.f	/^ 450    CONTINUE$/;"	l	subroutine:TRANIN	file:
+450	.\cea2.f	/^ 450    DO j = 1,Ng$/;"	l	subroutine:SEARCH	file:
+450	.\cea2.f	/^ 450    tmelt = 0.$/;"	l	subroutine:ROCKET	file:
+450	.\pac\pac99.f	/^450   CALL ATOM$/;"	l	program:PAC99	file:
+450	.\pac\pac99.f	/^450   FORMAT ('  ',2A1,'-- ',F8.3\/\/\/)$/;"	l	subroutine:LOGK	file:
+450	.\pac\pac99.f	/^450   FORMAT (\/,' IONIZATION POTENTIAL IS MISSING')$/;"	l	subroutine:ATOM	file:
+450	.\pac\pac99.f	/^450   NLAST=NIT-1$/;"	l	subroutine:RECO	file:
+450	.\pac\pac99.f	/^450   Y(I,L,J)=Y(I,J,L)$/;"	l	subroutine:POLY	file:
+455	.\pac\pac99.f	/^455   CONTINUE$/;"	l	subroutine:POLY	file:
+46	.\pac\pac99.f	/^46    HEAT=ASH$/;"	l	subroutine:DELH	file:
+460	.\pac\pac99.f	/^460   CALL PAGEID$/;"	l	subroutine:LOGK	file:
+460	.\pac\pac99.f	/^460   CALL POLY$/;"	l	program:PAC99	file:
+460	.\pac\pac99.f	/^460   DO 700 J=I,NFP$/;"	l	subroutine:LEAST	file:
+460	.\pac\pac99.f	/^460   FORMAT (5(' Y(',I1,',',I1,',',I1,') =',F7.3,3X))$/;"	l	subroutine:POLY	file:
+460	.\pac\pac99.f	/^460   IF (.NOT.TSTCO) GO TO 480$/;"	l	subroutine:RECO	file:
+460	.\pac\pac99.f	/^460   THERM=PI-T(M)\/HCK$/;"	l	subroutine:ATOM	file:
+465	.\pac\pac99.f	/^465   CONTINUE$/;"	l	subroutine:POLY	file:
+47	.\pac\pac99.f	/^47    DO 48 I=1,NT$/;"	l	subroutine:DELH	file:
+470	.\pac\pac99.f	/^470   COEF(I,J)=0.$/;"	l	subroutine:RECO	file:
+470	.\pac\pac99.f	/^470   CONTINUE$/;"	l	subroutine:POLY	file:
+470	.\pac\pac99.f	/^470   IF (EXJ.EQ.0.) GO TO 620$/;"	l	subroutine:LEAST	file:
+470	.\pac\pac99.f	/^470   IF (TEST(14)) then$/;"	l	subroutine:ATOM	file:
+470	.\pac\pac99.f	/^470   NIT=NT+1$/;"	l	program:PAC99	file:
+470	.\pac\pac99.f	/^470   continue$/;"	l	subroutine:GROUP	file:
+475	.\pac\pac99.f	/^475   CONTINUE$/;"	l	subroutine:POLY	file:
+48	.\pac\pac99.f	/^48    HHRT(I)=HHRT(I)-ASINDH\/TI$/;"	l	subroutine:DELH	file:
+480	.\pac\pac99.f	/^480      FORMAT (\/,' ALL LEVELS USED TO THE THERMAL BINDING ENERGY'$/;"	l	subroutine:ATOM	file:
+480	.\pac\pac99.f	/^480   IF (.NOT.TEST(14)) GO TO 505$/;"	l	subroutine:POLY	file:
+480	.\pac\pac99.f	/^480   IF (EXJ.EQ.0.) GO TO 520$/;"	l	subroutine:LEAST	file:
+480	.\pac\pac99.f	/^480   IF (TEST(16)) GO TO 400$/;"	l	program:PAC99	file:
+480	.\pac\pac99.f	/^480   NT=I$/;"	l	subroutine:GROUP	file:
+480	.\pac\pac99.f	/^480   NT=NT+1$/;"	l	subroutine:RECO	file:
+485	.\pac\pac99.f	/^485   FORMAT (\/' X(I,J),G(I,I)' )$/;"	l	subroutine:POLY	file:
+490	.\pac\pac99.f	/^490   IF (GHRT(NTT).NE.(-1.0)) GO TO 495$/;"	l	subroutine:RECO	file:
+490	.\pac\pac99.f	/^490   IF (IABS(NN(K)).gt.NFIXED) THEN$/;"	l	subroutine:ATOM	file:
+490	.\pac\pac99.f	/^490   IF (TEST(9)) GO TO 510$/;"	l	program:PAC99	file:
+490	.\pac\pac99.f	/^490   NLAST=NT$/;"	l	subroutine:GROUP	file:
+490	.\pac\pac99.f	/^490   WRITE (6,495) (X(I,J),J=1,NNU),G(I)$/;"	l	subroutine:POLY	file:
+495	.\pac\pac99.f	/^495   FORMAT (1H ,10F10.4)$/;"	l	subroutine:POLY	file:
+495	.\pac\pac99.f	/^495   ITX=0$/;"	l	subroutine:RECO	file:
+498	.\pac\pac99.f	/^498   IF (TESTW(6)) WRITE (6,500) LELC$/;"	l	subroutine:POLY	file:
+5	.\cap\cap.f	/^5     CONTINUE$/;"	l	program:CAP	file:
+5	.\cea2.f	/^ 5            IF ( Tt.EQ.0. ) THEN$/;"	l	subroutine:REACT	file:
+5	.\misc\oldnew.f	/^5      read(5,50,end=100) name,code,date,el1,n1,el2,n2,el3,n3,el4,n4,$/;"	l	program:OLDNEW	file:
+5	.\pac\pac99.f	/^ 5    FORMAT (\/\/' ENTER PREFIX ONLY FOR INPUT FILE, SUFFIX SHOULD BE', $/;"	l	program:PAC99	file:
+50	.\cap\cap.f	/^50    continue$/;"	l	subroutine:LOGK	file:
+50	.\cap\cap.f	/^50    nts=nts+1$/;"	l	program:CAP	file:
+50	.\cea2.f	/^ 50     CONTINUE$/;"	l	subroutine:SEARCH	file:
+50	.\cea2.f	/^ 50     IF ( Moles ) enj = Pecwt(n)\/Wp(k)$/;"	l	subroutine:HCALC	file:
+50	.\cea2.f	/^ 50     ifrmla = Nfla(n)$/;"	l	subroutine:REACT	file:
+50	.\misc\oldnew.f	/^50     format( A18,A4,A2,4(A2,F3.0),A1,2F10.3,F13.5,1X,1X)$/;"	l	program:OLDNEW	file:
+50	.\pac\pac99.f	/^50    CONTINUE$/;"	l	subroutine:DELH	file:
+50	.\pac\pac99.f	/^50    CONTINUE$/;"	l	subroutine:WILHOI	file:
+50	.\pac\pac99.f	/^50    DO 430 IT=NIT,NT1$/;"	l	subroutine:LINK1	file:
+50	.\pac\pac99.f	/^50    IF (CODE(1).NE.SUB) GO TO 120$/;"	l	subroutine:ATOM	file:
+50	.\pac\pac99.f	/^50    IF (DABS(A(IP,IQ)).GE.NUI) GO TO 100$/;"	l	subroutine:EIGEN	file:
+50	.\pac\pac99.f	/^50    IF (HASIND.OR.HABS) GO TO 55$/;"	l	subroutine:TABLES	file:
+50	.\pac\pac99.f	/^50    IF (INO.NE.0.AND.N.GT.NUM(INO)+3) GO TO 90$/;"	l	subroutine:IDENT	file:
+50	.\pac\pac99.f	/^50    IF (SUB.NE.CODE(1).OR.IC80.NE.NIQUE) GO TO 180$/;"	l	subroutine:IROTOR	file:
+50	.\pac\pac99.f	/^50    LL=1$/;"	l	subroutine:LOGK	file:
+50	.\pac\pac99.f	/^50    NNA=MIN0(NNA+1,6)$/;"	l	subroutine:INPUT	file:
+50	.\pac\pac99.f	/^50    QLN=QLN+QL(1)$/;"	l	subroutine:DERIV	file:
+50	.\pac\pac99.f	/^50    TESTW(5)=.TRUE.$/;"	l	subroutine:POLY	file:
+50	.\pac\pac99.f	/^50    TINTVL=WORD(J)$/;"	l	subroutine:TEMPER	file:
+50	.\pac\pac99.f	/^50    TSTK=.TRUE.$/;"	l	subroutine:RECO	file:
+500	.\b1b2b3.f	/^500   CLOSE (IOTHM)$/;"	l	program:b1b2b3	file:
+500	.\cea2.f	/^ 500    WRITE (IOSCH) jj,trdata$/;"	l	subroutine:SEARCH	file:
+500	.\cea2.f	/^ 500    npr1 = Npr$/;"	l	subroutine:ROCKET	file:
+500	.\cea2.f	/^ 500  IF ( Shkdbg ) WRITE (IOOUT,99010) itr,it2,it1,p21,it2,it1,t21,$/;"	l	subroutine:SHCK	file:
+500	.\cea2.f	/^ 500  IF ( cpcalc ) THEN$/;"	l	subroutine:EQLBRM	file:
+500	.\cea2.f	/^ 500  Readok = .FALSE.$/;"	l	subroutine:INFREE	file:
+500	.\pac\pac99.f	/^500   CONTINUE$/;"	l	subroutine:PUNCH	file:
+500	.\pac\pac99.f	/^500   FORMAT (\/,'1ELECTRONIC LEVEL =',I2)$/;"	l	subroutine:POLY	file:
+500	.\pac\pac99.f	/^500   FORMAT (\/,A6,' IS AN INCORRECT LABEL FOR THE NUMBER --',E16.8,'.$/;"	l	subroutine:RECO	file:
+500	.\pac\pac99.f	/^500   FORMAT(\/' CP\/R,(H-H0)\/RT,AND S\/R ARE NOT READY FOR OUTPUT (MAIN)')$/;"	l	program:PAC99	file:
+500	.\pac\pac99.f	/^500   I=I+1$/;"	l	subroutine:ATOM	file:
+500	.\pac\pac99.f	/^500   RETURN$/;"	l	subroutine:EFTAPE	file:
+500	.\syntax.f	/^ 500  Readok = .FALSE.$/;"	l	subroutine:INFREE	file:
+505	.\pac\pac99.f	/^505   IF (TESTW(5)) TESTW(4)=.TRUE.$/;"	l	subroutine:POLY	file:
+510	.\cap\cap.f	/^510   WRITE (6,520)$/;"	l	subroutine:LOGK	file:
+510	.\pac\pac99.f	/^510   CALL LINK1 (IROT,NIR)$/;"	l	subroutine:POLY	file:
+510	.\pac\pac99.f	/^510   DH0=DH0\/4.184D0$/;"	l	subroutine:LOGK	file:
+510	.\pac\pac99.f	/^510   IF (X-2.0) 550,550,520$/;"	l	subroutine:ATOM	file:
+510	.\pac\pac99.f	/^510   NLAST=NT$/;"	l	program:PAC99	file:
+515	.\pac\pac99.f	/^515   GHRT(I)=GHRT(I)+1.5*DLOG(WEIGHT)+2.5*DLOG(T(I))+SCONST$/;"	l	subroutine:POLY	file:
+520	.\cap\cap.f	/^520   FORMAT (\/\/\/\/\/)$/;"	l	subroutine:LOGK	file:
+520	.\cea2.f	/^ 520      CONTINUE$/;"	l	subroutine:EQLBRM	file:
+520	.\pac\pac99.f	/^520   A(I,J)=A(I,J)+RPT*(ICP+(IH-IS)*DLT)$/;"	l	subroutine:LEAST	file:
+520	.\pac\pac99.f	/^520   CPR(I)=CPR(I)+2.5$/;"	l	subroutine:POLY	file:
+520	.\pac\pac99.f	/^520   IF (XTDQDT(I)-0.1E-9) 530,530,550$/;"	l	subroutine:ATOM	file:
+520	.\pac\pac99.f	/^520   TEST(17)=.TRUE.$/;"	l	subroutine:RECO	file:
+525	.\pac\pac99.f	/^525   SPECH=HHRT(NT1)*ASINDT$/;"	l	subroutine:POLY	file:
+530	.\cap\cap.f	/^530   continue$/;"	l	subroutine:LOGK	file:
+530	.\pac\pac99.f	/^530   IF (.NOT.TEST(14)) GO TO 580$/;"	l	subroutine:ATOM	file:
+530	.\pac\pac99.f	/^530   TEST(19)=.TRUE.$/;"	l	subroutine:POLY	file:
+530	.\pac\pac99.f	/^530   itx=2$/;"	l	subroutine:RECO	file:
+535	.\pac\pac99.f	/^535   TEST(9)=.TRUE.$/;"	l	subroutine:POLY	file:
+540	.\cea2.f	/^ 540      CONTINUE$/;"	l	subroutine:EQLBRM	file:
+540	.\pac\pac99.f	/^540   FORMAT (\/' NOT ALL ASSIGNED LEVELS USED, Q AND DERIVS ARE TOO SMALL$/;"	l	subroutine:ATOM	file:
+540	.\pac\pac99.f	/^540   WRITE (6,545)$/;"	l	subroutine:POLY	file:
+545	.\pac\pac99.f	/^545   FORMAT (\/,' WRONG NUMBER OF NU-S(V-S) (POLY)')$/;"	l	subroutine:POLY	file:
+55	.\cap\cap.f	/^55    continue$/;"	l	program:CAP	file:
+55	.\pac\pac99.f	/^55    FORMAT(6X,18A4,A2)$/;"	l	subroutine:INPUT	file:
+55	.\pac\pac99.f	/^55    IF (.NOT.TEST(17)) GO TO 60$/;"	l	subroutine:DELH	file:
+55	.\pac\pac99.f	/^55    NAME(I,K)=' '$/;"	l	program:PAC99	file:
+55	.\pac\pac99.f	/^55    WRITE (6,60) WEIGHT$/;"	l	subroutine:POLY	file:
+55	.\pac\pac99.f	/^55    if (mtab.eq.-1) go to 60$/;"	l	subroutine:TABLES	file:
+550	.\cea2.f	/^ 550    Awt = Enn*Tt\/(Pp*usq**.5)$/;"	l	subroutine:ROCKET	file:
+550	.\cea2.f	/^ 550    IF ( npure.NE.0.AND.(npure.GE.6.OR.ir.GE.nrec) ) THEN$/;"	l	subroutine:SEARCH	file:
+550	.\pac\pac99.f	/^550   A(I,J)=A(I,J)+(ICP-IS\/EXIJ+DLT*IH\/(EXIJ+1.D0))*T(L)**(EXIJ-1.D0)$/;"	l	subroutine:LEAST	file:
+550	.\pac\pac99.f	/^550   ABEL(1,I)=' '$/;"	l	program:PAC99	file:
+550	.\pac\pac99.f	/^550   WRITE (6,555)$/;"	l	subroutine:POLY	file:
+550	.\pac\pac99.f	/^550   anum1=anuk$/;"	l	subroutine:ATOM	file:
+551	.\pac\pac99.f	/^551   continue$/;"	l	subroutine:ATOM	file:
+555	.\pac\pac99.f	/^555   CONTINUE$/;"	l	subroutine:ATOM	file:
+555	.\pac\pac99.f	/^555   FORMAT (\/,' THE VALUE OF B IS MISSING (POLY)')$/;"	l	subroutine:POLY	file:
+560	.\cea2.f	/^ 560      IF ( numb.GT.maxitn ) THEN$/;"	l	subroutine:EQLBRM	file:
+560	.\pac\pac99.f	/^560   FORMAT (\/,' ALL LEVELS USED THROUGH N =',I5)$/;"	l	subroutine:ATOM	file:
+560	.\pac\pac99.f	/^560   IF ( NTCF.EQ.0 ) GOTO 615$/;"	l	program:PAC99	file:
+560	.\pac\pac99.f	/^560   IF (NDT.EQ.1) GO TO 570$/;"	l	subroutine:RECO	file:
+560	.\pac\pac99.f	/^560   WRITE (6,565)$/;"	l	subroutine:POLY	file:
+565	.\cea2.f	/^ 565          DO i = 1,Nlm$/;"	l	subroutine:EQLBRM	file:
+565	.\pac\pac99.f	/^565   FORMAT (\/,' THE VALUE OF C IS MISSING (POLY)')$/;"	l	subroutine:POLY	file:
+566	.\cea2.f	/^ 566            sum1 = 0.$/;"	l	subroutine:EQLBRM	file:
+570	.\cea2.f	/^ 570          CONTINUE$/;"	l	subroutine:EQLBRM	file:
+570	.\pac\pac99.f	/^570   ABEL(1,IJ)=' '$/;"	l	program:PAC99	file:
+570	.\pac\pac99.f	/^570   FORMAT (\/,' ALL ASSIGNED LEVELS HAVE BEEN USED')$/;"	l	subroutine:ATOM	file:
+570	.\pac\pac99.f	/^570   IDD=ID$/;"	l	subroutine:RECO	file:
+570	.\pac\pac99.f	/^570   TEST(16)=.TRUE.$/;"	l	subroutine:POLY	file:
+575	.\cea2.f	/^ 575          CONTINUE$/;"	l	subroutine:EQLBRM	file:
+575	.\pac\pac99.f	/^575   RETURN$/;"	l	subroutine:POLY	file:
+575	.\pac\pac99.f	/^575   REWIND IOGRP$/;"	l	subroutine:GROUP	file:
+580	.\pac\pac99.f	/^580   IF (IJ.LT.4) GO TO 600$/;"	l	program:PAC99	file:
+580	.\pac\pac99.f	/^580   NN=FWORD(ID)$/;"	l	subroutine:RECO	file:
+580	.\pac\pac99.f	/^580   QSUM=0.0$/;"	l	subroutine:ATOM	file:
+590	.\pac\pac99.f	/^590   CALL TEMPER$/;"	l	program:PAC99	file:
+590	.\pac\pac99.f	/^590   I=I-1$/;"	l	subroutine:ATOM	file:
+590	.\pac\pac99.f	/^590   IF (.NOT.TSTRED) WORD(ID)=WORD(ID)\/R$/;"	l	subroutine:RECO	file:
+6	.\pac\pac99.f	/^6     FORMAT (\/,' WILHOIT EXTRAPOLATION NOT AVAILABLE FOR MONATOMICS')$/;"	l	subroutine:WILHOI	file:
+60	.\b1b2b3.f	/^60	continue$/;"	l	program:b1b2b3	file:
+60	.\cap\cap.f	/^60    CONTINUE$/;"	l	subroutine:LOGK	file:
+60	.\cap\cap.f	/^60    WRITE(6,65) (TEMPS(I),I=1,NTS) $/;"	l	program:CAP	file:
+60	.\cea2.f	/^ 60       Nlm = nj$/;"	l	subroutine:REACT	file:
+60	.\misc\oldnew.f	/^60     format( 5(E15.8),4X,1X )$/;"	l	program:OLDNEW	file:
+60	.\pac\pac99.f	/^60      continue$/;"	l	subroutine:HMAT	file:
+60	.\pac\pac99.f	/^60    DO 190 NTABLE=1,3$/;"	l	subroutine:TABLES	file:
+60	.\pac\pac99.f	/^60    FORMAT (2(F12.3,2F14.6))$/;"	l	subroutine:EFTAPE	file:
+60	.\pac\pac99.f	/^60    FORMAT (\/,' MOLECULAR WT.=',F12.7)$/;"	l	subroutine:GROUP	file:
+60	.\pac\pac99.f	/^60    FORMAT (\/,' MOLECULAR WT.=',F12.7)$/;"	l	subroutine:POLY	file:
+60	.\pac\pac99.f	/^60    FORMAT (\/,' T =',F9.3)$/;"	l	subroutine:LINK1	file:
+60	.\pac\pac99.f	/^60    FORMAT (\/,A4,' IS AN INCORRECT LABEL FOR --',E16.8,'. THUS THE V$/;"	l	subroutine:IROTOR	file:
+60	.\pac\pac99.f	/^60    IF (CODE(1).EQ.'METH'.OR.CODE(1).EQ.'DATE') TEST(7)=.FALSE.$/;"	l	subroutine:INPUT	file:
+60	.\pac\pac99.f	/^60    IF (FWORD(I).LT.0.) GO TO 110$/;"	l	subroutine:ATOM	file:
+60	.\pac\pac99.f	/^60    IF (IQ.EQ.N) GO TO 70$/;"	l	subroutine:EIGEN	file:
+60	.\pac\pac99.f	/^60    IF (NT.EQ.0) GO TO 120$/;"	l	subroutine:TEMPER	file:
+60	.\pac\pac99.f	/^60    INO=INO+1$/;"	l	subroutine:IDENT	file:
+60	.\pac\pac99.f	/^60    J=1$/;"	l	subroutine:LEAST	file:
+60	.\pac\pac99.f	/^60    TEST(I)=.FALSE.$/;"	l	program:PAC99	file:
+60	.\pac\pac99.f	/^60    TS(KC,KR)=SPT(K)$/;"	l	subroutine:WILHOI	file:
+60	.\pac\pac99.f	/^60    TSTK=.TRUE.$/;"	l	subroutine:RECO	file:
+60	.\pac\pac99.f	/^60    if(.not.TEST(15)) go to 65$/;"	l	subroutine:DELH	file:
+600	.\cea2.f	/^ 600    Isv = 0$/;"	l	subroutine:ROCKET	file:
+600	.\cea2.f	/^ 600  RETURN$/;"	l	subroutine:SEARCH	file:
+600	.\cea2.f	/^ 600  Ssum(Npt) = 0.$/;"	l	subroutine:EQLBRM	file:
+600	.\cea2.f	/^ 600  rrho(Npt) = rho52$/;"	l	subroutine:SHCK	file:
+600	.\pac\pac99.f	/^600   CONTINUE$/;"	l	program:PAC99	file:
+600	.\pac\pac99.f	/^600   IF (.NOT.TSTRED) WORD(ID)=WORD(ID)\/R$/;"	l	subroutine:RECO	file:
+600	.\pac\pac99.f	/^600   TMP=0.0$/;"	l	subroutine:ATOM	file:
+604	.\pac\pac99.f	/^604     continue$/;"	l	program:PAC99	file:
+608	.\pac\pac99.f	/^608     continue$/;"	l	program:PAC99	file:
+610	.\pac\pac99.f	/^610   IF(NIT.EQ.1.OR..NOT.TEST(19)) GO TO 615$/;"	l	subroutine:RECO	file:
+610	.\pac\pac99.f	/^610   TMP=TDQDTS\/QSUM$/;"	l	subroutine:ATOM	file:
+610	.\pac\pac99.f	/^610   continue$/;"	l	program:PAC99	file:
+615	.\pac\pac99.f	/^615   IT=0$/;"	l	program:PAC99	file:
+615	.\pac\pac99.f	/^615   TEST(18)=.TRUE.$/;"	l	subroutine:RECO	file:
+620	.\pac\pac99.f	/^620   A(I,J)=A(I,J)+ICP+IH+IS*DLT**2$/;"	l	subroutine:LEAST	file:
+620	.\pac\pac99.f	/^620   FORMAT (\/,' ENTHALPY IS ABSOLUTE--ASINDT SHOULD = 0.')$/;"	l	subroutine:RECO	file:
+620	.\pac\pac99.f	/^620   HHRT(M)=TMP+2.5$/;"	l	subroutine:ATOM	file:
+620	.\pac\pac99.f	/^620   IT=IT+1$/;"	l	program:PAC99	file:
+622	.\pac\pac99.f	/^622   TT=T(IT)$/;"	l	program:PAC99	file:
+624	.\pac\pac99.f	/^624   t(i)=t(i+1)$/;"	l	program:PAC99	file:
+630	.\pac\pac99.f	/^630   FORMAT (1X,'T',F11.2,6X,'CP\/R',F12.6,6X,'H-H0\/RT',F11.6,6X,$/;"	l	subroutine:ATOM	file:
+630	.\pac\pac99.f	/^630   IF (TT.LT.TC(L+1).OR.L.EQ.intvls) GO TO 640$/;"	l	program:PAC99	file:
+630	.\pac\pac99.f	/^630   if(.not.tstred) word(id)=word(id)\/r$/;"	l	subroutine:RECO	file:
+640	.\pac\pac99.f	/^640   FORMAT (1X,'X',F12.7,6X,'QSUM',F12.7,6X,'T(DQ\/DT)S',F13.7,6X,$/;"	l	subroutine:ATOM	file:
+640	.\pac\pac99.f	/^640   IF (.NOT.TSTRED) WORD(ID)=WORD(ID)\/R$/;"	l	subroutine:RECO	file:
+640	.\pac\pac99.f	/^640   cpsave = CPR(IT)$/;"	l	program:PAC99	file:
+65	.\cap\cap.f	/^65    FORMAT (\/\/\/\/ 3x,'THERMODYNAMIC FUNCTIONS CALCULATED FROM COEFFICIE$/;"	l	subroutine:TABLES	file:
+65	.\cap\cap.f	/^65    FORMAT(\/\/'  TEMPERATURE SCHEDULE',\/\/(6f12.3))$/;"	l	program:CAP	file:
+65	.\pac\pac99.f	/^65                FORMAT (\/,' **** g <= 0 ')$/;"	l	subroutine:ATOM	file:
+65	.\pac\pac99.f	/^65    CALL INPUT$/;"	l	subroutine:POLY	file:
+65	.\pac\pac99.f	/^65    FORMAT (\/,1x,4A4,6(3X,4A4))$/;"	l	subroutine:TABLES	file:
+65	.\pac\pac99.f	/^65    READ (5,70) CODE,(ABEL(1,I),ABEL(2,I),WORD(I),I=1,4)$/;"	l	subroutine:GROUP	file:
+65	.\pac\pac99.f	/^65    TOUT(I)=.FALSE.$/;"	l	program:PAC99	file:
+65	.\pac\pac99.f	/^65    hint(i,i) = hint(i,i) + (i-nn)**2 + ST$/;"	l	subroutine:HMAT	file:
+65	.\pac\pac99.f	/^65    if(.not.TEST(1) .or. ivl1.le.idone) go to 310$/;"	l	subroutine:DELH	file:
+65	.\pac\pac99.f	/^65    r=word(i)$/;"	l	subroutine:RECO	file:
+650	.\cea2.f	/^ 650    IF ( ipp.LT.Npp ) GOTO 1100$/;"	l	subroutine:ROCKET	file:
+650	.\pac\pac99.f	/^650   A(I,J)=A(I,J)+(ICP+IH\/(EXIJ+1.D0)+IS*DLT\/EXIJ)*T(L)**EXIJ$/;"	l	subroutine:LEAST	file:
+650	.\pac\pac99.f	/^650   CONTINUE$/;"	l	program:PAC99	file:
+650	.\pac\pac99.f	/^650   CONTINUE$/;"	l	subroutine:ATOM	file:
+650	.\pac\pac99.f	/^650   IF (.NOT.TSTRED) WORD(ID)=WORD(ID)\/R$/;"	l	subroutine:RECO	file:
+66	.\cap\cap.f	/^66      VFM (i) = 'F13.7,'$/;"	l	subroutine:TABLES	file:
+66	.\pac\pac99.f	/^66    TTRANS(INA)=TC(INTVLS+1)$/;"	l	subroutine:DELH	file:
+660	.\pac\pac99.f	/^660   SCOEF=WORD(ID)$/;"	l	subroutine:RECO	file:
+660	.\pac\pac99.f	/^660   SPECH=HHRT(NT1)*ASINDT$/;"	l	subroutine:ATOM	file:
+665	.\pac\pac99.f	/^665   IF ( plot.AND.cfout ) THEN$/;"	l	program:PAC99	file:
+670	.\pac\pac99.f	/^670   CONTINUE$/;"	l	subroutine:RECO	file:
+670	.\pac\pac99.f	/^670   IX=IC80$/;"	l	program:PAC99	file:
+670	.\pac\pac99.f	/^670   TEST(9)=.TRUE.$/;"	l	subroutine:ATOM	file:
+672	.\pac\pac99.f	/^672   n=ntrang$/;"	l	subroutine:RECO	file:
+673	.\pac\pac99.f	/^673   if(abs(trange(i)-ty).gt..01) go to 674$/;"	l	subroutine:RECO	file:
+674	.\pac\pac99.f	/^674   continue$/;"	l	subroutine:RECO	file:
+675	.\pac\pac99.f	/^675   CALL DELH$/;"	l	subroutine:RECO	file:
+677	.\pac\pac99.f	/^677   do 678 i=1,itx-1$/;"	l	subroutine:RECO	file:
+678	.\pac\pac99.f	/^678   tc(ivl1+i+1)=tx(i+1)$/;"	l	subroutine:RECO	file:
+680	.\pac\pac99.f	/^680   CONTINUE$/;"	l	program:PAC99	file:
+680	.\pac\pac99.f	/^680   NWORD=IDD$/;"	l	subroutine:RECO	file:
+680	.\pac\pac99.f	/^680   if (limitL) TEST(9)=.false.$/;"	l	subroutine:ATOM	file:
+690	.\pac\pac99.f	/^690   A(I,J)=A(I,J)+(ICP+IH\/((EXI+1.D0)*(EXJ+1.D0))+IS\/(EXI*EXJ))$/;"	l	subroutine:LEAST	file:
+690	.\pac\pac99.f	/^690   IF (.NOT.TSTCO) GO TO 880$/;"	l	subroutine:RECO	file:
+690	.\pac\pac99.f	/^690   IF (IX.LE.9) GO TO 730$/;"	l	program:PAC99	file:
+70	.\cap\cap.f	/^70        FORMAT (\/\/'           NO HZERO VALUE IS AVAILABLE')$/;"	l	subroutine:TABLES	file:
+70	.\cap\cap.f	/^70    FORMAT (\/\/35x,   '***** NOTE *****',\/\/3x,'The temperature range of$/;"	l	program:CAP	file:
+70	.\cap\cap.f	/^70    LL=1 $/;"	l	subroutine:LOGK	file:
+70	.\pac\pac99.f	/^70      FORMAT (\/,' NO HZERO VALUE IS AVAILABLE')$/;"	l	subroutine:TABLES	file:
+70	.\pac\pac99.f	/^70    CONTINUE$/;"	l	subroutine:HMAT	file:
+70	.\pac\pac99.f	/^70    CONTINUE$/;"	l	subroutine:IDENT	file:
+70	.\pac\pac99.f	/^70    CONTINUE$/;"	l	subroutine:WILHOI	file:
+70	.\pac\pac99.f	/^70    DO 100 I=1,NNU$/;"	l	subroutine:LINK1	file:
+70	.\pac\pac99.f	/^70    EX(J,I)=0.$/;"	l	program:PAC99	file:
+70	.\pac\pac99.f	/^70    FORMAT (1X,F12.3,2F14.6,F12.3,2F14.6)$/;"	l	subroutine:EFTAPE	file:
+70	.\pac\pac99.f	/^70    FORMAT (6X,4(A4,A2,D12.0),I2)$/;"	l	subroutine:INPUT	file:
+70	.\pac\pac99.f	/^70    FORMAT (A4,A2,4(A4,A2,F12.9))$/;"	l	subroutine:GROUP	file:
+70	.\pac\pac99.f	/^70    IF (I.GT.1) GO TO 80$/;"	l	subroutine:IROTOR	file:
+70	.\pac\pac99.f	/^70    IF (IND.NE.1 .OR. NUI.EQ.0.) GO TO 80$/;"	l	subroutine:EIGEN	file:
+70	.\pac\pac99.f	/^70    IF (T(NT).GE.(298.15D0-.0001)) GO TO 80$/;"	l	subroutine:TEMPER	file:
+70	.\pac\pac99.f	/^70    IF(.NOT.TEST(8))GO TO 15$/;"	l	subroutine:DELH	file:
+70	.\pac\pac99.f	/^70    IF(R.GT.8.D0)R=R\/4.184D0$/;"	l	subroutine:RECO	file:
+70	.\pac\pac99.f	/^70    IROT=.FALSE.$/;"	l	subroutine:POLY	file:
+70	.\pac\pac99.f	/^70    M=J$/;"	l	subroutine:LEAST	file:
+70	.\pac\pac99.f	/^70    WRITE (6,80) ABEL(1,I),NN(K)$/;"	l	subroutine:ATOM	file:
+700	.\cea2.f	/^ 700    IF ( Nsub.EQ.i01.AND.Nsup.EQ.0 ) GOTO 1150$/;"	l	subroutine:ROCKET	file:
+700	.\cea2.f	/^ 700  WRITE (IOOUT,99016) Tt,Npt$/;"	l	subroutine:SHCK	file:
+700	.\cea2.f	/^ 700  ncvg = ncvg + 1$/;"	l	subroutine:EQLBRM	file:
+700	.\pac\pac99.f	/^700   CONTINUE$/;"	l	subroutine:LEAST	file:
+700	.\pac\pac99.f	/^700   NT1=NT+1$/;"	l	subroutine:RECO	file:
+702	.\pac\pac99.f	/^702   IF(NOS(IV)) GO TO 722$/;"	l	subroutine:LEAST	file:
+710	.\cea2.f	/^ 710        CONTINUE$/;"	l	subroutine:EQLBRM	file:
+710	.\pac\pac99.f	/^710   I=NIT$/;"	l	subroutine:RECO	file:
+720	.\cea2.f	/^ 720      kk = MAX(0,kg)$/;"	l	subroutine:EQLBRM	file:
+720	.\pac\pac99.f	/^720   FORMAT(\/' ONLY 8 TEMPERATURE INTERVALS ALLOWED FOR LEAST SQUARES')$/;"	l	program:PAC99	file:
+720	.\pac\pac99.f	/^720   IF (T(I).LT.TJ1.OR.T(I).GT.TJ2) GO TO 800$/;"	l	subroutine:RECO	file:
+722	.\pac\pac99.f	/^722   CONTINUE$/;"	l	subroutine:LEAST	file:
+723	.\pac\pac99.f	/^723   IF(EXI.NE.0.)GO TO 724$/;"	l	subroutine:LEAST	file:
+724	.\pac\pac99.f	/^724   TEMPY=TFIX**EXI$/;"	l	subroutine:LEAST	file:
+726	.\pac\pac99.f	/^726   CONTINUE$/;"	l	subroutine:LEAST	file:
+728	.\pac\pac99.f	/^728   K=2$/;"	l	subroutine:LEAST	file:
+730	.\pac\pac99.f	/^730   A(J,I)=A(I,J)$/;"	l	subroutine:LEAST	file:
+730	.\pac\pac99.f	/^730   CPR(I)=0.0$/;"	l	subroutine:RECO	file:
+730	.\pac\pac99.f	/^730   DO 850 I=1,4$/;"	l	program:PAC99	file:
+740	.\cea2.f	/^ 740      En(jkg,Npt) = En(j,Npt)$/;"	l	subroutine:EQLBRM	file:
+740	.\pac\pac99.f	/^740   CONTINUE$/;"	l	subroutine:RECO	file:
+740	.\pac\pac99.f	/^740   FORMAT (\/,A4,' IS AN INCORRECT LABEL FOR THE NUMBER--',E12.4,$/;"	l	program:PAC99	file:
+740	.\pac\pac99.f	/^740   K=K+1$/;"	l	subroutine:LEAST	file:
+75	.\pac\pac99.f	/^75      hint(j+nn,jpi+nn) = hint(j+nn,jpi+nn) + DFLOAT(j*jpi)*.5d0*bn(i)$/;"	l	subroutine:HMAT	file:
+75	.\pac\pac99.f	/^75    FORMAT (\/,1x,A4,A2,4(A4,A2,F12.6))$/;"	l	subroutine:GROUP	file:
+75	.\pac\pac99.f	/^75    TAU(I)=0$/;"	l	subroutine:POLY	file:
+750	.\cea2.f	/^ 750    IF ( itnum.EQ.0 ) THEN$/;"	l	subroutine:ROCKET	file:
+750	.\cea2.f	/^ 750    Sumn = Enn$/;"	l	subroutine:EQLBRM	file:
+750	.\pac\pac99.f	/^750   FORMAT (\/' COEFFICIENTS ADJUSTED TO FIT UPPER PHASE AT',F8.2)$/;"	l	subroutine:RECO	file:
+750	.\pac\pac99.f	/^750   TCONST=WORD(I)$/;"	l	program:PAC99	file:
+760	.\cea2.f	/^ 760      DO i = k,Npr$/;"	l	subroutine:EQLBRM	file:
+760	.\pac\pac99.f	/^760   NTRANG=NTRANG+1$/;"	l	program:PAC99	file:
+760	.\pac\pac99.f	/^760   NTT=0$/;"	l	subroutine:RECO	file:
+770	.\pac\pac99.f	/^770   ANSTPY(I)=0.0$/;"	l	subroutine:LEAST	file:
+770	.\pac\pac99.f	/^770   IF (I.GT.NT) GO TO 790$/;"	l	subroutine:RECO	file:
+780	.\pac\pac99.f	/^780   CONTINUE$/;"	l	subroutine:LEAST	file:
+780	.\pac\pac99.f	/^780   NF(IX)=NF(IX)+1$/;"	l	program:PAC99	file:
+790	.\pac\pac99.f	/^790   A(II,JJ+1)=-A(II,I)*A(I,JJ+1)+A(II,JJ+1)$/;"	l	subroutine:LEAST	file:
+790	.\pac\pac99.f	/^790   CNST=.FALSE.$/;"	l	program:PAC99	file:
+790	.\pac\pac99.f	/^790   SPECH=HHRTT*ASINDT+HCOEF$/;"	l	subroutine:RECO	file:
+8	.\pac\pac99.f	/^8     tstart = 0.d0$/;"	l	subroutine:WILHOI	file:
+80	.\cap\cap.f	/^80        FORMAT(\/\/\/'        Assigned H(T)\/R at',f7.2,' K =',F12.3,' K')$/;"	l	subroutine:TABLES	file:
+80	.\cap\cap.f	/^80    nt=nts$/;"	l	program:CAP	file:
+80	.\cea2.f	/^ 80       DO kk = 1,100$/;"	l	subroutine:REACT	file:
+80	.\pac\pac99.f	/^80        FORMAT(\/,' ASSIGNED H\/R AT',I4,' K =',F12.3,' K'\/)$/;"	l	subroutine:TABLES	file:
+80	.\pac\pac99.f	/^80    BROT(I)=WORD(ID)$/;"	l	subroutine:IROTOR	file:
+80	.\pac\pac99.f	/^80    CALL INPUT$/;"	l	program:PAC99	file:
+80	.\pac\pac99.f	/^80    CONTINUE$/;"	l	subroutine:EFTAPE	file:
+80	.\pac\pac99.f	/^80    CONTINUE$/;"	l	subroutine:LOGK	file:
+80	.\pac\pac99.f	/^80    CONTINUE$/;"	l	subroutine:POLY	file:
+80	.\pac\pac99.f	/^80    Continue$/;"	l	subroutine:HMAT	file:
+80	.\pac\pac99.f	/^80    DO 100 I=J,NTRANG$/;"	l	subroutine:LEAST	file:
+80	.\pac\pac99.f	/^80    FORMAT (\/,' ERROR IN DATA--J =',A6,6X,7HLEVEL =,I3)$/;"	l	subroutine:ATOM	file:
+80	.\pac\pac99.f	/^80    IF (INO.NE.0) GO TO 110$/;"	l	subroutine:IDENT	file:
+80	.\pac\pac99.f	/^80    IF (NUI.LE.NUF) GO TO 120$/;"	l	subroutine:EIGEN	file:
+80	.\pac\pac99.f	/^80    IF(R.LT.8.D0)R=R*4.184D0$/;"	l	subroutine:RECO	file:
+80	.\pac\pac99.f	/^80    M(J)=J$/;"	l	subroutine:WILHOI	file:
+80	.\pac\pac99.f	/^80    NT=NT+1$/;"	l	subroutine:TEMPER	file:
+80	.\pac\pac99.f	/^80    READ (IOSCH,85) CODE,AWD,IC80$/;"	l	subroutine:INPUT	file:
+80	.\pac\pac99.f	/^80    S(I,1)=1.\/(1.-RI(I,1))$/;"	l	subroutine:LINK1	file:
+800	.\cea2.f	/^ 800    appl = pcplt\/(Subar(isub)+(10.587*eln**2+9.454)*eln)$/;"	l	subroutine:ROCKET	file:
+800	.\cea2.f	/^ 800  IF ( Npt.LT.1 ) GOTO 1000$/;"	l	subroutine:SHCK	file:
+800	.\cea2.f	/^ 800  Npr = Npr + 1$/;"	l	subroutine:EQLBRM	file:
+800	.\pac\pac99.f	/^800   CONTINUE$/;"	l	subroutine:LEAST	file:
+800	.\pac\pac99.f	/^800   NOCP(IX)=.TRUE.$/;"	l	program:PAC99	file:
+800	.\pac\pac99.f	/^800   NTT=NIT-1$/;"	l	subroutine:RECO	file:
+81	.\cap\cap.f	/^81        FORMAT(\/\/\/'        Assigned H(T)\/R at',f7.2,' Rankine =',F12.3,$/;"	l	subroutine:TABLES	file:
+810	.\pac\pac99.f	/^810   DO 820 I=1,nex$/;"	l	subroutine:RECO	file:
+810	.\pac\pac99.f	/^810   NOH(IX)=.TRUE.$/;"	l	program:PAC99	file:
+810	.\pac\pac99.f	/^810   if (n.ne.nf1) then$/;"	l	subroutine:LEAST	file:
+815	.\pac\pac99.f	/^815   OLD=.TRUE.$/;"	l	program:PAC99	file:
+818	.\pac\pac99.f	/^818   CPONLY(IX) = .TRUE.$/;"	l	program:PAC99	file:
+82	.\cap\cap.f	/^82    FORMAT(\/\/22x,'COEFFICIENTS FOR FITTED THERMODYNAMIC FUNCTIONS')$/;"	l	program:CAP	file:
+820	.\pac\pac99.f	/^820   EX(I,ivl1)=REX(I)$/;"	l	subroutine:RECO	file:
+820	.\pac\pac99.f	/^820   NOS(IX)=.TRUE.$/;"	l	program:PAC99	file:
+830	.\pac\pac99.f	/^830   IF (IC80.NE.0) GO TO 850$/;"	l	program:PAC99	file:
+830	.\pac\pac99.f	/^830   K=K+1$/;"	l	subroutine:LEAST	file:
+840	.\pac\pac99.f	/^840   CONTINUE$/;"	l	subroutine:RECO	file:
+840	.\pac\pac99.f	/^840   J=J-1$/;"	l	subroutine:LEAST	file:
+840	.\pac\pac99.f	/^840   NOH(J)=NOH(ix)$/;"	l	program:PAC99	file:
+845	.\pac\pac99.f	/^845   IF (.NOT.NOH(IV) .AND. .NOT.NOS(IV)) GO TO 860$/;"	l	subroutine:LEAST	file:
+85	.\cap\cap.f	/^85          FORMAT (\/\/,7X,'T',9X,'Cp\/R',6X,'(H-H0)\/RT',7X,$/;"	l	subroutine:TABLES	file:
+85	.\cap\cap.f	/^85    continue$/;"	l	program:CAP	file:
+85	.\pac\pac99.f	/^85        FORMAT (9X,'T',8X,'CP\/R',8X,'(H-H0)\/RT    (H-H298)\/RT',6X,$/;"	l	subroutine:TABLES	file:
+85	.\pac\pac99.f	/^85    DN(I)=1.0d0$/;"	l	subroutine:POLY	file:
+85	.\pac\pac99.f	/^85    FORMAT (A4,A2,72A1,I2)$/;"	l	subroutine:INPUT	file:
+850	.\cea2.f	/^ 850    dlnp = dlnpe*eln - dlnpe*aeatl$/;"	l	subroutine:ROCKET	file:
+850	.\pac\pac99.f	/^850   CONTINUE$/;"	l	program:PAC99	file:
+850	.\pac\pac99.f	/^850   CONTINUE$/;"	l	subroutine:RECO	file:
+853	.\pac\pac99.f	/^853   FC(2)=FC(2)+ANSTPY(I)*TP\/(EXI+1.D0)$/;"	l	subroutine:LEAST	file:
+855	.\pac\pac99.f	/^855   FC(3)=FC(3)+ANSTPY(I)*TP\/EXI$/;"	l	subroutine:LEAST	file:
+857	.\pac\pac99.f	/^857   CONTINUE$/;"	l	subroutine:LEAST	file:
+86	.\cap\cap.f	/^86          FORMAT (\/\/,7X,'T',9X,'Cp\/R',5X,'(H-H298)\/RT',6X,$/;"	l	subroutine:TABLES	file:
+860	.\pac\pac99.f	/^860   DO 890 I=1,4$/;"	l	program:PAC99	file:
+860	.\pac\pac99.f	/^860   TC(ivl1)=MAX(tc(ivl1),tj1)$/;"	l	subroutine:RECO	file:
+860	.\pac\pac99.f	/^860   intvls=max0(iv,intvls)$/;"	l	subroutine:LEAST	file:
+865	.\pac\pac99.f	/^865   COEF(I,iv)=ANSTPY(I)$/;"	l	subroutine:LEAST	file:
+87	.\cap\cap.f	/^87          FORMAT (\/\/,7X,'T',9X,'Cp\/R',5X,'(H-H537)\/RT',6X,$/;"	l	subroutine:TABLES	file:
+87	.\pac\pac99.f	/^87    CONTINUE$/;"	l	subroutine:POLY	file:
+870	.\pac\pac99.f	/^870   FORMAT (\/,7X,1HT,6X,10HCP\/R INPUT,4X,9HCP\/R CALC,5X,11HHH\/RT INPUT$/;"	l	subroutine:LEAST	file:
+870	.\pac\pac99.f	/^870   NTCF=NTCF+1$/;"	l	program:PAC99	file:
+870	.\pac\pac99.f	/^870   TEST(9)=.TRUE.$/;"	l	subroutine:RECO	file:
+880	.\pac\pac99.f	/^880   FORMAT (1H ,14X,10HINPUT-CALC,5X,8HFRACTION,6X,10HINPUT-CALC,4X,8H$/;"	l	subroutine:LEAST	file:
+880	.\pac\pac99.f	/^880   R=RSAVE$/;"	l	subroutine:RECO	file:
+890	.\pac\pac99.f	/^890   CONTINUE$/;"	l	program:PAC99	file:
+890	.\pac\pac99.f	/^890   TMAXRL(I)=0.$/;"	l	subroutine:LEAST	file:
+90	.\cap\cap.f	/^90          FORMAT(\/\/\/'     Assigned H(T) at',f8.2,' K =',F12.3,$/;"	l	subroutine:TABLES	file:
+90	.\cap\cap.f	/^90    CONTINUE$/;"	l	program:CAP	file:
+90	.\pac\pac99.f	/^90        FORMAT(\/,' ASSIGNED H AT',I4,' K =',F12.3,' J\/MOLE')$/;"	l	subroutine:TABLES	file:
+90	.\pac\pac99.f	/^90    BROT(1)=2.7992774d0\/WORD(ID)$/;"	l	subroutine:IROTOR	file:
+90	.\pac\pac99.f	/^90    CONTINUE$/;"	l	subroutine:INPUT	file:
+90	.\pac\pac99.f	/^90    CONTINUE$/;"	l	subroutine:WILHOI	file:
+90	.\pac\pac99.f	/^90    DO 100 ix=II,220$/;"	l	subroutine:EFTAPE	file:
+90	.\pac\pac99.f	/^90    FORMAT (\/'   U =',E14.7,'   R =',E14.7,'   S =',E14.7,3X,'I =',I3)$/;"	l	subroutine:LINK1	file:
+90	.\pac\pac99.f	/^90    IF (CODE(1).EQ.'FINI') GO TO 490$/;"	l	program:PAC99	file:
+90	.\pac\pac99.f	/^90    IF (T(NT).GE.(WORD(J)-.0001)) GO TO 100$/;"	l	subroutine:TEMPER	file:
+90	.\pac\pac99.f	/^90    IP=IP+1$/;"	l	subroutine:EIGEN	file:
+90	.\pac\pac99.f	/^90    TEST(18)=.FALSE.$/;"	l	subroutine:DELH	file:
+90	.\pac\pac99.f	/^90    TSTRED=.TRUE.$/;"	l	subroutine:RECO	file:
+90	.\pac\pac99.f	/^90    WRITE (6,100)$/;"	l	subroutine:ATOM	file:
+90	.\pac\pac99.f	/^90    WRITE (6,100)$/;"	l	subroutine:IDENT	file:
+90	.\pac\pac99.f	/^90    Y(I,J,K)=0.0$/;"	l	subroutine:POLY	file:
+900	.\cap\cap.f	/^900   write (6,910)$/;"	l	program:CAP	file:
+900	.\cea2.f	/^ 900    Aeat(Npt) = aratio$/;"	l	subroutine:ROCKET	file:
+900	.\cea2.f	/^ 900  IF ( Trnspt ) CALL TRANP$/;"	l	subroutine:SHCK	file:
+900	.\cea2.f	/^ 900  inc = j - Ng$/;"	l	subroutine:EQLBRM	file:
+900	.\pac\pac99.f	/^900   CLOSE (5)$/;"	l	program:PAC99	file:
+900	.\pac\pac99.f	/^900   FC(2)=FC(2)+ANSTPY(I)*TP\/(EXI+1.D0)$/;"	l	subroutine:LEAST	file:
+91	.\cap\cap.f	/^91          FORMAT(\/\/\/'     Assigned H(T) at',f8.2,' Rankine =',F12.3,$/;"	l	subroutine:TABLES	file:
+910	.\cap\cap.f	/^910   FORMAT (\/\/' ***ERROR IN FORMAT OF THE NEXT COEFFICIENT DATA SET -'$/;"	l	program:CAP	file:
+910	.\pac\pac99.f	/^910   FC(3)=FC(3)+ANSTPY(I)*TP\/EXI$/;"	l	subroutine:LEAST	file:
+920	.\pac\pac99.f	/^920   FC(1)=FC(1)+ANSTPY(I)*TP$/;"	l	subroutine:LEAST	file:
+922	.\pac\pac99.f	/^922   IF (.NOT. NOH(IV).OR.CPONLY(IV)) GO TO 924$/;"	l	subroutine:LEAST	file:
+924	.\pac\pac99.f	/^924   IF (.NOT.NOS(IV).OR.CPONLY(IV)) GO TO 926$/;"	l	subroutine:LEAST	file:
+926	.\pac\pac99.f	/^926   GHRT(L)=SR(L)-HHRT(L)$/;"	l	subroutine:LEAST	file:
+95	.\cap\cap.f	/^95    READ(5,100,end=260) (rec1(i),i=1,4),record$/;"	l	program:CAP	file:
+95	.\pac\pac99.f	/^ 95   SRCOR=SRCOR+WORD(I)$/;"	l	subroutine:RECO	file:
+95	.\pac\pac99.f	/^95    IF (CODE(1).NE.SUB) GO TO 323$/;"	l	subroutine:GROUP	file:
+95	.\pac\pac99.f	/^95    IF (CODE(1).NE.SUB.OR.LELC.NE.IC80) GO TO 325$/;"	l	subroutine:POLY	file:
+950	.\cea2.f	/^ 950    IF ( Trnspt ) CALL TRANP$/;"	l	subroutine:ROCKET	file:
+950	.\pac\pac99.f	/^950   DO 990 I=1,4$/;"	l	subroutine:LEAST	file:
+960	.\pac\pac99.f	/^960   FORMAT (\/' ERROR IN DATA.  LEAST SQUARES NOT COMPLETED, (LEAST)')$/;"	l	subroutine:LEAST	file:
+970	.\pac\pac99.f	/^970   IF (F(I).GT.1.D-06) GO TO 974$/;"	l	subroutine:LEAST	file:
+974	.\pac\pac99.f	/^974   RELERR(I)=ERR(I)\/F(I)$/;"	l	subroutine:LEAST	file:
+976	.\pac\pac99.f	/^976   ABSREL=DABS(RELERR(I))$/;"	l	subroutine:LEAST	file:
+980	.\pac\pac99.f	/^980   IF (ABSREL.LT.MAXREL(I)) GO TO 990$/;"	l	subroutine:LEAST	file:
+990	.\pac\pac99.f	/^990   CONTINUE$/;"	l	subroutine:LEAST	file:
+99001	.\cea2.f	/^99001 FORMAT (' CASE = ',a15)$/;"	l	subroutine:OUT1	file:
+99001	.\cea2.f	/^99001 FORMAT (132A1)$/;"	l	subroutine:INFREE	file:
+99001	.\cea2.f	/^99001 FORMAT (2A16,2X,A1,I1,A1,I1)$/;"	l	subroutine:UTRAN	file:
+99001	.\cea2.f	/^99001 FORMAT (4F10.3,a10)$/;"	l	subroutine:UTHERM	file:
+99001	.\cea2.f	/^99001 FORMAT (\/'   *** INPUT FOR SHOCK PROBLEMS ***')$/;"	l	subroutine:SHCK	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' FATAL ERROR!! EITHER mdot OR ac\/at MISSING ',$/;"	l	subroutine:ROCKET	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' FROZEN DID NOT CONVERGE IN 8 ITERATIONS (FROZEN)')$/;"	l	subroutine:FROZEN	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' O\/F = ',F10.6)$/;"	l	subroutine:NEWOF	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' POINT ITN',6X,'T',10X,4(A4,8X)\/(18X,5(A4,8X)))$/;"	l	subroutine:EQLBRM	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' REACTANT ',A15,'HAS BEEN DEFINED FOR THE TEMPERATURE', $/;"	l	subroutine:REACT	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' REACTANTS MUST BE GASEOUS FOR THIS PROBLEM (HCALC)')$/;"	l	subroutine:HCALC	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' T EST.=',F8.2\/11X,'P\/P1',17X,'T\/T1')$/;"	l	subroutine:DETON	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' WARNING!!  ',A15,' NOT A PRODUCT IN thermo.lib FILE ',$/;"	l	subroutine:SEARCH	file:
+99001	.\cea2.f	/^99001 FORMAT (\/' WARNING!!  MAXIMUM ALLOWED NO. OF SPECIES',I3,$/;"	l	subroutine:TRANIN	file:
+99001	.\cea2.f	/^99001 FORMAT (\/,\/)$/;"	l	subroutine:INPUT	file:
+99001	.\cea2.f	/^99001 FORMAT (\/\/' ENTER INPUT FILE NAME WITHOUT .inp EXTENSION.'\/ $/;"	l	file:
+99001	.\cea2.f	/^99001 FORMAT (\/\/\/\/15X,'THERMODYNAMIC EQUILIBRIUM PROPERTIES AT ASSIGNED'$/;"	l	subroutine:THERMP	file:
+99001	.\cea2.f	/^99001 FORMAT (\/\/\/\/\/13x,' THEORETICAL ROCKET PERFORMANCE ASSUMING',$/;"	l	subroutine:RKTOUT	file:
+99001	.\misc\makelib.f	/^99001 FORMAT (4F10.3,a10)$/;"	l	program:MAKELIB	file:
+99001	.\pac\pac99.f	/^99001 FORMAT (\/' ***************************************************',$/;"	l	program:PAC99	file:
+99001	.\syntax.f	/^99001 FORMAT (' FUEL NAMES MUST NOT START WITH A NUMERIC' ) $/;"	l	file:
+99001	.\syntax.f	/^99001 FORMAT (132A1)$/;"	l	subroutine:INFREE	file:
+99002	.\cea2.f	/^99002 FORMAT ('  WARNING!!  DID NOT RECOGNIZE ',A15,' (INPUT)'\/)$/;"	l	subroutine:INPUT	file:
+99002	.\cea2.f	/^99002 FORMAT (1X,A1,2F9.2,4E15.8)$/;"	l	subroutine:UTRAN	file:
+99002	.\cea2.f	/^99002 FORMAT (1x,80A1)$/;"	l	subroutine:INFREE	file:
+99002	.\cea2.f	/^99002 FORMAT (I5,2E20.8)$/;"	l	subroutine:DETON	file:
+99002	.\cea2.f	/^99002 FORMAT (\/' COEFFICIENTS FOR ',A15,' ARE NOT AVAILABLE (HCALC)')$/;"	l	subroutine:HCALC	file:
+99002	.\cea2.f	/^99002 FORMAT (\/' INCDEQ =',L2,'   REFLEQ =',L2,'   INCDFZ =',L2,$/;"	l	subroutine:SHCK	file:
+99002	.\cea2.f	/^99002 FORMAT (\/' NOTE! REACTANT ',A15,'HAS BEEN DEFINED FOR ',$/;"	l	subroutine:REACT	file:
+99002	.\cea2.f	/^99002 FORMAT (\/' PRODUCT SPECIES CONTAINING THE ELEMENT',A3,' MISSING',$/;"	l	subroutine:SEARCH	file:
+99002	.\cea2.f	/^99002 FORMAT (\/' T DERIV MATRIX')$/;"	l	subroutine:EQLBRM	file:
+99002	.\cea2.f	/^99002 FORMAT (\/' WARNING!!  nfz NOT ALLOWED TO BE > 2 IF THE TOTAL',\/,$/;"	l	subroutine:ROCKET	file:
+99002	.\cea2.f	/^99002 FORMAT (\/,23X,'EFFECTIVE FUEL',5X,'EFFECTIVE OXIDANT',8X,$/;"	l	subroutine:NEWOF	file:
+99002	.\cea2.f	/^99002 FORMAT (\/11x,' COMPOSITION DURING EXPANSION FROM FINITE AREA',$/;"	l	subroutine:RKTOUT	file:
+99002	.\cea2.f	/^99002 FORMAT (\/13X,'REACTANT',20x,a11,'      ENERGY',6x,'TEMP')$/;"	l	subroutine:OUT1	file:
+99002	.\cea2.f	/^99002 FORMAT (\/\/\/\/9X,$/;"	l	subroutine:THERMP	file:
+99002	.\cea2.f	/^99002 FORMAT (a)$/;"	l	file:
+99002	.\cea2.f	/^99002 FORMAT (a15,a65)$/;"	l	subroutine:UTHERM	file:
+99002	.\misc\makelib.f	/^99002 FORMAT (a15,a65)$/;"	l	program:MAKELIB	file:
+99002	.\pac\pac99.f	/^99002 FORMAT (11x,'NASA-LEWIS PROPERTIES AND COEFFICIENTS PROGRAM,',$/;"	l	program:PAC99	file:
+99002	.\syntax.f	/^99002 FORMAT (' WARNING!!  DID NOT RECOGNIZE ',A15) $/;"	l	file:
+99002	.\syntax.f	/^99002 FORMAT (1x,120A1)$/;"	l	subroutine:INFREE	file:
+99003	.\cea2.f	/^99003 FORMAT (' INTERNAL ENERGY',11X,'u(2)\/R',14X,'u(1)\/R',14X,'u0\/R')$/;"	l	subroutine:NEWOF	file:
+99003	.\cea2.f	/^99003 FORMAT (1X,A16,'INSERTED')$/;"	l	file:
+99003	.\cea2.f	/^99003 FORMAT (57X,' CAL\/MOL ',6x,'K')$/;"	l	subroutine:OUT1	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' ERROR IN DATA FOR ',A15,' CHECK NAME AND TEMPERATURE',$/;"	l	subroutine:HCALC	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' ERROR IN PROCESSING trans.inp AT OR NEAR (UTRAN)',\/1X,$/;"	l	subroutine:UTRAN	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' FATAL ERROR IN INPUT FORMAT (INFREE)')$/;"	l	subroutine:INFREE	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' INPUT VALUE OF mdot\/a =',F12.3,' IS TOO LARGE.'\/$/;"	l	subroutine:ROCKET	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' ITER =',I2,5X,'P\/P1 =',E15.8,\/7X,'T\/T1 =',E15.8,5X,$/;"	l	subroutine:DETON	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' NOTE: ',A15,' IS EITHER NOT IN thermo.lib OR THE',$/;"	l	subroutine:REACT	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' P DERIV MATRIX')$/;"	l	subroutine:EQLBRM	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' WARNING!!  LITERAL EXPECTED FOR ',A15,'(INPUT)')$/;"	l	subroutine:INPUT	file:
+99003	.\cea2.f	/^99003 FORMAT (\/' WARNING!!  ONLY ',I2,' u1 OR mach1 VALUES ALLOWED ',$/;"	l	subroutine:SHCK	file:
+99003	.\cea2.f	/^99003 FORMAT (\/10x,' COMPOSITION DURING EXPANSION FROM INFINITE AREA',$/;"	l	subroutine:RKTOUT	file:
+99003	.\cea2.f	/^99003 FORMAT (\/2x,'SPECIES BEING CONSIDERED IN THIS SYSTEM',$/;"	l	subroutine:SEARCH	file:
+99003	.\cea2.f	/^99003 FORMAT (\/36X,' VOLUME'\/)$/;"	l	subroutine:THERMP	file:
+99003	.\cea2.f	/^99003 FORMAT (i2,1x,a6,1x,5(a2,f6.2),i2,f13.5,f15.3)$/;"	l	subroutine:UTHERM	file:
+99003	.\misc\makelib.f	/^99003 FORMAT (i2,1x,a6,1x,5(a2,f6.2),i2,f13.5,f15.3)$/;"	l	program:MAKELIB	file:
+99003	.\syntax.f	/^99003 FORMAT (' WARNING!!  LITERAL EXPECTED FOR ',A15) $/;"	l	file:
+99003	.\syntax.f	/^99003 FORMAT (\/' FATAL ERROR IN INPUT FORMAT (INFREE)') $/;"	l	subroutine:INFREE	file:
+99004	.\cea2.f	/^99004 FORMAT (' ',a15,2x,a6,e15.6,2x,a65)$/;"	l	subroutine:UTHERM	file:
+99004	.\cea2.f	/^99004 FORMAT (' ENTHALPY',18X,'h(2)\/R',14X,'h(1)\/R',15X,'h0\/R')$/;"	l	subroutine:NEWOF	file:
+99004	.\cea2.f	/^99004 FORMAT (3(2X,A6,2X,A15))$/;"	l	subroutine:SEARCH	file:
+99004	.\cea2.f	/^99004 FORMAT (57X,'KJ\/KG-MOL',6x,'K')$/;"	l	subroutine:OUT1	file:
+99004	.\cea2.f	/^99004 FORMAT (\/$/;"	l	subroutine:DETON	file:
+99004	.\cea2.f	/^99004 FORMAT (\/'  ITERATION',9X,'PC',7X,'CONTRACTION RATIO')$/;"	l	subroutine:ROCKET	file:
+99004	.\cea2.f	/^99004 FORMAT (\/' ITERATION',I3,6X,'MATRIX ')$/;"	l	subroutine:EQLBRM	file:
+99004	.\cea2.f	/^99004 FORMAT (\/' REACTANT AMOUNT MISSING (INPUT)')$/;"	l	subroutine:INPUT	file:
+99004	.\cea2.f	/^99004 FORMAT (\/' TEMPERATURE MISSING FOR REACTANT NO.',I2,'(REACT)')$/;"	l	subroutine:REACT	file:
+99004	.\cea2.f	/^99004 FORMAT (\/' WARNING!!  UNACCEPTABLE NUMBER ',A15,' (INFREE)')$/;"	l	subroutine:INFREE	file:
+99004	.\cea2.f	/^99004 FORMAT (\/' WARNING!!!',A16,'NOT FOUND FOR INSERTION')$/;"	l	file:
+99004	.\cea2.f	/^99004 FORMAT (\/1p,' U1 =   ',5E13.6,\/(8X,5E13.6))$/;"	l	subroutine:SHCK	file:
+99004	.\cea2.f	/^99004 FORMAT (\/28X,'TEMPERATURE AND VOLUME'\/)$/;"	l	subroutine:THERMP	file:
+99004	.\cea2.f	/^99004 FORMAT (\/\/\/\/\/10x,' THEORETICAL ROCKET PERFORMANCE ASSUMING FROZEN'$/;"	l	subroutine:RKTOUT	file:
+99004	.\misc\makelib.f	/^99004 FORMAT (' ',a15,2x,a6,e15.6,2x,a65)$/;"	l	program:MAKELIB	file:
+99004	.\syntax.f	/^99004 FORMAT (' REACTANT AMOUNT MISSING (INPUT)') $/;"	l	file:
+99004	.\syntax.f	/^99004 FORMAT (\/' WARNING!!  UNACCEPTABLE NUMBER ',A15,' (INFREE)')$/;"	l	subroutine:INFREE	file:
+99005	.\cea2.f	/^99005 FORMAT (' (KG-MOL)(K)\/KG',4X,E18.8,2E20.8)$/;"	l	subroutine:NEWOF	file:
+99005	.\cea2.f	/^99005 FORMAT (1x,1p,20E12.4)$/;"	l	file:
+99005	.\cea2.f	/^99005 FORMAT (2F11.3,i1,8F5.1,2x,f15.3)$/;"	l	subroutine:UTHERM	file:
+99005	.\cea2.f	/^99005 FORMAT (33X,'AFTER POINT',I2)$/;"	l	subroutine:RKTOUT	file:
+99005	.\cea2.f	/^99005 FORMAT (42X,'(SEE NOTE)      CAL\/MOL       K  ')$/;"	l	subroutine:OUT1	file:
+99005	.\cea2.f	/^99005 FORMAT (5X,I2,7X,F12.2,3X,F12.6)$/;"	l	subroutine:ROCKET	file:
+99005	.\cea2.f	/^99005 FORMAT (\/' INSUFFICIENT STORAGE FOR PRODUCTS-SEE RP-1311,',$/;"	l	subroutine:SEARCH	file:
+99005	.\cea2.f	/^99005 FORMAT (\/' MOLES AND WEIGHT PERCENTS SHOULD NOT BE MIXED (INPUT)')$/;"	l	subroutine:INPUT	file:
+99005	.\cea2.f	/^99005 FORMAT (\/' SOLUTION VECTOR',\/,6x,5A15\/8X,5A15)$/;"	l	subroutine:EQLBRM	file:
+99005	.\cea2.f	/^99005 FORMAT (\/1p,' MACH1 =',5E13.6,\/(8X,5E13.6))$/;"	l	subroutine:SHCK	file:
+99005	.\cea2.f	/^99005 FORMAT (\/1x,a2,' NOT FOUND IN BLOCKDATA (REACT)')$/;"	l	subroutine:REACT	file:
+99005	.\cea2.f	/^99005 FORMAT (\/30X,'ENTROPY AND VOLUME'\/)$/;"	l	subroutine:THERMP	file:
+99005	.\cea2.f	/^99005 FORMAT (\/\/,21X,'DETONATION PROPERTIES OF AN IDEAL REACTING GAS')$/;"	l	subroutine:DETON	file:
+99005	.\misc\makelib.f	/^99005 FORMAT (2F11.3,i1,8F5.1,2x,f15.3)$/;"	l	program:MAKELIB	file:
+99005	.\syntax.f	/^99005 FORMAT (' MOLES AND WEIGHT PERCENTS SHOULD NOT BE MIXED') $/;"	l	file:
+99006	.\cea2.f	/^99006 FORMAT (' ITER',3X,'TEST',3X,'ASSIGNED PINJ',1x,'CALC PINJ',5X,$/;"	l	subroutine:ROCKET	file:
+99006	.\cea2.f	/^99006 FORMAT (25X,'AT AN ASSIGNED TEMPERATURE  ')$/;"	l	subroutine:RKTOUT	file:
+99006	.\cea2.f	/^99006 FORMAT (3X,5E15.6)$/;"	l	subroutine:EQLBRM	file:
+99006	.\cea2.f	/^99006 FORMAT (42X,'(SEE NOTE)     KJ\/KG-MOL      K  ')$/;"	l	subroutine:OUT1	file:
+99006	.\cea2.f	/^99006 FORMAT (5D16.8\/2D16.8,16x,2D16.8)$/;"	l	subroutine:UTHERM	file:
+99006	.\cea2.f	/^99006 FORMAT (\/' ***************************************************',$/;"	l	file:
+99006	.\cea2.f	/^99006 FORMAT (\/' KG-FORM.WT.\/KG',13X,'bi(2)',15X,'bi(1)',15X,'b0i')$/;"	l	subroutine:NEWOF	file:
+99006	.\cea2.f	/^99006 FORMAT (\/' REACTANT TEMPERATURE MISSING (INPUT) ')$/;"	l	subroutine:INPUT	file:
+99006	.\cea2.f	/^99006 FORMAT (\/' SPECIES WITH TRANSPORT PROPERTIES'\/\/8X,'PURE SPECIES'\/)$/;"	l	subroutine:SEARCH	file:
+99006	.\cea2.f	/^99006 FORMAT (\/' UNBURNED GAS'\/)$/;"	l	subroutine:DETON	file:
+99006	.\cea2.f	/^99006 FORMAT (\/' WARNING!!  AMOUNT MISSING FOR REACTANT',I3,'.',$/;"	l	subroutine:REACT	file:
+99006	.\cea2.f	/^99006 FORMAT (\/34X,' PRESSURES'\/)$/;"	l	subroutine:THERMP	file:
+99006	.\cea2.f	/^99006 FORMAT (\/\/\/\/25X,'SHOCK WAVE PARAMETERS ASSUMING')$/;"	l	subroutine:SHCK	file:
+99006	.\misc\makelib.f	/^99006 FORMAT (5D16.8\/2D16.8,16x,2D16.8)$/;"	l	program:MAKELIB	file:
+99006	.\syntax.f	/^99006 FORMAT (' REACTANT TEMPERATURE MISSING') $/;"	l	file:
+99007	.\cea2.f	/^99007 FORMAT (' Ac\/At =',F8.4,6x,'Pinj\/Pinf =',F10.6)$/;"	l	subroutine:RKTOUT	file:
+99007	.\cea2.f	/^99007 FORMAT (1X,A16,3E20.8)$/;"	l	subroutine:NEWOF	file:
+99007	.\cea2.f	/^99007 FORMAT (1x,a8,4x,a15,11x,f12.7,f14.3,f11.3)$/;"	l	subroutine:OUT1	file:
+99007	.\cea2.f	/^99007 FORMAT (4(2x,A16))$/;"	l	subroutine:SEARCH	file:
+99007	.\cea2.f	/^99007 FORMAT (I3,F10.6,1x,4F12.2,2F9.5)$/;"	l	subroutine:ROCKET	file:
+99007	.\cea2.f	/^99007 FORMAT (\/' AMOUNT MISSING FOR REACTANT NO.',I2,'(REACT)')$/;"	l	subroutine:REACT	file:
+99007	.\cea2.f	/^99007 FORMAT (\/' BURNED GAS'\/)$/;"	l	subroutine:DETON	file:
+99007	.\cea2.f	/^99007 FORMAT (\/' DERIVATIVE MATRIX SINGULAR (EQLBRM)')$/;"	l	subroutine:EQLBRM	file:
+99007	.\cea2.f	/^99007 FORMAT (\/' ERROR IN PROCESSING thermo.inp AT OR NEAR ',A15,$/;"	l	subroutine:UTHERM	file:
+99007	.\cea2.f	/^99007 FORMAT (\/' WARNING!! ',A15,' NOT RECOGNIZED (INPUT)')$/;"	l	subroutine:INPUT	file:
+99007	.\cea2.f	/^99007 FORMAT (\/,16X,' EQUILIBRIUM COMPOSITION FOR INCIDENT SHOCKED',$/;"	l	subroutine:SHCK	file:
+99007	.\cea2.f	/^99007 FORMAT (\/,9x,'NASA-GLENN CHEMICAL EQUILIBRIUM PROGRAM CEA2,',$/;"	l	file:
+99007	.\cea2.f	/^99007 FORMAT (\/27X,'TEMPERATURE AND PRESSURE'\/)$/;"	l	subroutine:THERMP	file:
+99007	.\misc\makelib.f	/^99007 FORMAT (\/' ERROR IN PROCESSING thermo.inp AT OR NEAR ',A15,$/;"	l	program:MAKELIB	file:
+99007	.\syntax.f	/^99007 FORMAT (' WARNING!! ',A15,' NOT RECOGNIZED')$/;"	l	file:
+99008	.\cea2.f	/^99008 FORMAT (' MDOT\/Ac =',F10.3,' (KG\/S)\/M**2',6x,'Pinj\/Pinf =',F10.6)$/;"	l	subroutine:RKTOUT	file:
+99008	.\cea2.f	/^99008 FORMAT (' NEW PC = ',F10.2,2X,'NEW ACAT = ',F9.6,2X,'PJRAT =',$/;"	l	subroutine:ROCKET	file:
+99008	.\cea2.f	/^99008 FORMAT (\/'     BINARY INTERACTIONS'\/)$/;"	l	subroutine:SEARCH	file:
+99008	.\cea2.f	/^99008 FORMAT (\/' DETONATION PARAMETERS'\/)$/;"	l	subroutine:DETON	file:
+99008	.\cea2.f	/^99008 FORMAT (\/' LOW TEMPERATURE IMPLIES A CONDENSED SPECIES SHOULD HA',$/;"	l	subroutine:EQLBRM	file:
+99008	.\cea2.f	/^99008 FORMAT (\/' OPTIONS: TP=',L1,'  HP=',L1,'  SP=',L1,'  TV=',L1,$/;"	l	subroutine:INPUT	file:
+99008	.\cea2.f	/^99008 FORMAT (\/' O\/F=',F11.5,2X,'%FUEL=',F10.6,2X,'R,EQ.RATIO=',F9.6,2X,$/;"	l	subroutine:OUT1	file:
+99008	.\cea2.f	/^99008 FORMAT (\/,'OXIDANT NOT PERMITTED WHEN SPECIFYING 100% FUEL(main)')$/;"	l	file:
+99008	.\cea2.f	/^99008 FORMAT (\/,17X,' FROZEN COMPOSITION FOR INCIDENT SHOCKED',$/;"	l	subroutine:SHCK	file:
+99008	.\cea2.f	/^99008 FORMAT (\/29X,'ENTROPY AND PRESSURE'\/)$/;"	l	subroutine:THERMP	file:
+99008	.\cea2.f	/^99008 FORMAT (\/4x,'REACTANT',10x,A7,3X,'(ENERGY\/R),K',3X,$/;"	l	subroutine:REACT	file:
+99009	.\cea2.f	/^99009 FORMAT (' END OF CHAMBER ITERATIONS')$/;"	l	subroutine:ROCKET	file:
+99009	.\cea2.f	/^99009 FORMAT ('#',2x,20A12)$/;"	l	file:
+99009	.\cea2.f	/^99009 FORMAT ()$/;"	l	subroutine:OUT1	file:
+99009	.\cea2.f	/^99009 FORMAT (1x,a1,': ',a15,f10.6,e15.6,f9.2,f8.4,\/8x,5(2x,a2,f8.5))$/;"	l	subroutine:REACT	file:
+99009	.\cea2.f	/^99009 FORMAT (5X,2A16)$/;"	l	subroutine:SEARCH	file:
+99009	.\cea2.f	/^99009 FORMAT (\/' INITIAL GAS (1)')$/;"	l	subroutine:SHCK	file:
+99009	.\cea2.f	/^99009 FORMAT (\/' SINGULAR MATRIX, ITERATION',I3,'  VARIABLE',I3,$/;"	l	subroutine:EQLBRM	file:
+99009	.\cea2.f	/^99009 FORMAT (\/' T,K =',7F11.4)$/;"	l	subroutine:INPUT	file:
+99009	.\cea2.f	/^99009 FORMAT (\/' THERMODYNAMIC PROPERTIES'\/)$/;"	l	subroutine:THERMP	file:
+99009	.\cea2.f	/^99009 FORMAT (\/1x,A3,' =',F8.1,' PSIA')$/;"	l	subroutine:RKTOUT	file:
+99009	.\cea2.f	/^99009 FORMAT (\/\/\/)$/;"	l	subroutine:DETON	file:
+99010	.\cea2.f	/^99010 FORMAT ()$/;"	l	subroutine:SEARCH	file:
+99010	.\cea2.f	/^99010 FORMAT (\/' ITR NO.=',I3,3X,'P',I1,'\/P',I1,' =',F9.4,3X,'T',I1,$/;"	l	subroutine:SHCK	file:
+99010	.\cea2.f	/^99010 FORMAT (\/' WARNING!!  DIFFICULTY IN LOCATING THROAT (ROCKET)')$/;"	l	subroutine:ROCKET	file:
+99010	.\cea2.f	/^99010 FORMAT (\/' WARNING!! POINT',I3,$/;"	l	subroutine:EQLBRM	file:
+99010	.\cea2.f	/^99010 FORMAT (\/' YOUR ASSIGNED TEMPERATURE',F8.2,'K FOR ',A15,\/,$/;"	l	subroutine:REACT	file:
+99010	.\cea2.f	/^99010 FORMAT (\/,17X,'INJECTOR  COMB END  THROAT',10(5X,A4))$/;"	l	subroutine:RKTOUT	file:
+99010	.\cea2.f	/^99010 FORMAT (\/1p,' TRACE=',E9.2,'  S\/R=',E13.6,'  H\/R=',E13.6,'  U\/R=',$/;"	l	subroutine:INPUT	file:
+99010	.\cea2.f	/^99010 FORMAT (\/1x,A4,' FRACTIONS'\/)$/;"	l	subroutine:OUT1	file:
+99010	.\cea2.f	/^99010 FORMAT (\/\/\/\/)$/;"	l	subroutine:THERMP	file:
+99010	.\pac\pac99.f	/^99010 FORMAT (1x,1p,E12.4,2E13.6,5E12.4)$/;"	l	program:PAC99	file:
+99011	.\cea2.f	/^99011 FORMAT (1x,A15,F9.5,12F9.5)$/;"	l	subroutine:OUT1	file:
+99011	.\cea2.f	/^99011 FORMAT (\/' G(I,J)  ',3E15.8)$/;"	l	subroutine:SHCK	file:
+99011	.\cea2.f	/^99011 FORMAT (\/' SPECIFIC VOLUME,M**3\/KG =',1p,(4E14.7))$/;"	l	subroutine:INPUT	file:
+99011	.\cea2.f	/^99011 FORMAT (\/' T=',E15.8,' ENN=',E15.8,' ENNL=',E15.8,' PP=',E15.8,$/;"	l	subroutine:EQLBRM	file:
+99011	.\cea2.f	/^99011 FORMAT (\/' USQ=',E15.8,5X,'PVG=',E15.8)$/;"	l	subroutine:ROCKET	file:
+99011	.\cea2.f	/^99011 FORMAT (\/17X,'CHAMBER   THROAT',11(5X,A4))$/;"	l	subroutine:RKTOUT	file:
+99012	.\cea2.f	/^99012 FORMAT ()$/;"	l	subroutine:RKTOUT	file:
+99012	.\cea2.f	/^99012 FORMAT (\/'  * THERMODYNAMIC PROPERTIES FITTED TO',F7.0,'K')$/;"	l	subroutine:OUT1	file:
+99012	.\cea2.f	/^99012 FORMAT (\/' AMBDA SET BY ',A16)$/;"	l	subroutine:EQLBRM	file:
+99012	.\cea2.f	/^99012 FORMAT (\/' Pc,BAR =',7F13.6)$/;"	l	subroutine:INPUT	file:
+99012	.\cea2.f	/^99012 FORMAT (\/' WARNING!!  DISCONTINUITY AT THE THROAT (ROCKET)')$/;"	l	subroutine:ROCKET	file:
+99012	.\cea2.f	/^99012 FORMAT (\/' X       ',2E15.8)$/;"	l	subroutine:SHCK	file:
+99013	.\cea2.f	/^99013 FORMAT (' Pinf\/Pt =',F9.6)$/;"	l	subroutine:ROCKET	file:
+99013	.\cea2.f	/^99013 FORMAT (' VOLUME=',E15.8,'CC\/G')$/;"	l	subroutine:EQLBRM	file:
+99013	.\cea2.f	/^99013 FORMAT (\/'    PRODUCTS WHICH WERE CONSIDERED BUT WHOSE ',A4,$/;"	l	subroutine:OUT1	file:
+99013	.\cea2.f	/^99013 FORMAT (\/' HSUM HS UU U2 ',4E15.8)$/;"	l	subroutine:SHCK	file:
+99013	.\cea2.f	/^99013 FORMAT (\/' PERFORMANCE PARAMETERS'\/)$/;"	l	subroutine:RKTOUT	file:
+99013	.\cea2.f	/^99013 FORMAT (\/' Pc\/P =',9F11.4)$/;"	l	subroutine:INPUT	file:
+99014	.\cea2.f	/^99014 FORMAT (1x,A4,' FRACTIONS'\/)$/;"	l	subroutine:RKTOUT	file:
+99014	.\cea2.f	/^99014 FORMAT (5(1x,A15))$/;"	l	subroutine:OUT1	file:
+99014	.\cea2.f	/^99014 FORMAT (\/' MAX.COR.=',e13.6,' X(1)=',e13.6,' X(2)=',e13.6)$/;"	l	subroutine:SHCK	file:
+99014	.\cea2.f	/^99014 FORMAT (\/' SUBSONIC AREA RATIOS =',(5F11.4))$/;"	l	subroutine:INPUT	file:
+99014	.\cea2.f	/^99014 FORMAT (\/,' WARNING!! FOR FROZEN PERFORMANCE, POINTS WERE OMITTED'$/;"	l	subroutine:ROCKET	file:
+99014	.\cea2.f	/^99014 FORMAT (\/24X,'Nj',12X,'LN Nj',8X,'DEL LN Nj',6X,'H0j\/RT',\/,41X,$/;"	l	subroutine:EQLBRM	file:
+99015	.\cea2.f	/^99015 FORMAT (1X,3(A15,F8.5,3X))$/;"	l	subroutine:RKTOUT	file:
+99015	.\cea2.f	/^99015 FORMAT (1X,A16,4E15.6,\/35x,3E15.6)$/;"	l	subroutine:EQLBRM	file:
+99015	.\cea2.f	/^99015 FORMAT (\/' NOTE. WEIGHT FRACTION OF FUEL IN TOTAL FUELS AND OF',$/;"	l	subroutine:OUT1	file:
+99015	.\cea2.f	/^99015 FORMAT (\/' SUPERSONIC AREA RATIOS =',(5F11.4))$/;"	l	subroutine:INPUT	file:
+99015	.\cea2.f	/^99015 FORMAT (\/' WARNING!!  AREA RATIO CALCULATION CANNOT BE DONE ',$/;"	l	subroutine:ROCKET	file:
+99015	.\cea2.f	/^99015 FORMAT (\/6x,' WARNING!!  NO CONVERGENCE FOR u1=',F8.1,$/;"	l	subroutine:SHCK	file:
+99016	.\cea2.f	/^99016 FORMAT (' TRANSPORT PROPERTIES (GASES ONLY)')$/;"	l	subroutine:OUT1	file:
+99016	.\cea2.f	/^99016 FORMAT (\/' ELECTRON BALANCE ITER NO. =',I4,'  DELTA PI =',E14.7)$/;"	l	subroutine:EQLBRM	file:
+99016	.\cea2.f	/^99016 FORMAT (\/' ITER=',I2,2X,'ASSIGNED AE\/AT=',F14.7,3X,'AE\/AT=',F14.7,$/;"	l	subroutine:ROCKET	file:
+99016	.\cea2.f	/^99016 FORMAT (\/' NFZ=',i3,1p,'  Mdot\/Ac=',e13.6,'  Ac\/At=',e13.6)$/;"	l	subroutine:INPUT	file:
+99016	.\cea2.f	/^99016 FORMAT (\/' TEMPERATURE=',E12.4,' IS OUT OF EXTENDED RANGE ',$/;"	l	subroutine:SHCK	file:
+99017	.\cea2.f	/^99017 FORMAT ('   CONDUCTIVITY IN UNITS OF MILLICALORIES\/(CM)(K)(SEC)'\/)$/;"	l	subroutine:OUT1	file:
+99017	.\cea2.f	/^99017 FORMAT ()$/;"	l	subroutine:SHCK	file:
+99017	.\cea2.f	/^99017 FORMAT (\/' DID NOT CONVERGE ON ELECTRON BALANCE (EQLBRM)')$/;"	l	subroutine:EQLBRM	file:
+99017	.\cea2.f	/^99017 FORMAT (\/' P,BAR =',7F13.6)$/;"	l	subroutine:INPUT	file:
+99017	.\cea2.f	/^99017 FORMAT (\/' WARNING!!  DID NOT CONVERGE FOR AREA RATIO =',F10.5,$/;"	l	subroutine:ROCKET	file:
+99018	.\cea2.f	/^99018 FORMAT ('   CONDUCTIVITY IN UNITS OF MILLIWATTS\/(CM)(K)'\/)$/;"	l	subroutine:OUT1	file:
+99018	.\cea2.f	/^99018 FORMAT (\/' DELTA S\/R =',E15.8)$/;"	l	subroutine:EQLBRM	file:
+99018	.\cea2.f	/^99018 FORMAT (\/' ERROR IN REACTANTS DATASET (INPUT)')$/;"	l	subroutine:INPUT	file:
+99018	.\cea2.f	/^99018 FORMAT (\/' SHOCKED GAS (2)--INCIDENT--FROZEN')$/;"	l	subroutine:SHCK	file:
+99018	.\cea2.f	/^99018 FORMAT (\/' WARNING!!  CALCULATIONS WERE STOPPED BECAUSE NEXT ',$/;"	l	subroutine:ROCKET	file:
+99019	.\cea2.f	/^99019 FORMAT (\/'  WITH EQUILIBRIUM REACTIONS'\/)$/;"	l	subroutine:OUT1	file:
+99019	.\cea2.f	/^99019 FORMAT (\/' SHOCKED GAS (2)--INCIDENT--EQUILIBRIUM')$/;"	l	subroutine:SHCK	file:
+99019	.\cea2.f	/^99019 FORMAT (\/' UNABLE TO PROCESS EQUIVALENCE RATIO =',E11.4,'(INPUT)')$/;"	l	subroutine:INPUT	file:
+99019	.\cea2.f	/^99019 FORMAT (\/,I4,' ITERATIONS DID NOT SATISFY CONVERGENCE',\/,15x,$/;"	l	subroutine:EQLBRM	file:
+99019	.\cea2.f	/^99019 FORMAT (\/\/\/\/)$/;"	l	subroutine:ROCKET	file:
+99020	.\cea2.f	/^99020 FORMAT (\/'  WITH FROZEN REACTIONS'\/)$/;"	l	subroutine:OUT1	file:
+99020	.\cea2.f	/^99020 FORMAT (\/' SHOCKED GAS (5)--REFLECTED--FROZEN')$/;"	l	subroutine:SHCK	file:
+99020	.\cea2.f	/^99020 FORMAT (\/' TRY REMOVING CONDENSED SPECIES (EQLBRM)')$/;"	l	subroutine:EQLBRM	file:
+99020	.\cea2.f	/^99020 FORMAT (\/' TYPE OF PROBLEM NOT SPECIFIED (INPUT)')$/;"	l	subroutine:INPUT	file:
+99020	.\cea2.f	/^99020 FORMAT (\/,' WARNING!! FOR FROZEN PERFORMANCE, POINTS WERE OMITTED'$/;"	l	subroutine:ROCKET	file:
+99021	.\cea2.f	/^99021 FORMAT (\/' ASSIGNED VALUES OF TEMPERATURE ARE MISSING IN prob',$/;"	l	subroutine:INPUT	file:
+99021	.\cea2.f	/^99021 FORMAT (\/' POINT ITN',6X,'T',10X,4A12\/(18X,5A12))$/;"	l	subroutine:EQLBRM	file:
+99021	.\cea2.f	/^99021 FORMAT (\/' REACTANT DENSITY=',F8.2,' KG\/CU M')$/;"	l	subroutine:OUT1	file:
+99021	.\cea2.f	/^99021 FORMAT (\/' SHOCKED GAS (5)--REFLECTED--EQUILIBRIUM')$/;"	l	subroutine:SHCK	file:
+99021	.\cea2.f	/^99021 FORMAT (\/' WARNING!!  ASSIGNED subae\/at =',f10.5,' IS NOT ',$/;"	l	subroutine:ROCKET	file:
+99022	.\cea2.f	/^99022 FORMAT (I4,I5,5F12.3,\/(12X,5F12.3))$/;"	l	subroutine:EQLBRM	file:
+99022	.\cea2.f	/^99022 FORMAT (\/' ASSIGNED PRESSURE (OR DENSITY) MISSING IN prob',$/;"	l	subroutine:INPUT	file:
+99022	.\cea2.f	/^99022 FORMAT (\/' REACTANT DENSITY=',F8.4,' G\/CC')$/;"	l	subroutine:OUT1	file:
+99022	.\cea2.f	/^99022 FORMAT (\/' WARNING!!  ASSIGNED pip =',F10.5,$/;"	l	subroutine:ROCKET	file:
+99022	.\cea2.f	/^99022 FORMAT (\/1x,A4,' FRACTIONS'\/)$/;"	l	subroutine:SHCK	file:
+99023	.\cea2.f	/^99023 FORMAT (' ',A16,F8.5,12F9.5)$/;"	l	subroutine:SHCK	file:
+99023	.\cea2.f	/^99023 FORMAT (' PHASE CHANGE, REPLACE ',A16,'WITH ',A16)$/;"	l	subroutine:EQLBRM	file:
+99023	.\cea2.f	/^99023 FORMAT (\/' WARNING!!  A KEYWORD IS MISSING (INPUT)')$/;"	l	subroutine:INPUT	file:
+99023	.\cea2.f	/^99023 FORMAT (\/' WARNING!!  FOR FROZEN PERFORMANCE, SUBSONIC AREA ',\/,$/;"	l	subroutine:ROCKET	file:
+99024	.\cea2.f	/^99024 FORMAT (\/' NOTE!! MAXIMUM NUMBER OF ASSIGNED ',A5,' VALUES IS',I3,$/;"	l	subroutine:INPUT	file:
+99024	.\cea2.f	/^99024 FORMAT (\/' WARNING!!  FREEZING IS NOT ALLOWED AT A SUBSONIC ',$/;"	l	subroutine:ROCKET	file:
+99024	.\cea2.f	/^99024 FORMAT (\/1X,A15,2F10.3,3X,E15.7)$/;"	l	subroutine:EQLBRM	file:
+99025	.\cea2.f	/^99025 FORMAT (' [G0j-SUM(Aij*PIi)]\/Mj =',E15.7,9X,'MAX NEG DELTA G =',$/;"	l	subroutine:EQLBRM	file:
+99025	.\cea2.f	/^99025 FORMAT (\/' AN ASSIGNED AREA RATIO IS < 1 (ROCKET)' )$/;"	l	subroutine:ROCKET	file:
+99025	.\cea2.f	/^99025 FORMAT (\/' FATAL ERROR IN DATASET (INPUT)')$/;"	l	subroutine:INPUT	file:
+99026	.\cea2.f	/^99026 FORMAT (\/' REINSERTION OF ',A16,' LIKELY TO CAUSE SINGULARITY,',$/;"	l	subroutine:EQLBRM	file:
+99027	.\cea2.f	/^99027 FORMAT (' ADD ',A16)$/;"	l	subroutine:EQLBRM	file:
+99028	.\cea2.f	/^99028 FORMAT (' REMOVE ',A16)$/;"	l	subroutine:EQLBRM	file:
+99029	.\cea2.f	/^99029 FORMAT (\/' NEW COMPONENTS')$/;"	l	subroutine:EQLBRM	file:
+99030	.\cea2.f	/^99030 FORMAT (\/2x,6A12)$/;"	l	subroutine:EQLBRM	file:
+99031	.\cea2.f	/^99031 FORMAT (\/' WARNING!  RESULTS MAY BE WRONG FOR POINT',I3,' DUE TO',$/;"	l	subroutine:EQLBRM	file:
+99032	.\cea2.f	/^99032 FORMAT (\/' POINT=',I3,3X,'P=',E13.6,3X,'T=',E13.6,\/3X,'H\/R=',$/;"	l	subroutine:EQLBRM	file:
+99033	.\cea2.f	/^99033 FORMAT (' THE TEMPERATURE=',E12.4,' IS OUT OF RANGE FOR POINT',I5,$/;"	l	subroutine:EQLBRM	file:
+99034	.\cea2.f	/^99034 FORMAT (\/,I3,' CONVERGENCES FAILED TO ESTABLISH SET OF CONDENSED',$/;"	l	subroutine:EQLBRM	file:
+99035	.\cea2.f	/^99035 FORMAT (\/' CALCULATIONS STOPPED AFTER POINT',I3,'(EQLBRM)')$/;"	l	subroutine:EQLBRM	file:
+99999	.\cea2.f	/^99999 END$/;"	l	subroutine:CPHS	file:
+99999	.\cea2.f	/^99999 END$/;"	l	subroutine:GAUSS	file:
+ABEL	.\pac\pac99.f	/^      CHARACTER*4 ABEL,/;"	v	program:PAC99
+ALLCON	.\cea2.f	/^      ENTRY ALLCON$/;"	e	subroutine:CPHS
+ASINDH	.\pac\pac99.f	/^      DOUBLE PRECISION ATMWT,ASINDH,/;"	v	program:PAC99
+ASINDT	.\pac\pac99.f	/^      DOUBLE PRECISION ATMWT,ASINDH,ASINDT,/;"	v	program:PAC99
+ATMWT	.\pac\pac99.f	/^      DOUBLE PRECISION ATMWT,/;"	v	program:PAC99
+ATOM	.\pac\pac99.f	/^      SUBROUTINE ATOM /;"	s
+BACK	.\pac\pac99.f	/^      LOGICAL BACK,/;"	v	program:PAC99
+BAR	.\pac\pac99.f	/^      LOGICAL BACK,BAR,/;"	v	program:PAC99
+BLANK	.\cap\cap.f	/^      CHARACTER*4 BLANK,/;"	v
+BLANK	.\pac\pac99.f	/^      CHARACTER*4 ABEL,BLANK,/;"	v	program:PAC99
+BLK1	.\pac\pac99.f	1725;"	c	subroutine:HMAT
+BLK1	.\pac\pac99.f	2233;"	c	subroutine:IROTOR
+BLK2	.\pac\pac99.f	2147;"	c	subroutine:INTROT
+BLK2	.\pac\pac99.f	2234;"	c	subroutine:IROTOR
+BLK2	.\pac\pac99.f	4456;"	c	subroutine:PRINT
+BLK3	.\pac\pac99.f	1419;"	c	subroutine:EIGEN
+BLK3	.\pac\pac99.f	1726;"	c	subroutine:HMAT
+CAP	.\cap\cap.f	/^      PROGRAM CAP$/;"	p
+CFOUT	.\pac\pac99.f	/^      LOGICAL CFOUT,/;"	v	program:PAC99
+CHAR4	.\cap\cap.f	456;"	c	subroutine:LOGK
+CHAR4	.\cap\cap.f	762;"	c	subroutine:TABLES
+CHAR4	.\cap\cap.f	934;"	c
+CHAR4	.\pac\pac99.f	100;"	c	program:PAC99
+CHAR4	.\pac\pac99.f	1068;"	c	subroutine:DELH
+CHAR4	.\pac\pac99.f	1218;"	c	subroutine:DERIV
+CHAR4	.\pac\pac99.f	1277;"	c	subroutine:EFTAPE
+CHAR4	.\pac\pac99.f	1511;"	c	subroutine:GROUP
+CHAR4	.\pac\pac99.f	1800;"	c	subroutine:IDENT
+CHAR4	.\pac\pac99.f	1997;"	c	subroutine:INPUT
+CHAR4	.\pac\pac99.f	2210;"	c	subroutine:IROTOR
+CHAR4	.\pac\pac99.f	2440;"	c	subroutine:LEAST
+CHAR4	.\pac\pac99.f	3040;"	c	subroutine:LINK1
+CHAR4	.\pac\pac99.f	3507;"	c	subroutine:LOGK
+CHAR4	.\pac\pac99.f	3791;"	c	subroutine:PAGEID
+CHAR4	.\pac\pac99.f	3828;"	c	subroutine:POLY
+CHAR4	.\pac\pac99.f	4484;"	c	subroutine:PUNCH
+CHAR4	.\pac\pac99.f	4566;"	c	subroutine:QSUM
+CHAR4	.\pac\pac99.f	4611;"	c	subroutine:RECO
+CHAR4	.\pac\pac99.f	5206;"	c	subroutine:TABLES
+CHAR4	.\pac\pac99.f	5401;"	c	subroutine:TEMPER
+CHAR4	.\pac\pac99.f	5517;"	c	subroutine:WILHOI
+CHAR4	.\pac\pac99.f	694;"	c	subroutine:ATOM
+CNST	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,/;"	v	program:PAC99
+CODE	.\pac\pac99.f	/^      CHARACTER*4 ABEL,BLANK,CODE,/;"	v	program:PAC99
+COEF	.\cap\cap.f	/^      DOUBLE PRECISION asindt,COEF,/;"	v
+COEF	.\pac\pac99.f	/^      DOUBLE PRECISION ATMWT,ASINDH,ASINDT,COEF,/;"	v	program:PAC99
+COFS	.\pac\pac99.f	/^      CHARACTER*4 ORIG,COFS$/;"	v	program:PAC99
+CONV	.\pac\pac99.f	/^      DOUBLE PRECISION CONV,/;"	v	program:PAC99
+CPHS	.\cea2.f	/^      SUBROUTINE CPHS$/;"	s
+CPONLY	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,CPONLY,/;"	v	program:PAC99
+CPR	.\cap\cap.f	/^      DOUBLE PRECISION asindt,COEF,CPR,/;"	v
+CPR	.\pac\pac99.f	/^      DOUBLE PRECISION ATMWT,ASINDH,ASINDT,COEF,CPR,/;"	v	program:PAC99
+Caseok	.\syntax.f	/^      LOGICAL Caseok,/;"	v
+Code	.\syntax.f	/^      CHARACTER*4 Code$/;"	v
+DATE	.\cap\cap.f	/^      CHARACTER*4 BLANK,DATE,/;"	v
+DATE	.\pac\pac99.f	/^      CHARACTER*4 ABEL,BLANK,CODE,DATE,/;"	v	program:PAC99
+DBLE	.\misc\makelib.f	/^      REAL*8 DBLE,/;"	v	program:MAKELIB
+DELH	.\pac\pac99.f	/^      SUBROUTINE DELH$/;"	s
+DERIV	.\pac\pac99.f	/^      SUBROUTINE DERIV /;"	s
+DETON	.\cea2.f	/^      SUBROUTINE DETON$/;"	s
+DLOG	.\cea2.f	/^      REAL*8 DLOG$/;"	v
+DLOG	.\misc\makelib.f	/^      REAL*8 DBLE,DLOG$/;"	v	program:MAKELIB
+EFAZ	.\cap\cap.f	/^      CHARACTER*4 BLANK,DATE,EFAZ,/;"	v
+EFAZ	.\pac\pac99.f	/^      CHARACTER*4 ABEL,BLANK,CODE,DATE,EFAZ,/;"	v	program:PAC99
+EFLIST	.\pac\pac99.f	/^      ENTRY EFLIST$/;"	e	subroutine:EFTAPE
+EFMT	.\cea2.f	/^      SUBROUTINE EFMT(/;"	s
+EFTAPE	.\pac\pac99.f	/^      SUBROUTINE EFTAPE$/;"	s
+EIGEN	.\pac\pac99.f	/^      SUBROUTINE EIGEN /;"	s
+EQLBRM	.\cea2.f	/^      SUBROUTINE EQLBRM$/;"	s
+EXL	.\cap\cap.f	/^      DOUBLE PRECISION EXL,/;"	v	program:CAP
+EXL	.\pac\pac99.f	/^      DOUBLE PRECISION CONV,EXL,/;"	v	program:PAC99
+Ensert	.\syntax.f	/^      CHARACTER*15 Ensert(/;"	v
+FAZ	.\cap\cap.f	/^      CHARACTER*4 BLANK,DATE,EFAZ,/;"	v
+FAZ	.\pac\pac99.f	/^      CHARACTER*4 ABEL,BLANK,CODE,DATE,EFAZ,/;"	v	program:PAC99
+FORMLA	.\cap\cap.f	/^      CHARACTER*4 BLANK,DATE,EFAZ,FAZ,FORMLA$/;"	v
+FORMLA	.\pac\pac99.f	/^      CHARACTER*4 ABEL,BLANK,CODE,DATE,EFAZ,FAZ,FORMLA,/;"	v	program:PAC99
+FROZEN	.\cea2.f	/^      SUBROUTINE FROZEN$/;"	s
+GAUSS	.\cea2.f	/^      SUBROUTINE GAUSS$/;"	s
+GHRT	.\cap\cap.f	/^      DOUBLE PRECISION asindt,COEF,CPR,GHRT,/;"	v
+GHRT	.\pac\pac99.f	/^      DOUBLE PRECISION ATMWT,ASINDH,ASINDT,COEF,CPR,GHRT,/;"	v	program:PAC99
+GROUP	.\pac\pac99.f	/^      SUBROUTINE GROUP$/;"	s
+H298H0	.\pac\pac99.f	/^      DOUBLE PRECISION ATMWT,ASINDH,ASINDT,COEF,CPR,GHRT,H298HR,H298H0,/;"	v	program:PAC99
+H298HR	.\pac\pac99.f	/^      DOUBLE PRECISION ATMWT,ASINDH,ASINDT,COEF,CPR,GHRT,H298HR,/;"	v	program:PAC99
+HCALC	.\cea2.f	/^      SUBROUTINE HCALC$/;"	s
+HCK	.\pac\pac99.f	/^     1 HCK,/;"	v	program:PAC99
+HEAT	.\pac\pac99.f	/^      CHARACTER*4 ABEL,BLANK,CODE,DATE,EFAZ,FAZ,FORMLA,HEAT,/;"	v	program:PAC99
+HHRT	.\cap\cap.f	/^     1 HHRT,/;"	v
+HHRT	.\pac\pac99.f	/^     1 HCK,HHRT,/;"	v	program:PAC99
+HLST	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,/;"	v	program:PAC99
+HMAT	.\pac\pac99.f	/^      SUBROUTINE HMAT /;"	s
+IDENT	.\pac\pac99.f	/^      SUBROUTINE IDENT$/;"	s
+INDEX	.\cea2.f	/^      INTEGER INDEX$/;"	v
+INDEX	.\misc\makelib.f	/^      INTEGER INDEX$/;"	v	program:MAKELIB
+INFREE	.\cea2.f	/^      SUBROUTINE INFREE(/;"	s
+INFREE	.\syntax.f	/^      SUBROUTINE INFREE(/;"	s
+INPUT	.\cea2.f	/^      SUBROUTINE INPUT(/;"	s
+INPUT	.\pac\pac99.f	/^      SUBROUTINE INPUT$/;"	s
+INTGR	.\cap\cap.f	467;"	c	subroutine:LOGK
+INTGR	.\cap\cap.f	773;"	c	subroutine:TABLES
+INTGR	.\cap\cap.f	945;"	c
+INTGR	.\pac\pac99.f	1081;"	c	subroutine:DELH
+INTGR	.\pac\pac99.f	113;"	c	program:PAC99
+INTGR	.\pac\pac99.f	1290;"	c	subroutine:EFTAPE
+INTGR	.\pac\pac99.f	1524;"	c	subroutine:GROUP
+INTGR	.\pac\pac99.f	1813;"	c	subroutine:IDENT
+INTGR	.\pac\pac99.f	2010;"	c	subroutine:INPUT
+INTGR	.\pac\pac99.f	2223;"	c	subroutine:IROTOR
+INTGR	.\pac\pac99.f	2453;"	c	subroutine:LEAST
+INTGR	.\pac\pac99.f	3053;"	c	subroutine:LINK1
+INTGR	.\pac\pac99.f	3520;"	c	subroutine:LOGK
+INTGR	.\pac\pac99.f	3794;"	c	subroutine:PAGEID
+INTGR	.\pac\pac99.f	3841;"	c	subroutine:POLY
+INTGR	.\pac\pac99.f	4497;"	c	subroutine:PUNCH
+INTGR	.\pac\pac99.f	4624;"	c	subroutine:RECO
+INTGR	.\pac\pac99.f	5219;"	c	subroutine:TABLES
+INTGR	.\pac\pac99.f	5412;"	c	subroutine:TEMPER
+INTGR	.\pac\pac99.f	5530;"	c	subroutine:WILHOI
+INTGR	.\pac\pac99.f	707;"	c	subroutine:ATOM
+INTROT	.\pac\pac99.f	/^      SUBROUTINE INTROT /;"	s
+INTV	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,CPONLY,INTV,/;"	v	program:PAC99
+IROTOR	.\pac\pac99.f	/^      SUBROUTINE IROTOR /;"	s
+LABEL	.\pac\pac99.f	/^      CHARACTER*4 ABEL,BLANK,CODE,DATE,EFAZ,FAZ,FORMLA,HEAT,LABEL$/;"	v	program:PAC99
+LEAST	.\pac\pac99.f	/^      SUBROUTINE LEAST$/;"	s
+LINK1	.\pac\pac99.f	/^      SUBROUTINE LINK1 /;"	s
+LOGCL	.\cap\cap.f	472;"	c	subroutine:LOGK
+LOGCL	.\cap\cap.f	778;"	c	subroutine:TABLES
+LOGCL	.\cap\cap.f	950;"	c
+LOGCL	.\pac\pac99.f	1087;"	c	subroutine:DELH
+LOGCL	.\pac\pac99.f	119;"	c	program:PAC99
+LOGCL	.\pac\pac99.f	1296;"	c	subroutine:EFTAPE
+LOGCL	.\pac\pac99.f	1530;"	c	subroutine:GROUP
+LOGCL	.\pac\pac99.f	1819;"	c	subroutine:IDENT
+LOGCL	.\pac\pac99.f	2016;"	c	subroutine:INPUT
+LOGCL	.\pac\pac99.f	2229;"	c	subroutine:IROTOR
+LOGCL	.\pac\pac99.f	2459;"	c	subroutine:LEAST
+LOGCL	.\pac\pac99.f	3059;"	c	subroutine:LINK1
+LOGCL	.\pac\pac99.f	3526;"	c	subroutine:LOGK
+LOGCL	.\pac\pac99.f	3847;"	c	subroutine:POLY
+LOGCL	.\pac\pac99.f	4503;"	c	subroutine:PUNCH
+LOGCL	.\pac\pac99.f	4630;"	c	subroutine:RECO
+LOGCL	.\pac\pac99.f	5225;"	c	subroutine:TABLES
+LOGCL	.\pac\pac99.f	5536;"	c	subroutine:WILHOI
+LOGCL	.\pac\pac99.f	713;"	c	subroutine:ATOM
+LOGK	.\cap\cap.f	/^      SUBROUTINE LOGK /;"	s
+LOGK	.\pac\pac99.f	/^      SUBROUTINE LOGK$/;"	s
+Lcin	.\syntax.f	/^      INTEGER Lcin(/;"	v
+MAKELIB	.\misc\makelib.f	/^      PROGRAM MAKELIB$/;"	p
+MATRIX	.\cea2.f	/^      SUBROUTINE MATRIX$/;"	s
+Mcin	.\syntax.f	/^      INTEGER Lcin(MAXNGC),Mcin(/;"	v
+Moles	.\syntax.f	/^      LOGICAL Caseok,Readok,Moles$/;"	v
+NAME	.\cap\cap.f	/^      CHARACTER*4 NAME,/;"	v
+NAME	.\pac\pac99.f	/^      CHARACTER*4 NAME,/;"	v	program:PAC99
+NEWOF	.\cea2.f	/^      SUBROUTINE NEWOF$/;"	s
+NOCP	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,CPONLY,INTV,NOCP,/;"	v	program:PAC99
+NOH	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,CPONLY,INTV,NOCP,NOH,/;"	v	program:PAC99
+NOS	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,CPONLY,INTV,NOCP,NOH,NOS,/;"	v	program:PAC99
+OLD	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,CPONLY,INTV,NOCP,NOH,NOS,OLD,/;"	v	program:PAC99
+OLDNEW	.\misc\oldnew.f	/^      PROGRAM OLDNEW$/;"	p
+ORIG	.\pac\pac99.f	/^      CHARACTER*4 ORIG,/;"	v	program:PAC99
+OUT1	.\cea2.f	/^      SUBROUTINE OUT1$/;"	s
+OUT2	.\cea2.f	/^      ENTRY OUT2$/;"	e	subroutine:OUT1
+OUT3	.\cea2.f	/^      ENTRY OUT3$/;"	e	subroutine:OUT1
+OUT4	.\cea2.f	/^      ENTRY OUT4$/;"	e	subroutine:OUT1
+PAC99	.\pac\pac99.f	/^      PROGRAM PAC99$/;"	p
+PAGEID	.\pac\pac99.f	/^      SUBROUTINE PAGEID$/;"	s
+PI	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,/;"	v	program:PAC99
+POLY	.\pac\pac99.f	/^      SUBROUTINE POLY$/;"	s
+PRINT	.\pac\pac99.f	/^      SUBROUTINE PRINT /;"	s
+PTMELT	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,PTMELT,/;"	v	program:PAC99
+PUNCH	.\pac\pac99.f	/^      SUBROUTINE PUNCH$/;"	s
+QSUM	.\pac\pac99.f	/^      SUBROUTINE QSUM /;"	s
+R	.\cap\cap.f	/^     1 HHRT/;"	v
+R	.\pac\pac99.f	/^     1 HCK,HHRT/;"	v	program:PAC99
+REACT	.\cea2.f	/^      SUBROUTINE REACT$/;"	s
+READTR	.\cea2.f	/^      ENTRY READTR$/;"	e	subroutine:SEARCH
+REAL4	.\cap\cap.f	465;"	c	subroutine:LOGK
+REAL4	.\cap\cap.f	771;"	c	subroutine:TABLES
+REAL4	.\cap\cap.f	943;"	c
+REAL4	.\pac\pac99.f	1079;"	c	subroutine:DELH
+REAL4	.\pac\pac99.f	111;"	c	program:PAC99
+REAL4	.\pac\pac99.f	1288;"	c	subroutine:EFTAPE
+REAL4	.\pac\pac99.f	1522;"	c	subroutine:GROUP
+REAL4	.\pac\pac99.f	1811;"	c	subroutine:IDENT
+REAL4	.\pac\pac99.f	2008;"	c	subroutine:INPUT
+REAL4	.\pac\pac99.f	2221;"	c	subroutine:IROTOR
+REAL4	.\pac\pac99.f	2451;"	c	subroutine:LEAST
+REAL4	.\pac\pac99.f	3051;"	c	subroutine:LINK1
+REAL4	.\pac\pac99.f	3518;"	c	subroutine:LOGK
+REAL4	.\pac\pac99.f	3839;"	c	subroutine:POLY
+REAL4	.\pac\pac99.f	4495;"	c	subroutine:PUNCH
+REAL4	.\pac\pac99.f	4622;"	c	subroutine:RECO
+REAL4	.\pac\pac99.f	5217;"	c	subroutine:TABLES
+REAL4	.\pac\pac99.f	5528;"	c	subroutine:WILHOI
+REAL4	.\pac\pac99.f	705;"	c	subroutine:ATOM
+REAL8	.\cap\cap.f	461;"	c	subroutine:LOGK
+REAL8	.\cap\cap.f	767;"	c	subroutine:TABLES
+REAL8	.\cap\cap.f	939;"	c
+REAL8	.\pac\pac99.f	106;"	c	program:PAC99
+REAL8	.\pac\pac99.f	1074;"	c	subroutine:DELH
+REAL8	.\pac\pac99.f	1283;"	c	subroutine:EFTAPE
+REAL8	.\pac\pac99.f	1517;"	c	subroutine:GROUP
+REAL8	.\pac\pac99.f	1806;"	c	subroutine:IDENT
+REAL8	.\pac\pac99.f	2003;"	c	subroutine:INPUT
+REAL8	.\pac\pac99.f	2216;"	c	subroutine:IROTOR
+REAL8	.\pac\pac99.f	2446;"	c	subroutine:LEAST
+REAL8	.\pac\pac99.f	3046;"	c	subroutine:LINK1
+REAL8	.\pac\pac99.f	3513;"	c	subroutine:LOGK
+REAL8	.\pac\pac99.f	3834;"	c	subroutine:POLY
+REAL8	.\pac\pac99.f	4490;"	c	subroutine:PUNCH
+REAL8	.\pac\pac99.f	4617;"	c	subroutine:RECO
+REAL8	.\pac\pac99.f	5212;"	c	subroutine:TABLES
+REAL8	.\pac\pac99.f	5407;"	c	subroutine:TEMPER
+REAL8	.\pac\pac99.f	5523;"	c	subroutine:WILHOI
+REAL8	.\pac\pac99.f	700;"	c	subroutine:ATOM
+RECO	.\pac\pac99.f	/^      SUBROUTINE RECO$/;"	s
+RECOUT	.\syntax.f	/^      SUBROUTINE RECOUT(/;"	s
+RKTOUT	.\cea2.f	/^      SUBROUTINE RKTOUT$/;"	s
+ROCKET	.\cea2.f	/^      SUBROUTINE ROCKET$/;"	s
+RR	.\cap\cap.f	/^     1 HHRT,R,RR,/;"	v
+RR	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,PTMELT,R,RR,/;"	v	program:PAC99
+Readok	.\syntax.f	/^      LOGICAL Caseok,Readok,/;"	v
+Reng	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,Reng,/;"	v
+Rids	.\b1b2b3.f	/^      CHARACTER Rids(/;"	v	program:b1b2b3
+SATM	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,PTMELT,R,RR,SATM,/;"	v	program:PAC99
+SBAR	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,PTMELT,R,RR,SATM,SBAR,/;"	v	program:PAC99
+SCONST	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,PTMELT,R,RR,SATM,SBAR,SCONST,/;"	v	program:PAC99
+SEARCH	.\cea2.f	/^      SUBROUTINE SEARCH$/;"	s
+SETEN	.\cea2.f	/^      SUBROUTINE SETEN$/;"	s
+SHCK	.\cea2.f	/^      SUBROUTINE SHCK$/;"	s
+SLST	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,PTMELT,R,RR,SATM,SBAR,SCONST,SLST,/;"	v	program:PAC99
+SNM	.\pac\pac99.f	/^      CHARACTER*4 NAME,SNM,/;"	v	program:PAC99
+SPECH	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,PTMELT,R,RR,SATM,SBAR,SCONST,SLST,SPECH,/;"	v	program:PAC99
+SR	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,Reng,SR,/;"	v
+SR	.\pac\pac99.f	/^     1 HCK,HHRT,HLST,PI,PTMELT,R,RR,SATM,SBAR,SCONST,SLST,SPECH,SR,/;"	v	program:PAC99
+STD	.\pac\pac99.f	/^      CHARACTER*4 NAME,SNM,STD,/;"	v	program:PAC99
+SUB	.\pac\pac99.f	/^      CHARACTER*4 NAME,SNM,STD,SUB,/;"	v	program:PAC99
+SYMBOL	.\cap\cap.f	/^      CHARACTER*4 NAME,SYMBOL$/;"	v
+SYMBOL	.\pac\pac99.f	/^      CHARACTER*4 NAME,SNM,STD,SUB,SYMBOL$/;"	v	program:PAC99
+T	.\cap\cap.f	/^     1 HHRT,/;"	v
+T	.\pac\pac99.f	/^     1 HCK,HHRT,/;"	v	program:PAC99
+TAB8	.\pac\pac99.f	/^      LOGICAL CFOUT,TAB8,/;"	v	program:PAC99
+TABLES	.\cap\cap.f	/^      SUBROUTINE TABLES$/;"	s
+TABLES	.\pac\pac99.f	/^      SUBROUTINE TABLES$/;"	s
+TAPE	.\pac\pac99.f	/^     2 TAPE,/;"	v	program:PAC99
+TC	.\pac\pac99.f	/^     2 TAPE,TC,/;"	v	program:PAC99
+TCLB	.\pac\pac99.f	/^      CHARACTER*4 TCLB(/;"	v	program:PAC99
+TCONST	.\pac\pac99.f	/^     2 TAPE,TC,TCONST,/;"	v	program:PAC99
+TCWD	.\pac\pac99.f	/^      DOUBLE PRECISION CONV,EXL,TEX,TT,TCWD(/;"	v	program:PAC99
+TEMPER	.\pac\pac99.f	/^      SUBROUTINE TEMPER$/;"	s
+TEST	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,CPONLY,INTV,NOCP,NOH,NOS,OLD,TEST,/;"	v	program:PAC99
+TEX	.\cap\cap.f	/^      DOUBLE PRECISION EXL,TEX,/;"	v	program:CAP
+TEX	.\pac\pac99.f	/^      DOUBLE PRECISION CONV,EXL,TEX,/;"	v	program:PAC99
+THERMP	.\cea2.f	/^      SUBROUTINE THERMP$/;"	s
+TLST	.\pac\pac99.f	/^     2 TAPE,TC,TCONST,TLST,/;"	v	program:PAC99
+TOUT	.\cap\cap.f	/^      LOGICAL hasind,refel,TOUT,/;"	v
+TOUT	.\pac\pac99.f	/^      LOGICAL BACK,BAR,CNST,CPONLY,INTV,NOCP,NOH,NOS,OLD,TEST,TOUT$/;"	v	program:PAC99
+TRANGE	.\pac\pac99.f	/^     2 TAPE,TC,TCONST,TLST,TRANGE,/;"	v	program:PAC99
+TRANIN	.\cea2.f	/^      SUBROUTINE TRANIN$/;"	s
+TRANP	.\cea2.f	/^      SUBROUTINE TRANP$/;"	s
+TT	.\cap\cap.f	/^      DOUBLE PRECISION EXL,TEX,TT,/;"	v	program:CAP
+TT	.\pac\pac99.f	/^      DOUBLE PRECISION CONV,EXL,TEX,TT,/;"	v	program:PAC99
+TTRANS	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,Reng,SR,T,tcoef,term,z,wt,WORD,TTRANS$/;"	v
+TTRANS	.\pac\pac99.f	/^     2 TAPE,TC,TCONST,TLST,TRANGE,WEIGHT,WORD,TTRANS$/;"	v	program:PAC99
+Tcom	.\misc\oldnew.f	/^       real*8  molwgt,htform,Tlow,Tcom,/;"	v	program:OLDNEW
+Tg	.\b1b2b3.f	/^      DOUBLE PRECISION b(5),t1,t2,mw,cft(9,3),Tg(/;"	v	program:b1b2b3
+Thdate	.\b1b2b3.f	/^      CHARACTER el(5)*2,date*6,sub*15,Thdate*/;"	v	program:b1b2b3
+Thdate	.\misc\makelib.f	/^	CHARACTER*10 Thdate$/;"	v	program:MAKELIB
+Thi	.\misc\oldnew.f	/^       real*8  molwgt,htform,Tlow,Tcom,Thi,/;"	v	program:OLDNEW
+Tlow	.\misc\oldnew.f	/^       real*8  molwgt,htform,Tlow,/;"	v	program:OLDNEW
+Tprvhi	.\misc\oldnew.f	/^       real*8  molwgt,htform,Tlow,Tcom,Thi, Tprvhi$/;"	v	program:OLDNEW
+UTHERM	.\cea2.f	/^      SUBROUTINE UTHERM(/;"	s
+UTRAN	.\cea2.f	/^      SUBROUTINE UTRAN(/;"	s
+VARFMT	.\cea2.f	/^      SUBROUTINE VARFMT(/;"	s
+WCALC	.\pac\pac99.f	/^      SUBROUTINE WCALC(/;"	s
+WCOMMN	.\pac\pac99.f	1225;"	c	subroutine:DERIV
+WCOMMN	.\pac\pac99.f	3066;"	c	subroutine:LINK1
+WCOMMN	.\pac\pac99.f	3854;"	c	subroutine:POLY
+WCOMMN	.\pac\pac99.f	4573;"	c	subroutine:QSUM
+WEIGHT	.\pac\pac99.f	/^     2 TAPE,TC,TCONST,TLST,TRANGE,WEIGHT,/;"	v	program:PAC99
+WILHOI	.\pac\pac99.f	/^      SUBROUTINE WILHOI$/;"	s
+WORD	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,Reng,SR,T,tcoef,term,z,wt,WORD,/;"	v
+WORD	.\pac\pac99.f	/^     2 TAPE,TC,TCONST,TLST,TRANGE,WEIGHT,WORD,/;"	v	program:PAC99
+aa	.\misc\makelib.f	/^      REAL*8 aa,/;"	v	program:MAKELIB
+ahi	.\misc\oldnew.f	/^       real*8  ahi,/;"	v	program:OLDNEW
+alow	.\misc\oldnew.f	/^       real*8  alow,/;"	v	program:OLDNEW
+ans	.\misc\makelib.f	/^      CHARACTER*16 namee,record*80,ans*/;"	v	program:MAKELIB
+asindt	.\cap\cap.f	/^      DOUBLE PRECISION asindt,/;"	v
+atms	.\misc\makelib.f	/^      REAL*8 aa,atms,/;"	v	program:MAKELIB
+atomTemp	.\b1b2b3.f	/^      CHARACTER Rids(24)*15, atomTemp*/;"	v	program:b1b2b3
+atoms	.\b1b2b3.f	/^      CHARACTER el(5)*2,date*6,sub*15,Thdate*10,sub0*15,atoms(/;"	v	program:b1b2b3
+b	.\b1b2b3.f	/^      DOUBLE PRECISION b(/;"	v	program:b1b2b3
+b1b2b3	.\b1b2b3.f	/^      PROGRAM b1b2b3$/;"	p
+bhi	.\misc\oldnew.f	/^       real*8  ahi,bhi,/;"	v	program:OLDNEW
+blow	.\misc\oldnew.f	/^       real*8  alow,blow,/;"	v	program:OLDNEW
+calclk	.\cap\cap.f	/^      LOGICAL mfig,calclk,/;"	v	program:CAP
+caseok	.\cea2.f	/^      LOGICAL caseok,/;"	v
+cfile	.\pac\pac99.f	/^      CHARACTER*200 prefix*196,infile,ofile,pfile,cfile,/;"	v	program:PAC99
+cft	.\b1b2b3.f	/^      DOUBLE PRECISION b(5),t1,t2,mw,cft(/;"	v	program:b1b2b3
+chi	.\misc\oldnew.f	/^       real*8  ahi,bhi,chi,/;"	v	program:OLDNEW
+cin	.\syntax.f	/^      CHARACTER*15 cin(/;"	v
+clow	.\misc\oldnew.f	/^       real*8  alow,blow,clow,/;"	v	program:OLDNEW
+code	.\misc\oldnew.f	/^       character*4 code$/;"	v	program:OLDNEW
+cpfix	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,/;"	v	program:MAKELIB
+cpsave	.\pac\pac99.f	/^      DOUBLE PRECISION CONV,EXL,TEX,TT,TCWD(32),cpsave,/;"	v	program:PAC99
+cx1	.\syntax.f	/^      CHARACTER*1 cx1$/;"	v
+cx15	.\syntax.f	/^      CHARACTER*15 cin(MAXNGC),cx15$/;"	v
+cx2	.\syntax.f	/^      CHARACTER*2 cx2$/;"	v
+cx3	.\syntax.f	/^      CHARACTER*3 cx3$/;"	v
+cx4	.\syntax.f	/^      CHARACTER*4 cx4$/;"	v
+cx5	.\syntax.f	/^      CHARACTER*5 cx5$/;"	v
+cx6	.\syntax.f	/^      CHARACTER*6 cx6$/;"	v
+date	.\b1b2b3.f	/^      CHARACTER el(5)*2,date*/;"	v	program:b1b2b3
+date	.\misc\makelib.f	/^      CHARACTER*6 date$/;"	v	program:MAKELIB
+date	.\misc\oldnew.f	/^       character*2 date,/;"	v	program:OLDNEW
+dhi	.\misc\oldnew.f	/^       real*8  ahi,bhi,chi,dhi,/;"	v	program:OLDNEW
+difcp	.\pac\pac99.f	/^      DOUBLE PRECISION CONV,EXL,TEX,TT,TCWD(32),cpsave,difcp,/;"	v	program:PAC99
+dlow	.\misc\oldnew.f	/^       real*8  alow,blow,clow,dlow,/;"	v	program:OLDNEW
+dlt	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,dlt,/;"	v	program:MAKELIB
+dpin	.\syntax.f	/^      REAL*8 dpin(/;"	v
+efile	.\pac\pac99.f	/^      CHARACTER*200 prefix*196,infile,ofile,pfile,cfile,efile$/;"	v	program:PAC99
+ehi	.\misc\oldnew.f	/^       real*8  ahi,bhi,chi,dhi,ehi,/;"	v	program:OLDNEW
+el	.\b1b2b3.f	/^      CHARACTER el(/;"	v	program:b1b2b3
+el1	.\misc\oldnew.f	/^       character*2 date,el1,/;"	v	program:OLDNEW
+el1sav	.\misc\oldnew.f	/^       character*2      el1sav,/;"	v	program:OLDNEW
+el2	.\misc\oldnew.f	/^       character*2 date,el1,el2,/;"	v	program:OLDNEW
+el2sav	.\misc\oldnew.f	/^       character*2      el1sav,el2sav,/;"	v	program:OLDNEW
+el3	.\misc\oldnew.f	/^       character*2 date,el1,el2,el3,/;"	v	program:OLDNEW
+el3sav	.\misc\oldnew.f	/^       character*2      el1sav,el2sav,el3sav,/;"	v	program:OLDNEW
+el4	.\misc\oldnew.f	/^       character*2 date,el1,el2,el3,el4,/;"	v	program:OLDNEW
+el4sav	.\misc\oldnew.f	/^       character*2      el1sav,el2sav,el3sav,el4sav$/;"	v	program:OLDNEW
+el5	.\misc\oldnew.f	/^       character*2 date,el1,el2,el3,el4,el5$/;"	v	program:OLDNEW
+elow	.\misc\oldnew.f	/^       real*8  alow,blow,clow,dlow,elow,/;"	v	program:OLDNEW
+eng	.\cap\cap.f	/^      LOGICAL hasind,refel,TOUT,mfig,eng$/;"	v
+ensert	.\cea2.f	/^      CHARACTER*15 ensert(/;"	v
+enth29	.\cap\cap.f	/^      DOUBLE PRECISION asindt,COEF,CPR,GHRT,htform,enth29,/;"	v
+ex	.\cea2.f	/^      LOGICAL caseok,ex,/;"	v
+ex	.\misc\oldnew.f	/^       real    n1sav,n2sav,n3sav,n4sav,ex(/;"	v	program:OLDNEW
+expn	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,dlt,expn(/;"	v	program:MAKELIB
+exs	.\pac\pac99.f	/^      LOGICAL CFOUT,TAB8,exs,/;"	v	program:PAC99
+fhi	.\misc\oldnew.f	/^       real*8  ahi,bhi,chi,dhi,ehi,fhi,/;"	v	program:OLDNEW
+figs	.\pac\pac99.f	/^      real*8 function figs(/;"	f
+fill	.\misc\makelib.f	/^      LOGICAL fill(/;"	v	program:MAKELIB
+flow	.\misc\oldnew.f	/^       real*8  alow,blow,clow,dlow,elow,flow,/;"	v	program:OLDNEW
+fno	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,dlt,expn(8),fno(/;"	v	program:MAKELIB
+gh	.\cap\cap.f	/^      DOUBLE PRECISION EXL,TEX,TT,temps(500),htf,hplot,hh,gh,/;"	v	program:CAP
+ghi	.\misc\oldnew.f	/^       real*8  ahi,bhi,chi,dhi,ehi,fhi,ghi,/;"	v	program:OLDNEW
+glow	.\misc\oldnew.f	/^       real*8  alow,blow,clow,dlow,elow,flow,glow,/;"	v	program:OLDNEW
+hasind	.\cap\cap.f	/^      LOGICAL hasind,/;"	v
+hform	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,dlt,expn(8),fno(5),hform,/;"	v	program:MAKELIB
+hh	.\cap\cap.f	/^      DOUBLE PRECISION EXL,TEX,TT,temps(500),htf,hplot,hh,/;"	v	program:CAP
+hh	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,dlt,expn(8),fno(5),hform,hh,/;"	v	program:MAKELIB
+hplot	.\cap\cap.f	/^      DOUBLE PRECISION EXL,TEX,TT,temps(500),htf,hplot,/;"	v	program:CAP
+hsave	.\pac\pac99.f	/^      DOUBLE PRECISION CONV,EXL,TEX,TT,TCWD(32),cpsave,difcp,hsave$/;"	v	program:PAC99
+htf	.\cap\cap.f	/^      DOUBLE PRECISION EXL,TEX,TT,temps(500),htf,/;"	v	program:CAP
+htform	.\cap\cap.f	/^      DOUBLE PRECISION asindt,COEF,CPR,GHRT,htform,/;"	v
+htform	.\misc\oldnew.f	/^       real*8  molwgt,htform,/;"	v	program:OLDNEW
+i	.\cea2.f	/^      INTEGER i,/;"	v
+i	.\misc\makelib.f	/^      INTEGER i,/;"	v	program:MAKELIB
+ifaz	.\misc\makelib.f	/^      INTEGER i,ifaz,/;"	v	program:MAKELIB
+ifzm1	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,/;"	v	program:MAKELIB
+inc	.\cea2.f	/^      INTEGER i,inc,/;"	v
+inew	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,/;"	v	program:MAKELIB
+infile	.\cea2.f	/^      CHARACTER*200 infile,/;"	v
+infile	.\pac\pac99.f	/^      CHARACTER*200 prefix*196,infile,/;"	v	program:PAC99
+int	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,/;"	v	program:MAKELIB
+iof	.\cea2.f	/^      INTEGER i,inc,iof,/;"	v
+j	.\cea2.f	/^      INTEGER i,inc,iof,j,/;"	v
+j	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,/;"	v	program:MAKELIB
+k	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,k,/;"	v	program:MAKELIB
+kk	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,k,kk,/;"	v	program:MAKELIB
+l	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,k,kk,l,/;"	v	program:MAKELIB
+lc	.\syntax.f	/^      CHARACTER*26 lc,/;"	v
+ln	.\cea2.f	/^      INTEGER i,inc,iof,j,ln,/;"	v
+mfig	.\cap\cap.f	/^      LOGICAL hasind,refel,TOUT,mfig,/;"	v
+mfig	.\cap\cap.f	/^      LOGICAL mfig,/;"	v	program:CAP
+molwgt	.\misc\oldnew.f	/^       real*8  molwgt,/;"	v	program:OLDNEW
+molwt	.\cap\cap.f	/^      DOUBLE PRECISION EXL,TEX,TT,temps(500),htf,hplot,hh,gh,molwt$/;"	v	program:CAP
+mw	.\b1b2b3.f	/^      DOUBLE PRECISION b(5),t1,t2,mw,/;"	v	program:b1b2b3
+mwt	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,dlt,expn(8),fno(5),hform,hh,mwt,/;"	v	program:MAKELIB
+n	.\cea2.f	/^      INTEGER i,inc/;"	v
+n1	.\misc\oldnew.f	/^       real    n1,/;"	v	program:OLDNEW
+n1sav	.\misc\oldnew.f	/^       real    n1sav,/;"	v	program:OLDNEW
+n2	.\misc\oldnew.f	/^       real    n1,n2,/;"	v	program:OLDNEW
+n2sav	.\misc\oldnew.f	/^       real    n1sav,n2sav,/;"	v	program:OLDNEW
+n3	.\misc\oldnew.f	/^       real    n1,n2,n3,/;"	v	program:OLDNEW
+n3sav	.\misc\oldnew.f	/^       real    n1sav,n2sav,n3sav,/;"	v	program:OLDNEW
+n4	.\misc\oldnew.f	/^       real    n1,n2,n3,n4,/;"	v	program:OLDNEW
+n4sav	.\misc\oldnew.f	/^       real    n1sav,n2sav,n3sav,n4sav,/;"	v	program:OLDNEW
+n5	.\misc\oldnew.f	/^       real    n1,n2,n3,n4,n5$/;"	v	program:OLDNEW
+nall	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,k,kk,l,nall,/;"	v	program:MAKELIB
+name	.\misc\makelib.f	/^      CHARACTER*15 name$/;"	v	program:MAKELIB
+name	.\misc\oldnew.f	/^       character*18 name$/;"	v	program:OLDNEW
+namee	.\misc\makelib.f	/^      CHARACTER*16 namee,/;"	v	program:MAKELIB
+ncoef	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,k,kk,l,nall,ncoef,/;"	v	program:MAKELIB
+ngl	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,k,kk,l,nall,ncoef,ngl,/;"	v	program:MAKELIB
+notes	.\misc\makelib.f	/^      CHARACTER*65 notes$/;"	v	program:MAKELIB
+ns	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,k,kk,l,nall,ncoef,ngl,ns,/;"	v	program:MAKELIB
+ntl	.\misc\makelib.f	/^      INTEGER i,ifaz,ifzm1,inew,int,j,k,kk,l,nall,ncoef,ngl,ns,ntl$/;"	v	program:MAKELIB
+numint	.\misc\oldnew.f	/^       integer numint$/;"	v	program:OLDNEW
+ofile	.\cea2.f	/^      CHARACTER*200 infile,ofile$/;"	v
+ofile	.\pac\pac99.f	/^      CHARACTER*200 prefix*196,infile,ofile,/;"	v	program:PAC99
+pfile	.\pac\pac99.f	/^      CHARACTER*200 prefix*196,infile,ofile,pfile,/;"	v	program:PAC99
+phase	.\misc\oldnew.f	/^       character*1 phase,/;"	v	program:OLDNEW
+phaseo	.\misc\oldnew.f	/^       character*1 phase, phaseo$/;"	v	program:OLDNEW
+plot	.\cap\cap.f	/^      LOGICAL mfig,calclk,rec3,plot$/;"	v	program:CAP
+plot	.\pac\pac99.f	/^      LOGICAL CFOUT,TAB8,exs,plot$/;"	v	program:PAC99
+pltdat	.\syntax.f	/^      LOGICAL pltdat$/;"	v
+prefix	.\cea2.f	/^      CHARACTER*196 prefix$/;"	v
+prefix	.\pac\pac99.f	/^      CHARACTER*200 prefix*/;"	v	program:PAC99
+readok	.\cea2.f	/^      LOGICAL caseok,ex,readok$/;"	v
+rec	.\syntax.f	/^      CHARACTER*120 rec,/;"	v
+rec3	.\cap\cap.f	/^      LOGICAL mfig,calclk,rec3,/;"	v	program:CAP
+record	.\misc\makelib.f	/^      CHARACTER*16 namee,record*/;"	v	program:MAKELIB
+refel	.\cap\cap.f	/^      LOGICAL hasind,refel,/;"	v
+ssave	.\pac\pac99.f	/^      DOUBLE PRECISION ssave$/;"	v	program:PAC99
+sub	.\b1b2b3.f	/^      CHARACTER el(5)*2,date*6,sub*/;"	v	program:b1b2b3
+sub0	.\b1b2b3.f	/^      CHARACTER el(5)*2,date*6,sub*15,Thdate*10,sub0*/;"	v	program:b1b2b3
+sym	.\misc\makelib.f	/^      CHARACTER*2 sym(/;"	v	program:MAKELIB
+t1	.\b1b2b3.f	/^      DOUBLE PRECISION b(5),t1,/;"	v	program:b1b2b3
+t2	.\b1b2b3.f	/^      DOUBLE PRECISION b(5),t1,t2,/;"	v	program:b1b2b3
+tcoef	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,Reng,SR,T,tcoef,/;"	v
+tconv	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,/;"	v
+templ	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,dlt,expn(8),fno(5),hform,hh,mwt,templ(/;"	v	program:MAKELIB
+temps	.\cap\cap.f	/^      DOUBLE PRECISION EXL,TEX,TT,temps(/;"	v	program:CAP
+term	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,Reng,SR,T,tcoef,term,/;"	v
+tex	.\misc\makelib.f	/^      REAL*8 aa,atms,cpfix,dlt,expn(8),fno(5),hform,hh,mwt,templ(9),tex,/;"	v	program:MAKELIB
+tgl	.\misc\makelib.f	/^     &       tgl(/;"	v	program:MAKELIB
+thermo	.\misc\makelib.f	/^     &       tgl(4),thermo(/;"	v	program:MAKELIB
+tin	.\cap\cap.f	/^      DOUBLE PRECISION tin(/;"	v	program:CAP
+tinf	.\misc\makelib.f	/^     &       tgl(4),thermo(9,3),tinf,/;"	v	program:MAKELIB
+tl	.\misc\makelib.f	/^     &       tgl(4),thermo(9,3),tinf,tl(/;"	v	program:MAKELIB
+tmp	.\syntax.f	/^      CHARACTER*120 rec,tmp$/;"	v
+ttl	.\misc\makelib.f	/^     &       tgl(4),thermo(9,3),tinf,tl(2),ttl,/;"	v	program:MAKELIB
+tx	.\misc\makelib.f	/^     &       tgl(4),thermo(9,3),tinf,tl(2),ttl,tx$/;"	v	program:MAKELIB
+uc	.\syntax.f	/^      CHARACTER*26 lc,uc$/;"	v
+wt	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,Reng,SR,T,tcoef,term,z,wt,/;"	v
+xhi	.\misc\oldnew.f	/^       real*8  ahi,bhi,chi,dhi,ehi,fhi,ghi,xhi$/;"	v	program:OLDNEW
+xi	.\cea2.f	/^      REAL*8 xi,/;"	v
+xln	.\cea2.f	/^      REAL*8 xi,xln$/;"	v
+xlow	.\misc\oldnew.f	/^       real*8  alow,blow,clow,dlow,elow,flow,glow,xlow$/;"	v	program:OLDNEW
+z	.\cap\cap.f	/^     1 HHRT,R,RR,tconv,Reng,SR,T,tcoef,term,z,/;"	v

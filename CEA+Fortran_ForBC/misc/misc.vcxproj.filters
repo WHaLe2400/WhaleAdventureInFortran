@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{c31b7fa5-4a4a-442d-91d2-7dc175c0f4db}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;f90;for;f;fpp</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{6cebcc47-72fe-437e-bb9b-db5a2a6909e7}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{2a15a684-f68d-43e2-902f-6e360ef21be3}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="makelib.f">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="oldnew.f">
+      <Filter>Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="readme_makelib.txt" />
+    <CustomBuild Include="readme_oldnew.txt" />
+  </ItemGroup>
+</Project>

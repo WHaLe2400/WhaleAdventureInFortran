@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="useless">
+      <UniqueIdentifier>{35a17e51-44ce-4ec6-9521-48919b8aed9b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="cea2.inp">
+      <Filter>useless</Filter>
+    </CustomBuild>
+    <CustomBuild Include="readme_ceaBatch.txt">
+      <Filter>useless</Filter>
+    </CustomBuild>
+    <CustomBuild Include="thermo.inp">
+      <Filter>useless</Filter>
+    </CustomBuild>
+    <CustomBuild Include="trans.inp">
+      <Filter>useless</Filter>
+    </CustomBuild>
+    <CustomBuild Include="cea2.f" />
+    <CustomBuild Include="thermo.out" />
+  </ItemGroup>
+</Project>
