@@ -1,0 +1,39 @@
+program Task31_1
+    implicit none
+    character(len=100) :: str
+    integer(8) :: i, ans, n
+    real(8) :: approx_ans
+    print *, "Enter a Number: "
+    print *, "Enter 'exit' to quit."
+    do 
+        read '(A)', str
+        if (trim(adjustl(str)) == 'exit') then !处理退出程序的情况
+            print *,''
+            print *, "Exiting the program."
+            print *,''
+            exit
+        end if
+
+        if (verify(str, '0123456789 ') /= 0) then !对于存在字符的情况报错
+            print *, "Invalid input. Please enter a valid number."
+            cycle
+        else
+            read(str, *) n !获得最终要进行处理的数据
+        end if
+
+        if (n < 0) then
+            print *, "Factorial is not defined for negative numbers."
+        elseif (n <= 20) then !没错，当n>20之后，整形变量就撑不住了
+            ans = 1
+            do i = 2, n
+            ans = ans * i
+            end do
+            write(*,'(A,I3,A,I20)') "Factorial of ", n, " is ", ans
+        else
+            approx_ans = sqrt(2.0d0 * 3.141592653589793d0 * dble(n)) * (dble(n) / 2.718281828459045d0)**dble(n)
+            print *, "n is too large, using Stirling's approximation."
+            write(*,'(A,I4,A,ES20.10)') "Approximate factorial of ", n, " is ", approx_ans
+        end if
+    end do
+
+end program Task31_1
