@@ -14,8 +14,16 @@ program Task31_1
             exit
         end if
 
-        if (verify(str, '0123456789 ') /= 0) then !对于存在字符的情况报错
+        if (verify(str, '0123456789. ') /= 0) then !对于存在字符的情况报错
             print *, "Invalid input. Please enter a valid number."
+            cycle
+        elseif (count([(str(i:i), i=1,len_trim(str))] == '.') > 1) then !对于存在小数点的情况报错
+            print *, "Invalid input. Please enter a valid number."
+            cycle
+        elseif (count([(str(i:i), i=1,len_trim(str))] == '.') > 0) then !对于小数输入的处理
+            print *, "Theoretically, factorial of a non-integer is defined, "
+            print *, "But it's too long to fit in the output."
+            print *, "(The program didn't implement this part)"
             cycle
         else
             read(str, *) n !获得最终要进行处理的数据
