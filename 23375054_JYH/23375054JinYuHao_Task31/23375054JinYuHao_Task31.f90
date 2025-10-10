@@ -2,7 +2,7 @@ program Task31_1
     implicit none
     character(len=100) :: str
     integer(8) :: i, ans, n
-    real(8) :: approx_ans
+    real(16) :: approx_ans
     print *, "Enter a Number: "
     print *, "Enter 'exit' to quit."
     do 
@@ -38,9 +38,11 @@ program Task31_1
             end do
             write(*,'(A,I3,A,I20)') "Factorial of ", n, " is ", ans
         else
-            approx_ans = sqrt(2.0d0 * 3.141592653589793d0 * dble(n)) * (dble(n) / 2.718281828459045d0)**dble(n)
+            approx_ans = sqrt(2.0_16 * 3.1415926535897932384626433832795_16 * real(n, kind=16)) &
+                * (real(n, kind=16) / 2.7182818284590452353602874713527_16)**real(n, kind=16)
             print *, "n is too large, using Stirling's approximation."
-            write(*,'(A,I4,A,ES20.10)') "Approximate factorial of ", n, " is ", approx_ans
+            write(*,'(A,I4,A)') "Approximate factorial of ", n, " is: "
+            write(*,*) approx_ans
         end if
     end do
 
