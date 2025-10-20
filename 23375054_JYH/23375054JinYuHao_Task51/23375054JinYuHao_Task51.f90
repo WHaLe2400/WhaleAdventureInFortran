@@ -20,9 +20,15 @@ program Task31_1
 
     open(101, file='FORTRAN_FileIn.in', status='old', action='read', form='formatted', encoding='UTF-8', iostat=iostat)
         if (iostat /= 0) then
-        print *, "Cannot open input file FORTRAN_FileIn.in (iostat=", iostat, ")."
-        stop
-    end if
+            print *, "Cannot open input file FORTRAN_FileIn.in (iostat=", iostat, ")."
+            stop
+        end if
+
+    open(201, file='FORTRAN_FileOut.out', status='replace', action='write', form='formatted', encoding='UTF-8', iostat=iostat)
+        if (iostat /= 0) then
+            print *, "Cannot open output file FORTRAN_FileOut.out (iostat=", iostat, ")."
+            stop
+        end if
     
     do 
         print *,''
