@@ -37,7 +37,7 @@ program Task31_1
             print *, "Error occurred during read (iostat=", iostat_1, ")."
             exit
         end if
-        print *, "Read input:", trim(str)
+        print *, "Read input:    ", trim(str)
 
 
         if (verify(str, '0123456789. ') /= 0) then !对于存在字符的情况报错
