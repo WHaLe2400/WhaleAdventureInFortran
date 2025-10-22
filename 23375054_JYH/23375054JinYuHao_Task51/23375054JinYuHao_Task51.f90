@@ -2,8 +2,9 @@ program Task31_1
     implicit none
     character(len=100) :: str
     integer(8) :: i, ans, n
-    integer :: iostat_1, iostat_2, All_Fighure, Dot_Count
-    real(16) :: approx_ans
+    integer :: iostat_1, iostat_2, iostat_3, All_Fighure, Dot_Count, E_Count
+    real(16) :: approx_ans, tmp_real
+    real(16), parameter :: EPS = 1.0e-12_16
     character(len=800) :: PROGRAM_RUNNING
     PROGRAM_RUNNING = &
     "  ______              __                               "// new_line('a') // &
@@ -41,16 +42,45 @@ program Task31_1
         print *, "Read input:    ", trim(str)
 
 
-        All_Fighure= verify(str, '0123456789. ')
-        Dot_Count= count([(str(i:i), i=1,len_trim(str))] == '.')
-        
-        select case (All_Fighure == 0 .and. Dot_Count < 1)
-            case (.true.)
-                read(str, *) n                                                          !获得最终要进行处理的数据
-            case (.false.)
-                write(201, *) "Invalid input"
-                cycle                                                                   !如果输入不合法，直接跳到下一次循环
-        end select
+        All_Fighure = verify(str, '0123456789. eE+-')           ! 允许 e/E 和 + - 与空格
+        Dot_Count = count([(str(i:i), i=1,len_trim(str))] == '.')
+        E_Count   = count([(str(i:i), i=1,len_trim(str))] == 'e') &
+                  + count([(str(i:i), i=1,len_trim(str))] == 'E')
+
+        ! 先做字符合法性与简单结构检查
+        if (All_Fighure /= 0) then
+            write(201, *) "Invalid input"
+            cycle
+        end if
+        if (Dot_Count > 1 .or. E_Count > 1) then
+            write(201, *) "Invalid input"
+            cycle
+        end if
+
+        ! 以实数读取并校验
+        read(str, *, iostat=iostat_3) tmp_real
+        if (iostat_3 /= 0) then
+            write(201, *) "Invalid input"
+            cycle
+        end if
+        if (tmp_real < 0.0_16) then
+            write(201, *) "Invalid input"
+            cycle
+        end if
+
+        ! 必须是整数值（允许微小数值误差）
+        if (abs(tmp_real - nint(tmp_real)) > EPS) then
+            write(201, *) "Invalid input"
+            cycle
+        end if
+
+        ! 在转换为 integer(8) 前检测是否会溢出
+        if (tmp_real > real(huge(1_8), kind=16)) then
+            write(201, *) "Oversize input"
+            cycle
+        end if
+
+        n = int(nint(tmp_real), kind=8)
 
 
         if (n < 0) then
