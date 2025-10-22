@@ -1,5 +1,9 @@
 program Task31_1
     implicit none
+    character(len = 100) :: INPUT_PATH = 'FORTRAN_FileIn.in'
+    character(len = 100) :: OUTPUT_PATH = 'FORTRAN_FileOut.out'
+
+
     character(len=100) :: str
     integer(8) :: i, ans, n
     integer :: iostat_1, iostat_2, iostat_3, All_Fighure, Dot_Count, E_Count
@@ -20,15 +24,15 @@ program Task31_1
     print *, PROGRAM_RUNNING
 
 
-    open(101, file='FORTRAN_FileIn.in', status='old', action='read', form='formatted', encoding='UTF-8', iostat=iostat_1)
+    open(101, file=INPUT_PATH, status='old', action='read', form='formatted', encoding='UTF-8', iostat=iostat_1)
         if (iostat_1 /= 0) then
-            print *, "Cannot open input file FORTRAN_FileIn.in (iostat=", iostat_1, ")."
+            print *, "Cannot open input file (iostat=", iostat_1, ")."
             stop
         end if
 
-    open(201, file='FORTRAN_FileOut.out', status='replace', action='write', form='formatted', encoding='UTF-8', iostat=iostat_2)
+    open(201, file=OUTPUT_PATH, status='replace', action='write', form='formatted', encoding='UTF-8', iostat=iostat_2)
         if (iostat_2 /= 0) then
-            print *, "Cannot open output file FORTRAN_FileOut.out (iostat=", iostat_2, ")."
+            print *, "Cannot open output file (iostat=", iostat_2, ")."
             stop
         end if
     
