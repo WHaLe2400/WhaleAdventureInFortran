@@ -4,7 +4,7 @@ program Task31_1
     integer(8) :: i, ans, n
     integer :: iostat_1, iostat_2, iostat_3, All_Fighure, Dot_Count, E_Count
     real(16) :: approx_ans, tmp_real
-    real(16), parameter :: EPS = 1.0e-12_16
+    real(16), parameter :: EPS = 1.0e-12_16  ! 允许的数值误差范围
     character(len=800) :: PROGRAM_RUNNING
     PROGRAM_RUNNING = &
     "  ______              __                               "// new_line('a') // &
@@ -73,7 +73,6 @@ program Task31_1
             write(201, *) "Invalid input"
             cycle
         end if
-
         ! 在转换为 integer(8) 前检测是否会溢出
         if (tmp_real > real(huge(1_8), kind=16)) then
             write(201, *) "Oversize input"
