@@ -2,7 +2,7 @@ program Task31_1
     implicit none
     character(len=100) :: str
     integer(8) :: i, ans, n
-    integer :: iostat_1, iostat_2
+    integer :: iostat_1, iostat_2, All_Fighure, Dot_Count
     real(16) :: approx_ans
     character(len=800) :: PROGRAM_RUNNING
     PROGRAM_RUNNING = &
@@ -17,6 +17,7 @@ program Task31_1
     "/_/ |_|  \__,_/  /_/ /_/ /_/ /_/ /_/   /_/ /_/  \__, /  "// new_line('a') // &
     "                                               /____/   "
     print *, PROGRAM_RUNNING
+
 
     open(101, file='FORTRAN_FileIn.in', status='old', action='read', form='formatted', encoding='UTF-8', iostat=iostat_1)
         if (iostat_1 /= 0) then
@@ -40,18 +41,16 @@ program Task31_1
         print *, "Read input:    ", trim(str)
 
 
-        if (verify(str, '0123456789. ') /= 0) then !对于存在字符的情况报错
-            write(201, *) "Invalid input"
-            cycle
-        elseif (count([(str(i:i), i=1,len_trim(str))] == '.') > 1) then             !对于存在小数点的情况报错
-            write(201, *) "Invalid input"   
-            cycle
-        elseif (count([(str(i:i), i=1,len_trim(str))] == '.') > 0) then             !对于小数输入的处理
-            write(201, *) "Invalid input"
-            cycle
-        else
-            read(str, *) n                                                          !获得最终要进行处理的数据
-        end if
+        All_Fighure= verify(str, '0123456789. ')
+        Dot_Count= count([(str(i:i), i=1,len_trim(str))] == '.')
+        
+        select case (All_Fighure == 0 .and. Dot_Count < 1)
+            case (.true.)
+                read(str, *) n                                                          !获得最终要进行处理的数据
+            case (.false.)
+                write(201, *) "Invalid input"
+                cycle                                                                   !如果输入不合法，直接跳到下一次循环
+        end select
 
 
         if (n < 0) then
