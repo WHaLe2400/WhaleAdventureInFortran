@@ -1,13 +1,15 @@
 """
-用 numpy 从 MNIST .gz(idx) 生成 .npy/.bin/.meta
+用 numpy 从 MNIST .gz(idx) 生成 .npy/.bin/.meta/.txt
 用法：
-  python3 DATA_Read.py /path/to/mnist_dir
-输出（在同一目录）:
-  train-images.npy  train-images.bin  train-images.meta
-  train-labels.npy  train-labels.bin  train-labels.meta
+    python3 DATA_Read.py /path/to/mnist_dir [--out /path/to/output_dir]
+若不指定 --out，则输出到每个输入文件所在目录。
+输出（在输出目录中）:
+    train-images.npy  train-images.bin  train-images.meta  train-images.txt
+    train-labels.npy  train-labels.bin  train-labels.meta  train-labels.txt
 """
 import sys, gzip, struct, os
 import numpy as np
+import argparse
 
 FILES = [
     'train-images-idx3-ubyte.gz',
@@ -35,7 +37,7 @@ def read_idx_gz(path):
         data = f.read()
     return dtype_code, dims, data
 
-def process(path):
+def process(path, out_dir=None):
     name = os.path.basename(path)
     dtype_code, dims, data = read_idx_gz(path)
     if dtype_code not in DTYPE_MAP:
@@ -43,44 +45,62 @@ def process(path):
     np_dtype = np.dtype(DTYPE_MAP[dtype_code])
     arr = np.frombuffer(data, dtype=np_dtype)
     arr = arr.reshape(tuple(dims))
+
+    if out_dir is None:
+        out_dir = os.path.dirname(path)
+    os.makedirs(out_dir, exist_ok=True)
+
     base = name.replace('.gz','').replace('-idx','').replace('ubyte','').replace('.','_')
-    out_npy = os.path.join(os.path.dirname(path), base + '.npy')
-    out_bin = os.path.join(os.path.dirname(path), base + '.bin')
-    out_meta = os.path.join(os.path.dirname(path), base + '.meta')
+    out_npy = os.path.join(out_dir, base + '.npy')
+    out_bin = os.path.join(out_dir, base + '.bin')
+    out_meta = os.path.join(out_dir, base + '.meta')
+    out_txt = os.path.join(out_dir, base + '.txt')
+
     np.save(out_npy, arr)
-    # .tofile 写原始二进制流（Fortran 用 stream/read 读取字节或相应类型）
     arr.tofile(out_bin)
     with open(out_meta, 'w') as m:
-        m.write(f"dtype_code={dtype_code}\n")
-        m.write(f"numpy_dtype={np_dtype.str}\n")
-        m.write("dims=" + " ".join(str(d) for d in dims) + "\n")
-    print("Wrote:", out_npy, out_bin, out_meta)
+        m.write(f"{dtype_code}\n")
+        m.write(f"{np_dtype.str}\n")
+        m.write(" ".join(str(d) for d in dims) + "\n")
+
+    if arr.ndim == 1:
+        fmt = '%d' if np.issubdtype(arr.dtype, np.integer) else '%.18e'
+        np.savetxt(out_txt, arr, fmt=fmt)
+    elif arr.ndim == 2:
+        fmt = '%d' if np.issubdtype(arr.dtype, np.integer) else '%.18e'
+        np.savetxt(out_txt, arr, fmt=fmt)
+    else:
+        samples = arr.shape[0]
+        rest = int(np.prod(arr.shape[1:]))
+        resh = arr.reshape(samples, rest)
+        fmt = '%d' if np.issubdtype(arr.dtype, np.integer) else '%.18e'
+        np.savetxt(out_txt, resh, fmt=fmt)
+
+    print("Wrote:", out_npy, out_bin, out_meta, out_txt)
 
 def main():
-    # 主入口：检查命令行参数，期望一个目录路径
-    if len(sys.argv) < 2:
-        print("Usage: python3 DATA_Read.py /path/to/mnist_dir")
+    parser = argparse.ArgumentParser(description="Convert MNIST IDX.gz to .npy/.bin/.meta/.txt")
+    parser.add_argument('indir', nargs='?', default="23375054_JYH/23375054JinYuHao_Final/1_DATA",
+                        help='输入目录，包含 IDX .gz 文件（默认示例目录）')
+    parser.add_argument('-o', '--out', default="23375054_JYH/23375054JinYuHao_Final/1_DATA_Reread",
+                        help='输出目录（可选），若指定则所有生成文件写入该目录；否则写入输入文件所在目录')
+    args = parser.parse_args()
+
+    d = args.indir
+    out_dir = args.out
+
+    if not os.path.isdir(d):
+        print("Not a directory:", d)
         sys.exit(1)
 
-    # 要处理的目录（第一个参数）
-    d = sys.argv[1]
-
-    # 确认给定路径是一个目录，否则退出
-    if not os.path.isdir(d):
-        print("Not a directory:", d); sys.exit(1)
-
-    # 遍历预定义的 FILES 列表，拼接到输入目录下形成完整路径
     for fn in FILES:
         p = os.path.join(d, fn)
-
-        # 如果文件存在，调用 process 进行解析并保存；异常时打印错误但继续处理下一个文件
         if os.path.exists(p):
             try:
-                process(p)
+                process(p, out_dir=out_dir)
             except Exception as e:
                 print("Failed:", p, e)
         else:
-            # 文件不存在则跳过并提示
             print("Skip (not found):", p)
 
 if __name__ == '__main__':
