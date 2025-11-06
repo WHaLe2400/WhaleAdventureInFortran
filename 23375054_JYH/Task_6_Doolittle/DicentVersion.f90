@@ -306,3 +306,5 @@ end program test_lu_decomposition
 ! /root/0_FoRemote/WhaleAdventureInFortran/23375054_JYH/Task_6_Doolittle/TEST_IN_FILE.txt
 ! OUTPUT FILE EXAMPLE
 ! /root/0_FoRemote/WhaleAdventureInFortran/23375054_JYH/Task_6_Doolittle/TEST_OUT_FILE.txt
+
+! gfortran -std=f2008 -g DicentVersion.f90 -o DicentVersion
