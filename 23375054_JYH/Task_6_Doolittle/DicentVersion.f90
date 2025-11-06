@@ -2,10 +2,7 @@ module matrix_ops_dicent
     implicit none
 contains
 
-    ! 子程序：打印矩阵
-    ! 功能：将一个二维实数数组（矩阵）以格式化的方式输出到控制台。
-    ! 参数：
-    !   A (输入): 要打印的二维实数数组。
+    ! 子程序：打印矩阵，主要是为了方便调试
     subroutine PrintMatrix(A)
         implicit none
         real, intent(in) :: A(:,:)  ! 输入的矩阵 A
@@ -28,13 +25,6 @@ contains
 
 
     ! 子程序：计算矩阵的 LU 分解 (Doolittle 方法)
-    ! 功能：将输入矩阵 A 分解为一个下三角矩阵 L 和一个上三角矩阵 U，
-    !       并将它们合并存储在输出矩阵 LU 中。
-    !       其中 L 的对角线元素为 1（不存储），U 存储在 LU 的上三角部分（包括对角线）。
-    ! 参数：
-    !   A (输入): 原始的 n x n 矩阵。
-    !   LU (输出): 存储分解结果的 n x n 矩阵。
-    !   n (输入): 矩阵的维度。
     subroutine GetLUMatrix(A, L, U)
         implicit none
         real, intent(in) :: A(:,:)      ! 输入矩阵 A
@@ -134,12 +124,6 @@ contains
     end subroutine GetXMatrix
 
 
-    ! 子程序：矩阵乘法
-    ! 功能：计算两个 n x n 矩阵 A 和 B 的乘积，结果存入 C。
-    ! 参数：
-    !   A, B (输入): 要相乘的两个 n x n 矩阵。
-    !   C (输出): 存储乘法结果的 n x n 矩阵。
-    !   n (输入): 矩阵的维度。
     subroutine MultiplyMatrices(A, B, C)
         implicit none
         real, intent(in) :: A(:,:), B(:,:)  ! 输入矩阵 A 和 B
@@ -164,7 +148,7 @@ contains
             stop
         end if
 
-        ! 使用 Fortran 内置的 matmul 函数进行矩阵乘法，更高效简洁
+        ! Fortran竟然还有内置的矩阵乘法函数 matmul！！！！！！
         C = matmul(A, B)
 
     end subroutine MultiplyMatrices
