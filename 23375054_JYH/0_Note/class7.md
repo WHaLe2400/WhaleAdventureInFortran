@@ -60,6 +60,8 @@ contains
 end module module_name
 ```
 
+**注意**：在module中定义的变量会被初始化为0或空字符串。而在程序中定义的变量则是未初始化的，可能包含垃圾值。
+
 通过模块实现面向对象编程：
 
 下面给出一个小例子，演示如何用模块、派生类型（type extends）以及类型绑定过程（type-bound procedures）实现面向对象风格的代码。
