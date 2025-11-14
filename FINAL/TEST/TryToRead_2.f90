@@ -10,7 +10,7 @@ program test
     character(len = cols*2+1), dimension(rows) :: WhatAImage
 
     filename = '/root/0_FoRemote/WhaleAdventureInFortran/' // &
-               '23375054_JYH/23375054JinYuHao_Final/1_DATA_Reread/t10k-images3-.bin'
+               'FINAL/1_DATA_Reread/t10k-images3-.bin'
 
     open(unit=101, file=filename, form='unformatted', access='stream', status='old', iostat=iostat)
     if (iostat /= 0) then
