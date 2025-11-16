@@ -191,6 +191,9 @@ program test_lu_decomposition
     character(len=512) :: arg_value
     real, allocatable :: A(:,:), B(:,:), X(:,:)
     integer :: n, i, j, k
+    
+    character(len=1024) :: line
+    integer :: parse_stat
 
     ! 初始化文件路径
      arg_count = command_argument_count()
@@ -228,51 +231,74 @@ program test_lu_decomposition
     end if
 
     do
-        read(101, *, iostat=iostat_1) n
-        ! 先检查 iostat：EOF 或错误优先处理，避免使用未初始化或旧的 n
-        print *, "读取矩阵维度 n =", n
-        print *, "读取到的 n 值检查 iostat:", iostat_1
-        if (n == -1) then
-            print *, "END"  ! 如果读取到-1，表示结束
-            exit
-        end if
-        
+        line = ""
+
+        ! 读取一行作为字符串
+        read(101, '(A)', iostat=iostat_1) line
         if (iostat_1 < 0) then
             print *, "Reached end of file."
             exit  ! 文件结束，退出循环
-        end if
-        if (iostat_1 > 0) then
+        else if (iostat_1 > 0) then
             write(*,*) "读取维度 n 时出错 (iostat=", iostat_1, ")"
             stop
         end if
 
+        ! 从字符串中解析 n
+        read(line, *, iostat=parse_stat) n
+        if (parse_stat /= 0) then
+            write(*,*) "解析维度 n 时出错 (parse_stat=", parse_stat, ")"
+            stop
+        end if
 
+        print *, "读取矩阵维度 n =", n
+        if (n == -1) then
+            print *, "END"  ! 如果读取到-1，表示结束
+            exit
+        end if
 
-
+        line = ""
         allocate(A(n,n), B(n,1), X(n,1))
 
-        ! 逐元素读取矩阵 A，读取后立即检查 iostat
-        read(101, *, iostat=iostat_1) A
-        if (iostat_1 < 0) then
-            print *, "在读取矩阵 A 时遇到 EOF。"
-            deallocate(A, B, X)
-            exit
-        else if (iostat_1 > 0) then
-            write(*,*) "读取矩阵 A 时出错 (iostat=", iostat_1, ")"
-            stop
-        end if
+        ! 逐行读取矩阵 A
+        do i = 1, n
+            read(101, '(A)', iostat=iostat_1) line
+            if (iostat_1 < 0) then
+                print *, "在读取矩阵 A 时遇到 EOF。"
+                deallocate(A, B, X)
+                exit
+            else if (iostat_1 > 0) then
+                write(*,*) "读取矩阵 A 的第 ", i, " 行时出错 (iostat=", iostat_1, ")"
+                stop
+            end if
+            ! 从字符串中解析 A 的一行
+            read(line, *, iostat=parse_stat) (A(i,j), j=1,n)
+            if (parse_stat /= 0) then
+                write(*,*) "解析矩阵 A 的第 ", i, " 行时出错 (parse_stat=", parse_stat, ")"
+                stop
+            end if
+        end do
 
-        ! 逐元素读取向量 B，读取后立即检查 iostat
-        read(101, *, iostat=iostat_1) B
-        if (iostat_1 < 0) then
-            print *, "在读取向量 B 时遇到 EOF。"
-            deallocate(A, B, X)
-            exit
-        else if (iostat_1 > 0) then
-            write(*,*) "读取向量 B 时出错 (iostat=", iostat_1, ")"
-            stop
-        end if
-
+        line = ""
+        ! 逐行读取向量 B
+        do i = 1, n
+            read(101, '(A)', iostat=iostat_1) line
+            if (iostat_1 < 0) then
+                print *, "在读取向量 B 时遇到 EOF。"
+                deallocate(A, B, X)
+                exit
+            else if (iostat_1 > 0) then
+                write(*,*) "读取向量 B 的第 ", i, " 个元素时出错 (iostat=", iostat_1, ")"
+                stop
+            end if
+            ! 从字符串中解析 B 的一个元素
+            read(line, *, iostat=parse_stat) B(i,1)
+            if (parse_stat /= 0) then
+                write(*,*) "解析向量 B 的第 ", i, " 个元素时出错 (parse_stat=", parse_stat, ")"
+                stop
+            end if
+        end do
+        line = ""
+        
         write(201, *) "求解方程组 AX = B"
         write(201, *) "矩阵 A:"
         do i = 1, n
@@ -308,4 +334,4 @@ end program test_lu_decomposition
 
 ! gfortran -std=f2008 -g DicentVersion.f90 -o DicentVersion
 
-! ./DicentVersion --in_file /root/0_FoRemote/WhaleAdventureInFortran/23375054_JYH/Task_6_Doolittle/TEST_IN_FILE.txt --out_file /root/0_FoRemote/WhaleAdventureInFortran/23375054_JYH/Task_6_Doolittle/TEST_OUT_FILE.txt
+! ./DicentVersion --in_file /root/0_FoRemote/WhaleAdventureInFortran/23375054_JYH/Task_7/TEST_IN_FILE.txt --out_file /root/0_FoRemote/WhaleAdventureInFortran/23375054_JYH/Task_7/TEST_OUT_FILE.txt
