@@ -1,120 +1,181 @@
 module PReluFunc_mod
+    use iso_fortran_env, only: dp => real64
     implicit none
     private
 
-    ! 定义泛型接口，使其可以根据输入参数的秩（维度）选择正确的函数
-    public :: prelu_forward, prelu_backward
-    interface prelu_forward
-        module procedure prelu_forward_4d
-        module procedure prelu_forward_2d
-    end interface prelu_forward
+    public :: PReluLayer
 
-    interface prelu_backward
-        module procedure prelu_backward_4d
-        module procedure prelu_backward_2d
-    end interface prelu_backward
+    type, public :: PReluLayer
+        private
+        real(dp), allocatable :: a(:)
+        real(dp), allocatable :: grad_a(:)
+        ! Cache for backward pass
+        real(dp), allocatable :: x_cache_4d(:,:,:,:)
+        real(dp), allocatable :: x_cache_2d(:,:)
+        integer :: input_channels = 0
+    contains
+        procedure, public :: init => prelu_init
+        procedure, public :: destroy => prelu_destroy
+        procedure, public :: update => prelu_update
+        
+        ! Specific procedures are private
+        procedure, private :: prelu_forward_bhwc
+        procedure, private :: prelu_forward_bl
+        procedure, private :: prelu_backward_bhwc
+        procedure, private :: prelu_backward_bl
 
-    ! 假定 dp 在别处定义，例如: integer, parameter :: dp = kind(1.0d0)
-    integer, parameter :: dp = kind(1.0d0)
+        ! Generic interfaces are public
+        generic, public :: forward => prelu_forward_bhwc, prelu_forward_bl
+        generic, public :: backward => prelu_backward_bhwc, prelu_backward_bl
+    end type PReluLayer
 
 contains
 
-    ! -------------------------------------------------------------------------
-    ! 4D (BCHW) 版本
-    ! -------------------------------------------------------------------------
-    function prelu_forward_4d(x, a) result(out)
-        !> PReLU forward pass for 4D (BCHW) tensor.
-        implicit none
-        real(dp), intent(in) :: x(:,:,:,:), a(:)
+    subroutine prelu_init(self, num_channels)
+        class(PReluLayer), intent(inout) :: self
+        integer, intent(in) :: num_channels
+        
+        self%input_channels = num_channels
+        if (allocated(self%a)) deallocate(self%a)
+        if (allocated(self%grad_a)) deallocate(self%grad_a)
+        
+        allocate(self%a(num_channels))
+        allocate(self%grad_a(num_channels))
+        
+        ! Initialize 'a' with a small positive value
+        self%a = 0.01_dp
+        self%grad_a = 0.0_dp
+    end subroutine prelu_init
+
+    subroutine prelu_destroy(self)
+        class(PReluLayer), intent(inout) :: self
+        if (allocated(self%a)) deallocate(self%a)
+        if (allocated(self%grad_a)) deallocate(self%grad_a)
+        if (allocated(self%x_cache_4d)) deallocate(self%x_cache_4d)
+        if (allocated(self%x_cache_2d)) deallocate(self%x_cache_2d)
+        self%input_channels = 0
+    end subroutine prelu_destroy
+
+    subroutine prelu_update(self, learning_rate)
+        class(PReluLayer), intent(inout) :: self
+        real(dp), intent(in) :: learning_rate
+        if (.not. allocated(self%a)) return
+        self%a = self%a - learning_rate * self%grad_a
+        ! Reset gradient after update
+        self%grad_a = 0.0_dp
+    end subroutine prelu_update
+
+    ! --- 4D (B*H*W*C) Version ---
+    function prelu_forward_bhwc(self, x) result(out)
+        class(PReluLayer), intent(inout) :: self
+        real(dp), intent(in) :: x(:,:,:,:)
         real(dp), allocatable :: out(:,:,:,:)
-        integer :: N, C, H, W
+        integer :: c_idx
+        
+        if (size(x, 4) /= self%input_channels) then
+            print *, "PReLU Error: Input channels mismatch in forward_bhwc. Expected ", &
+                     self%input_channels, ", got ", size(x, 4)
+            allocate(out(0,0,0,0))
+            return
+        end if
 
-        N = size(x, 1)
-        C = size(x, 2)
-        H = size(x, 3)
-        W = size(x, 4)
-
-        allocate(out(N, C, H, W))
-
-        do C = 1, size(x, 2) ! 使用大写 C 以保持一致性
-            where (x(:,C,:,:) > 0.0_dp)
-                out(:,C,:,:) = x(:,C,:,:)
-            elsewhere
-                out(:,C,:,:) = a(C) * x(:,C,:,:)
+        ! Cache input for backward pass
+        if (allocated(self%x_cache_4d)) deallocate(self%x_cache_4d)
+        self%x_cache_4d = x
+        
+        allocate(out, source=x)
+        do c_idx = 1, self%input_channels
+            where (x(:,:,:,c_idx) <= 0.0_dp)
+                out(:,:,:,c_idx) = self%a(c_idx) * x(:,:,:,c_idx)
             end where
         end do
+    end function prelu_forward_bhwc
 
-    end function prelu_forward_4d
-
-    function prelu_backward_4d(dout, x, a) result(dx)
-        !> PReLU backward pass for 4D (BCHW) tensor.
-        implicit none
-        real(dp), intent(in) :: dout(:,:,:,:), x(:,:,:,:), a(:)
+    function prelu_backward_bhwc(self, dout) result(dx)
+        class(PReluLayer), intent(inout) :: self
+        real(dp), intent(in) :: dout(:,:,:,:)
         real(dp), allocatable :: dx(:,:,:,:)
-        integer :: N, C, H, W
+        integer :: c_idx
+        real(dp), allocatable :: da_sum(:)
 
-        N = size(x, 1)
-        C = size(x, 2)
-        H = size(x, 3)
-        W = size(x, 4)
+        if (.not. allocated(self%x_cache_4d)) then
+            print *, "PReLU Error: Must call forward before backward."
+            allocate(dx(0,0,0,0))
+            return
+        end if
 
-        allocate(dx(N, C, H, W))
+        allocate(dx, source=dout)
+        allocate(da_sum(self%input_channels))
+        da_sum = 0.0_dp
 
-        do C = 1, size(x, 2) ! 使用大写 C 以保持一致性
-            where (x(:,C,:,:) > 0.0_dp)
-                dx(:,C,:,:) = dout(:,C,:,:)
+        do c_idx = 1, self%input_channels
+            ! Calculate dx
+            where (self%x_cache_4d(:,:,:,c_idx) > 0.0_dp)
+                dx(:,:,:,c_idx) = dout(:,:,:,c_idx)
             elsewhere
-                dx(:,C,:,:) = a(C) * dout(:,C,:,:)
+                dx(:,:,:,c_idx) = self%a(c_idx) * dout(:,:,:,c_idx)
             end where
+            ! Calculate gradient for 'a' for the negative part
+            da_sum(c_idx) = sum(self%x_cache_4d(:,:,:,c_idx) * dout(:,:,:,c_idx), &
+                                mask=self%x_cache_4d(:,:,:,c_idx) <= 0.0_dp)
         end do
+        self%grad_a = self%grad_a + da_sum
+    end function prelu_backward_bhwc
 
-    end function prelu_backward_4d
-
-    ! -------------------------------------------------------------------------
-    ! 2D (BL) 版本
-    ! -------------------------------------------------------------------------
-    function prelu_forward_2d(x, a) result(out)
-        !> PReLU forward pass for 2D (BL) tensor.
-        implicit none
-        real(dp), intent(in) :: x(:,:), a(:)
+    ! --- 2D (B*L) Version ---
+    function prelu_forward_bl(self, x) result(out)
+        class(PReluLayer), intent(inout) :: self
+        real(dp), intent(in) :: x(:,:)
         real(dp), allocatable :: out(:,:)
-        integer :: N, C
+        integer :: c_idx
 
-        N = size(x, 1)
-        C = size(x, 2)
+        if (size(x, 2) /= self%input_channels) then
+            print *, "PReLU Error: Input features mismatch in forward_bl. Expected ", &
+                     self%input_channels, ", got ", size(x, 2)
+            allocate(out(0,0))
+            return
+        end if
 
-        allocate(out(N, C))
-
-        do C = 1, size(x, 2) ! 使用大写 C 以保持一致性
-            where (x(:,C) > 0.0_dp)
-                out(:,C) = x(:,C)
-            elsewhere
-                out(:,C) = a(C) * x(:,C)
+        if (allocated(self%x_cache_2d)) deallocate(self%x_cache_2d)
+        self%x_cache_2d = x
+        
+        allocate(out, source=x)
+        do c_idx = 1, self%input_channels
+            where (x(:,c_idx) <= 0.0_dp)
+                out(:,c_idx) = self%a(c_idx) * x(:,c_idx)
             end where
         end do
+    end function prelu_forward_bl
 
-    end function prelu_forward_2d
-
-    function prelu_backward_2d(dout, x, a) result(dx)
-        !> PReLU backward pass for 2D (BL) tensor.
-        implicit none
-        real(dp), intent(in) :: dout(:,:), x(:,:), a(:)
+    function prelu_backward_bl(self, dout) result(dx)
+        class(PReluLayer), intent(inout) :: self
+        real(dp), intent(in) :: dout(:,:)
         real(dp), allocatable :: dx(:,:)
-        integer :: N, C
+        integer :: c_idx
+        real(dp), allocatable :: da_sum(:)
 
-        N = size(x, 1)
-        C = size(x, 2)
+        if (.not. allocated(self%x_cache_2d)) then
+            print *, "PReLU Error: Must call forward before backward."
+            allocate(dx(0,0))
+            return
+        end if
 
-        allocate(dx(N, C))
+        allocate(dx, source=dout)
+        allocate(da_sum(self%input_channels))
+        da_sum = 0.0_dp
 
-        do C = 1, size(x, 2) ! 使用大写 C 以保持一致性
-            where (x(:,C) > 0.0_dp)
-                dx(:,C) = dout(:,C)
+        do c_idx = 1, self%input_channels
+            ! Calculate dx
+            where (self%x_cache_2d(:,c_idx) > 0.0_dp)
+                dx(:,c_idx) = dout(:,c_idx)
             elsewhere
-                dx(:,C) = a(C) * dout(:,C)
+                dx(:,c_idx) = self%a(c_idx) * dout(:,c_idx)
             end where
+            ! Calculate gradient for 'a' for the negative part
+            da_sum(c_idx) = sum(self%x_cache_2d(:,c_idx) * dout(:,c_idx), &
+                                mask=self%x_cache_2d(:,c_idx) <= 0.0_dp)
         end do
-
-    end function prelu_backward_2d
+        self%grad_a = self%grad_a + da_sum
+    end function prelu_backward_bl
 
 end module PReluFunc_mod
