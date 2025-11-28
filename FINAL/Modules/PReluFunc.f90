@@ -9,7 +9,7 @@ module PReluFunc_mod
         private
         real(dp), allocatable :: a(:)
         real(dp), allocatable :: grad_a(:)
-        ! Cache for backward pass
+        ! 用于反向传播的缓存
         real(dp), allocatable :: x_cache_4d(:,:,:,:)
         real(dp), allocatable :: x_cache_2d(:,:)
         integer :: input_channels = 0
@@ -18,13 +18,13 @@ module PReluFunc_mod
         procedure, public :: destroy => prelu_destroy
         procedure, public :: update => prelu_update
         
-        ! Specific procedures are private
+        ! 具体过程是私有的
         procedure, private :: prelu_forward_bhwc
         procedure, private :: prelu_forward_bl
         procedure, private :: prelu_backward_bhwc
         procedure, private :: prelu_backward_bl
 
-        ! Generic interfaces are public
+        ! 通用接口是公共的
         generic, public :: forward => prelu_forward_bhwc, prelu_forward_bl
         generic, public :: backward => prelu_backward_bhwc, prelu_backward_bl
     end type PReluLayer
@@ -42,7 +42,7 @@ contains
         allocate(self%a(num_channels))
         allocate(self%grad_a(num_channels))
         
-        ! Initialize 'a' with a small positive value
+        ! 用一个小的正值初始化 'a'
         self%a = 0.01_dp
         self%grad_a = 0.0_dp
     end subroutine prelu_init
@@ -61,11 +61,11 @@ contains
         real(dp), intent(in) :: learning_rate
         if (.not. allocated(self%a)) return
         self%a = self%a - learning_rate * self%grad_a
-        ! Reset gradient after update
+        ! 更新后重置梯度
         self%grad_a = 0.0_dp
     end subroutine prelu_update
 
-    ! --- 4D (B*H*W*C) Version ---
+    ! --- 4D (B*H*W*C) 版本 ---
     function prelu_forward_bhwc(self, x) result(out)
         class(PReluLayer), intent(inout) :: self
         real(dp), intent(in) :: x(:,:,:,:)
@@ -79,7 +79,7 @@ contains
             return
         end if
 
-        ! Cache input for backward pass
+        ! 缓存输入以用于反向传播
         if (allocated(self%x_cache_4d)) deallocate(self%x_cache_4d)
         self%x_cache_4d = x
         
@@ -109,20 +109,20 @@ contains
         da_sum = 0.0_dp
 
         do c_idx = 1, self%input_channels
-            ! Calculate dx
+            ! 计算 dx
             where (self%x_cache_4d(:,:,:,c_idx) > 0.0_dp)
                 dx(:,:,:,c_idx) = dout(:,:,:,c_idx)
             elsewhere
                 dx(:,:,:,c_idx) = self%a(c_idx) * dout(:,:,:,c_idx)
             end where
-            ! Calculate gradient for 'a' for the negative part
+            ! 计算负数部分的 'a' 的梯度
             da_sum(c_idx) = sum(self%x_cache_4d(:,:,:,c_idx) * dout(:,:,:,c_idx), &
                                 mask=self%x_cache_4d(:,:,:,c_idx) <= 0.0_dp)
         end do
         self%grad_a = self%grad_a + da_sum
     end function prelu_backward_bhwc
 
-    ! --- 2D (B*L) Version ---
+    ! --- 2D (B*L) 版本 ---
     function prelu_forward_bl(self, x) result(out)
         class(PReluLayer), intent(inout) :: self
         real(dp), intent(in) :: x(:,:)
@@ -165,13 +165,13 @@ contains
         da_sum = 0.0_dp
 
         do c_idx = 1, self%input_channels
-            ! Calculate dx
+            ! 计算 dx
             where (self%x_cache_2d(:,c_idx) > 0.0_dp)
                 dx(:,c_idx) = dout(:,c_idx)
             elsewhere
                 dx(:,c_idx) = self%a(c_idx) * dout(:,c_idx)
             end where
-            ! Calculate gradient for 'a' for the negative part
+            ! 计算负数部分的 'a' 的梯度
             da_sum(c_idx) = sum(self%x_cache_2d(:,c_idx) * dout(:,c_idx), &
                                 mask=self%x_cache_2d(:,c_idx) <= 0.0_dp)
         end do

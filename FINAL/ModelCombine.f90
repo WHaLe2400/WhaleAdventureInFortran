@@ -13,7 +13,7 @@ module ModelCombine_mod
         ! --- Public Parameters ---
         integer :: BatchSize = 1
         integer, dimension(3) :: H = [28, 14, 7], W = [28, 14, 7], C = [1, 8, 16]
-        integer :: FC_in = 16*7*7, FC_hidden = 128, FC_out = 10
+        integer :: FC_in = 784, FC_hidden = 128, FC_out = 10
         integer :: Conv1_kernel = 5, Conv1_stride = 2, Conv1_padding = 2
         integer :: Conv2_kernel = 5, Conv2_stride = 2, Conv2_padding = 2
         ! --- Private Layer Components ---

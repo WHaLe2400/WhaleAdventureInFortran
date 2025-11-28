@@ -3,17 +3,17 @@ module FullConnect_mod
     implicit none
     private
 
-    ! Public interface
+    ! 公共接口
     public :: FullConnectLayer
 
-    ! Type definition for the fully connected layer
+    ! 全连接层的类型定义
     type, public :: FullConnectLayer
         private
         integer :: input_size = 0
         integer :: output_size = 0
         real(dp), allocatable :: weights(:, :)
         real(dp), allocatable :: biases(:)
-        ! For backpropagation with batches
+        ! 用于批量反向传播
         real(dp), allocatable :: input_cache(:, :)
         real(dp), allocatable :: grad_weights(:, :)
         real(dp), allocatable :: grad_biases(:)
@@ -23,7 +23,7 @@ module FullConnect_mod
         procedure, public :: backward => fc_backward
         procedure, public :: update => fc_update
         procedure, public :: destroy => fc_destroy
-        ! Getter functions
+        ! Getter 函数
         procedure, public :: get_input_size => fc_get_input_size
         procedure, public :: get_output_size => fc_get_output_size
         procedure, public :: get_weights => fc_get_weights
@@ -34,7 +34,7 @@ module FullConnect_mod
 
 contains
 
-    ! Subroutine to initialize the fully connected layer
+    ! 初始化全连接层的子程序
     subroutine fc_init(self, input_dim, output_dim)
         class(FullConnectLayer), intent(inout) :: self
         integer, intent(in) :: input_dim
@@ -43,34 +43,34 @@ contains
         self%input_size = input_dim
         self%output_size = output_dim
 
-        ! Deallocate if already allocated
+        ! 如果已分配则释放
         call self%destroy()
 
-        ! Allocate weights and biases
+        ! 分配权重和偏置
         allocate(self%weights(self%output_size, self%input_size))
         allocate(self%biases(self%output_size))
 
-        ! Allocate storage for gradients
+        ! 为梯度分配存储空间
         allocate(self%grad_weights(self%output_size, self%input_size))
         allocate(self%grad_biases(self%output_size))
-        ! input_cache is allocated dynamically in forward pass
+        ! input_cache 在前向传播中动态分配
 
-        ! Initialize with random numbers and zero gradients
+        ! 使用随机数初始化，并将梯度置零
         call random_number(self%weights)
         call random_number(self%biases)
         self%grad_weights = 0.0_dp
         self%grad_biases = 0.0_dp
     end subroutine fc_init
 
-    ! Function to perform the forward pass for a batch
+    ! 执行批量前向传播的函数
     function fc_forward(self, input_batch) result(output_batch)
         class(FullConnectLayer), intent(inout) :: self
-        real(dp), intent(in) :: input_batch(:, :) ! Shape: (batch_size, input_size)
-        real(dp), allocatable :: output_batch(:, :)   ! Shape: (batch_size, output_size)
+        real(dp), intent(in) :: input_batch(:, :) ! 形状: (批量大小, 输入大小)
+        real(dp), allocatable :: output_batch(:, :)   ! 形状: (批量大小, 输出大小)
 
         integer :: batch_size
 
-        ! Check for dimension mismatch
+        ! 检查维度不匹配
         if (size(input_batch, 2) /= self%input_size) then
             print *, "Error: Input batch feature size (", size(input_batch, 2), &
                      ") does not match layer input size (", self%input_size, ")."
@@ -80,29 +80,29 @@ contains
 
         batch_size = size(input_batch, 1)
 
-        ! Cache the input for backpropagation
+        ! 缓存输入以用于反向传播
         if (allocated(self%input_cache)) deallocate(self%input_cache)
         allocate(self%input_cache(batch_size, self%input_size))
         self%input_cache = input_batch
 
-        ! Allocate output
+        ! 分配输出
         allocate(output_batch(batch_size, self%output_size))
 
-        ! Perform the matrix-matrix multiplication and add biases
+        ! 执行矩阵-矩阵乘法并加上偏置
         ! output = input * weights' + biases
         output_batch = matmul(input_batch, transpose(self%weights))
         output_batch = output_batch + spread(self%biases, dim=1, ncopies=batch_size)
     end function fc_forward
 
-    ! Function to perform the backward pass for a batch
+    ! 执行批量反向传播的函数
     function fc_backward(self, grad_output_batch) result(grad_input_batch)
         class(FullConnectLayer), intent(inout) :: self
-        real(dp), intent(in) :: grad_output_batch(:, :) ! Grad of loss w.r.t. layer's output. Shape: (batch_size, output_size)
-        real(dp), allocatable :: grad_input_batch(:, :)   ! Grad of loss w.r.t. layer's input. Shape: (batch_size, input_size)
+        real(dp), intent(in) :: grad_output_batch(:, :) ! 损失函数关于层输出的梯度。形状: (批量大小, 输出大小)
+        real(dp), allocatable :: grad_input_batch(:, :)   ! 损失函数关于层输入的梯度。形状: (批量大小, 输入大小)
 
         integer :: batch_size
 
-        ! Check for dimension mismatch
+        ! 检查维度不匹配
         if (size(grad_output_batch, 2) /= self%output_size) then
             print *, "Error: Gradient output batch feature size (", size(grad_output_batch, 2), &
                      ") does not match layer output size (", self%output_size, ")."
@@ -118,34 +118,34 @@ contains
             return
         end if
 
-        ! 1. Calculate gradient w.r.t. weights (dLoss/dW)
-        ! dLoss/dW = dLoss/dOut^T * In = In^T * dLoss/dOut (transposed)
-        ! grad_output_batch: (batch, out_size), input_cache: (batch, in_size)
-        ! grad_weights: (out_size, in_size)
+        ! 1. 计算关于权重的梯度 (dLoss/dW)
+        ! dLoss/dW = dLoss/dOut^T * In = In^T * dLoss/dOut (转置)
+        ! grad_output_batch: (批量, 输出大小), input_cache: (批量, 输入大小)
+        ! grad_weights: (输出大小, 输入大小)
         self%grad_weights = matmul(transpose(grad_output_batch), self%input_cache)
 
-        ! 2. Calculate gradient w.r.t. biases (dLoss/dB)
-        ! Sum gradients across the batch dimension
+        ! 2. 计算关于偏置的梯度 (dLoss/dB)
+        ! 沿批量维度求和梯度
         self%grad_biases = sum(grad_output_batch, dim=1)
 
-        ! 3. Calculate gradient w.r.t. input (dLoss/dIn)
+        ! 3. 计算关于输入的梯度 (dLoss/dIn)
         ! dLoss/dIn = dLoss/dOut * W
         allocate(grad_input_batch(batch_size, self%input_size))
         grad_input_batch = matmul(grad_output_batch, self%weights)
 
     end function fc_backward
 
-    ! Subroutine to update weights and biases
+    ! 更新权重和偏置的子程序
     subroutine fc_update(self, learning_rate)
         class(FullConnectLayer), intent(inout) :: self
         real(dp), intent(in) :: learning_rate
 
-        ! Update weights and biases using gradient descent
+        ! 使用梯度下降更新权重和偏置
         self%weights = self%weights - learning_rate * self%grad_weights
         self%biases = self%biases - learning_rate * self%grad_biases
     end subroutine fc_update
 
-    ! Subroutine to deallocate memory
+    ! 释放内存的子程序
     subroutine fc_destroy(self)
         class(FullConnectLayer), intent(inout) :: self
         if (allocated(self%weights)) deallocate(self%weights)
@@ -157,7 +157,7 @@ contains
         self%output_size = 0
     end subroutine fc_destroy
 
-    ! --- Getter Functions ---
+    ! --- Getter 函数 ---
 
     function fc_get_input_size(self) result(val)
         class(FullConnectLayer), intent(in) :: self
