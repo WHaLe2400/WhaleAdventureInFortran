@@ -37,6 +37,8 @@ program test
         stop
     end if
 
+    print *, "Row_data:", data
+
     ! 将每行像素转换为字符画并输出
     do i = 1, rows
         WhatAImage(i) = ''

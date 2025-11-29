@@ -6,81 +6,81 @@ module Flaten_mod
     public :: FlatenLayer
 
     type, public :: FlatenLayer
-        private
-        integer :: input_C = 0
-        integer :: input_H = 0
-        integer :: input_W = 0
-        integer :: output_size = 0
+    private
+        integer :: input_c = 0, input_h = 0, input_w = 0
     contains
         procedure, public :: init => flaten_init
         procedure, public :: forward => flaten_forward
         procedure, public :: backward => flaten_backward
         procedure, public :: destroy => flaten_destroy
-        ! Getter functions
-        procedure, public :: get_input_shape => flaten_get_input_shape
-        procedure, public :: get_output_size => flaten_get_output_size
-        
     end type FlatenLayer
 
 contains
-    subroutine flaten_init(self, C, H, W)
-        class(FlatenLayer), intent(inout) :: self
-        integer, intent(in) :: C, H, W
 
-        self%input_C = C
-        self%input_H = H
-        self%input_W = W
-        self%output_size = C * H * W
+    subroutine flaten_init(self, c, h, w)
+        class(FlatenLayer), intent(inout) :: self
+        integer, intent(in) :: c, h, w
+        self%input_c = c
+        self%input_h = h
+        self%input_w = w
     end subroutine flaten_init
 
-    function flaten_forward(self, x) result(y)
+    function flaten_forward(self, input_data) result(output_data)
         class(FlatenLayer), intent(inout) :: self
-        real(dp), intent(in) :: x(:,:,:,:) ! Shape: (N, C, H, W)
-        real(dp), allocatable :: y(:,:)       ! Shape: (N, C*H*W)
-        integer :: batch_size
+        real(dp), intent(in) :: input_data(:,:,:,:)  ! Input layout: (N, C, H, W)
+        real(dp), allocatable :: output_data(:,:)
+        integer :: n, c, h, w, idx
+        integer :: N_dim, C_dim, H_dim, W_dim
 
-        batch_size = size(x, 1)
+        N_dim = size(input_data, 1)
+        C_dim = size(input_data, 2)
+        H_dim = size(input_data, 3)
+        W_dim = size(input_data, 4)
 
-        ! Reshape the entire batch in one operation
-        y = reshape(x, [batch_size, self%output_size])
-        
+        allocate(output_data(N_dim, C_dim * H_dim * W_dim))
+
+        do n = 1, N_dim
+            idx = 1
+            do c = 1, C_dim
+                do h = 1, H_dim
+                    do w = 1, W_dim
+                        output_data(n, idx) = input_data(n, c, h, w)
+                        idx = idx + 1
+                    end do
+                end do
+            end do
+        end do
     end function flaten_forward
 
-    function flaten_backward(self, dout) result(dx)
-        class(FlatenLayer), intent(inout) :: self
-        real(dp), intent(in) :: dout(:,:)      ! Shape: (N, C*H*W)
-        real(dp), allocatable :: dx(:,:,:,:) ! Shape: (N, C, H, W)
-        integer :: batch_size
+    function flaten_backward(self, grad_output) result(grad_input)
+        class(FlatenLayer), intent(in) :: self
+        real(dp), intent(in) :: grad_output(:,:)
+        real(dp), allocatable :: grad_input(:,:,:,:)
+        integer :: n, c, h, w, idx
+        integer :: N_dim
 
-        batch_size = size(dout, 1)
+        N_dim = size(grad_output, 1)
+        
+        allocate(grad_input(N_dim, self%input_c, self%input_h, self%input_w))
 
-        ! Reshape the entire batch back to its original 4D shape
-        dx = reshape(dout, [batch_size, self%input_C, self%input_H, self%input_W])
-
+        do n = 1, N_dim
+            idx = 1
+            do c = 1, self%input_c
+                do h = 1, self%input_h
+                    do w = 1, self%input_w
+                        grad_input(n, c, h, w) = grad_output(n, idx)
+                        idx = idx + 1
+                    end do
+                end do
+            end do
+        end do
     end function flaten_backward
 
     subroutine flaten_destroy(self)
         class(FlatenLayer), intent(inout) :: self
-        self%input_C = 0
-        self%input_H = 0
-        self%input_W = 0
-        self%output_size = 0
+        self%input_c = 0
+        self%input_h = 0
+        self%input_w = 0
     end subroutine flaten_destroy
-
-    subroutine flaten_get_input_shape(self, C, H, W)
-        class(FlatenLayer), intent(in) :: self
-        integer, intent(out) :: C, H, W
-
-        C = self%input_C
-        H = self%input_H
-        W = self%input_W
-    end subroutine flaten_get_input_shape
-
-    function flaten_get_output_size(self) result(size)
-        class(FlatenLayer), intent(in) :: self
-        integer :: size
-
-        size = self%output_size
-    end function flaten_get_output_size
 
 end module Flaten_mod

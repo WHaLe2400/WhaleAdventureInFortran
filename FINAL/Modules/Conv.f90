@@ -1,6 +1,6 @@
 module Conv_mod
     ! 卷积层 (CNN)，面向对象 Fortran 实现
-    ! 数据形状: (N, H, W, C) - 通道在后
+    ! 数据形状: (N, C, H, W) - 通道在前
     use iso_fortran_env, only: dp => real64! 规定实型变量的精度为双精度
     implicit none
 
@@ -9,11 +9,11 @@ module Conv_mod
         private
         integer :: in_ch = 0, out_ch = 0, kH = 0, kW = 0
         integer :: stride = 1, pad = 0
-        ! W(kH, kW, in_ch, out_ch), b(out_ch)
+        ! W(out_ch, in_ch, kH, kW), b(out_ch)
         real(dp), allocatable :: W(:,:,:,:), b(:)
         real(dp), allocatable :: dW(:,:,:,:), db(:)    ! 梯度
 
-        ! 后向传播时缓存的输入 (N, H, W, in_ch)
+        ! 后向传播时缓存的输入 (N, in_ch, H, W)
         real(dp), allocatable :: x_cache(:,:,:,:)
 
     contains
@@ -45,9 +45,9 @@ contains
         self%kH = kernel_; self%kW = kernel_
         self%stride = stride_; self%pad = pad_
 
-        allocate(self%W(self%kH, self%kW, self%in_ch, self%out_ch))
+        allocate(self%W(self%out_ch, self%in_ch, self%kH, self%kW))
         allocate(self%b(self%out_ch))
-        allocate(self%dW(self%kH, self%kW, self%in_ch, self%out_ch))
+        allocate(self%dW(self%out_ch, self%in_ch, self%kH, self%kW))
         allocate(self%db(self%out_ch))
 
         if (present(seed)) then
@@ -71,8 +71,8 @@ contains
         class(ConvLayer), intent(inout) :: self
         real(dp), intent(in) :: W_in(:,:,:,:), b_in(:)
 
-        if (size(W_in, 1) /= self%kH .or. size(W_in, 2) /= self%kW .or. &
-            size(W_in, 3) /= self%in_ch .or. size(W_in, 4) /= self%out_ch) then
+        if (size(W_in, 1) /= self%out_ch .or. size(W_in, 2) /= self%in_ch .or. &
+            size(W_in, 3) /= self%kH .or. size(W_in, 4) /= self%kW) then
             stop "conv_load: weight dimensions do not match"
         end if
         if (size(b_in) /= self%out_ch) then
@@ -88,8 +88,8 @@ contains
         ! 前向传播
         implicit none
         class(ConvLayer), intent(inout) :: self
-        real(dp), intent(in) :: x_in(:,:,:,:)   ! (N, H, W, 输入通道)
-        real(dp), allocatable :: y(:,:,:,:)     ! (N, H_out, W_out, 输出通道)
+        real(dp), intent(in) :: x_in(:,:,:,:)   ! (N, C_in, H, W)
+        real(dp), allocatable :: y(:,:,:,:)     ! (N, C_out, H_out, W_out)
 
         ! 本函数的局部变量
         integer :: batch, C_in, H, W_in
@@ -103,41 +103,42 @@ contains
         allocate(self%x_cache, source=x_in)
 
         batch = size(x_in, 1)
-        H = size(x_in, 2)
-        W_in = size(x_in, 3)
-        C_in = size(x_in, 4)
+        C_in = size(x_in, 2)
+        H = size(x_in, 3)
+        W_in = size(x_in, 4)
 
         H_out = (H + 2*self%pad - self%kH) / self%stride + 1
         W_out = (W_in + 2*self%pad - self%kW) / self%stride + 1
 
-        allocate(y(batch, H_out, W_out, self%out_ch))
+        allocate(y(batch, self%out_ch, H_out, W_out))
         y = 0.0_dp
 
-        allocate(xpad(batch, H + 2*self%pad, W_in + 2*self%pad, C_in))
+        allocate(xpad(batch, C_in, H + 2*self%pad, W_in + 2*self%pad))
         xpad = 0.0_dp
         if (self%pad > 0) then
-            xpad(:, self%pad+1:self%pad+H, self%pad+1:self%pad+W_in, :) = x_in
+            xpad(:, :, self%pad+1:self%pad+H, self%pad+1:self%pad+W_in) = x_in
         else
+            ! Even if pad is 0, xpad needs to be a copy of x_in
             xpad = x_in
         end if
 
         do n = 1, batch
-            do i_out = 1, H_out
-                i_start = (i_out-1)*self%stride + 1
-                do j_out = 1, W_out
-                    j_start = (j_out-1)*self%stride + 1
-                    do c_out_idx = 1, self%out_ch
-                        do kh = 1, self%kH
-                            i_in = i_start + kh - 1
-                            do kw = 1, self%kW
-                                j_in = j_start + kw - 1
-                                do c_in_idx = 1, C_in
-                                    y(n, i_out, j_out, c_out_idx) = y(n, i_out, j_out, c_out_idx) + &
-                                         self%W(kh, kw, c_in_idx, c_out_idx) * xpad(n, i_in, j_in, c_in_idx)
+            do c_out_idx = 1, self%out_ch
+                do i_out = 1, H_out
+                    i_start = (i_out-1)*self%stride + 1
+                    do j_out = 1, W_out
+                        j_start = (j_out-1)*self%stride + 1
+                        do c_in_idx = 1, C_in
+                            do kh = 1, self%kH
+                                i_in = i_start + kh - 1
+                                do kw = 1, self%kW
+                                    j_in = j_start + kw - 1
+                                    y(n, c_out_idx, i_out, j_out) = y(n, c_out_idx, i_out, j_out) + &
+                                         self%W(c_out_idx, c_in_idx, kh, kw) * xpad(n, c_in_idx, i_in, j_in)
                                 end do
                             end do
                         end do
-                        y(n, i_out, j_out, c_out_idx) = y(n, i_out, j_out, c_out_idx) + self%b(c_out_idx)
+                        y(n, c_out_idx, i_out, j_out) = y(n, c_out_idx, i_out, j_out) + self%b(c_out_idx)
                     end do
                 end do
             end do
@@ -149,12 +150,12 @@ contains
     function conv_backward(self, dout) result(dx)
         ! 误差反相传播
         class(ConvLayer), intent(inout) :: self
-        real(dp), intent(in) :: dout(:,:,:,:)   ! (N, H_out, W_out, 输出通道)
-        real(dp), allocatable :: dx(:,:,:,:)    ! (N, H, W, 输入通道)
+        real(dp), intent(in) :: dout(:,:,:,:)   ! (N, C_out, H_out, W_out)
+        real(dp), allocatable :: dx(:,:,:,:)    ! (N, C_in, H, W)
 
         ! 本函数的局部变量
         integer :: batch, C_in, H, W_in
-        integer :: H_out, W_out
+        integer :: H_out, W_out, C_out
         integer :: n, c_out_idx, c_in_idx, i_out, j_out, kh, kw
         integer :: i_start, j_start, i_in, j_in
         real(dp), allocatable :: xpad(:,:,:,:), dxpad(:,:,:,:)
@@ -162,43 +163,45 @@ contains
         if (.not. allocated(self%x_cache)) stop "conv_backward: no cached input"
 
         batch = size(self%x_cache, 1)
-        H = size(self%x_cache, 2)
-        W_in = size(self%x_cache, 3)
-        C_in = size(self%x_cache, 4)
+        C_in = size(self%x_cache, 2)
+        H = size(self%x_cache, 3)
+        W_in = size(self%x_cache, 4)
 
-        H_out = size(dout, 2)
-        W_out = size(dout, 3)
+        C_out = size(dout, 2)
+        H_out = size(dout, 3)
+        W_out = size(dout, 4)
 
         self%dW = 0.0_dp
         self%db = 0.0_dp
 
-        allocate(xpad(batch, H + 2*self%pad, W_in + 2*self%pad, C_in))
+        allocate(xpad(batch, C_in, H + 2*self%pad, W_in + 2*self%pad))
         xpad = 0.0_dp
         if (self%pad > 0) then
-            xpad(:, self%pad+1:self%pad+H, self%pad+1:self%pad+W_in, :) = self%x_cache
+            xpad(:, :, self%pad+1:self%pad+H, self%pad+1:self%pad+W_in) = self%x_cache
         else
+            ! Even if pad is 0, xpad needs to be a copy of x_cache
             xpad = self%x_cache
         end if
 
-        allocate(dxpad(batch, H + 2*self%pad, W_in + 2*self%pad, C_in))
+        allocate(dxpad(batch, C_in, H + 2*self%pad, W_in + 2*self%pad))
         dxpad = 0.0_dp
 
         do n = 1, batch
-            do i_out = 1, H_out
-                i_start = (i_out-1)*self%stride + 1
-                do j_out = 1, W_out
-                    j_start = (j_out-1)*self%stride + 1
-                    do c_out_idx = 1, self%out_ch
-                        self%db(c_out_idx) = self%db(c_out_idx) + dout(n, i_out, j_out, c_out_idx)
-                        do kh = 1, self%kH
-                            i_in = i_start + kh - 1
-                            do kw = 1, self%kW
-                                j_in = j_start + kw - 1
-                                do c_in_idx = 1, C_in
-                                    self%dW(kh, kw, c_in_idx, c_out_idx) = self%dW(kh, kw, c_in_idx, c_out_idx) + &
-                                         xpad(n, i_in, j_in, c_in_idx) * dout(n, i_out, j_out, c_out_idx)
-                                    dxpad(n, i_in, j_in, c_in_idx) = dxpad(n, i_in, j_in, c_in_idx) + &
-                                         self%W(kh, kw, c_in_idx, c_out_idx) * dout(n, i_out, j_out, c_out_idx)
+            do c_out_idx = 1, C_out
+                do i_out = 1, H_out
+                    i_start = (i_out-1)*self%stride + 1
+                    do j_out = 1, W_out
+                        j_start = (j_out-1)*self%stride + 1
+                        self%db(c_out_idx) = self%db(c_out_idx) + dout(n, c_out_idx, i_out, j_out)
+                        do c_in_idx = 1, C_in
+                            do kh = 1, self%kH
+                                i_in = i_start + kh - 1
+                                do kw = 1, self%kW
+                                    j_in = j_start + kw - 1
+                                    self%dW(c_out_idx, c_in_idx, kh, kw) = self%dW(c_out_idx, c_in_idx, kh, kw) + &
+                                         xpad(n, c_in_idx, i_in, j_in) * dout(n, c_out_idx, i_out, j_out)
+                                    dxpad(n, c_in_idx, i_in, j_in) = dxpad(n, c_in_idx, i_in, j_in) + &
+                                         self%W(c_out_idx, c_in_idx, kh, kw) * dout(n, c_out_idx, i_out, j_out)
                                 end do
                             end do
                         end do
@@ -207,9 +210,9 @@ contains
             end do
         end do
 
-        allocate(dx(batch, H, W_in, C_in))
+        allocate(dx(batch, C_in, H, W_in))
         if (self%pad > 0) then
-            dx = dxpad(:, self%pad+1:self%pad+H, self%pad+1:self%pad+W_in, :)
+            dx = dxpad(:, :, self%pad+1:self%pad+H, self%pad+1:self%pad+W_in)
         else
             dx = dxpad
         end if

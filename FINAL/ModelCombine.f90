@@ -21,6 +21,12 @@ module ModelCombine_mod
         type(PReluLayer) :: PReLU1, PReLU2, PReLU3
         type(FlatenLayer) :: Flaten
         type(FullConnectLayer) :: FC1, FC2
+
+        ! --- Intermediate results for backpropagation ---
+        real(dp), allocatable :: conv1_out(:, :, :, :), prelu1_out(:, :, :, :)
+        real(dp), allocatable :: conv2_out(:, :, :, :), prelu2_out(:, :, :, :)
+        real(dp), allocatable :: flaten_out(:, :), fc1_out(:, :), prelu3_out(:, :)
+
     contains
         procedure, public :: init => model_init
         procedure, public :: forward => model_forward
@@ -57,33 +63,16 @@ contains
         real(dp), intent(in) :: input_data(:, :, :, :)
         real(dp), allocatable :: output_data(:, :)
 
-        ! Intermediate results
-        real(dp), allocatable :: conv1_out(:, :, :, :), prelu1_out(:, :, :, :)
-        real(dp), allocatable :: conv2_out(:, :, :, :), prelu2_out(:, :, :, :)
-        real(dp), allocatable :: flaten_out(:, :), fc1_out(:, :), prelu3_out(:, :)
+        ! Forward pass, storing intermediate results in self
+        self%conv1_out = self%Conv1%forward(input_data)
+        self%prelu1_out = self%PReLU1%forward(self%conv1_out)
+        self%conv2_out = self%Conv2%forward(self%prelu1_out)
+        self%prelu2_out = self%PReLU2%forward(self%conv2_out)
+        self%flaten_out = self%Flaten%forward(self%prelu2_out)
+        self%fc1_out = self%FC1%forward(self%flaten_out)
+        self%prelu3_out = self%PReLU3%forward(self%fc1_out)
+        output_data = self%FC2%forward(self%prelu3_out)
 
-        ! Forward pass
-        write (*,*) "DATA_shape:", shape(input_data)
-
-        conv1_out = self%Conv1%forward(input_data)
-        write (*,*) "DATA_shape_after_conv1:", shape(conv1_out)
-
-        prelu1_out = self%PReLU1%forward(conv1_out)
-        write (*,*) "DATA_shape_after_PReLU1:", shape(prelu1_out)
-        conv2_out = self%Conv2%forward(prelu1_out)
-        write (*,*) "DATA_shape_after_conv2:", shape(conv2_out)
-        prelu2_out = self%PReLU2%forward(conv2_out)
-        write (*,*) "DATA_shape_after_PReLU2:", shape(prelu2_out)
-        flaten_out = self%Flaten%forward(prelu2_out)
-        write (*,*) "DATA_shape_after_Flaten:", shape(flaten_out)
-        fc1_out = self%FC1%forward(flaten_out)
-        write (*,*) "DATA_shape_after_FC1:", shape(fc1_out)
-        prelu3_out = self%PReLU3%forward(fc1_out)
-        write (*,*) "DATA_shape_after_PReLU3:", shape(prelu3_out)
-        output_data = self%FC2%forward(prelu3_out)
-        write (*,*) "DATA_shape_after_FC2:", shape(output_data)
-
-        ! Deallocate intermediate arrays
     end function model_forward
 
     subroutine model_backward(self, grad_output)
@@ -106,7 +95,9 @@ contains
         grad_conv1 = self%PReLU1%backward(grad_prelu1)
         dummy = self%Conv1%backward(grad_conv1)
 
-        ! Deallocate intermediate arrays
+        ! Deallocate intermediate gradient arrays
+        deallocate(grad_prelu3, grad_fc1, grad_flaten, grad_prelu2, grad_conv2, grad_prelu1, grad_conv1, dummy)
+
     end subroutine model_backward
 
     subroutine model_update(self, learning_rate)
@@ -132,6 +123,15 @@ contains
         call self%FC1%destroy()
         call self%PReLU3%destroy()
         call self%FC2%destroy()
+
+        ! Deallocate intermediate results
+        if (allocated(self%conv1_out)) deallocate(self%conv1_out)
+        if (allocated(self%prelu1_out)) deallocate(self%prelu1_out)
+        if (allocated(self%conv2_out)) deallocate(self%conv2_out)
+        if (allocated(self%prelu2_out)) deallocate(self%prelu2_out)
+        if (allocated(self%flaten_out)) deallocate(self%flaten_out)
+        if (allocated(self%fc1_out)) deallocate(self%fc1_out)
+        if (allocated(self%prelu3_out)) deallocate(self%prelu3_out)
     end subroutine model_destroy
 
 end module ModelCombine_mod

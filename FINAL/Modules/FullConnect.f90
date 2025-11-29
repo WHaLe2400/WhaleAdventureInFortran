@@ -23,6 +23,7 @@ module FullConnect_mod
         procedure, public :: backward => fc_backward
         procedure, public :: update => fc_update
         procedure, public :: destroy => fc_destroy
+        procedure, public :: zero_grads => fc_zero_grads ! 新增
         ! Getter 函数
         procedure, public :: get_input_size => fc_get_input_size
         procedure, public :: get_output_size => fc_get_output_size
@@ -40,13 +41,14 @@ contains
         integer, intent(in) :: input_dim
         integer, intent(in) :: output_dim
 
+        ! 1. 如果已分配则释放 (必须先做这一步)
+        call self%destroy()
+
+        ! 2. 设置新的尺寸
         self%input_size = input_dim
         self%output_size = output_dim
 
-        ! 如果已分配则释放
-        call self%destroy()
-
-        ! 分配权重和偏置
+        ! 3. 分配权重和偏置
         allocate(self%weights(self%output_size, self%input_size))
         allocate(self%biases(self%output_size))
 
@@ -57,9 +59,9 @@ contains
 
         ! 使用随机数初始化，并将梯度置零
         call random_number(self%weights)
-        call random_number(self%biases)
-        self%grad_weights = 0.0_dp
-        self%grad_biases = 0.0_dp
+        self%weights = self%weights * sqrt(2.0_dp / real(input_dim, dp)) ! Kaiming He 初始化
+        self%biases = 0.0_dp
+        call self%zero_grads() ! 调用新的清零函数
     end subroutine fc_init
 
     ! 执行批量前向传播的函数
@@ -118,15 +120,15 @@ contains
             return
         end if
 
-        ! 1. 计算关于权重的梯度 (dLoss/dW)
+        ! 1. 计算关于权重的梯度 (dLoss/dW) 并累加
         ! dLoss/dW = dLoss/dOut^T * In = In^T * dLoss/dOut (转置)
         ! grad_output_batch: (批量, 输出大小), input_cache: (批量, 输入大小)
         ! grad_weights: (输出大小, 输入大小)
-        self%grad_weights = matmul(transpose(grad_output_batch), self%input_cache)
+        self%grad_weights = self%grad_weights + matmul(transpose(grad_output_batch), self%input_cache)
 
-        ! 2. 计算关于偏置的梯度 (dLoss/dB)
+        ! 2. 计算关于偏置的梯度 (dLoss/dB) 并累加
         ! 沿批量维度求和梯度
-        self%grad_biases = sum(grad_output_batch, dim=1)
+        self%grad_biases = self%grad_biases + sum(grad_output_batch, dim=1)
 
         ! 3. 计算关于输入的梯度 (dLoss/dIn)
         ! dLoss/dIn = dLoss/dOut * W
@@ -143,6 +145,9 @@ contains
         ! 使用梯度下降更新权重和偏置
         self%weights = self%weights - learning_rate * self%grad_weights
         self%biases = self%biases - learning_rate * self%grad_biases
+
+        ! 更新后清零梯度，为下一次迭代做准备
+        call self%zero_grads()
     end subroutine fc_update
 
     ! 释放内存的子程序
@@ -156,6 +161,17 @@ contains
         self%input_size = 0
         self%output_size = 0
     end subroutine fc_destroy
+
+    ! 新增：将梯度清零的子程序
+    subroutine fc_zero_grads(self)
+        class(FullConnectLayer), intent(inout) :: self
+        if (allocated(self%grad_weights)) then
+            self%grad_weights = 0.0_dp
+        end if
+        if (allocated(self%grad_biases)) then
+            self%grad_biases = 0.0_dp
+        end if
+    end subroutine fc_zero_grads
 
     ! --- Getter 函数 ---
 

@@ -19,14 +19,14 @@ module PReluFunc_mod
         procedure, public :: update => prelu_update
         
         ! 具体过程是私有的
-        procedure, private :: prelu_forward_bhwc
-        procedure, private :: prelu_forward_bl
-        procedure, private :: prelu_backward_bhwc
-        procedure, private :: prelu_backward_bl
+        procedure, private :: prelu_forward_4d
+        procedure, private :: prelu_forward_2d
+        procedure, private :: prelu_backward_4d
+        procedure, private :: prelu_backward_2d
 
         ! 通用接口是公共的
-        generic, public :: forward => prelu_forward_bhwc, prelu_forward_bl
-        generic, public :: backward => prelu_backward_bhwc, prelu_backward_bl
+        generic, public :: forward => prelu_forward_4d, prelu_forward_2d
+        generic, public :: backward => prelu_backward_4d, prelu_backward_2d
     end type PReluLayer
 
 contains
@@ -65,16 +65,17 @@ contains
         self%grad_a = 0.0_dp
     end subroutine prelu_update
 
-    ! --- 4D (B*H*W*C) 版本 ---
-    function prelu_forward_bhwc(self, x) result(out)
+    ! --- 4D (N, C, H, W) 版本 ---
+    function prelu_forward_4d(self, x) result(out)
         class(PReluLayer), intent(inout) :: self
         real(dp), intent(in) :: x(:,:,:,:)
         real(dp), allocatable :: out(:,:,:,:)
         integer :: c_idx
         
-        if (size(x, 4) /= self%input_channels) then
-            print *, "PReLU Error: Input channels mismatch in forward_bhwc. Expected ", &
-                     self%input_channels, ", got ", size(x, 4)
+        ! (N, C, H, W) layout: channel is the 2nd dimension
+        if (size(x, 2) /= self%input_channels) then
+            print *, "PReLU Error: Input channels mismatch in forward_4d. Expected ", &
+                     self%input_channels, ", got ", size(x, 2)
             allocate(out(0,0,0,0))
             return
         end if
@@ -85,13 +86,13 @@ contains
         
         allocate(out, source=x)
         do c_idx = 1, self%input_channels
-            where (x(:,:,:,c_idx) <= 0.0_dp)
-                out(:,:,:,c_idx) = self%a(c_idx) * x(:,:,:,c_idx)
+            where (x(:,c_idx,:,:) <= 0.0_dp)
+                out(:,c_idx,:,:) = self%a(c_idx) * x(:,c_idx,:,:)
             end where
         end do
-    end function prelu_forward_bhwc
+    end function prelu_forward_4d
 
-    function prelu_backward_bhwc(self, dout) result(dx)
+    function prelu_backward_4d(self, dout) result(dx)
         class(PReluLayer), intent(inout) :: self
         real(dp), intent(in) :: dout(:,:,:,:)
         real(dp), allocatable :: dx(:,:,:,:)
@@ -109,28 +110,28 @@ contains
         da_sum = 0.0_dp
 
         do c_idx = 1, self%input_channels
-            ! 计算 dx
-            where (self%x_cache_4d(:,:,:,c_idx) > 0.0_dp)
-                dx(:,:,:,c_idx) = dout(:,:,:,c_idx)
+            ! 计算 dx for (N, C, H, W) layout
+            where (self%x_cache_4d(:,c_idx,:,:) > 0.0_dp)
+                dx(:,c_idx,:,:) = dout(:,c_idx,:,:)
             elsewhere
-                dx(:,:,:,c_idx) = self%a(c_idx) * dout(:,:,:,c_idx)
+                dx(:,c_idx,:,:) = self%a(c_idx) * dout(:,c_idx,:,:)
             end where
             ! 计算负数部分的 'a' 的梯度
-            da_sum(c_idx) = sum(self%x_cache_4d(:,:,:,c_idx) * dout(:,:,:,c_idx), &
-                                mask=self%x_cache_4d(:,:,:,c_idx) <= 0.0_dp)
+            da_sum(c_idx) = sum(self%x_cache_4d(:,c_idx,:,:) * dout(:,c_idx,:,:), &
+                                mask=self%x_cache_4d(:,c_idx,:,:) <= 0.0_dp)
         end do
         self%grad_a = self%grad_a + da_sum
-    end function prelu_backward_bhwc
+    end function prelu_backward_4d
 
     ! --- 2D (B*L) 版本 ---
-    function prelu_forward_bl(self, x) result(out)
+    function prelu_forward_2d(self, x) result(out)
         class(PReluLayer), intent(inout) :: self
         real(dp), intent(in) :: x(:,:)
         real(dp), allocatable :: out(:,:)
         integer :: c_idx
 
         if (size(x, 2) /= self%input_channels) then
-            print *, "PReLU Error: Input features mismatch in forward_bl. Expected ", &
+            print *, "PReLU Error: Input features mismatch in forward_2d. Expected ", &
                      self%input_channels, ", got ", size(x, 2)
             allocate(out(0,0))
             return
@@ -145,9 +146,9 @@ contains
                 out(:,c_idx) = self%a(c_idx) * x(:,c_idx)
             end where
         end do
-    end function prelu_forward_bl
+    end function prelu_forward_2d
 
-    function prelu_backward_bl(self, dout) result(dx)
+    function prelu_backward_2d(self, dout) result(dx)
         class(PReluLayer), intent(inout) :: self
         real(dp), intent(in) :: dout(:,:)
         real(dp), allocatable :: dx(:,:)
@@ -176,6 +177,6 @@ contains
                                 mask=self%x_cache_2d(:,c_idx) <= 0.0_dp)
         end do
         self%grad_a = self%grad_a + da_sum
-    end function prelu_backward_bl
+    end function prelu_backward_2d
 
 end module PReluFunc_mod

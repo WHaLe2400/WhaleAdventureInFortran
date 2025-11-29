@@ -6,31 +6,93 @@ program ModelCombine_Test
     type(Model) :: my_model
     integer :: i
     integer :: batch_size=2, input_height=28, input_width=28, input_channels=1, output_size=10
-    integer :: tmp1, tmp2
-    real(dp), allocatable :: input(:,:,:,:), output(:,:)
-    
-    ! Initialize the model
+    real(dp), allocatable :: input(:,:,:,:), output_before_update(:,:), output_after_update(:,:)
+    real(dp), allocatable :: grad_output(:,:)
+    real(dp) :: learning_rate = 0.01_dp
+
+    ! 1. Initialize the model
+    print *, "--- 1. Initializing Model ---"
     call my_model%init()
-    tmp1 = my_model%FC1%get_input_size()  ! Just to avoid unused variable warning
-    write(*,*) "FC1 input size: ", tmp1
-    tmp2 = my_model%FC_in
-    write(*,*) "Model FC_in parameter: ", tmp2
-    
+    print *, "Model initialized successfully."
+    print *, "Configuration:"
+    print *, "  Conv1: kernel=", my_model%Conv1_kernel, ", stride=", my_model%Conv1_stride
+    print *, "  Conv2: kernel=", my_model%Conv2_kernel, ", stride=", my_model%Conv2_stride
+    print *, "  FC Layers: FC_in=", my_model%FC_in, ", FC_hidden=", my_model%FC_hidden, ", FC_out=", my_model%FC_out
+    print *, "-----------------------------"
+    print *, ""
 
-    ! Allocate input and output arrays
-    allocate(input(batch_size, input_height, input_width, input_channels))
-    allocate(output(batch_size, output_size))
-    ! Create dummy input data
+    ! 2. Prepare Input Data
+    print *, "--- 2. Preparing Input Data ---"
+    allocate(input(batch_size, input_channels, input_height, input_width))
     call random_number(input)
-    ! Perform forward pass
-    output = my_model%forward(input)
-    print *, "Output from the model:"
-    do i = 1, batch_size
-        print *, output(i, :)
-    end do
+    print *, "Input data created with shape: ", shape(input)
+    print *, "-----------------------------"
+    print *, ""
 
-    ! Clean up
+    ! 3. Perform Forward Pass and Check Intermediate Shapes
+    print *, "--- 3. Performing Forward Pass (Before Update) ---"
+    output_before_update = my_model%forward(input)
+    print *, "Forward pass complete."
+    print *, "Verifying intermediate shapes:"
+    print *, "  - Conv1 output shape:    ", shape(my_model%conv1_out)
+    print *, "  - PReLU1 output shape:   ", shape(my_model%prelu1_out)
+    print *, "  - Conv2 output shape:    ", shape(my_model%conv2_out)
+    print *, "  - PReLU2 output shape:   ", shape(my_model%prelu2_out)
+    print *, "  - Flaten output shape:   ", shape(my_model%flaten_out)
+    print *, "  - FC1 output shape:      ", shape(my_model%fc1_out)
+    print *, "  - PReLU3 output shape:   ", shape(my_model%prelu3_out)
+    print *, "  - Final output shape:    ", shape(output_before_update)
+    print *, "Output before update (first batch):"
+    print *, output_before_update(1, :)
+    print *, "-----------------------------"
+    print *, ""
+
+    ! 4. Prepare Gradient for Backward Pass
+    print *, "--- 4. Preparing for Backward Pass ---"
+    allocate(grad_output(batch_size, output_size))
+    call random_number(grad_output)
+    print *, "Dummy output gradient created with shape: ", shape(grad_output)
+    print *, "-----------------------------"
+    print *, ""
+
+    ! 5. Perform Backward Pass
+    print *, "--- 5. Performing Backward Pass ---"
+    call my_model%backward(grad_output)
+    print *, "Backward pass complete. Gradients have been computed internally."
+    print *, "-----------------------------"
+    print *, ""
+
+    ! 6. Update Model Parameters and Verify Change
+    print *, "--- 6. Updating Model and Verifying Change ---"
+    print *, "Updating model parameters with learning rate: ", learning_rate
+    call my_model%update(learning_rate)
+    print *, "Model update complete."
+    
+    ! Perform a second forward pass with the same input
+    output_after_update = my_model%forward(input)
+    print *, "Output after update (first batch):"
+    print *, output_after_update(1, :)
+
+    ! Compare outputs. They should be different if weights were updated.
+    if (any(output_before_update /= output_after_update)) then
+        print *, "SUCCESS: Model output has changed, indicating weights were updated."
+    else
+        print *, "FAILURE: Model output is identical. Weights were not updated."
+    end if
+    print *, "-----------------------------"
+    print *, ""
+
+    ! 7. Clean up
+    print *, "--- 7. Cleaning Up ---"
     call my_model%destroy()
+    if (.not. allocated(my_model%fc1_out)) then
+        print *, "SUCCESS: Intermediate arrays deallocated."
+    else
+        print *, "FAILURE: Intermediate arrays not deallocated."
+    end if
+    print *, "Cleanup complete."
+    print *, "-----------------------------"
+
 end program ModelCombine_Test
 
 !gfortran -std=f2008 -o ModelCombine_Test ModelCombine_Test.f90 ModelCombine.f90 Modules/Conv.f90 Modules/flaten.f90 Modules/FullConnect.f90 Modules/PReluFunc.f90 
