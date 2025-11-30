@@ -64,6 +64,16 @@ contains
     subroutine model_load(self, base_path)
         class(Model), intent(inout) :: self
         character(len=*), intent(in) :: base_path
+        logical :: exists
+        ! 检查目录是否存在（修正语法）
+        inquire(file=trim(base_path)//'/.', exist=exists)
+        if (.not. exists) then
+            print *, "Directory ", trim(base_path), " does not exist."
+            return  ! Or handle error as needed
+        end if
+
+        print *, ""
+        print *, "Loading model from ", trim(base_path)
 
         call self%Conv1%load(trim(base_path) // "/_Conv1.dat")
         print*, "Conv_1 loaded."
@@ -79,13 +89,23 @@ contains
         print*, "PReLU_3 loaded."
         call self%FC2%load(trim(base_path) // "/_FC2.dat")
         print*, "FC_2 loaded."
+
+        print *, "Model loaded successfully."
     end subroutine model_load
 
 
     subroutine model_save(self, base_path)
         class(Model), intent(in) :: self
         character(len=*), intent(in) :: base_path
-        call execute_command_line('mkdir -p ' // trim(base_path))
+        logical :: exists
+        ! 检查目录是否存在（修正语法）
+        inquire(file=trim(base_path)//'/.', exist=exists)
+        if (.not. exists) then
+            call execute_command_line('mkdir -p ' // trim(base_path))
+        end if
+
+        print *, ""
+        print *, "Saving model to ", trim(base_path)
 
         call self%Conv1%save(trim(base_path) // "/_Conv1.dat")
         call self%PReLU1%save(trim(base_path) // "/_PReLU1.dat")  ! 新增
@@ -94,6 +114,7 @@ contains
         call self%FC1%save(trim(base_path) // "/_FC1.dat")
         call self%PReLU3%save(trim(base_path) // "/_PReLU3.dat")  ! 新增
         call self%FC2%save(trim(base_path) // "/_FC2.dat")
+        print *, "Model saved successfully."
     end subroutine model_save
 
 
@@ -104,12 +125,26 @@ contains
 
         ! Forward pass, storing intermediate results in self
         self%conv1_out = self%Conv1%forward(input_data)
+        ! print *, "After Conv1: ", shape(self%conv1_out)
+
         self%prelu1_out = self%PReLU1%forward(self%conv1_out)
+        ! print *, "After PReLU1: ", shape(self%prelu1_out)
+
         self%conv2_out = self%Conv2%forward(self%prelu1_out)
+        ! print *, "After Conv2: ", shape(self%conv2_out)
+
         self%prelu2_out = self%PReLU2%forward(self%conv2_out)
+        ! print *, "After PReLU2: ", shape(self%prelu2_out)   
+
         self%flaten_out = self%Flaten%forward(self%prelu2_out)
+        ! print *, "After Flaten: ", shape(self%flaten_out)
+
         self%fc1_out = self%FC1%forward(self%flaten_out)
+        ! print *, "After FC1: ", shape(self%fc1_out)
+        
         self%prelu3_out = self%PReLU3%forward(self%fc1_out)
+        ! print *, "After PReLU3: ", shape(self%prelu3_out)
+
         output_data = self%FC2%forward(self%prelu3_out)
 
     end function model_forward

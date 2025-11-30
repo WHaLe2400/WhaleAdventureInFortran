@@ -83,7 +83,7 @@ program ModelCombine_Test
     print *, "-----------------------------"
     print *, ""
 
-    ! 8. Test Save and Load Functionality
+    ! 7. Test Save and Load Functionality
     print *, "--- 8. Testing Save and Load Functionality ---"
     ! Save the model
     call my_model%save(temp_base_path)
@@ -108,7 +108,7 @@ program ModelCombine_Test
     print *, "-----------------------------"
     print *, ""
 
-    ! 7. Clean up
+    ! 8. Clean up
     print *, "--- 7. Cleaning Up ---"
     call my_model%destroy()
     call loaded_model%destroy()

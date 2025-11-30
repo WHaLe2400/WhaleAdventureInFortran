@@ -75,8 +75,8 @@ contains
         ! Fortran的stream access位置是从1开始的
         start_pos = (batch_idx - 1) * self%batch_size * self%data_h * self%data_w * self%data_c + 1
 
-        ! 分配输出数组和临时数组
-        allocate(data(self%batch_size, self%data_h, self%data_w, self%data_c))
+        ! 分配输出数组为BCHW格式和临时数组为BHWC格式
+        allocate(data(self%batch_size, self%data_c, self%data_h, self%data_w))
         allocate(temp_data(self%batch_size, self%data_h, self%data_w, self%data_c))
 
         ! 从对象中存储的单元号读取文件到临时整数数组
@@ -89,8 +89,8 @@ contains
             stop
         end if
 
-        ! 将整数数据转换为 real(dp) 类型并进行归一化处理
-        data = real(temp_data, kind=dp) / 255.0_dp
+        ! 将整数数据转换为 real(dp) 类型并进行归一化处理，同时重新排列为BCHW格式
+        data = real(reshape(temp_data, shape(data), order=[1,4,2,3]), kind=dp) / 255.0_dp
         !print *, "Normalized data:", data
 
         ! 释放临时数组

@@ -9,7 +9,7 @@ module LossFunc_mod
     private
         ! 用于反向传播的缓存
         real(dp), allocatable :: softmax_cache(:,:)
-        integer, allocatable :: labels_cache(:)
+        real(dp), allocatable :: labels_cache(:,:)  ! 修正：改为2D以存储 one-hot 标签
         integer :: batch_size_cache = 0
     contains
         procedure, public :: forward => loss_forward
@@ -22,12 +22,12 @@ contains
     !> @brief 计算 Softmax 和交叉熵损失
     !! @param self 损失函数对象
     !! @param logits 模型的原始输出 (批量大小, 类别数)
-    !! @param labels 真实的标签 (批量大小), 标签值为 0 到 (类别数-1)
+    !! @param labels 真实的标签 (批量大小, 类别数), one-hot 编码
     !! @return loss 标量损失值
     function loss_forward(self, logits, labels) result(loss)
         class(LossFunc), intent(inout) :: self
         real(dp), intent(in) :: logits(:,:)
-        integer, intent(in) :: labels(:)
+        real(dp), intent(in) :: labels(:,:)  ! One-hot encoded labels (batch_size, num_classes)
         real(dp) :: loss
 
         integer :: batch_size, num_classes, i
@@ -40,7 +40,8 @@ contains
         ! --- 缓存数据以备反向传播使用 ---
         self%batch_size_cache = batch_size
         if (allocated(self%labels_cache)) deallocate(self%labels_cache)
-        self%labels_cache = labels
+        allocate(self%labels_cache(batch_size, num_classes))  ! 修正：2D分配
+        self%labels_cache = labels  ! 现在兼容
 
         ! --- 实现数值稳定的 Softmax ---
         ! 1. 找到每个样本 logits 的最大值
@@ -65,11 +66,7 @@ contains
         self%softmax_cache = exp_logits / spread(sum_exp_logits, dim=2, ncopies=num_classes)
 
         ! --- 计算交叉熵损失 ---
-        loss = 0.0_dp
-        do i = 1, batch_size
-            ! 加上一个极小值防止 log(0)
-            loss = loss - log(self%softmax_cache(i, labels(i) + 1) + 1e-9_dp)
-        end do
+        loss = -sum(labels * log(self%softmax_cache + 1e-9_dp))
 
         ! 返回平均损失
         loss = loss / real(batch_size, dp)
@@ -83,22 +80,14 @@ contains
     function loss_backward(self) result(grad_logits)
         class(LossFunc), intent(inout) :: self
         real(dp), allocatable :: grad_logits(:,:)
-        integer :: i
 
         if (.not. allocated(self%softmax_cache)) then
             print *, "LossFunc Error: backward() called before forward()."
             stop
         end if
 
-        ! 梯度是 (softmax概率 - 独热编码标签)
-        grad_logits = self%softmax_cache
-
-        do i = 1, self%batch_size_cache
-            grad_logits(i, self%labels_cache(i) + 1) = grad_logits(i, self%labels_cache(i) + 1) - 1.0_dp
-        end do
-
-        ! 将梯度除以批量大小，以匹配平均损失
-        grad_logits = grad_logits / real(self%batch_size_cache, dp)
+        ! 梯度是 (softmax概率 - one-hot标签)，向量化计算
+        grad_logits = (self%softmax_cache - self%labels_cache) / real(self%batch_size_cache, dp)
 
     end function loss_backward
 

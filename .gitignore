@@ -1,2 +1,4 @@
 .vscode/
 {folder_name}/
+RESULTS/
+*.mod
