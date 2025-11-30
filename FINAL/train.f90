@@ -24,7 +24,7 @@ program Train
 
     ! 3. 训练超参数 (每个类型分开声明)
     integer :: epoch = 16
-    integer :: batch_size = 64
+    integer :: batch_size = 512
     real(dp) :: learning_rate = 0.5_dp
 
     real(dp), allocatable :: input(:,:,:,:), output(:,:), grad_output(:,:)
@@ -47,7 +47,7 @@ program Train
     ! 初始化
     call init()
 
-    call load_model(model_save_path)
+    ! call load_model(model_save_path)
 
     call train_process()
 
@@ -91,9 +91,14 @@ contains
         real(dp), allocatable :: input(:,:,:,:), labels(:,:), labels_onehot(:,:), output(:,:), grad_output(:,:)
         real(dp) :: loss
 
-        num_batches = train_data_loader%get_len() / batch_size
+        num_batches = train_data_loader%get_len()
 
+        write(*, '(A)', advance='no') "Training: "
         do i = 1, num_batches
+            write(*, '(A)', advance='no') "*"
+            ! 在计算新梯度前，清零所有层的梯度
+            call my_model%zero_grads()
+
             ! 获取当前批次的数据和标签
             call train_data_loader%get_batch(i, input)
             ! print *, "TrainDataShape: ", shape(input)
@@ -111,13 +116,14 @@ contains
             ! 计算损失和梯度
             loss = loss_func%forward(output, labels_onehot)
             grad_output = loss_func%backward()
-            ! 反向传播
+            ! 反向传播 (此过程会累积梯度)
             call my_model%backward(grad_output)
             ! 更新参数
             call my_model%update(learning_rate)
             ! 释放内存
             deallocate(labels_onehot)
         end do
+        write(*, '(A)') ""  ! 换行
         
     end subroutine train_one_epoch
 
@@ -127,11 +133,13 @@ contains
         real(dp), allocatable :: input(:,:,:,:), labels(:,:), output(:,:)
         real(dp) :: accuracy
 
-        num_batches = test_data_loader%get_len() / batch_size
+        num_batches = test_data_loader%get_len()
         correct_count = 0
         total_count = 0
 
+        write(*, '(A)', advance='no') "Evaluating: "
         do i = 1, num_batches
+            write(*, '(A)', advance='no') "*"
             ! 获取当前批次的数据和标签
             call test_data_loader%get_batch(i, input)
             call test_label_loader%get_batch(i, labels)
@@ -146,6 +154,7 @@ contains
                 total_count = total_count + 1
             end do
         end do
+        write(*, '(A)') ""  ! 换行
 
         accuracy = real(correct_count, dp) / real(total_count, dp)
     end subroutine evaluate_model
@@ -166,7 +175,7 @@ contains
             if (mod(epoch_idx, 5) == 0) then
                 write(epoch_str, '(I0)') epoch_idx
                 call save_model(trim(model_save_path) // "/epoch_" // trim(epoch_str))
-                print *, "Model saved at epoch ", epoch_idx
+                print *, "Model saved at epoch ", trim(epoch_str)
             end if
         end do
     end subroutine train_process

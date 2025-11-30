@@ -18,7 +18,8 @@ module PReluFunc_mod
         procedure, public :: destroy => prelu_destroy
         procedure, public :: update => prelu_update
         procedure, public :: save => prelu_save
-        procedure, public :: load => prelu_load        
+        procedure, public :: load => prelu_load 
+        procedure, public :: zero_grads => prelu_zero_grads       
         ! 具体过程是私有的
         procedure, private :: prelu_forward_4d
         procedure, private :: prelu_forward_2d
@@ -91,6 +92,13 @@ contains
         self%grad_a = 0.0_dp
     end subroutine prelu_update
 
+    subroutine prelu_zero_grads(self)
+        class(PReluLayer), intent(inout) :: self
+        if (allocated(self%grad_a)) then
+            self%grad_a = 0.0_dp
+        end if
+    end subroutine prelu_zero_grads
+
     ! --- 4D (N, C, H, W) 版本 ---
     function prelu_forward_4d(self, x) result(out)
         class(PReluLayer), intent(inout) :: self
@@ -146,7 +154,7 @@ contains
             da_sum(c_idx) = sum(self%x_cache_4d(:,c_idx,:,:) * dout(:,c_idx,:,:), &
                                 mask=self%x_cache_4d(:,c_idx,:,:) <= 0.0_dp)
         end do
-        self%grad_a = self%grad_a + da_sum
+        self%grad_a = da_sum
     end function prelu_backward_4d
 
     ! --- 2D (B*L) 版本 ---
@@ -202,7 +210,7 @@ contains
             da_sum(c_idx) = sum(self%x_cache_2d(:,c_idx) * dout(:,c_idx), &
                                 mask=self%x_cache_2d(:,c_idx) <= 0.0_dp)
         end do
-        self%grad_a = self%grad_a + da_sum
+        self%grad_a = da_sum
     end function prelu_backward_2d
 
 end module PReluFunc_mod

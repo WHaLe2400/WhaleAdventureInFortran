@@ -35,6 +35,7 @@ module ModelCombine_mod
         procedure, public :: backward => model_backward
         procedure, public :: update => model_update
         procedure, public :: destroy => model_destroy
+        procedure, public :: zero_grads => model_zero_grads
     end type Model
 
 contains
@@ -173,6 +174,18 @@ contains
         deallocate(grad_prelu3, grad_fc1, grad_flaten, grad_prelu2, grad_conv2, grad_prelu1, grad_conv1, dummy)
 
     end subroutine model_backward
+
+    subroutine model_zero_grads(self)
+        class(Model), intent(inout) :: self
+        call self%Conv1%zero_grads()
+        call self%Conv2%zero_grads()
+        call self%FC1%zero_grads()
+        call self%FC2%zero_grads()
+        ! PReLU 层的梯度在 update 时已清零，但保持一致性也无妨
+        call self%PReLU1%zero_grads()
+        call self%PReLU2%zero_grads()
+        call self%PReLU3%zero_grads()
+    end subroutine model_zero_grads
 
     subroutine model_update(self, learning_rate)
         class(Model), intent(inout) :: self

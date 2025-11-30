@@ -67,7 +67,7 @@ contains
 
         ! --- 计算交叉熵损失 ---
         loss = -sum(labels * log(self%softmax_cache + 1e-9_dp))
-
+        !print *, "Intermediate Loss (before averaging): ", loss
         ! 返回平均损失
         loss = loss / real(batch_size, dp)
 
@@ -88,6 +88,7 @@ contains
 
         ! 梯度是 (softmax概率 - one-hot标签)，向量化计算
         grad_logits = (self%softmax_cache - self%labels_cache) / real(self%batch_size_cache, dp)
+        !print *, "OneHot_Loss Gradient Computed", grad_logits(1, :)
 
     end function loss_backward
 
