@@ -3,12 +3,13 @@ program ModelCombine_Test
     use iso_fortran_env, only: dp => real64
     implicit none
 
-    type(Model) :: my_model
+    type(Model) :: my_model, loaded_model
     integer :: i
-    integer :: batch_size=2, input_height=28, input_width=28, input_channels=1, output_size=10
+    integer :: batch_size=64, input_height=28, input_width=28, input_channels=1, output_size=10
     real(dp), allocatable :: input(:,:,:,:), output_before_update(:,:), output_after_update(:,:)
-    real(dp), allocatable :: grad_output(:,:)
+    real(dp), allocatable :: grad_output(:,:), output_loaded(:,:)
     real(dp) :: learning_rate = 0.01_dp
+    character(len=100) :: temp_base_path = "RESULT"
 
     ! 1. Initialize the model
     print *, "--- 1. Initializing Model ---"
@@ -82,10 +83,36 @@ program ModelCombine_Test
     print *, "-----------------------------"
     print *, ""
 
+    ! 8. Test Save and Load Functionality
+    print *, "--- 8. Testing Save and Load Functionality ---"
+    ! Save the model
+    call my_model%save(temp_base_path)
+    print *, "Model saved to files with base path: ", trim(temp_base_path)
+
+    ! Initialize a new model and load
+    call loaded_model%init()
+    call loaded_model%load(temp_base_path)
+    print *, "Model loaded from files with base path: ", trim(temp_base_path)
+
+    ! Perform forward pass with loaded model
+    output_loaded = loaded_model%forward(input)
+    print *, "Output from loaded model (first batch):"
+    print *, output_loaded(1, :)
+
+    ! Compare outputs from original and loaded model
+    if (all(abs(output_after_update - output_loaded) < 1.0e-10_dp)) then
+        print *, "SUCCESS: Loaded model produces identical output to the original model."
+    else
+        print *, "FAILURE: Loaded model output differs from the original model."
+    end if
+    print *, "-----------------------------"
+    print *, ""
+
     ! 7. Clean up
     print *, "--- 7. Cleaning Up ---"
     call my_model%destroy()
-    if (.not. allocated(my_model%fc1_out)) then
+    call loaded_model%destroy()
+    if (.not. allocated(my_model%fc1_out) .and. .not. allocated(loaded_model%fc1_out)) then
         print *, "SUCCESS: Intermediate arrays deallocated."
     else
         print *, "FAILURE: Intermediate arrays not deallocated."
@@ -95,5 +122,4 @@ program ModelCombine_Test
 
 end program ModelCombine_Test
 
-!gfortran -std=f2008 -o ModelCombine_Test ModelCombine_Test.f90 ModelCombine.f90 Modules/Conv.f90 Modules/flaten.f90 Modules/FullConnect.f90 Modules/PReluFunc.f90 
-!gfortran -std=f2008 -o ModelCombine_Test ModelCombine_Test.f90 ModelCombine.f90 Modules/*.f90
+!gfortran -std=f2008 -o ModelCombine_Test ModelCombine_Test.f90 ../*.f90

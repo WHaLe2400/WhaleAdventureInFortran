@@ -17,7 +17,8 @@ module PReluFunc_mod
         procedure, public :: init => prelu_init
         procedure, public :: destroy => prelu_destroy
         procedure, public :: update => prelu_update
-        
+        procedure, public :: save => prelu_save
+        procedure, public :: load => prelu_load        
         ! 具体过程是私有的
         procedure, private :: prelu_forward_4d
         procedure, private :: prelu_forward_2d
@@ -46,6 +47,31 @@ contains
         self%a = 0.01_dp
         self%grad_a = 0.0_dp
     end subroutine prelu_init
+
+    subroutine prelu_save(self, filename)
+        class(PReluLayer), intent(in) :: self
+        character(len=*), intent(in) :: filename
+        integer :: unit
+        open(newunit=unit, file=filename, status='replace', action='write', form='formatted')
+        write(unit, *) self%input_channels
+        write(unit, *) self%a
+        close(unit)
+    end subroutine prelu_save
+
+    subroutine prelu_load(self, filename)
+        class(PReluLayer), intent(inout) :: self
+        character(len=*), intent(in) :: filename
+        integer :: unit, channels_read
+        open(newunit=unit, file=filename, status='old', action='read', form='formatted')
+        read(unit, *) channels_read
+        if (channels_read /= self%input_channels) then
+            print *, "PReLU Load Error: Channels mismatch. Expected ", self%input_channels, ", got ", channels_read
+            close(unit)
+            return
+        end if
+        read(unit, *) self%a
+        close(unit)
+    end subroutine prelu_load
 
     subroutine prelu_destroy(self)
         class(PReluLayer), intent(inout) :: self

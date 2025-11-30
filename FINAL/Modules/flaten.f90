@@ -24,6 +24,7 @@ contains
         self%input_h = h
         self%input_w = w
     end subroutine flaten_init
+    
 
     function flaten_forward(self, input_data) result(output_data)
         class(FlatenLayer), intent(inout) :: self

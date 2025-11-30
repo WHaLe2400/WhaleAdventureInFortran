@@ -19,6 +19,7 @@ module Conv_mod
     contains
         procedure, public :: init => conv_init
         procedure, public :: load => conv_load
+        procedure, public :: save => conv_save
         procedure, public :: forward => conv_forward
         procedure, public :: backward => conv_backward
         procedure, public :: update => conv_update
@@ -65,22 +66,54 @@ contains
     end subroutine conv_init
 
 
-    subroutine conv_load(self, W_in, b_in)
-        ! 加载预训练的权重和偏置
-        implicit none
+    subroutine conv_save(self, filename)
+        class(ConvLayer), intent(in) :: self
+        character(len=*), intent(in) :: filename
+        integer :: unit, i, j, k, l
+        open(newunit=unit, file=filename, status='replace', action='write', form='formatted')
+        ! 写出尺寸信息
+        write(unit, *) self%out_ch, self%in_ch, self%kH, self%kW
+        ! 写出权重 (out_ch, in_ch, kH, kW)
+        do i = 1, self%out_ch
+            do j = 1, self%in_ch
+                do k = 1, self%kH
+                    write(unit, *) self%W(i, j, k, :)
+                end do
+            end do
+        end do
+        ! 写出偏置 (out_ch)
+        write(unit, *) self%b
+        close(unit)
+    end subroutine conv_save
+
+    subroutine conv_load(self, filename)
         class(ConvLayer), intent(inout) :: self
-        real(dp), intent(in) :: W_in(:,:,:,:), b_in(:)
-
-        if (size(W_in, 1) /= self%out_ch .or. size(W_in, 2) /= self%in_ch .or. &
-            size(W_in, 3) /= self%kH .or. size(W_in, 4) /= self%kW) then
-            stop "conv_load: weight dimensions do not match"
+        character(len=*), intent(in) :: filename
+        integer :: unit, i, j, k, l
+        integer :: out_ch_read, in_ch_read, kH_read, kW_read
+        open(newunit=unit, file=filename, status='old', action='read', form='formatted')
+        ! 读取尺寸信息
+        read(unit, *) out_ch_read, in_ch_read, kH_read, kW_read
+        ! 检查尺寸是否匹配（可选，但推荐）
+        if (out_ch_read /= self%out_ch .or. in_ch_read /= self%in_ch .or. &
+            kH_read /= self%kH .or. kW_read /= self%kW) then
+            print *, "Error: Dimensions in file do not match layer dimensions."
+            close(unit)
+            return
         end if
-        if (size(b_in) /= self%out_ch) then
-            stop "conv_load: bias dimensions do not match"
-        end if
-
-        self%W = W_in
-        self%b = b_in
+        ! 读取权重
+        do i = 1, self%out_ch
+            do j = 1, self%in_ch
+                do k = 1, self%kH
+                    read(unit, *) self%W(i, j, k, :)
+                end do
+            end do
+        end do
+        ! 读取偏置
+        read(unit, *) self%b
+        close(unit)
+        ! 清零梯度
+        call self%zero_grads()
     end subroutine conv_load
 
 

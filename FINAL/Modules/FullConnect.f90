@@ -19,6 +19,8 @@ module FullConnect_mod
         real(dp), allocatable :: grad_biases(:)
     contains
         procedure, public :: init => fc_init
+        procedure, public :: load => fc_load
+        procedure, public :: save => fc_save
         procedure, public :: forward => fc_forward
         procedure, public :: backward => fc_backward
         procedure, public :: update => fc_update
@@ -63,6 +65,35 @@ contains
         self%biases = 0.0_dp
         call self%zero_grads() ! 调用新的清零函数
     end subroutine fc_init
+
+
+    ! 加载权重和偏置的子程序
+    subroutine fc_load(self, filename)
+        class(FullConnectLayer), intent(inout) :: self
+        character(len=*), intent(in) :: filename
+        integer :: unit, i
+        open(newunit=unit, file=filename, status='old', action='read', form='formatted')
+        do i = 1, self%output_size
+            read(unit, *) self%weights(i, :)
+        end do
+        read(unit, *) self%biases
+        close(unit)
+        ! 不分配梯度，假设init已处理；仅清零
+        call self%zero_grads()
+    end subroutine fc_load
+
+    subroutine fc_save(self, filename)
+        class(FullConnectLayer), intent(in) :: self
+        character(len=*), intent(in) :: filename
+        integer :: unit, i
+        open(newunit=unit, file=filename, status='replace', action='write', form='formatted')
+        do i = 1, self%output_size
+            write(unit, *) self%weights(i, :)
+        end do
+        write(unit, *) self%biases
+        close(unit)
+    end subroutine fc_save
+
 
     ! 执行批量前向传播的函数
     function fc_forward(self, input_batch) result(output_batch)

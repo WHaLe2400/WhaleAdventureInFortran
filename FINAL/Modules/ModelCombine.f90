@@ -29,6 +29,8 @@ module ModelCombine_mod
 
     contains
         procedure, public :: init => model_init
+        procedure, public :: load => model_load
+        procedure, public :: save => model_save
         procedure, public :: forward => model_forward
         procedure, public :: backward => model_backward
         procedure, public :: update => model_update
@@ -57,6 +59,43 @@ contains
         call self%FC2%init(self%FC_hidden, self%FC_out)
 
     end subroutine model_init
+
+
+    subroutine model_load(self, base_path)
+        class(Model), intent(inout) :: self
+        character(len=*), intent(in) :: base_path
+
+        call self%Conv1%load(trim(base_path) // "/_Conv1.dat")
+        print*, "Conv_1 loaded."
+        call self%PReLU1%load(trim(base_path) // "/_PReLU1.dat")  ! 新增
+        print*, "PReLU_1 loaded."
+        call self%Conv2%load(trim(base_path) // "/_Conv2.dat")
+        print*, "Conv_2 loaded."
+        call self%PReLU2%load(trim(base_path) // "/_PReLU2.dat")  ! 新增
+        print*, "PReLU_2 loaded."
+        call self%FC1%load(trim(base_path) // "/_FC1.dat")
+        print*, "FC_1 loaded."
+        call self%PReLU3%load(trim(base_path) // "/_PReLU3.dat")  ! 新增
+        print*, "PReLU_3 loaded."
+        call self%FC2%load(trim(base_path) // "/_FC2.dat")
+        print*, "FC_2 loaded."
+    end subroutine model_load
+
+
+    subroutine model_save(self, base_path)
+        class(Model), intent(in) :: self
+        character(len=*), intent(in) :: base_path
+        call execute_command_line('mkdir -p ' // trim(base_path))
+
+        call self%Conv1%save(trim(base_path) // "/_Conv1.dat")
+        call self%PReLU1%save(trim(base_path) // "/_PReLU1.dat")  ! 新增
+        call self%Conv2%save(trim(base_path) // "/_Conv2.dat")
+        call self%PReLU2%save(trim(base_path) // "/_PReLU2.dat")  ! 新增
+        call self%FC1%save(trim(base_path) // "/_FC1.dat")
+        call self%PReLU3%save(trim(base_path) // "/_PReLU3.dat")  ! 新增
+        call self%FC2%save(trim(base_path) // "/_FC2.dat")
+    end subroutine model_save
+
 
     function model_forward(self, input_data) result(output_data)
         class(Model), intent(inout) :: self
