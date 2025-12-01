@@ -155,11 +155,11 @@ contains
         ! dLoss/dW = dLoss/dOut^T * In = In^T * dLoss/dOut (转置)
         ! grad_output_batch: (批量, 输出大小), input_cache: (批量, 输入大小)
         ! grad_weights: (输出大小, 输入大小)
-        self%grad_weights = matmul(transpose(grad_output_batch), self%input_cache)
+        self%grad_weights = self%grad_weights + matmul(transpose(grad_output_batch), self%input_cache)
 
         ! 2. 计算关于偏置的梯度 (dLoss/dB) 并累加
         ! 沿批量维度求和梯度
-        self%grad_biases = sum(grad_output_batch, dim=1)
+        self%grad_biases = self%grad_biases + sum(grad_output_batch, dim=1)
 
         ! 3. 计算关于输入的梯度 (dLoss/dIn)
         ! dLoss/dIn = dLoss/dOut * W

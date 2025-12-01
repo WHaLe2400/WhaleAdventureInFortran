@@ -204,8 +204,12 @@ contains
         H_out = size(dout, 3)
         W_out = size(dout, 4)
 
-        self%dW = 0.0_dp
-        self%db = 0.0_dp
+        ! Gradients are zeroed by model%zero_grads() before this call.
+        ! self%dW = 0.0_dp
+        ! self%db = 0.0_dp
+
+        ! Vectorized gradient calculation for biases
+        self%db = self%db + sum(sum(sum(dout, dim=4), dim=3), dim=1)
 
         allocate(xpad(batch, C_in, H + 2*self%pad, W_in + 2*self%pad))
         xpad = 0.0_dp
@@ -225,7 +229,7 @@ contains
                     i_start = (i_out-1)*self%stride + 1
                     do j_out = 1, W_out
                         j_start = (j_out-1)*self%stride + 1
-                        self%db(c_out_idx) = self%db(c_out_idx) + dout(n, c_out_idx, i_out, j_out)
+                        ! self%db(c_out_idx) = self%db(c_out_idx) + dout(n, c_out_idx, i_out, j_out) ! Replaced by vectorized version
                         do c_in_idx = 1, C_in
                             do kh = 1, self%kH
                                 i_in = i_start + kh - 1

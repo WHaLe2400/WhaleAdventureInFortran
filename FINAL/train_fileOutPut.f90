@@ -21,28 +21,36 @@ program Train
     character(len=*), parameter :: test_data_path = file_root // "t10k-images3-.bin"
     character(len=*), parameter :: test_label_path = file_root // "t10k-labels1-.bin"
     character(len=*), parameter :: model_save_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/RESULTS/Models"
+    character(len=*), parameter :: log_file_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/train.log"
 
     ! 3. 训练超参数 (每个类型分开声明)
     integer :: epoch = 16
-    integer :: batch_size = 128
-    real(dp) :: learning_rate = 0.8_dp
+    integer :: batch_size = 512
+    real(dp) :: learning_rate = 0.5_dp
 
     real(dp), allocatable :: input(:,:,:,:), output(:,:), grad_output(:,:)
 
     real(dp) :: loss, accuracy
 
+    ! 日志文件单位
+    integer :: log_unit = 10  ! 选择一个未使用的单位号
+
     ! --- 程序逻辑开始 ---
-    print *, ""
-    print *, "#==========================================================================#"
-    print *, "|               Whale Adventure In Fortran - Training Script               |"
-    print *, "#==========================================================================#"
-    print *,    "Training Configuration:      "
-    print *,    "   Epochs: ", epoch
-    print *,    "   Batch Size: ", batch_size
-    print *,    "   Learning Rate: ", learning_rate
-    print *,    "   Using Data: ", trim(file_root)
-    print *,    "   Saving Model To: ", trim(model_save_path)
-    print *,    "#==========================================================================#"
+    ! 打开日志文件（追加模式，如果想每次运行覆盖，用 'replace'）
+    open(unit=log_unit, file=log_file_path, status='replace', action='write')
+
+    write(log_unit, *) ""
+    write(log_unit, *) "#==========================================================================#"
+    write(log_unit, *) "|               Whale Adventure In Fortran - Training Script               |"
+    write(log_unit, *) "#==========================================================================#"
+    write(log_unit, *)    "Training Configuration:      "
+    write(log_unit, *)    "   Epochs: ", epoch
+    write(log_unit, *)    "   Batch Size: ", batch_size
+    write(log_unit, *)    "   Learning Rate: ", learning_rate
+    write(log_unit, *)    "   Using Data: ", trim(file_root)
+    write(log_unit, *)    "   Saving Model To: ", trim(model_save_path)
+    write(log_unit, *)    "#==========================================================================#"
+    close(log_unit)
 
     ! 初始化
     call init()
@@ -52,14 +60,16 @@ program Train
     call train_process()
 
     call destroy()
-
-    print *, ""
-    print *, "#==========================================================================#"
-    print *, "|                        Training Process Completed                        |"
-    print *, "#==========================================================================#"
-    print *, "Model saved to: ", trim(model_save_path)
-    print *, "                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-    print *, ""
+    open(unit=log_unit, file=log_file_path, status='replace', action='write')
+    write(log_unit, *) ""
+    write(log_unit, *) "#==========================================================================#"
+    write(log_unit, *) "|                        Training Process Completed                        |"
+    write(log_unit, *) "#==========================================================================#"
+    write(log_unit, *) "Model saved to: ", trim(model_save_path)
+    write(log_unit, *) "                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    write(log_unit, *) ""
+    ! 关闭日志文件
+    close(log_unit)
 
 contains
 
@@ -67,10 +77,10 @@ contains
         ! 作为内部过程，这里可以访问主程序的所有变量
         call my_model%init()
         call loss_func%destroy() ! 清空loss的缓存
-        call train_data_loader%init(train_data_path, batch_size, 6000, 28, 28, 1)
-        call train_label_loader%init(train_label_path, batch_size, 6000)
-        call test_data_loader%init(test_data_path, batch_size, 1000, 28, 28, 1)
-        call test_label_loader%init(test_label_path, batch_size, 1000)
+        call train_data_loader%init(train_data_path, batch_size, 60000, 28, 28, 1)
+        call train_label_loader%init(train_label_path, batch_size, 60000)
+        call test_data_loader%init(test_data_path, batch_size, 10000, 28, 28, 1)
+        call test_label_loader%init(test_label_path, batch_size, 10000)
     end subroutine init
 
 
@@ -86,52 +96,52 @@ contains
     end subroutine save_model
 
 
-    function train_one_epoch() result(avg_loss)
+    subroutine train_one_epoch(loss)
         integer :: num_batches, i, j
         real(dp), allocatable :: input(:,:,:,:), labels(:,:), labels_onehot(:,:), output(:,:), grad_output(:,:)
-        real(dp) :: current_loss, total_loss
-        real(dp) :: avg_loss
+        real(dp) :: loss
 
         num_batches = train_data_loader%get_len()
-        total_loss = 0.0_dp
-
-        write(*, '(A)', advance='no') "Training: "
+        
+        open(unit=log_unit, file=log_file_path, status='replace', action='write')
+        write(log_unit, '(A)', advance='no') "Training: "
+        close(log_unit)
         do i = 1, num_batches
-            write(*, '(A)', advance='no') "*"
+            open(unit=log_unit, file=log_file_path, status='replace', action='write')
+            write(log_unit, '(A)', advance='no') "*"
+            close(log_unit)
             ! 在计算新梯度前，清零所有层的梯度
             call my_model%zero_grads()
 
             ! 获取当前批次的数据和标签
             call train_data_loader%get_batch(i, input)
+            ! print *, "TrainDataShape: ", shape(input)
             call train_label_loader%get_batch(i, labels)
-            
+            ! print *, "TrainLabelShape: ", shape(labels)
             ! 将标签转换为 one-hot 编码 (batch_size, 10)
             allocate(labels_onehot(batch_size, 10))
             labels_onehot = 0.0_dp
             do j = 1, batch_size
-                if (int(labels(j, 1)) >= 0 .and. int(labels(j, 1)) <= 9) then
-                    labels_onehot(j, int(labels(j, 1)) + 1) = 1.0_dp
-                end if
+                labels_onehot(j, int(labels(j, 1)) + 1) = 1.0_dp  ! 假设标签从 0 开始，转换为 1-10 的 one-hot
             end do
-            
             ! 前向传播
             output = my_model%forward(input)
+            ! print *, "OutputShape: ", shape(output)
             ! 计算损失和梯度
-            current_loss = loss_func%forward(output, labels_onehot)
-            total_loss = total_loss + current_loss
+            loss = loss_func%forward(output, labels_onehot)
             grad_output = loss_func%backward()
             ! 反向传播 (此过程会累积梯度)
             call my_model%backward(grad_output)
             ! 更新参数
             call my_model%update(learning_rate)
             ! 释放内存
-            deallocate(input, labels, labels_onehot, output, grad_output)
+            deallocate(labels_onehot)
         end do
-        write(*, '(A)') ""  ! 换行
-        
-        avg_loss = total_loss / real(num_batches, dp)
-        
-    end function train_one_epoch
+        open(unit=log_unit, file=log_file_path, status='replace', action='write')
+        write(log_unit, '(A)') ""  ! 换行
+        close(log_unit)
+
+    end subroutine train_one_epoch
 
 
     subroutine evaluate_model(accuracy)
@@ -143,9 +153,13 @@ contains
         correct_count = 0
         total_count = 0
 
-        write(*, '(A)', advance='no') "Evaluating: "
+        open(unit=log_unit, file=log_file_path, status='replace', action='write')
+        write(log_unit, '(A)', advance='no') "Evaluating: "
+        close(log_unit)
         do i = 1, num_batches
-            write(*, '(A)', advance='no') "*"
+            open(unit=log_unit, file=log_file_path, status='replace', action='write')
+            write(log_unit, '(A)', advance='no') "*"
+            close(log_unit)
             ! 获取当前批次的数据和标签
             call test_data_loader%get_batch(i, input)
             call test_label_loader%get_batch(i, labels)
@@ -160,7 +174,9 @@ contains
                 total_count = total_count + 1
             end do
         end do
-        write(*, '(A)') ""  ! 换行
+        open(unit=log_unit, file=log_file_path, status='replace', action='write')
+        write(log_unit, '(A)') ""  ! 换行
+        close(log_unit)
 
         accuracy = real(correct_count, dp) / real(total_count, dp)
     end subroutine evaluate_model
@@ -172,17 +188,19 @@ contains
         character(len=10) :: epoch_str
 
         do epoch_idx = 1, epoch
-            loss = train_one_epoch()
+            call train_one_epoch(loss)
 
             call evaluate_model(accuracy)
-            print *, ""
-            write(*, '(A, I0, A, I0, A, F8.4, A, F6.2, A)') &
+            open(unit=log_unit, file=log_file_path, status='replace', action='write')
+            write(log_unit, *) ""
+            write(log_unit, '(A, I0, A, I0, A, F8.4, A, F6.2, A)') &
             &"Epoch ", epoch_idx, "/", epoch, " completed. Training Loss: ", loss, "      Test Accuracy: ", accuracy * 100.0_dp, "%"
-            if (mod(epoch_idx, 2) == 0) then
+            if (mod(epoch_idx, 5) == 0) then
                 write(epoch_str, '(I0)') epoch_idx
                 call save_model(trim(model_save_path) // "/epoch_" // trim(epoch_str))
-                print *, "Model saved at epoch ", trim(epoch_str)
+                write(log_unit, *) "Model saved at epoch ", trim(epoch_str)
             end if
+            close(log_unit)
         end do
     end subroutine train_process
 

@@ -1,5 +1,5 @@
 program ModelCombine_Test
-    use ModelCombine_mod
+    use ModelCombine2_mod
     use iso_fortran_env, only: dp => real64
     implicit none
 
@@ -39,9 +39,11 @@ program ModelCombine_Test
     print *, "  - PReLU1 output shape:   ", shape(my_model%prelu1_out)
     print *, "  - Conv2 output shape:    ", shape(my_model%conv2_out)
     print *, "  - PReLU2 output shape:   ", shape(my_model%prelu2_out)
+    print *, "  - Conv3 output shape:    ", shape(my_model%conv3_out)
+    print *, "  - PReLU3 output shape:   ", shape(my_model%prelu3_out)
     print *, "  - Flaten output shape:   ", shape(my_model%flaten_out)
     print *, "  - FC1 output shape:      ", shape(my_model%fc1_out)
-    print *, "  - PReLU3 output shape:   ", shape(my_model%prelu3_out)
+    print *, "  - PReLU4 output shape:   ", shape(my_model%prelu4_out)
     print *, "  - Final output shape:    ", shape(output_before_update)
     print *, "Output before update (first batch):"
     print *, output_before_update(1, :)

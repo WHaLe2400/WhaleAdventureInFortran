@@ -88,8 +88,6 @@ contains
         real(dp), intent(in) :: learning_rate
         if (.not. allocated(self%a)) return
         self%a = self%a - learning_rate * self%grad_a
-        ! 更新后重置梯度
-        self%grad_a = 0.0_dp
     end subroutine prelu_update
 
     subroutine prelu_zero_grads(self)
