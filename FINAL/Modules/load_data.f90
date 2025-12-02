@@ -63,25 +63,30 @@ contains
         real(dp), allocatable, intent(out) :: data(:,:,:,:)
         integer :: start_pos
         integer :: iostat
-        integer(kind=1), allocatable :: temp_data(:,:,:,:) ! 用于读取 kind=1 的整数
+        ! 修改：使用 kind=1 读取单字节 (uint8)
+        integer(kind=1), allocatable :: temp_data(:,:,:,:) 
+        integer :: n, c, h, w
+        ! 用于转换无符号整数的临时变量
+        integer :: pixel_val
 
-        ! 检查文件是否已成功打开
+        ! ... (前面的检查代码保持不变) ...
         if (self%file_unit == -1) then
             print *, "Error: File not open. Call init first."
             stop
         end if
 
-        ! 计算读取位置 (每个像素是一个字节的整数)
-        ! Fortran的stream access位置是从1开始的
-        start_pos = (batch_idx - 1) * self%batch_size * self%data_h * self%data_w * self%data_c + 1
+        ! 修改：计算起始位置。因为是 uint8 (1字节)，所以不需要乘以 8
+        ! Fortran stream access 是以文件存储单元为单位，通常是字节
+        ! MNIST 数据集有 16 字节的文件头，需要跳过
+        start_pos = 16 + (batch_idx - 1) * self%batch_size * self%data_h * self%data_w * self%data_c + 1
 
-        ! 分配输出数组为BCHW格式和临时数组为BHWC格式
         allocate(data(self%batch_size, self%data_c, self%data_h, self%data_w))
-        allocate(temp_data(self%batch_size, self%data_h, self%data_w, self%data_c))
+        
+        ! 1. 按照文件流的物理顺序定义数组 (W 变化最快)
+        allocate(temp_data(self%data_w, self%data_h, self%data_c, self%batch_size))
 
-        ! 从对象中存储的单元号读取文件到临时整数数组
+        ! 2. 读取数据
         read(unit=self%file_unit, pos=start_pos, iostat=iostat) temp_data
-        !print *, "Row_data:", temp_data(1,:,:,:)
         
         if (iostat /= 0) then
             print *, "Error reading from file, batch_idx=", batch_idx, ", iostat=", iostat
@@ -89,11 +94,23 @@ contains
             stop
         end if
 
-        ! 将整数数据转换为 real(dp) 类型并进行归一化处理，同时重新排列为BCHW格式
-        data = real(reshape(temp_data, shape(data), order=[1,4,2,3]), kind=dp) / 255.0_dp
-        !print *, "Normalized data:", data
+        ! 3. 手动进行维度置换 (Transpose) 并归一化
+        do n = 1, self%batch_size
+            do c = 1, self%data_c
+                do h = 1, self%data_h
+                    do w = 1, self%data_w
+                        ! 注意：Fortran 的 integer(kind=1) 是有符号的 (-128 到 127)
+                        ! 我们需要将其视为无符号数 (0 到 255)
+                        pixel_val = int(temp_data(w, h, c, n))
+                        if (pixel_val < 0) pixel_val = pixel_val + 256
+                        
+                        ! 归一化到 -0.5 - 0.5，使均值接近 0
+                        data(n, c, h, w) = (real(pixel_val, kind=dp) / 255.0_dp) - 0.5_dp
+                    end do
+                end do
+            end do
+        end do
 
-        ! 释放临时数组
         deallocate(temp_data)
 
     end subroutine DL_get_batch

@@ -61,7 +61,10 @@ contains
 
         ! 使用随机数初始化，并将梯度置零
         call random_number(self%weights)
-        self%weights = self%weights * sqrt(2.0_dp / real(input_dim, dp)) ! Kaiming He 初始化
+        ! 将 [0, 1] 映射到 [-1, 1]
+        self%weights = (self%weights - 0.5_dp) * 2.0_dp
+        ! Kaiming He Uniform 初始化: bound = sqrt(6 / fan_in)
+        self%weights = self%weights * sqrt(6.0_dp / real(input_dim, dp)) 
         self%biases = 0.0_dp
         call self%zero_grads() ! 调用新的清零函数
     end subroutine fc_init

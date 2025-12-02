@@ -21,11 +21,13 @@ program Train
     character(len=*), parameter :: test_data_path = file_root // "t10k-images3-.bin"
     character(len=*), parameter :: test_label_path = file_root // "t10k-labels1-.bin"
     character(len=*), parameter :: model_save_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/RESULTS/Models"
+    character(len=*), parameter :: Torch_weights_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/RESULTS/Models/" &
+                                     // "config_fromTroch"
 
     ! 3. 训练超参数 (每个类型分开声明)
     integer :: epoch = 16
-    integer :: batch_size = 128
-    real(dp) :: learning_rate = 0.8_dp
+    integer :: batch_size = 64
+    real(dp) :: learning_rate = 0.1_dp
 
     real(dp), allocatable :: input(:,:,:,:), output(:,:), grad_output(:,:)
 
@@ -47,7 +49,7 @@ program Train
     ! 初始化
     call init()
 
-    ! call load_model(model_save_path)
+    ! call load_model(Torch_weights_path)
 
     call train_process()
 
@@ -95,9 +97,12 @@ contains
         num_batches = train_data_loader%get_len()
         total_loss = 0.0_dp
 
+        ! 切换到训练模式 (启用 Dropout)
+        call my_model%train()
+
         write(*, '(A)', advance='no') "Training: "
         do i = 1, num_batches
-            write(*, '(A)', advance='no') "*"
+            if (mod(i, 1) == 0) write(*, '(A)', advance='no') "*"
             ! 在计算新梯度前，清零所有层的梯度
             call my_model%zero_grads()
 
@@ -112,6 +117,7 @@ contains
                 if (int(labels(j, 1)) >= 0 .and. int(labels(j, 1)) <= 9) then
                     labels_onehot(j, int(labels(j, 1)) + 1) = 1.0_dp
                 end if
+                ! print *, " -> One-hot: ", labels_onehot(j, :)
             end do
             
             ! 前向传播
@@ -135,7 +141,9 @@ contains
 
 
     subroutine evaluate_model(accuracy)
-        integer :: num_batches, i, j, predicted_class, correct_count, total_count
+        integer :: num_batches, i, j, correct_count, total_count
+        ! 修改：使用固定大小数组，避免循环内频繁分配/释放内存
+        integer :: predicted_loc(1) 
         real(dp), allocatable :: input(:,:,:,:), labels(:,:), output(:,:)
         real(dp) :: accuracy
 
@@ -143,26 +151,44 @@ contains
         correct_count = 0
         total_count = 0
 
+        ! 切换到评估模式 (禁用 Dropout)
+        call my_model%eval()
+
         write(*, '(A)', advance='no') "Evaluating: "
         do i = 1, num_batches
-            write(*, '(A)', advance='no') "*"
+            if (mod(i, 1) == 0) write(*, '(A)', advance='no') "*"
             ! 获取当前批次的数据和标签
             call test_data_loader%get_batch(i, input)
             call test_label_loader%get_batch(i, labels)
+            
             ! 前向传播
             output = my_model%forward(input)
+            
             ! 计算正确预测
             do j = 1, size(output, 1)  ! 遍历批次中的每个样本
-                predicted_class = maxloc(output(j, :), dim=1) - 1  ! 假设类别从0开始
-                if (predicted_class == int(labels(j, 1))) then
+                ! maxloc 返回一个单元素数组，直接赋值给固定大小数组
+                predicted_loc = maxloc(output(j, :), dim=1)
+                
+                ! 检查预测类别是否与真实标签匹配
+                ! predicted_loc(1) 获取索引值
+                if ((predicted_loc(1) - 1) == int(labels(j, 1))) then
                     correct_count = correct_count + 1
                 end if
                 total_count = total_count + 1
             end do
+            
+            ! 在循环内释放内存以防止泄漏
+            if (allocated(input)) deallocate(input)
+            if (allocated(labels)) deallocate(labels)
+            if (allocated(output)) deallocate(output)
         end do
         write(*, '(A)') ""  ! 换行
 
-        accuracy = real(correct_count, dp) / real(total_count, dp)
+        if (total_count > 0) then
+            accuracy = real(correct_count, dp) / real(total_count, dp)
+        else
+            accuracy = 0.0_dp
+        end if
     end subroutine evaluate_model
 
 
@@ -173,6 +199,7 @@ contains
 
         do epoch_idx = 1, epoch
             loss = train_one_epoch()
+            ! loss = 0
 
             call evaluate_model(accuracy)
             print *, ""

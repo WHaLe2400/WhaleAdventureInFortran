@@ -152,7 +152,7 @@ contains
             da_sum(c_idx) = sum(self%x_cache_4d(:,c_idx,:,:) * dout(:,c_idx,:,:), &
                                 mask=self%x_cache_4d(:,c_idx,:,:) <= 0.0_dp)
         end do
-        self%grad_a = da_sum
+        self%grad_a = self%grad_a + da_sum
     end function prelu_backward_4d
 
     ! --- 2D (B*L) 版本 ---

@@ -4,6 +4,7 @@ module ModelCombine_mod
     use Flaten_mod, only: FlatenLayer
     use FullConnect_mod, only: FullConnectLayer
     use PReluFunc_mod, only: PReluLayer
+    use Dropout_mod, only: DropoutLayer
     implicit none
 
     private
@@ -21,11 +22,13 @@ module ModelCombine_mod
         type(PReluLayer) :: PReLU1, PReLU2, PReLU3
         type(FlatenLayer) :: Flaten
         type(FullConnectLayer) :: FC1, FC2
+        type(DropoutLayer) :: Drop1 ! 新增 Dropout 层
 
         ! --- Intermediate results for backpropagation ---
         real(dp), allocatable :: conv1_out(:, :, :, :), prelu1_out(:, :, :, :)
         real(dp), allocatable :: conv2_out(:, :, :, :), prelu2_out(:, :, :, :)
         real(dp), allocatable :: flaten_out(:, :), fc1_out(:, :), prelu3_out(:, :)
+        real(dp), allocatable :: drop1_out(:, :) ! 新增 Dropout 输出缓存
 
     contains
         procedure, public :: init => model_init
@@ -36,6 +39,9 @@ module ModelCombine_mod
         procedure, public :: update => model_update
         procedure, public :: destroy => model_destroy
         procedure, public :: zero_grads => model_zero_grads
+        ! 新增模式切换方法
+        procedure, public :: train => model_train
+        procedure, public :: eval => model_eval
     end type Model
 
 contains
@@ -57,6 +63,8 @@ contains
 
         call self%PReLU3%init(self%FC_hidden) ! Features for PReLU3 is output of FC1
         
+        call self%Drop1%init(0.5_dp) ! 初始化 Dropout，丢弃率 0.5
+
         call self%FC2%init(self%FC_hidden, self%FC_out)
 
     end subroutine model_init
@@ -146,7 +154,9 @@ contains
         self%prelu3_out = self%PReLU3%forward(self%fc1_out)
         ! print *, "After PReLU3: ", shape(self%prelu3_out)
 
-        output_data = self%FC2%forward(self%prelu3_out)
+        self%drop1_out = self%Drop1%forward(self%prelu3_out)
+
+        output_data = self%FC2%forward(self%drop1_out)
 
     end function model_forward
 
@@ -155,13 +165,14 @@ contains
         real(dp), intent(in) :: grad_output(:, :)
 
         ! Intermediate gradients
-        real(dp), allocatable :: grad_prelu3(:,:), grad_fc1(:, :), grad_flaten(:, :)
+        real(dp), allocatable :: grad_drop1(:,:), grad_prelu3(:,:), grad_fc1(:, :), grad_flaten(:, :)
         real(dp), allocatable :: grad_prelu2(:, :, :, :), grad_conv2(:, :, :, :)
         real(dp), allocatable :: grad_prelu1(:, :, :, :), grad_conv1(:, :, :, :)
         real(dp), allocatable :: dummy(:,:,:,:)
 
         ! Backward pass
-        grad_prelu3 = self%FC2%backward(grad_output)
+        grad_drop1 = self%FC2%backward(grad_output)
+        grad_prelu3 = self%Drop1%backward(grad_drop1)
         grad_fc1 = self%PReLU3%backward(grad_prelu3)
         grad_flaten = self%FC1%backward(grad_fc1)
         grad_prelu2 = self%Flaten%backward(grad_flaten)
@@ -171,7 +182,7 @@ contains
         dummy = self%Conv1%backward(grad_conv1)
 
         ! Deallocate intermediate gradient arrays
-        deallocate(grad_prelu3, grad_fc1, grad_flaten, grad_prelu2, grad_conv2, grad_prelu1, grad_conv1, dummy)
+        deallocate(grad_drop1, grad_prelu3, grad_fc1, grad_flaten, grad_prelu2, grad_conv2, grad_prelu1, grad_conv1, dummy)
 
     end subroutine model_backward
 
@@ -209,6 +220,7 @@ contains
         call self%Flaten%destroy()
         call self%FC1%destroy()
         call self%PReLU3%destroy()
+        call self%Drop1%destroy()
         call self%FC2%destroy()
 
         ! Deallocate intermediate results
@@ -219,6 +231,17 @@ contains
         if (allocated(self%flaten_out)) deallocate(self%flaten_out)
         if (allocated(self%fc1_out)) deallocate(self%fc1_out)
         if (allocated(self%prelu3_out)) deallocate(self%prelu3_out)
+        if (allocated(self%drop1_out)) deallocate(self%drop1_out)
     end subroutine model_destroy
+
+    subroutine model_train(self)
+        class(Model), intent(inout) :: self
+        call self%Drop1%train()
+    end subroutine model_train
+
+    subroutine model_eval(self)
+        class(Model), intent(inout) :: self
+        call self%Drop1%eval()
+    end subroutine model_eval
 
 end module ModelCombine_mod
