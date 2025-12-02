@@ -7,7 +7,7 @@ class CNN(nn.Module):
         # 输入: (N, 1, 28, 28)
         self.conv1 = nn.Conv2d(in_channels=1, out_channels=8, kernel_size=5, stride=2, padding=2)
         # -> (N, 8, 14, 14)
-        self.prelu1 = nn.PReLU(num_parameters=8) # Fortran PReLU是按通道的
+        self.prelu1 = nn.PReLU(num_parameters=8)
         
         self.conv2 = nn.Conv2d(in_channels=8, out_channels=16, kernel_size=5, stride=2, padding=2)
         # -> (N, 16, 7, 7)
@@ -16,7 +16,6 @@ class CNN(nn.Module):
         self.flatten = nn.Flatten()
         # -> (N, 16 * 7 * 7) = (N, 784)
         
-        # 注意：您的 Fortran 模型 FC_in 是 784，这与 PyTorch 模型匹配
         self.fc1 = nn.Linear(in_features=16 * 7 * 7, out_features=128)
         # -> (N, 128)
         self.prelu3 = nn.PReLU(num_parameters=128)

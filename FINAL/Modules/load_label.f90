@@ -67,7 +67,7 @@ contains
         end if
 
         ! 计算读取位置 (跳过魔数和数量，标签从第9字节开始)
-        start_pos = 8 + (batch_idx - 1) * self%batch_size + 1  ! 魔数4字节 + 数量4字节 = 8字节
+        start_pos = (batch_idx - 1) * self%batch_size * 1 + 1  ! 魔数4字节 + 数量4字节 = 8字节
 
         ! 分配输出数组和临时数组
         allocate(labels(self%batch_size, 1))

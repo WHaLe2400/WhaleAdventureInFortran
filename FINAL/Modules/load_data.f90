@@ -77,8 +77,7 @@ contains
 
         ! 修改：计算起始位置。因为是 uint8 (1字节)，所以不需要乘以 8
         ! Fortran stream access 是以文件存储单元为单位，通常是字节
-        ! MNIST 数据集有 16 字节的文件头，需要跳过
-        start_pos = 16 + (batch_idx - 1) * self%batch_size * self%data_h * self%data_w * self%data_c + 1
+        start_pos =(batch_idx - 1) * self%batch_size * self%data_h * self%data_w * self%data_c + 1
 
         allocate(data(self%batch_size, self%data_c, self%data_h, self%data_w))
         
