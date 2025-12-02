@@ -48,8 +48,8 @@ program VisualVal
     
     ! 5. 获取一个批次的数据
     print *, "Loading a batch of test data..."
-    call test_data_loader%get_batch(1, input_batch)
-    call test_label_loader%get_batch(1, label_batch)
+    call test_data_loader%get_batch(3, input_batch)
+    call test_label_loader%get_batch(3, label_batch)
     
     ! 6. 前向传播
     print *, "Running Forward Pass..."
