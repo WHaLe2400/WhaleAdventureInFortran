@@ -196,15 +196,28 @@ contains
         integer :: epoch_idx
         real(dp) :: loss, accuracy
         character(len=10) :: epoch_str
+        integer :: start_time, end_time, clock_rate
+        real(dp) :: elapsed_time
+
+        ! 获取时钟频率
+        call system_clock(count_rate=clock_rate)
 
         do epoch_idx = 1, epoch
+            ! 开始计时
+            call system_clock(count=start_time)
+
             loss = train_one_epoch()
             ! loss = 0
 
             call evaluate_model(accuracy)
+
+            ! 结束计时
+            call system_clock(count=end_time)
+            elapsed_time = real(end_time - start_time, dp) / real(clock_rate, dp)
+
             print *, ""
-            write(*, '(A, I0, A, I0, A, F8.4, A, F6.2, A)') &
-            &"Epoch ", epoch_idx, "/", epoch, " completed. Training Loss: ", loss, "      Test Accuracy: ", accuracy * 100.0_dp, "%"
+            write(*, '(A, I0, A, I0, A, F8.4, A, F6.2, A, F8.2, A)') &
+            &"Epoch ", epoch_idx, "/", epoch, " completed. Training Loss: ", loss, "      Test Accuracy: ", accuracy * 100.0_dp, "%", " Time: ", elapsed_time, "s"
             if (mod(epoch_idx, 2) == 0) then
                 write(epoch_str, '(I0)') epoch_idx
                 call save_model(trim(model_save_path) // "/epoch_" // trim(epoch_str))

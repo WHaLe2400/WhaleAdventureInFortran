@@ -24,7 +24,7 @@ program VisualVal
     ! 路径配置
     character(len=*), parameter :: data_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/1_DATA_Reread/"
     ! 使用 epoch_12 的权重，你可以根据需要修改为其他 epoch
-    character(len=*), parameter :: model_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/RESULTS/Models/config_fromTroch"
+    character(len=*), parameter :: model_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/config_fromTorch"
     
     print *, "========================================"
     print *, "      Model Visualization Validation    "
