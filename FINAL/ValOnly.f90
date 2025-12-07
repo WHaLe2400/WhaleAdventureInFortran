@@ -12,10 +12,10 @@ program Validation
     type(Label_Loader) :: test_label_loader
 
     ! --- 文件路径和参数 ---
-    character(len=*), parameter :: file_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/1_DATA_Reread/"
+    character(len=*), parameter :: file_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/1_DATA_Reread/"
     character(len=*), parameter :: test_data_path = file_root // "t10k-images3-.bin"
     character(len=*), parameter :: test_label_path = file_root // "t10k-labels1-.bin"
-    character(len=*), parameter :: model_load_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/config_fromTorch"
+    character(len=*), parameter :: model_load_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/RESULTS/Models/epoch_2"
 
     integer, parameter :: batch_size = 100
     integer, parameter :: test_item_num = 10000
@@ -65,18 +65,14 @@ program Validation
         output = my_model%forward(input)
         
         ! 计算正确预测的数量
-        do j = 1, size(output, 1) ! 遍历批次中的每个样本
-            ! 找到预测类别的索引
-            predicted_loc = maxloc(output(j, :), dim=1)
-            
-            ! 比较预测类别 (从0开始) 和真实标签
-            if ((predicted_loc(1) - 1) == int(labels(j, 1))) then
+        do j = 1, batch_size
+            predicted_loc = maxloc(output(:, j))
+            if ((predicted_loc(1) - 1) == int(labels(1, j))) then
                 correct_count = correct_count + 1
             end if
+            total_count = total_count + 1
         end do
-        total_count = total_count + size(output, 1)
         
-        ! 释放当前批次的内存
         deallocate(input, labels, output)
     end do
     write(*, '(A)') " Done."

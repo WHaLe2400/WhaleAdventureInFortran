@@ -60,31 +60,27 @@ contains
     subroutine DL_get_batch(self, batch_idx, data)
         class(Data_Loader), intent(inout) :: self
         integer, intent(in) :: batch_idx
-        real(dp), allocatable, intent(out) :: data(:,:,:,:)
+        real(dp), allocatable, intent(out) :: data(:,:,:,:) ! Fortran-friendly: (H, W, C, N)
         integer :: start_pos
         integer :: iostat
-        ! 修改：使用 kind=1 读取单字节 (uint8)
+        ! 仍然按 (W, H, C, N) 读取以匹配文件布局
         integer(kind=1), allocatable :: temp_data(:,:,:,:) 
         integer :: n, c, h, w
-        ! 用于转换无符号整数的临时变量
         integer :: pixel_val
 
-        ! ... (前面的检查代码保持不变) ...
         if (self%file_unit == -1) then
             print *, "Error: File not open. Call init first."
             stop
         end if
 
-        ! 修改：计算起始位置。因为是 uint8 (1字节)，所以不需要乘以 8
-        ! Fortran stream access 是以文件存储单元为单位，通常是字节
         start_pos =(batch_idx - 1) * self%batch_size * self%data_h * self%data_w * self%data_c + 1
 
-        allocate(data(self%batch_size, self%data_c, self%data_h, self%data_w))
+        ! 分配为 Fortran 友好的 (H, W, C, N) 格式
+        allocate(data(self%data_h, self%data_w, self%data_c, self%batch_size))
         
-        ! 1. 按照文件流的物理顺序定义数组 (W 变化最快)
+        ! 临时数组仍然匹配文件中的物理布局 (W, H, C, N)
         allocate(temp_data(self%data_w, self%data_h, self%data_c, self%batch_size))
 
-        ! 2. 读取数据
         read(unit=self%file_unit, pos=start_pos, iostat=iostat) temp_data
         
         if (iostat /= 0) then
@@ -93,18 +89,15 @@ contains
             stop
         end if
 
-        ! 3. 手动进行维度置换 (Transpose) 并归一化
+        ! 从 (W, H, C, N) 转置为 (H, W, C, N) 并归一化
         do n = 1, self%batch_size
             do c = 1, self%data_c
                 do h = 1, self%data_h
                     do w = 1, self%data_w
-                        ! 注意：Fortran 的 integer(kind=1) 是有符号的 (-128 到 127)
-                        ! 我们需要将其视为无符号数 (0 到 255)
                         pixel_val = int(temp_data(w, h, c, n))
                         if (pixel_val < 0) pixel_val = pixel_val + 256
                         
-                        ! 归一化到 -0.5 - 0.5，使均值接近 0
-                        data(n, c, h, w) = (real(pixel_val, kind=dp) / 255.0_dp) - 0.5_dp
+                        data(h, w, c, n) = (real(pixel_val, kind=dp) / 255.0_dp) - 0.5_dp
                     end do
                 end do
             end do

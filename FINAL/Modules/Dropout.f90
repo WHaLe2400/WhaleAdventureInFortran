@@ -54,7 +54,7 @@ contains
     end subroutine dropout_eval
 
     ! -------------------------------------------------------------------------
-    ! 2D Forward (通常用于全连接层后: Batch, Features)
+    ! 2D Forward (Features, Batch)
     ! -------------------------------------------------------------------------
     function dropout_forward_2d(self, x) result(y)
         class(DropoutLayer), intent(inout) :: self
@@ -65,35 +65,28 @@ contains
         allocate(y, source=x)
 
         if (.not. self%is_training .or. self%p <= 0.0_dp) then
-            ! 推理模式或 p=0：直接通过
             y = x
             return
         end if
 
-        ! 重新分配 mask
         if (allocated(self%mask_2d)) deallocate(self%mask_2d)
         allocate(self%mask_2d, source=x)
 
-        ! 生成随机数 [0, 1]
         call random_number(self%mask_2d)
 
-        ! 生成掩码: > p 保留(1), <= p 丢弃(0)
         where (self%mask_2d > self%p)
             self%mask_2d = 1.0_dp
         elsewhere
             self%mask_2d = 0.0_dp
         end where
 
-        ! Inverted Dropout: 缩放因子
         scale = 1.0_dp / (1.0_dp - self%p)
-
-        ! 应用掩码和缩放
         y = x * self%mask_2d * scale
 
     end function dropout_forward_2d
 
     ! -------------------------------------------------------------------------
-    ! 2D Backward
+    ! 2D Backward (Features, Batch)
     ! -------------------------------------------------------------------------
     function dropout_backward_2d(self, grad_output) result(grad_input)
         class(DropoutLayer), intent(in) :: self
@@ -119,7 +112,7 @@ contains
     end function dropout_backward_2d
 
     ! -------------------------------------------------------------------------
-    ! 4D Forward (通常用于卷积层后: N, C, H, W)
+    ! 4D Forward (H, W, C, N)
     ! -------------------------------------------------------------------------
     function dropout_forward_4d(self, x) result(y)
         class(DropoutLayer), intent(inout) :: self
@@ -151,7 +144,7 @@ contains
     end function dropout_forward_4d
 
     ! -------------------------------------------------------------------------
-    ! 4D Backward
+    ! 4D Backward (H, W, C, N)
     ! -------------------------------------------------------------------------
     function dropout_backward_4d(self, grad_output) result(grad_input)
         class(DropoutLayer), intent(in) :: self

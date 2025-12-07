@@ -1,150 +1,108 @@
 program test_fullconnect
-    use FullConnect_mod
     use iso_fortran_env, only: dp => real64
+    use FullConnect_mod
     implicit none
 
-    ! Test parameters
-    integer, parameter :: batch_size = 4
-    integer, parameter :: input_dim = 3
-    integer, parameter :: output_dim = 2
-    real(dp), parameter :: learning_rate = 0.1
+    type(FullConnectLayer) :: fc
+    type(FullConnectLayer) :: fc_loaded
+    real(dp), allocatable :: input_batch(:,:), output_batch(:,:), grad_output_batch(:,:), grad_input_batch(:,:)
+    real(dp), allocatable :: weights_before(:,:), biases_before(:), grad_weights(:,:), grad_biases(:)
+    real(dp) :: loss_before, loss_after
+    integer :: input_size = 784, output_size = 128, batch_size = 32
+    character(len=100) :: save_path = "test_fc_weights.dat"
 
-    ! Layer instance
-    type(FullConnectLayer) :: fc_layer
+    ! 初始化随机种子
+    call random_seed()
 
-    ! Test data (Batch versions)
-    real(dp), allocatable :: input_batch(:, :)      ! Shape: (batch_size, input_dim)
-    real(dp), allocatable :: output_batch(:, :)     ! Shape: (batch_size, output_dim)
-    real(dp), allocatable :: grad_output_batch(:, :)! Shape: (batch_size, output_dim)
-    real(dp), allocatable :: grad_input_batch(:, :) ! Shape: (batch_size, input_dim)
-    
-    ! Variables to hold data from getters
-    real(dp), allocatable :: initial_weights(:,:), initial_biases(:)
-    real(dp), allocatable :: updated_weights(:,:), updated_biases(:)
-    real(dp), allocatable :: grad_weights(:,:), grad_biases(:)
+    print *, "Testing FullConnectLayer..."
 
-    integer :: i, j
+    ! 测试 init
+    print *, "1. Testing init..."
+    call fc%init(input_size, output_size)
+    print *, "   Init successful. Input size: ", fc%get_input_size(), " Output size: ", fc%get_output_size()
 
-    print *, "========================================"
-    print *, "   Testing FullConnectLayer (Batch Mode)"
-    print *, "========================================"
+    ! 分配输入数据 (input_size, batch_size)
+    allocate(input_batch(input_size, batch_size))
+    call random_number(input_batch)
+    input_batch = input_batch * 2.0_dp - 1.0_dp  ! [-1, 1]
 
-    ! 1. Initialize the layer
-    print *, "1. Initializing FullConnectLayer..."
-    call fc_layer%init(input_dim, output_dim)
-    print *, "   Input size: ", fc_layer%get_input_size()
-    print *, "   Output size: ", fc_layer%get_output_size()
-    
-    initial_weights = fc_layer%get_weights()
-    initial_biases = fc_layer%get_biases()
-
-    print *, "   Initial Weights shape: (", size(initial_weights, 1), ",", size(initial_weights, 2), ")"
-    print *, "   Initial Biases shape:  (", size(initial_biases), ")"
-    print *, "---------------------------------"
-
-    ! 2. Prepare input data (Batch)
-    allocate(input_batch(batch_size, input_dim))
-    ! Fill with some dummy data
-    do i = 1, batch_size
-        do j = 1, input_dim
-            input_batch(i, j) = real(i + j, dp)
-        end do
-    end do
-
-    print *, "2. Forward Pass..."
-    print *, "   Input batch shape: (", size(input_batch, 1), ",", size(input_batch, 2), ")"
-    
-    ! 3. Perform forward pass
-    output_batch = fc_layer%forward(input_batch)
-    
-    if (.not. allocated(output_batch)) then
-        print *, "   ERROR: Forward pass returned unallocated array."
-        stop
-    end if
-    
-    print *, "   Output batch shape: (", size(output_batch, 1), ",", size(output_batch, 2), ")"
-    print *, "   Expected shape:     (", batch_size, ",", output_dim, ")"
-    
-    if (size(output_batch, 1) /= batch_size .or. size(output_batch, 2) /= output_dim) then
-        print *, "   ERROR: Output shape mismatch!"
-        stop
+    ! 测试 forward
+    print *, "2. Testing forward..."
+    output_batch = fc%forward(input_batch)
+    if (size(output_batch, 1) == output_size .and. size(output_batch, 2) == batch_size) then
+        print *, "   Forward successful. Output shape: ", shape(output_batch)
     else
-        print *, "   SUCCESS: Forward pass shape correct."
-    end if
-    print *, "---------------------------------"
-
-    ! 4. Prepare gradient from the next layer (dummy gradient)
-    allocate(grad_output_batch(batch_size, output_dim))
-    grad_output_batch = 1.0_dp ! Simple gradient of all 1s
-
-    print *, "3. Backward Pass..."
-    print *, "   Gradient from next layer shape: (", size(grad_output_batch, 1), ",", size(grad_output_batch, 2), ")"
-
-    ! 5. Perform backward pass
-    grad_input_batch = fc_layer%backward(grad_output_batch)
-    
-    if (.not. allocated(grad_input_batch)) then
-        print *, "   ERROR: Backward pass returned unallocated array."
-        stop
+        print *, "   Forward failed. Expected shape: ", output_size, batch_size, " Got: ", shape(output_batch)
     end if
 
-    print *, "   Calculated grad_input shape: (", size(grad_input_batch, 1), ",", size(grad_input_batch, 2), ")"
-    print *, "   Expected shape:              (", batch_size, ",", input_dim, ")"
-
-    if (size(grad_input_batch, 1) /= batch_size .or. size(grad_input_batch, 2) /= input_dim) then
-        print *, "   ERROR: Gradient input shape mismatch!"
-        stop
+    ! 测试 backward
+    print *, "3. Testing backward..."
+    allocate(grad_output_batch(output_size, batch_size))
+    call random_number(grad_output_batch)
+    grad_output_batch = grad_output_batch * 2.0_dp - 1.0_dp
+    grad_input_batch = fc%backward(grad_output_batch)
+    if (size(grad_input_batch, 1) == input_size .and. size(grad_input_batch, 2) == batch_size) then
+        print *, "   Backward successful. Grad input shape: ", shape(grad_input_batch)
     else
-        print *, "   SUCCESS: Backward pass shape correct."
+        print *, "   Backward failed. Expected shape: ", input_size, batch_size, " Got: ", shape(grad_input_batch)
     end if
 
-    grad_weights = fc_layer%get_grad_weights()
-    grad_biases = fc_layer%get_grad_biases()
+    ! 测试 save
+    print *, "4. Testing save..."
+    call fc%save(save_path)
+    print *, "   Save successful."
 
-    print *, "   Grad Weights shape: (", size(grad_weights, 1), ",", size(grad_weights, 2), ")"
-    print *, "   Grad Biases shape:  (", size(grad_biases), ")"
-    print *, "---------------------------------"
+    ! 获取当前权重用于比较
+    weights_before = fc%get_weights()
+    biases_before = fc%get_biases()
 
-    ! 6. Update weights
-    print *, "4. Updating weights and biases..."
-    print *, "   Learning rate: ", learning_rate
-    call fc_layer%update(learning_rate)
+    ! 创建新层，测试 load
+    print *, "5. Testing load..."
+    call fc_loaded%init(input_size, output_size)
+    call fc_loaded%load(save_path)
+    print *, "   Load successful."
 
-    updated_weights = fc_layer%get_weights()
-    updated_biases = fc_layer%get_biases()
-
-    ! Simple check to see if weights changed
-    if (any(updated_weights /= initial_weights)) then
-        print *, "   SUCCESS: Weights have been updated."
+    ! 验证 load 是否正确 (比较权重)
+    if (all(abs(weights_before - fc_loaded%get_weights()) < 1e-10) .and. &
+        all(abs(biases_before - fc_loaded%get_biases()) < 1e-10)) then
+        print *, "   Weights match after load."
     else
-        print *, "   WARNING: Weights did not change (gradient might be zero)."
+        print *, "   Weights do not match after load."
     end if
 
-    if (any(updated_biases /= initial_biases)) then
-        print *, "   SUCCESS: Biases have been updated."
+    ! 测试 update
+    print *, "6. Testing update..."
+    loss_before = sum(output_batch**2)  ! 简单损失
+    call fc%update(0.01_dp)  ! lr=0.01
+    output_batch = fc%forward(input_batch)
+    loss_after = sum(output_batch**2)
+    if (loss_after /= loss_before) then
+        print *, "   Update successful. Loss changed from ", loss_before, " to ", loss_after
     else
-        print *, "   WARNING: Biases did not change."
+        print *, "   Update failed. Loss unchanged."
     end if
-    print *, "---------------------------------"
 
-    ! 7. Clean up
-    print *, "5. Cleaning up..."
-    call fc_layer%destroy()
-    if (allocated(input_batch)) deallocate(input_batch)
-    if (allocated(output_batch)) deallocate(output_batch)
-    if (allocated(grad_output_batch)) deallocate(grad_output_batch)
-    if (allocated(grad_input_batch)) deallocate(grad_input_batch)
-    if (allocated(initial_weights)) deallocate(initial_weights)
-    if (allocated(initial_biases)) deallocate(initial_biases)
-    if (allocated(updated_weights)) deallocate(updated_weights)
-    if (allocated(updated_biases)) deallocate(updated_biases)
-    if (allocated(grad_weights)) deallocate(grad_weights)
-    if (allocated(grad_biases)) deallocate(grad_biases)
+    ! 测试 zero_grads
+    print *, "7. Testing zero_grads..."
+    call fc%zero_grads()
+    grad_weights = fc%get_grad_weights()
+    grad_biases = fc%get_grad_biases()
+    if (all(grad_weights == 0.0_dp) .and. all(grad_biases == 0.0_dp)) then
+        print *, "   Zero grads successful."
+    else
+        print *, "   Zero grads failed."
+    end if
 
-    print *, "========================================"
-    print *, "   Test completed."
-    print *, "========================================"
+    ! 测试 destroy
+    print *, "8. Testing destroy..."
+    call fc%destroy()
+    call fc_loaded%destroy()
+    print *, "   Destroy successful."
+
+    ! 清理
+    deallocate(input_batch, output_batch, grad_output_batch, grad_input_batch, &
+               weights_before, biases_before, grad_weights, grad_biases)
+
+    print *, "All tests completed."
 
 end program test_fullconnect
-
-!gfortran -std=f2008 -o FullConnectTest FullConnectTest.f90 ../FullConnect.f90

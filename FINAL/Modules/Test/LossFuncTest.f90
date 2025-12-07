@@ -10,10 +10,10 @@ program test_loss_func
 
     ! --- 测试变量 ---
     type(LossFunc) :: loss_func
-    real(dp), allocatable :: logits(:,:), grad_logits(:,:)
-    integer, allocatable :: labels(:)
+    real(dp), allocatable :: logits(:,:), grad_logits(:,:), onehot_labels(:,:)
+    integer, allocatable :: int_labels(:)
     real(dp) :: loss, expected_loss
-    integer :: i
+    integer :: i, j
     logical :: test_failed = .false.
 
     print *, "========================================"
@@ -22,17 +22,24 @@ program test_loss_func
 
     ! --- 1. 测试 "自信" 的预测 (损失应该很低) ---
     print *, "1. Testing with 'confident' predictions..."
-    allocate(logits(batch_size, num_classes))
-    allocate(labels(batch_size))
+    allocate(logits(num_classes, batch_size))
+    allocate(onehot_labels(num_classes, batch_size))
+    allocate(int_labels(batch_size))
 
     ! 创建 logits，其中正确类别的分数很高
     logits = 0.0_dp
-    labels = [0, 1, 2, 3] ! 标签从 0 开始
+    int_labels = [0, 1, 2, 3] ! 标签从 0 开始
     do i = 1, batch_size
-        logits(i, labels(i) + 1) = 10.0_dp ! 正确类别的 logit 值很高
+        logits(int_labels(i) + 1, i) = 10.0_dp ! 正确类别的 logit 值很高
     end do
 
-    loss = loss_func%forward(logits, labels)
+    ! 创建 one-hot 标签
+    onehot_labels = 0.0_dp
+    do i = 1, batch_size
+        onehot_labels(int_labels(i) + 1, i) = 1.0_dp
+    end do
+
+    loss = loss_func%forward(logits, onehot_labels)
     print *, "   Calculated loss (confident): ", loss
     if (loss < 0.1_dp .and. loss >= 0.0_dp) then
         print *, "   SUCCESS: Loss is small and positive as expected."
@@ -46,11 +53,17 @@ program test_loss_func
     print *, "2. Testing with 'uncertain' predictions..."
     ! 创建 logits，所有值都相同，模拟均匀概率
     logits = 0.0_dp
-    labels = [0, 1, 2, 3]
+    int_labels = [0, 1, 2, 3]
+
+    ! 创建 one-hot 标签
+    onehot_labels = 0.0_dp
+    do i = 1, batch_size
+        onehot_labels(int_labels(i) + 1, i) = 1.0_dp
+    end do
 
     ! 理论损失应该是 log(类别数)
     expected_loss = log(real(num_classes, dp))
-    loss = loss_func%forward(logits, labels)
+    loss = loss_func%forward(logits, onehot_labels)
 
     print *, "   Calculated loss (uncertain): ", loss
     print *, "   Theoretical loss:            ", expected_loss
@@ -69,15 +82,15 @@ program test_loss_func
     ! 检查梯度形状
     if (allocated(grad_logits)) then
         print *, "   Gradient shape: (", shape(grad_logits), ")"
-        print *, "   Expected shape: (", batch_size, ",", num_classes, ")"
-        if (any(shape(grad_logits) /= [batch_size, num_classes])) then
+        print *, "   Expected shape: (", num_classes, ",", batch_size, ")"
+        if (any(shape(grad_logits) /= [num_classes, batch_size])) then
             print *, "   ERROR: Gradient shape mismatch."
             test_failed = .true.
         else
             print *, "   SUCCESS: Gradient shape is correct."
             ! 检查梯度总和属性
             do i = 1, batch_size
-                if (abs(sum(grad_logits(i, :))) > tolerance) then
+                if (abs(sum(grad_logits(:, i))) > tolerance) then
                     print *, "   ERROR: Sum of gradients for sample", i, " is not zero."
                     test_failed = .true.
                     exit
@@ -96,7 +109,7 @@ program test_loss_func
     ! --- 4. 清理 ---
     print *, "4. Cleaning up..."
     call loss_func%destroy()
-    deallocate(logits, labels)
+    deallocate(logits, onehot_labels, int_labels)
     if (allocated(grad_logits)) deallocate(grad_logits)
     print *, "   Done."
     print *, "========================================"

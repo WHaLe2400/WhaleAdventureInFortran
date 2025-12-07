@@ -101,73 +101,73 @@ contains
     ! 执行批量前向传播的函数
     function fc_forward(self, input_batch) result(output_batch)
         class(FullConnectLayer), intent(inout) :: self
-        real(dp), intent(in) :: input_batch(:, :) ! 形状: (批量大小, 输入大小)
-        real(dp), allocatable :: output_batch(:, :)   ! 形状: (批量大小, 输出大小)
+        real(dp), intent(in) :: input_batch(:, :) ! 形状: (输入大小, 批量大小)
+        real(dp), allocatable :: output_batch(:, :)   ! 形状: (输出大小, 批量大小)
 
         integer :: batch_size
 
         ! 检查维度不匹配
-        if (size(input_batch, 2) /= self%input_size) then
-            print *, "Error: Input batch feature size (", size(input_batch, 2), &
+        if (size(input_batch, 1) /= self%input_size) then
+            print *, "Error: Input batch feature size (", size(input_batch, 1), &
                      ") does not match layer input size (", self%input_size, ")."
             allocate(output_batch(0, 0))
             return
         end if
 
-        batch_size = size(input_batch, 1)
+        batch_size = size(input_batch, 2)
 
         ! 缓存输入以用于反向传播
         if (allocated(self%input_cache)) deallocate(self%input_cache)
-        allocate(self%input_cache(batch_size, self%input_size))
+        allocate(self%input_cache(self%input_size, batch_size))
         self%input_cache = input_batch
 
         ! 分配输出
-        allocate(output_batch(batch_size, self%output_size))
+        allocate(output_batch(self%output_size, batch_size))
 
         ! 执行矩阵-矩阵乘法并加上偏置
-        ! output = input * weights' + biases
-        output_batch = matmul(input_batch, transpose(self%weights))
-        output_batch = output_batch + spread(self%biases, dim=1, ncopies=batch_size)
+        ! output = weights * input + biases
+        output_batch = matmul(self%weights, input_batch)
+        output_batch = output_batch + spread(self%biases, dim=2, ncopies=batch_size)
     end function fc_forward
 
     ! 执行批量反向传播的函数
     function fc_backward(self, grad_output_batch) result(grad_input_batch)
         class(FullConnectLayer), intent(inout) :: self
-        real(dp), intent(in) :: grad_output_batch(:, :) ! 损失函数关于层输出的梯度。形状: (批量大小, 输出大小)
-        real(dp), allocatable :: grad_input_batch(:, :)   ! 损失函数关于层输入的梯度。形状: (批量大小, 输入大小)
+        real(dp), intent(in) :: grad_output_batch(:, :) ! 损失函数关于层输出的梯度。形状: (输出大小, 批量大小)
+        real(dp), allocatable :: grad_input_batch(:, :)   ! 损失函数关于层输入的梯度。形状: (输入大小, 批量大小)
 
         integer :: batch_size
 
         ! 检查维度不匹配
-        if (size(grad_output_batch, 2) /= self%output_size) then
-            print *, "Error: Gradient output batch feature size (", size(grad_output_batch, 2), &
+        if (size(grad_output_batch, 1) /= self%output_size) then
+            print *, "Error: Gradient output batch feature size (", size(grad_output_batch, 1), &
                      ") does not match layer output size (", self%output_size, ")."
             allocate(grad_input_batch(0, 0))
             return
         end if
         
-        batch_size = size(grad_output_batch, 1)
-        if (size(self%input_cache, 1) /= batch_size) then
+        batch_size = size(grad_output_batch, 2)
+        if (size(self%input_cache, 2) /= batch_size) then
             print *, "Error: Gradient output batch size (", batch_size, &
-                     ") does not match cached input batch size (", size(self%input_cache, 1), ")."
+                     ") does not match cached input batch size (", size(self%input_cache, 2), ")."
             allocate(grad_input_batch(0, 0))
             return
         end if
 
         ! 1. 计算关于权重的梯度 (dLoss/dW) 并累加
-        ! dLoss/dW = dLoss/dOut^T * In = In^T * dLoss/dOut (转置)
-        ! grad_output_batch: (批量, 输出大小), input_cache: (批量, 输入大小)
+        ! dLoss/dW = dLoss/dOut * In^T
+        ! grad_output_batch: (输出大小, 批量), input_cache: (输入大小, 批量)
         ! grad_weights: (输出大小, 输入大小)
-        self%grad_weights = self%grad_weights + matmul(transpose(grad_output_batch), self%input_cache)
+        self%grad_weights = self%grad_weights + matmul(grad_output_batch, transpose(self%input_cache))
 
         ! 2. 计算关于偏置的梯度 (dLoss/dB) 并累加
         ! 沿批量维度求和梯度
-        self%grad_biases = self%grad_biases + sum(grad_output_batch, dim=1)
+        self%grad_biases = self%grad_biases + sum(grad_output_batch, dim=2)
 
         ! 3. 计算关于输入的梯度 (dLoss/dIn)
-        ! dLoss/dIn = dLoss/dOut * W
-        allocate(grad_input_batch(batch_size, self%input_size))
-        grad_input_batch = matmul(grad_output_batch, self%weights)
+        ! dLoss/dIn = W^T * dLoss/dOut
+        allocate(grad_input_batch(self%input_size, batch_size))
+        grad_input_batch = matmul(transpose(self%weights), grad_output_batch)
 
     end function fc_backward
 

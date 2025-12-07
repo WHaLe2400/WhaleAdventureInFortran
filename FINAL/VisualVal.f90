@@ -22,9 +22,9 @@ program VisualVal
     real(dp) :: exp_logits(10), sum_exp, probabilities(10)
     
     ! 路径配置
-    character(len=*), parameter :: data_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/1_DATA_Reread/"
+    character(len=*), parameter :: data_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/1_DATA_Reread/"
     ! 使用 epoch_12 的权重，你可以根据需要修改为其他 epoch
-    character(len=*), parameter :: model_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/config_fromTorch"
+    character(len=*), parameter :: model_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/config_fromTorch"
     
     print *, "========================================"
     print *, "      Model Visualization Validation    "
@@ -58,17 +58,20 @@ program VisualVal
     ! 7. 可视化结果
     do img_idx = 1, batch_size
         ! 获取预测结果 (argmax)
-        predicted_loc = maxloc(output_batch(img_idx, :))
+        ! output_batch 形状: (10, batch_size), 我们需要对第 img_idx 个样本的10个类别值找最大
+        predicted_loc = maxloc(output_batch(:, img_idx))
         predicted_label = predicted_loc(1) - 1
         
         ! 获取真实标签
-        true_label = int(label_batch(img_idx, 1))
+        ! label_batch 形状: (1, batch_size)
+        true_label = int(label_batch(1, img_idx))
         
         print *, ""
         print *, "#==============================================================================#"
         print *, "Image Index: ", img_idx
         ! 计算预测概率 (softmax)
-        exp_logits = exp(output_batch(img_idx, :))
+        ! 对第 img_idx 个样本的 logits 计算 softmax
+        exp_logits = exp(output_batch(:, img_idx))
         sum_exp = sum(exp_logits)
         probabilities = exp_logits / sum_exp
         
@@ -95,8 +98,8 @@ program VisualVal
         do i = 1, 28
             write(*, '(A, A)', advance='no') " | "
             do j = 1, 28
-                ! input_batch 维度: (N, C, H, W) -> (img_idx, 1, i, j)
-                pixel_val = input_batch(img_idx, 1, i, j)
+                ! input_batch 维度: (H, W, C, N) -> (i, j, 1, img_idx)
+                pixel_val = input_batch(i, j, 1, img_idx)
 
                 ! -0.2 作为阈值来显示数字轮廓
                 if (pixel_val > -0.3_dp) then

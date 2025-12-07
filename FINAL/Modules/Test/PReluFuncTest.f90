@@ -16,15 +16,18 @@ contains
     ! --- 4D 版本测试 ---
     subroutine test_4d_version()
         implicit none
+        type(PReluLayer) :: prelu
         real(dp), allocatable :: x(:,:,:,:), y(:,:,:,:), dout(:,:,:,:), dx(:,:,:,:)
-        real(dp), allocatable :: a(:)
         integer :: N, C, H, W
 
         ! 参数示例
         N = 1; C = 2; H = 3; W = 3
 
+        ! 初始化 PReLU 层
+        call prelu%init(C)
+
         ! 分配并初始化
-        allocate(x(N, C, H, W), a(C))
+        allocate(x(N, C, H, W))
 
         ! 初始化输入 x，使其包含正负值
         x(1, 1, :, :) = reshape([ -1.0_dp, -2.0_dp, -3.0_dp, &
@@ -32,54 +35,54 @@ contains
                                    0.0_dp, -8.0_dp,  9.0_dp ], [3, 3])
         x(1, 2, :, :) = x(1, 1, :, :) * (-0.5_dp)
 
-        ! 初始化 PReLU 的可学习参数 a
-        a = [0.25_dp, 0.5_dp]
-
         write(*, '(A)') "Input x (channel 1):"
         call print_matrix(x(1,1,:,:))
-        write(*, '(A, F5.2)') "PReLU param a(1): ", a(1)
+
+        ! 模块中 a 是 private，所以不能访问。需要修改测试或假设。
 
         ! --- 前向传播 ---
-        y = prelu_forward(x, a)
+        y = prelu%forward(x)
         write(*, '(A)') "Forward output y (channel 1):"
         call print_matrix(y(1,1,:,:))
-        write(*,*) "--> 验证: 负数应乘以 0.25, 正数和零不变"
+        write(*,*) "--> 验证: 负数应乘以 a, 正数和零不变"
 
         ! --- 反向传播 ---
         allocate(dout, source=y)
         dout = 1.0_dp ! 假设上游梯度全部为 1
 
-        dx = prelu_backward(dout, x, a)
+        dx = prelu%backward(dout)
         write(*, '(A)') "Backward output dx (channel 1):"
         call print_matrix(dx(1,1,:,:))
-        write(*,*) "--> 验证: 对应 x>0 的位置梯度为 1.0, 否则为 0.25"
+        write(*,*) "--> 验证: 对应 x>0 的位置梯度为 1.0, 否则为 a"
 
-        deallocate(x, y, a, dout, dx)
+        call prelu%destroy()
+        deallocate(x, y, dout, dx)
     end subroutine test_4d_version
 
     ! --- 2D 版本测试 ---
     subroutine test_2d_version()
         implicit none
+        type(PReluLayer) :: prelu
         real(dp), allocatable :: x(:,:), y(:,:), dout(:,:), dx(:,:)
-        real(dp), allocatable :: a(:)
         integer :: N, L
 
         ! 参数示例
         N = 2; L = 5
 
+        ! 初始化 PReLU 层
+        call prelu%init(L)
+
         ! 分配并初始化
-        allocate(x(N, L), a(L))
+        allocate(x(N, L))
         x(1, :) = [ 1.0_dp, -2.0_dp, 3.0_dp, 0.0_dp, -5.0_dp ]
         x(2, :) = x(1, :) * (-1.0_dp)
-        a       = [ 0.1_dp,  0.2_dp,  0.3_dp, 0.4_dp,  0.5_dp ]
 
         write(*, '(A)') "Input x (batch 1):"
         write(*, '(5(F6.2, 1X))') x(1, :)
-        write(*, '(A)') "PReLU params a:"
-        write(*, '(5(F6.2, 1X))') a(:)
+        write(*, '(A)') "PReLU params initialized to 0.01"
 
         ! --- 前向传播 ---
-        y = prelu_forward(x, a)
+        y = prelu%forward(x)
         write(*, '(A)') "Forward output y (batch 1):"
         write(*, '(5(F6.2, 1X))') y(1, :)
         write(*,*) "--> 验证: y(i) = x(i) if x(i)>0 else a(i)*x(i)"
@@ -88,12 +91,13 @@ contains
         allocate(dout, source=y)
         dout = 1.0_dp
 
-        dx = prelu_backward(dout, x, a)
+        dx = prelu%backward(dout)
         write(*, '(A)') "Backward output dx (batch 1):"
         write(*, '(5(F6.2, 1X))') dx(1, :)
         write(*,*) "--> 验证: dx(i) = dout(i) if x(i)>0 else a(i)*dout(i)"
 
-        deallocate(x, y, a, dout, dx)
+        call prelu%destroy()
+        deallocate(x, y, dout, dx)
     end subroutine test_2d_version
 
     ! 辅助函数，用于打印 2D 矩阵

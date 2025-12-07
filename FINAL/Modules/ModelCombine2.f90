@@ -12,10 +12,13 @@ module ModelCombine2_mod
     type, public :: Model
         ! --- Public Parameters ---
         integer :: BatchSize = 1
-        integer, dimension(4) :: H = [28, 14, 7, 4], W = [28, 14, 7, 4], C = [1, 8, 16, 64]
-        integer :: FC_in = 4*4*64, FC_hidden = 128, FC_out = 10
+        ! (H, W, C) 格式
+        integer, dimension(4) :: H = [28, 14, 7, 4], W = [28, 14, 7, 4], C = [1, 8, 16, 32]
+        ! FC_in 现在是 H(4)*W(4)*C(4)
+        integer :: FC_in = 4*4*32, FC_hidden = 128, FC_out = 10
         integer :: Conv1_kernel = 5, Conv1_stride = 2, Conv1_padding = 2
         integer :: Conv2_kernel = 5, Conv2_stride = 2, Conv2_padding = 2
+        integer :: Conv3_kernel = 5, Conv3_stride = 2, Conv3_padding = 2 ! Example for Conv3
         ! --- Private Layer Components ---
         type(ConvLayer) :: Conv1, Conv2, Conv3
         type(PReluLayer) :: PReLU1, PReLU2, PReLU3, PReLU4
@@ -23,9 +26,11 @@ module ModelCombine2_mod
         type(FullConnectLayer) :: FC1, FC2
 
         ! --- Intermediate results for backpropagation ---
+        ! (H, W, C, N)
         real(dp), allocatable :: conv1_out(:, :, :, :), prelu1_out(:, :, :, :)
         real(dp), allocatable :: conv2_out(:, :, :, :), prelu2_out(:, :, :, :)
         real(dp), allocatable :: conv3_out(:, :, :, :), prelu3_out(:, :, :, :)
+        ! (Features, N)
         real(dp), allocatable :: flaten_out(:, :), fc1_out(:, :), prelu4_out(:, :)
 
     contains
@@ -52,7 +57,7 @@ contains
 
         call self%PReLU2%init(self%C(3)) ! Channels for PReLU2 is output of Conv2
 
-        call self%Conv3%init(self%C(3), self%C(4), self%Conv2_kernel, self%Conv2_stride, self%Conv2_padding)
+        call self%Conv3%init(self%C(3), self%C(4), self%Conv3_kernel, self%Conv3_stride, self%Conv3_padding)
 
         call self%PReLU3%init(self%C(4)) ! Channels for PReLU3 is output of Conv3
 

@@ -97,29 +97,29 @@ contains
         end if
     end subroutine prelu_zero_grads
 
-    ! --- 4D (N, C, H, W) 版本 ---
+    ! --- 4D (H, W, C, N) 版本 ---
     function prelu_forward_4d(self, x) result(out)
         class(PReluLayer), intent(inout) :: self
         real(dp), intent(in) :: x(:,:,:,:)
         real(dp), allocatable :: out(:,:,:,:)
         integer :: c_idx
         
-        ! (N, C, H, W) layout: channel is the 2nd dimension
-        if (size(x, 2) /= self%input_channels) then
+        ! (H, W, C, N) layout: channel is the 3rd dimension
+        if (size(x, 3) /= self%input_channels) then
             print *, "PReLU Error: Input channels mismatch in forward_4d. Expected ", &
-                     self%input_channels, ", got ", size(x, 2)
+                     self%input_channels, ", got ", size(x, 3)
             allocate(out(0,0,0,0))
             return
         end if
 
         ! 缓存输入以用于反向传播
         if (allocated(self%x_cache_4d)) deallocate(self%x_cache_4d)
-        self%x_cache_4d = x
+        allocate(self%x_cache_4d, source=x)
         
         allocate(out, source=x)
         do c_idx = 1, self%input_channels
-            where (x(:,c_idx,:,:) <= 0.0_dp)
-                out(:,c_idx,:,:) = self%a(c_idx) * x(:,c_idx,:,:)
+            where (x(:,:,c_idx,:) <= 0.0_dp)
+                out(:,:,c_idx,:) = self%a(c_idx) * x(:,:,c_idx,:)
             end where
         end do
     end function prelu_forward_4d
@@ -142,40 +142,42 @@ contains
         da_sum = 0.0_dp
 
         do c_idx = 1, self%input_channels
-            ! 计算 dx for (N, C, H, W) layout
-            where (self%x_cache_4d(:,c_idx,:,:) > 0.0_dp)
-                dx(:,c_idx,:,:) = dout(:,c_idx,:,:)
+            ! 计算 dx for (H, W, C, N) layout
+            where (self%x_cache_4d(:,:,c_idx,:) > 0.0_dp)
+                dx(:,:,c_idx,:) = dout(:,:,c_idx,:)
             elsewhere
-                dx(:,c_idx,:,:) = self%a(c_idx) * dout(:,c_idx,:,:)
+                dx(:,:,c_idx,:) = self%a(c_idx) * dout(:,:,c_idx,:)
             end where
             ! 计算负数部分的 'a' 的梯度
-            da_sum(c_idx) = sum(self%x_cache_4d(:,c_idx,:,:) * dout(:,c_idx,:,:), &
-                                mask=self%x_cache_4d(:,c_idx,:,:) <= 0.0_dp)
+            da_sum(c_idx) = sum(self%x_cache_4d(:,:,c_idx,:) * dout(:,:,c_idx,:), &
+                                mask=self%x_cache_4d(:,:,c_idx,:) <= 0.0_dp)
         end do
         self%grad_a = self%grad_a + da_sum
+        deallocate(da_sum)
     end function prelu_backward_4d
 
-    ! --- 2D (B*L) 版本 ---
+    ! --- 2D (Features, Batch) 版本 ---
     function prelu_forward_2d(self, x) result(out)
         class(PReluLayer), intent(inout) :: self
         real(dp), intent(in) :: x(:,:)
         real(dp), allocatable :: out(:,:)
         integer :: c_idx
 
-        if (size(x, 2) /= self%input_channels) then
+        ! (Features, Batch) layout: features/channels is the 1st dimension
+        if (size(x, 1) /= self%input_channels) then
             print *, "PReLU Error: Input features mismatch in forward_2d. Expected ", &
-                     self%input_channels, ", got ", size(x, 2)
+                     self%input_channels, ", got ", size(x, 1)
             allocate(out(0,0))
             return
         end if
 
         if (allocated(self%x_cache_2d)) deallocate(self%x_cache_2d)
-        self%x_cache_2d = x
+        allocate(self%x_cache_2d, source=x)
         
         allocate(out, source=x)
         do c_idx = 1, self%input_channels
-            where (x(:,c_idx) <= 0.0_dp)
-                out(:,c_idx) = self%a(c_idx) * x(:,c_idx)
+            where (x(c_idx,:) <= 0.0_dp)
+                out(c_idx,:) = self%a(c_idx) * x(c_idx,:)
             end where
         end do
     end function prelu_forward_2d
@@ -199,16 +201,17 @@ contains
 
         do c_idx = 1, self%input_channels
             ! 计算 dx
-            where (self%x_cache_2d(:,c_idx) > 0.0_dp)
-                dx(:,c_idx) = dout(:,c_idx)
+            where (self%x_cache_2d(c_idx,:) > 0.0_dp)
+                dx(c_idx,:) = dout(c_idx,:)
             elsewhere
-                dx(:,c_idx) = self%a(c_idx) * dout(:,c_idx)
+                dx(c_idx,:) = self%a(c_idx) * dout(c_idx,:)
             end where
             ! 计算负数部分的 'a' 的梯度
-            da_sum(c_idx) = sum(self%x_cache_2d(:,c_idx) * dout(:,c_idx), &
-                                mask=self%x_cache_2d(:,c_idx) <= 0.0_dp)
+            da_sum(c_idx) = sum(self%x_cache_2d(c_idx,:) * dout(c_idx,:), &
+                                mask=self%x_cache_2d(c_idx,:) <= 0.0_dp)
         end do
-        self%grad_a = da_sum
+        self%grad_a = self%grad_a + da_sum
+        deallocate(da_sum)
     end function prelu_backward_2d
 
 end module PReluFunc_mod

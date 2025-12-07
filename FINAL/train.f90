@@ -15,19 +15,19 @@ program Train
     type(Label_Loader) :: train_label_loader, test_label_loader
 
     ! 2. 文件路径 (使用 parameter 来定义常量)
-    character(len=*), parameter :: file_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/1_DATA_Reread/"
+    character(len=*), parameter :: file_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/1_DATA_Reread/"
     character(len=*), parameter :: train_data_path = file_root // "train-images3-.bin"
     character(len=*), parameter :: train_label_path = file_root // "train-labels1-.bin"
     character(len=*), parameter :: test_data_path = file_root // "t10k-images3-.bin"
     character(len=*), parameter :: test_label_path = file_root // "t10k-labels1-.bin"
-    character(len=*), parameter :: model_save_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/RESULTS/Models"
-    character(len=*), parameter :: Torch_weights_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/RESULTS/Models/" &
+    character(len=*), parameter :: model_save_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/RESULTS/Models"
+    character(len=*), parameter :: Torch_weights_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/RESULTS/Models/" &
                                      // "config_fromTroch"
 
     ! 3. 训练超参数 (每个类型分开声明)
     integer :: epoch = 16
     integer :: batch_size = 64
-    real(dp) :: learning_rate = 0.1_dp
+    real(dp) :: learning_rate = 0.01_dp
 
     real(dp), allocatable :: input(:,:,:,:), output(:,:), grad_output(:,:)
 
@@ -44,8 +44,8 @@ program Train
     print *,    "   Learning Rate: ", learning_rate
     print *,    "   Using Data: ", trim(file_root)
     print *,    "   Saving Model To: ", trim(model_save_path)
-    print *,    "#==========================================================================#"
-
+    print *, "#==========================================================================#"
+    print *, ""
     ! 初始化
     call init()
 
@@ -69,10 +69,10 @@ contains
         ! 作为内部过程，这里可以访问主程序的所有变量
         call my_model%init()
         call loss_func%destroy() ! 清空loss的缓存
-        call train_data_loader%init(train_data_path, batch_size, 6000, 28, 28, 1)
-        call train_label_loader%init(train_label_path, batch_size, 6000)
-        call test_data_loader%init(test_data_path, batch_size, 1000, 28, 28, 1)
-        call test_label_loader%init(test_label_path, batch_size, 1000)
+        call train_data_loader%init(train_data_path, batch_size, 60000, 28, 28, 1)
+        call train_label_loader%init(train_label_path, batch_size, 60000)
+        call test_data_loader%init(test_data_path, batch_size, 10000, 28, 28, 1)
+        call test_label_loader%init(test_label_path, batch_size, 10000)
     end subroutine init
 
 
@@ -102,7 +102,7 @@ contains
 
         write(*, '(A)', advance='no') "Training: "
         do i = 1, num_batches
-            if (mod(i, 1) == 0) write(*, '(A)', advance='no') "*"
+            if (mod(i, 5) == 0) write(*, '(A)', advance='no') "*"
             ! 在计算新梯度前，清零所有层的梯度
             call my_model%zero_grads()
 
@@ -110,14 +110,13 @@ contains
             call train_data_loader%get_batch(i, input)
             call train_label_loader%get_batch(i, labels)
             
-            ! 将标签转换为 one-hot 编码 (batch_size, 10)
-            allocate(labels_onehot(batch_size, 10))
+            ! 将标签转换为 one-hot 编码 (10, batch_size) 以匹配 LossFunc
+            allocate(labels_onehot(10, batch_size))
             labels_onehot = 0.0_dp
             do j = 1, batch_size
-                if (int(labels(j, 1)) >= 0 .and. int(labels(j, 1)) <= 9) then
-                    labels_onehot(j, int(labels(j, 1)) + 1) = 1.0_dp
+                if (int(labels(1, j)) >= 0 .and. int(labels(1, j)) <= 9) then
+                    labels_onehot(int(labels(1, j)) + 1, j) = 1.0_dp
                 end if
-                ! print *, " -> One-hot: ", labels_onehot(j, :)
             end do
             
             ! 前向传播
@@ -156,7 +155,7 @@ contains
 
         write(*, '(A)', advance='no') "Evaluating: "
         do i = 1, num_batches
-            if (mod(i, 1) == 0) write(*, '(A)', advance='no') "*"
+            if (mod(i, 5) == 0) write(*, '(A)', advance='no') "*"
             ! 获取当前批次的数据和标签
             call test_data_loader%get_batch(i, input)
             call test_label_loader%get_batch(i, labels)
@@ -165,13 +164,13 @@ contains
             output = my_model%forward(input)
             
             ! 计算正确预测
-            do j = 1, size(output, 1)  ! 遍历批次中的每个样本
-                ! maxloc 返回一个单元素数组，直接赋值给固定大小数组
-                predicted_loc = maxloc(output(j, :), dim=1)
+            do j = 1, batch_size  ! 遍历批次中的每个样本
+                ! 沿类别维度(dim=1)为第j个样本找到最大值的索引
+                predicted_loc = maxloc(output(:, j))
                 
                 ! 检查预测类别是否与真实标签匹配
-                ! predicted_loc(1) 获取索引值
-                if ((predicted_loc(1) - 1) == int(labels(j, 1))) then
+                ! predicted_loc(1) 获取索引值, labels(1, j) 获取真实标签
+                if ((predicted_loc(1) - 1) == int(labels(1, j))) then
                     correct_count = correct_count + 1
                 end if
                 total_count = total_count + 1
@@ -196,33 +195,29 @@ contains
         integer :: epoch_idx
         real(dp) :: loss, accuracy
         character(len=10) :: epoch_str
-        integer :: start_time, end_time, clock_rate
-        real(dp) :: elapsed_time
-
-        ! 获取时钟频率
-        call system_clock(count_rate=clock_rate)
+        real(dp) :: start_time, end_time, epoch_duration
 
         do epoch_idx = 1, epoch
-            ! 开始计时
-            call system_clock(count=start_time)
+            call cpu_time(start_time)
 
             loss = train_one_epoch()
             ! loss = 0
 
             call evaluate_model(accuracy)
 
-            ! 结束计时
-            call system_clock(count=end_time)
-            elapsed_time = real(end_time - start_time, dp) / real(clock_rate, dp)
+            call cpu_time(end_time)
+            epoch_duration = end_time - start_time
 
-            print *, ""
-            write(*, '(A, I0, A, I0, A, F8.4, A, F6.2, A, F8.2, A)') &
-            &"Epoch ", epoch_idx, "/", epoch, " completed. Training Loss: ", loss, "      Test Accuracy: ", accuracy * 100.0_dp, "%", " Time: ", elapsed_time, "s"
+            write(*, '(A, I0, A, I0, A, F8.4, A, F6.2, A, F6.2, A)') &
+            &"Epoch ", epoch_idx, "/", epoch, " completed. Loss: ", loss, ", Accuracy: ", &
+            &accuracy * 100.0_dp, "%, Time: ", epoch_duration, "s"
             if (mod(epoch_idx, 2) == 0) then
                 write(epoch_str, '(I0)') epoch_idx
                 call save_model(trim(model_save_path) // "/epoch_" // trim(epoch_str))
-                print *, "Model saved at epoch ", trim(epoch_str)
+                ! print *, "Model saved at epoch ", trim(epoch_str)
             end if
+            print *, ""
+
         end do
     end subroutine train_process
 

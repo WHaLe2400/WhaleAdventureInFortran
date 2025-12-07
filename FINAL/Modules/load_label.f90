@@ -55,7 +55,7 @@ contains
     subroutine LL_get_batch(self, batch_idx, labels)
         class(Label_Loader), intent(inout) :: self
         integer, intent(in) :: batch_idx
-        real(dp), allocatable, intent(out) :: labels(:,:)  ! 形状 (batch_size, 1)
+        real(dp), allocatable, intent(out) :: labels(:,:)  ! 形状 (1, batch_size)
         integer :: start_pos
         integer :: iostat
         integer(kind=1), allocatable :: temp_labels(:)  ! 用于读取 kind=1 的整数
@@ -66,11 +66,11 @@ contains
             stop
         end if
 
-        ! 计算读取位置 (跳过魔数和数量，标签从第9字节开始)
-        start_pos = (batch_idx - 1) * self%batch_size * 1 + 1  ! 魔数4字节 + 数量4字节 = 8字节
+        ! 计算读取位置 (标签从第9字节开始)
+        start_pos = (batch_idx - 1) * self%batch_size * 1 + 1
 
         ! 分配输出数组和临时数组
-        allocate(labels(self%batch_size, 1))
+        allocate(labels(1, self%batch_size))
         allocate(temp_labels(self%batch_size))
 
         ! 从对象中存储的单元号读取文件到临时整数数组
@@ -83,7 +83,7 @@ contains
         end if
 
         ! 将整数数据转换为 real(dp) 类型
-        labels(:, 1) = real(temp_labels, kind=dp)
+        labels(1, :) = real(temp_labels, kind=dp)
 
         ! 释放临时数组
         deallocate(temp_labels)

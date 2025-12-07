@@ -13,8 +13,10 @@ module ModelCombine_mod
     type, public :: Model
         ! --- Public Parameters ---
         integer :: BatchSize = 1
+        ! (H, W, C) 格式
         integer, dimension(3) :: H = [28, 14, 7], W = [28, 14, 7], C = [1, 8, 16]
-        integer :: FC_in = 784, FC_hidden = 128, FC_out = 10
+        ! FC_in 现在是 H(3)*W(3)*C(3)
+        integer :: FC_in = 7*7*16, FC_hidden = 128, FC_out = 10
         integer :: Conv1_kernel = 5, Conv1_stride = 2, Conv1_padding = 2
         integer :: Conv2_kernel = 5, Conv2_stride = 2, Conv2_padding = 2
         ! --- Private Layer Components ---
@@ -22,13 +24,15 @@ module ModelCombine_mod
         type(PReluLayer) :: PReLU1, PReLU2, PReLU3
         type(FlatenLayer) :: Flaten
         type(FullConnectLayer) :: FC1, FC2
-        type(DropoutLayer) :: Drop1 ! 新增 Dropout 层
+        type(DropoutLayer) :: Drop1
 
         ! --- Intermediate results for backpropagation ---
+        ! (H, W, C, N)
         real(dp), allocatable :: conv1_out(:, :, :, :), prelu1_out(:, :, :, :)
         real(dp), allocatable :: conv2_out(:, :, :, :), prelu2_out(:, :, :, :)
+        ! (Features, N)
         real(dp), allocatable :: flaten_out(:, :), fc1_out(:, :), prelu3_out(:, :)
-        real(dp), allocatable :: drop1_out(:, :) ! 新增 Dropout 输出缓存
+        real(dp), allocatable :: drop1_out(:, :)
 
     contains
         procedure, public :: init => model_init
@@ -39,7 +43,6 @@ module ModelCombine_mod
         procedure, public :: update => model_update
         procedure, public :: destroy => model_destroy
         procedure, public :: zero_grads => model_zero_grads
-        ! 新增模式切换方法
         procedure, public :: train => model_train
         procedure, public :: eval => model_eval
     end type Model
@@ -113,8 +116,6 @@ contains
             call execute_command_line('mkdir -p ' // trim(base_path))
         end if
 
-        print *, ""
-        print *, "Saving model to ", trim(base_path)
 
         call self%Conv1%save(trim(base_path) // "/_Conv1.dat")
         call self%PReLU1%save(trim(base_path) // "/_PReLU1.dat")  ! 新增
@@ -123,7 +124,7 @@ contains
         call self%FC1%save(trim(base_path) // "/_FC1.dat")
         call self%PReLU3%save(trim(base_path) // "/_PReLU3.dat")  ! 新增
         call self%FC2%save(trim(base_path) // "/_FC2.dat")
-        print *, "Model saved successfully."
+        print *, "Model saved to ", trim(base_path)
     end subroutine model_save
 
 
