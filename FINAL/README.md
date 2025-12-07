@@ -54,26 +54,7 @@
 
 ## 如何使用
 
-### 步骤 1: 环境准备与数据处理
-
-在编译和运行 Fortran 代码之前，需要先准备好 MNIST 数据集。
-
-1.  **安装 Python 依赖**:
-    ```bash
-    pip install numpy requests
-    ```
-
-2.  **运行数据处理脚本**:
-    进入 `src` 目录，运行 Python 脚本来下载原始数据并将其转换为 Fortran 程序所需的二进制格式。
-    ```bash
-    cd src
-    python DATA_download.py
-    python DATA_Read.py
-    cd .. 
-    ```
-    执行完毕后，格式化后的数据文件将出现在 `1_DATA_Reread/` 目录下。
-
-### 步骤 2: 修改文件路径（重要！）
+### 步骤 1: 修改文件路径（重要！）
 
 Fortran 程序中的文件路径是硬编码的。在编译前，您必须根据您当前的项目位置修改这些路径。
 
@@ -98,7 +79,7 @@ character(len=*), parameter :: file_root = "/home/user/WhaleAdventureInFortran/F
 character(len=*), parameter :: model_load_path = "/home/user/WhaleAdventureInFortran/FINAL/ModelWeight"
 ```
 
-### 步骤 3: 编译源代码
+### 步骤 2: 编译源代码
 
 推荐使用 `gfortran` 编译器。
 
@@ -119,7 +100,7 @@ ${FC} ${FFLAGS} -o VisualVal VisualVal.f90 Modules/*.o
 rm Modules/*.o Modules/*.mod
 ```
 
-### 步骤 4: 运行程序
+### 步骤 3: 运行程序
 
 **执行训练:**
 ```bash
