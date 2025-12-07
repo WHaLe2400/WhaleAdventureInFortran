@@ -44,7 +44,7 @@
 ## 运行效果展示
 
 #### Train_debug:
-![训练日志截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/blob/main/FINAL/zzz_IMG/Train_debug.png)
+![训练日志截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/blob/main/FINAL/zzz_IMG/train_debug.png)
 
 #### ValOnly:
 ![验证结果截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/blob/main/FINAL/zzz_IMG/ValOnly.png)
