@@ -15,16 +15,16 @@ program VisualVal
     real(dp), allocatable :: output_batch(:,:)
     
     integer :: i, j, img_idx
-    integer :: batch_size = 4 ! 可视化 4 张图片
+    integer :: batch_size = 4 , Checking_img = 15! 可视化 4 张图片, 检查第 3 组
     integer :: predicted_label, true_label
     real(dp) :: pixel_val
     integer :: predicted_loc(1)
     real(dp) :: exp_logits(10), sum_exp, probabilities(10)
     
     ! 路径配置
-    character(len=*), parameter :: data_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/1_DATA_Reread/"
+    character(len=*), parameter :: data_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/1_DATA_Reread/"
     ! 使用 epoch_12 的权重，你可以根据需要修改为其他 epoch
-    character(len=*), parameter :: model_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/config_fromTorch"
+    character(len=*), parameter :: model_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/ModelWeight"
     
     print *, "========================================"
     print *, "      Model Visualization Validation    "
@@ -48,8 +48,8 @@ program VisualVal
     
     ! 5. 获取一个批次的数据
     print *, "Loading a batch of test data..."
-    call test_data_loader%get_batch(3, input_batch)
-    call test_label_loader%get_batch(3, label_batch)
+    call test_data_loader%get_batch(Checking_img, input_batch)
+    call test_label_loader%get_batch(Checking_img, label_batch)
     
     ! 6. 前向传播
     print *, "Running Forward Pass..."
@@ -101,9 +101,19 @@ program VisualVal
                 ! input_batch 维度: (H, W, C, N) -> (i, j, 1, img_idx)
                 pixel_val = input_batch(i, j, 1, img_idx)
 
-                ! -0.2 作为阈值来显示数字轮廓
-                if (pixel_val > -0.3_dp) then
+                ! 使用多级阈值来显示不同的“灰度”
+                if (pixel_val > 0.4_dp) then
+                    write(*, '(A)', advance='no') "@@"
+                else if (pixel_val > 0.2_dp) then
                     write(*, '(A)', advance='no') "##"
+                else if (pixel_val > 0.0_dp) then
+                    write(*, '(A)', advance='no') "**"
+                else if (pixel_val > -0.1_dp) then
+                    write(*, '(A)', advance='no') "++"
+                else if (pixel_val > -0.2_dp) then
+                    write(*, '(A)', advance='no') "::"
+                else if (pixel_val > -0.4_dp) then
+                    write(*, '(A)', advance='no') ".."
                 else
                     write(*, '(A)', advance='no') "  "
                 end if

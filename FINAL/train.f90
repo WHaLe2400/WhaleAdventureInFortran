@@ -15,13 +15,13 @@ program Train
     type(Label_Loader) :: train_label_loader, test_label_loader
 
     ! 2. 文件路径 (使用 parameter 来定义常量)
-    character(len=*), parameter :: file_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/1_DATA_Reread/"
+    character(len=*), parameter :: file_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/1_DATA_Reread/"
     character(len=*), parameter :: train_data_path = file_root // "train-images3-.bin"
     character(len=*), parameter :: train_label_path = file_root // "train-labels1-.bin"
     character(len=*), parameter :: test_data_path = file_root // "t10k-images3-.bin"
     character(len=*), parameter :: test_label_path = file_root // "t10k-labels1-.bin"
-    character(len=*), parameter :: model_save_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/RESULTS/Models"
-    character(len=*), parameter :: Torch_weights_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/RESULTS/Models/" &
+    character(len=*), parameter :: model_save_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/RESULTS/Models"
+    character(len=*), parameter :: Torch_weights_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/RESULTS/Models/" &
                                      // "config_fromTroch"
 
     ! 3. 训练超参数 (每个类型分开声明)

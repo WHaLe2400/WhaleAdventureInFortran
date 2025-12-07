@@ -12,10 +12,10 @@ program Validation
     type(Label_Loader) :: test_label_loader
 
     ! --- 文件路径和参数 ---
-    character(len=*), parameter :: file_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/1_DATA_Reread/"
+    character(len=*), parameter :: file_root = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/1_DATA_Reread/"
     character(len=*), parameter :: test_data_path = file_root // "t10k-images3-.bin"
     character(len=*), parameter :: test_label_path = file_root // "t10k-labels1-.bin"
-    character(len=*), parameter :: model_load_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL_rebuild/RESULTS/Models/epoch_2"
+    character(len=*), parameter :: model_load_path = "/root/0_FoRemote/WhaleAdventureInFortran/FINAL/ModelWeight"
 
     integer, parameter :: batch_size = 100
     integer, parameter :: test_item_num = 10000
