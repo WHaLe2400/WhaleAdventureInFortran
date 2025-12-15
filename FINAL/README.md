@@ -100,6 +100,16 @@ ${FC} ${FFLAGS} -o VisualVal VisualVal.f90 Modules/*.o
 rm Modules/*.o Modules/*.mod
 ```
 
+或使用单行命令针对特定文件进行编译：
+```bash
+# 移动到项目目录
+cd <YOUR_PROJECT_PATH>/FINAL
+
+gfortran -std=f2008 -o train train.f90 Modules/*.f90            #针对 train.f90编译指令
+gfortran -std=f2008 -o ValOnly ValOnly.f90 Modules/*.f90        #针对 ValOnly.f90编译指令
+gfortran -std=f2008 -o VisualVal VisualVal.f90 Modules/*.f90    #针对 VisualVal.f90编译指令
+```
+
 ### 步骤 3: 运行程序
 
 **执行训练:**
