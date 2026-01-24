@@ -4,7 +4,7 @@
 
 本项目旨在使用现代 Fortran (f2008 标准) 从零开始构建、训练和评估一个卷积神经网络 (CNN)，并应用于经典的 MNIST 手写数字数据集。项目展示了如何在 Fortran 环境下实现深度学习模型的核心组件，并构建一个完整的训练与验证流程。
 
-![模型结构图](https://github.com/WHaLe2400/WhaleAdventureInFortran/zzz_IMG/Model_Shape.png)
+![模型结构图](https://github.com/WHaLe2400/WhaleAdventureInFortran/blob/main/zzz_IMG/Model_Shape.png)
 
 ## 核心特性
 
@@ -44,13 +44,13 @@
 ## 运行效果展示
 
 #### Train_debug:
-![训练日志截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/zzz_IMG/train_debug.png)
+![训练日志截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/blob/main/zzz_IMG/train_debug.png)
 
 #### ValOnl
-![验证结果截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/zzz_IMG/ValOnly.png)
+![验证结果截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/blob/main/zzz_IMG/ValOnly.png)
 
 #### VisualVal:
-![可视化验证截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/zzz_IMG/VisualVal.png)
+![可视化验证截图](https://github.com/WHaLe2400/WhaleAdventureInFortran/blob/main/zzz_IMG/VisualVal.png)
 
 ## 如何使用
 
